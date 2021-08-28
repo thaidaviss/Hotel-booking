@@ -12,3 +12,28 @@
     }
   }
 }
+
+@mixin crossBrowser($property, $val){
+  -webkit-#{$property}: $val;
+  -moz-#{$property}: $val;
+  -ms-#{$property}: $val;
+  #{$property}: $val;
+}
+
+@mixin P($val) {
+  @if map-has-key($paddings, $val) {
+    padding:$val;
+  }
+}
+
+@mixin M($val) {
+  @if map-has-key($margin, $val) {
+    margin:$val;
+  }
+}
+
+
+@mixin box($width,$height: $width) {
+  width: $width;
+  height: $height;
+}
