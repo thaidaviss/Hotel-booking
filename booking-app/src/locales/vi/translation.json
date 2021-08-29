@@ -1,6 +1,9 @@
 {
 
- "home":"Trang chủ",
- "hello nam": "Chào nam"
+  "home":"Home",
+  "rooms":"Danh sách phòng",
+  "about us":"về chúng tôi",
+  "blog":"Blog",
+  "contact":"Liên hệ"
   
 }
