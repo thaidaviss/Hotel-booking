@@ -1,12 +1,15 @@
 @import '../../../styles/main';
 
 .home {
-  @include LayoutFlex();
-  background-color: red;
-  @include  P(4);
+  display: block;
+  width: 100%;
+  img{
+    display: block;
+    width: 100%;
+  }
 }
-@include Responsive(sm){
-  .home{
-    @include box(200px);
+
+@include Responsive(sm) {
+  .home {
   }
 }

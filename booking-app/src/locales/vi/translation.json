@@ -1,5 +1,5 @@
 {
-  "home":"Trang chủ",
+  "home": "Trang chủ",
   "hello nam": "Chào nam",
 
   "Login": "Đăng nhập",
@@ -19,7 +19,7 @@
 
   "Email is not valid!": "Email không hợp lệ!",
   "Please enter a valid email!": "Nhập vào email!",
-  
+
   "Phone": "Số điện thoại",
   "Please enter a valid phone!": "Nhập vào số điện thoại!",
   "Phone number is not valid!": "Số điện thoại không hợp lệ!",
@@ -29,6 +29,13 @@
   "You have an account?": "Bạn đã có tài khoản?",
   "You don't have an account?": "Bạn chưa có tài khoản?",
 
-  "Sorry, the page you visited does not exist.": "Xin lỗi, trang bạn tìm kiếm không tồn tại."
-  
+  "Sorry, the page you visited does not exist.": "Xin lỗi, trang bạn tìm kiếm không tồn tại.",
+  "home": "Home",
+  "rooms": "Danh sách phòng",
+  "about us": "về chúng tôi",
+  "blog": "Blog",
+  "contact": "Liên hệ",
+  "login": "Đăng nhập",
+  "news": "tin tức"
+
 }

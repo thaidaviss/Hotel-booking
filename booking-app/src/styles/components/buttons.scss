@@ -1,0 +1,15 @@
+@use "abstracts/variables" as *;
+@mixin button-custom(){
+  display: block;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  background-color: $primary;
+
+  &:hover{
+    color: $primary;
+    background-color: #fff;
+  }
+}
