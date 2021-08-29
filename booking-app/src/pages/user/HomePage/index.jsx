@@ -1,14 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-HomePage.propTypes = {
-  
-};
+import { useTranslation } from 'react-i18next';
+import "./HomePage.scss"
 
 function HomePage(props) {
+  const {t,i18n} = useTranslation()
   return (
-    <div>
-      home page
+    <div className="home">
+      <button onClick={()=>i18n.changeLanguage("en")}> tran</button>
+     <div className="home__title">
+       {t('home')}
+     </div>
+     <div className="home__content">
+        {t("hello nam")}
+     </div>
     </div>
   );
 }

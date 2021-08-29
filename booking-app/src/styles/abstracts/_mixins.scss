@@ -22,13 +22,13 @@
 
 @mixin P($val) {
   @if map-has-key($paddings, $val) {
-    padding:$val;
+    padding: map-get($paddings, $val);
   }
 }
 
 @mixin M($val) {
   @if map-has-key($margin, $val) {
-    margin:$val;
+    margin:map-get($margin, $val);
   }
 }
 
