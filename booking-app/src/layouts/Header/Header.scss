@@ -6,13 +6,15 @@ a {
 
 .header {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   padding-top: 1rem;
   background-color: transparent;
   font-family: $font-family-base;
   width: 100%;
-
+  line-height: 1.4rem;
+  letter-spacing: 2px;
   transition: all 0.3s;
 
   .container {
@@ -59,26 +61,26 @@ a {
     }
 
     &__logo {
-      width: 30%;
+      width: 20%;
 
       padding-top: 0.5rem;
-      font-weight: 700;
+      font-weight:500;
       text-transform: uppercase;
 
       h3 {
-        color: $black;
+        color: $white;
         font-size: 1.3rem;
         padding-bottom: 0.3rem;
       }
 
       h4 {
-        color: $black;
+        color: $white;
         font-size: 0.8rem;
       }
     }
 
     &__list {
-      width: 70%;
+      width: 80%;
 
       @include LayoutFlex(row, space-between, center, nowrap);
 
@@ -100,7 +102,7 @@ a {
         a {
           text-transform: uppercase;
           font-size: 14px;
-          color: #222222;
+          color: $white;
           cursor: pointer;
         }
       }
@@ -138,7 +140,7 @@ a {
             }
 
             span {
-              width: 5rem;
+              width: 6rem;
               color: #fff;
               font-size: 13px;
               text-transform: none;
@@ -162,7 +164,7 @@ a {
             display: inline-block;
             font-size: 14px;
             text-transform: uppercase;
-            color: #222222;
+            color: $white;
 
           }
 
@@ -180,8 +182,8 @@ a {
         a {
           text-transform: uppercase;
           font-size: 14px;
-          font-weight: 400;
-          color: $black;
+          font-weight:500;
+          color: $white;
 
           &:hover {
             color: $primary;

@@ -1,0 +1,46 @@
+@import 'styles/main';
+
+.reservation{
+  display: flex;
+  max-width: 65rem;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  box-shadow: 2px 2px 4px #e1e1e1,-2px -2px 4px #e1e1e1;
+  border-radius: 2px;
+
+  background-color: $white;
+  color:$black;
+  
+  &__item{
+    min-width: calc(100% / 4);
+    text-align: center;
+    &-title{
+      font-family: $font-family-base;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding-bottom: 1rem;
+    
+    }
+    .btn-check{
+      font-weight: 600;
+      font-family: $font-family-base;
+      padding: 1.5rem 2rem;
+      border-radius: 2px;
+      border-radius: 2px 2px 2px #e1e1e1;
+      color: $white;
+      background-color: $primary;
+      border: none;
+      cursor: pointer;
+    &:hover{
+      opacity: 0.8;
+    }
+      
+    }
+  }
+}
+
+@include Responsive(sm) {
+ .reservation{
+   flex-direction: column;
+ }
+}

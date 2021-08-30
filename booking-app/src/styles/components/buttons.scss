@@ -1,15 +1,38 @@
-@use "abstracts/variables" as *;
-@mixin button-custom(){
-  display: block;
-  padding: 0.6rem 1.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  color: #fff;
-  font-weight: 500;
-  background-color: $primary;
+@use "abstracts/variables"as *;
 
-  &:hover{
-    color: $primary;
-    background-color: #fff;
+@mixin button-custom($color:$white, $bg-color:$primary) {
+  display: block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  color: $color;
+  font-weight: 500;
+  background-color: $bg-color;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $bg-color;
+    background-color: $color;
+  }
+}
+
+@mixin button-custom-v($color:$white, $bg-color:$primary) {
+  display: block;
+  padding: 1rem 2rem;
+
+  border-radius: 1px;
+  box-shadow: 2px 2px 4px #e1e1e1, -2px -2px 4px #e1e1e1;
+  font-family: $font-family-heading;
+  border: none;
+  color: $color;
+  font-weight: 700;
+  background-color: $bg-color;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $bg-color;
+    background-color: $color;
   }
 }
