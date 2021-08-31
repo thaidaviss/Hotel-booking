@@ -6,7 +6,13 @@ function CardRoom(props) {
   const { dataAos, title, content, price, img, isImgTop } = props;
   if (isImgTop) {
     return (
-      <div className="room"  data-aos={dataAos}>
+      <div
+        className="room"
+        data-aos={dataAos}
+        data-aos-easing="linear"
+        data-aos-delay="500"
+        data-aos-duration="500"
+      >
         <div className="room__img">
           <img src={img} alt="" />
         </div>
@@ -26,7 +32,13 @@ function CardRoom(props) {
     );
   } else {
     return (
-      <div className="room" data-aos={dataAos}>
+      <div
+        className="room"
+        data-aos={dataAos}
+        data-aos-easing="linear"
+        data-aos-delay="500"
+        data-aos-duration="500"
+      >
         <div className="room__content">
           <h3 className="room__content-title">{t(title)}</h3>
           <p className="room__content-description">{t(content)}</p>
