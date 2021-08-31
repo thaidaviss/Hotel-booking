@@ -1,6 +1,8 @@
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
+import {
+    initReactI18next
+} from 'react-i18next';
 
 import translationEN from '../en/translation';
 import translationVI from '../vi/translation';
@@ -20,7 +22,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        fallbackLng: 'vi',
+        fallbackLng: 'en',
         debug: true,
         interpolation: {
             escapeValue: false // not needed for react as it escapes by default

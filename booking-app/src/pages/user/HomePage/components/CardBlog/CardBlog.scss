@@ -1,0 +1,30 @@
+
+.blog{
+  margin: 0 1.5rem;
+  padding-top: 0;
+  &__img{
+    display: block;
+    width: 100%;
+    img{
+      width: 100%;
+      display: block;
+    }
+  }
+  &__content{
+    background-color: #fff;
+    padding: 1rem 0.5rem;
+    &-info{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      font-family: Archivo, sans-serif;
+      font-size: 0.9rem;
+      color: #979494;
+      padding-bottom: 1rem;
+    }
+    &-title{
+      font-size: 1.6rem;
+      padding-bottom: 1rem;
+    }
+  }
+}
