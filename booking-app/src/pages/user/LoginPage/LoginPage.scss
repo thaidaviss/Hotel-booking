@@ -7,11 +7,16 @@
 
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
-
+  
   &__container {
+    display: flex;
     width: 100%;
     min-height: 100vh;
-    padding: 1rem;
+  }
+
+  &__side {
+    width: 66%;
+    height: 100vh;
 
     background-image: url("../../../assets/images/gallery/xbg_7.jpg");
     background-position: center;
@@ -20,13 +25,12 @@
   }
 
   &__content {
-    width: 28rem;
-    margin: auto;
-    padding: 2rem;
+    width: 28%;
+    margin: .65rem auto;
     padding-top: 0.3rem;
     padding-bottom: 0.65rem;
 
-    background-color: rgba(255, 255, 255, .95);
+    background-color: rgba(255, 255, 255, 1);
     z-index: 1;
 
     &__logo {
@@ -39,29 +43,54 @@
 }
 
 // Responsive -----------
-@include Responsive(xs) {
+// pc HD
+@include Responsive(md) {
   .login {
-  
-    &__container {  
-      background-image: none;
+    &__side {
+      width: 62%;
+      height: 100vh;
     }
-  
-    &__content {  
-      background-color: rgba(255, 255, 255, 1);
-    }
-  }
-}
-
-@include Responsive(sm) {
-  .login {
   
     &__content {
-      width: 26rem;
+      width: 34%;
       margin: auto;
     }
   }
 }
 
+// Tablet
+@include Responsive(sm) {
+  .login {
+    &__container {
+      display: block;
+      height: 100%;
+    }
+
+    &__side {
+      width: 100%;
+      height: 300px;
+    }
+  
+    &__content {
+      width: 85%;
+      margin: auto;
+    }
+  }
+}
+// Mobile device
+@include Responsive(xs) {
+  .login {
+  
+    &__side {
+      width: 100%;
+      height: 300px;
+    }
+  
+    &__content {
+      margin: auto;
+    }
+  }
+}
 
 // custom Antd ----------
 .ant-btn-primary {
