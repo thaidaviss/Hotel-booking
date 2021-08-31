@@ -23,7 +23,7 @@ function Header(props) {
       _.debounce((e) => {
         
         setScrollTop(window.scrollY) 
-      },80));
+      },20));
 
     
   }, [window.scrollY]);

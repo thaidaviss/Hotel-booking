@@ -1,47 +1,49 @@
 @import 'styles/main';
 
 .home {
-  width: 100vw;
-  min-height: 200vh;
+  width:100%;
   background-color: #F8F8F8;
   overflow: hidden;
-  .container{
+
+  .container {
     display: block;
     max-width: 90rem;
     margin: 0 auto;
-    
   }
-  &__title{
-    font-size:1rem;
+
+  &__title {
+    font-size: 1rem;
     color: $primary;
     font-family: $font-family-base;
     font-weight: 600;
-    line-height:23.4px;
+    line-height: 23.4px;
     text-transform: uppercase;
   }
-  &__heading{
+
+  &__heading {
     font-size: 4rem;
     color: $black;
     font-family: $font-family-heading;
     font-weight: 400;
-    line-height:89.6px;
-  
+    line-height: 89.6px;
+
   }
 
-  .banner{
+  .banner {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  
+
     min-height: 100vh;
     background-image: url("../../../assets/images/bg.webp");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    &::after{
+
+    &::after {
       content: "";
       position: absolute;
       top: 0;
@@ -50,14 +52,16 @@
       height: 100%;
       background-color: rgba($color: #000000, $alpha: 0.4);
     }
-    .reservation-check{
+
+    .reservation-check {
       width: 100%;
       z-index: 1;
       position: absolute;
       bottom: -7rem;
-     
+
     }
-    &__title{
+
+    &__title {
       position: relative;
       z-index: 1;
 
@@ -70,7 +74,8 @@
       padding-bottom: 1rem;
 
     }
-    &__content{
+
+    &__content {
       position: relative;
       z-index: 1;
       font-family: $font-family-heading;
@@ -78,56 +83,68 @@
       font-weight: 700;
       color: $white;
     }
-    img{
+
+    img {
       display: block;
       width: 100%;
     }
-    &__btn{
+
+    &__btn {
       position: relative;
       z-index: 1;
       display: flex;
       justify-content: center;
       padding-top: 2rem;
     }
-    
+
   }
- 
-  .btn-order{
-    @include button-custom($white,$primary);
+
+  .btn-order {
+    @include button-custom($white, $primary);
     margin-right: 1rem;
   }
-  .btn-readmore{
-    @include button-custom($primary,$white);
+
+  .btn-readmore {
+    @include button-custom($primary, $white);
   }
-  .about-us{
+
+  .about-us {
     padding-top: 13rem;
     width: 100%;
-    .container{
+
+    .container {
       display: flex;
       overflow: hidden;
-    }  
-    &__left,&__right{
+    }
+
+    &__left,
+    &__right {
       width: 48%;
       padding: 1rem;
     }
-    &__content{
+
+    &__content {
       font-size: 1.2rem;
       margin-top: 2rem;
 
       line-height: 2rem;
     }
-    &__btn{
+
+    &__btn {
       margin-top: 3rem;
       text-transform: uppercase;
-      @include button-custom-v($white,$primary);
+      @include button-custom-v($white, $primary);
     }
-    &__left{
+
+    &__left {
       display: flex;
       margin-left: 2rem;
-      &-item{
+
+      &-item {
         width: 50%;
-        &:hover{
-          .card-about{
+
+        &:hover {
+          .card-about {
             cursor: pointer;
             transform: scale(1.1);
             background-color: $primary;
@@ -135,44 +152,53 @@
           }
         }
       }
-      &-img{
+
+      &-img {
         display: block;
         width: 90%;
         margin: 1rem;
         overflow: hidden;
-        img{
+
+        img {
           display: block;
           width: 100%;
         }
       }
-      
+
     }
   }
-  .services{
+
+  .services {
     margin-top: 10rem;
-    .container{
+
+    .container {
       text-align: center;
     }
-    &__list{
-      ul{
+
+    &__list {
+      ul {
         display: flex;
         width: 90%;
         margin: 2rem auto 0;
       }
-       li{
-          width:  calc(100% /6);
-          margin: 1rem;
-    
-        }
+
+      li {
+        width: calc(100% /6);
+        margin: 1rem;
+
+      }
     }
   }
-  .rooms{
+
+  .rooms {
     margin-top: 12rem;
-    .container{
-      text-align: center ;
-    
+
+    .container {
+      text-align: center;
+
     }
-    &__list{
+
+    &__list {
       display: flex;
       margin: 0 2rem;
       flex-wrap: nowrap;
@@ -183,6 +209,5 @@
 }
 
 @include Responsive(sm) {
-  .home {
-  }
+  .home {}
 }

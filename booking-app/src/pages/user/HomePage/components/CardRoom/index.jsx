@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import "./CardRoom.scss";
 function CardRoom(props) {
   const { t } = useTranslation();
-  const { title, content, price, img, isImgTop } = props;
+  const { dataAos, title, content, price, img, isImgTop } = props;
   if (isImgTop) {
     return (
-      <div className="room">
+      <div className="room"  data-aos={dataAos}>
         <div className="room__img">
           <img src={img} alt="" />
         </div>
@@ -26,7 +26,7 @@ function CardRoom(props) {
     );
   } else {
     return (
-      <div className="room">
+      <div className="room" data-aos={dataAos}>
         <div className="room__content">
           <h3 className="room__content-title">{t(title)}</h3>
           <p className="room__content-description">{t(content)}</p>

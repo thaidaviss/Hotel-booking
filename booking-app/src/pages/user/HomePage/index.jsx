@@ -68,7 +68,14 @@ function HomePage(props) {
       <div className="about-us">
         <div className="container">
           <div className="about-us__left">
-            <div className="about-us__left-item">
+            <div
+              className="about-us__left-item"
+              data-aos="zoom-in-up"
+              data-aos-easing="linear"
+              data-aos-delay="500"
+              data-aos-offset="100"
+              data-aos-duration="500"
+            >
               <CardAbout
                 img={PillowImg}
                 title={"Cozy Room"}
@@ -78,7 +85,14 @@ function HomePage(props) {
                 <img src={About1} alt="" />
               </div>
             </div>
-            <div className="about-us__left-item">
+            <div
+              className="about-us__left-item"
+              data-aos="zoom-in-down"
+              data-aos-easing="linear"
+              data-aos-delay="500"
+              data-aos-offset="100"
+              data-aos-duration="500"
+            >
               <div className="about-us__left-img">
                 <img src={About2} alt="" />
               </div>
@@ -90,23 +104,36 @@ function HomePage(props) {
               />
             </div>
           </div>
-          <div className="about-us__right">
+          <div
+            className="about-us__right"
+            data-aos="fade-up-left"
+            data-aos-delay="500"
+            data-aos-easing="linear"
+            data-aos-delay="500"
+            data-aos-offset="100"
+            data-aos-duration="600"
+          >
             <div className="home__title">{t("about us")}</div>
             <div className="home__heading">{t("Unwind A Hotel Booking Agency")}</div>
-            <p className="about-us__content">
-              {t(` Far far away, behind the word mountains, far from the countries Vokalia and
-              Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
-              at the coast of the Semantics, a large language ocean.`)}
-            </p>
+            <p className="about-us__content">{t("about us content")}</p>
             <button className="about-us__btn">{t("Book your room now")}</button>
           </div>
         </div>
       </div>
       <div className="services">
         <div className="container">
-          <div className="home__title">{t("UNWIND SERVICES")}</div>
-          <div className="home__heading">{t("Explore Our Hotel Services")}</div>
-          <div className="services__list">
+          <div className="home__title" data-aos="fade-left">
+            {t("UNWIND SERVICES")}
+          </div>
+          <div className="home__heading" data-aos="fade-right">
+            {t("Explore Our Hotel Services")}
+          </div>
+          <div
+            className="services__list"
+            data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000"
+          >
             <ul>
               {ListService.map((item) => (
                 <li key={`service__item-${item.id}`}>
@@ -124,20 +151,23 @@ function HomePage(props) {
 
           <div className="rooms__list">
             <CardRoom
+              dataAos="zoom-in"
               title="Suite Room"
               content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
               price="$200"
               img={Rooms1}
               isImgTop={false}
             />
-             <CardRoom
+            <CardRoom
+              dataAos="zoom-in"
               title="Family Room"
               content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
               price="$400"
               img={Rooms2}
               isImgTop={true}
             />
-             <CardRoom
+            <CardRoom
+            dataAos="zoom-in"
               title="Deluxe Room"
               content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
               price="$600"
