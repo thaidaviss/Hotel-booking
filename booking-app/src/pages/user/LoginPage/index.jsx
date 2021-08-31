@@ -24,14 +24,15 @@ function LoginPage(props) {
   return (
     <div className="login">
       <div className="login__container">
-
+        <div className="login__side"></div>
+        
         <div className="login__content">
           <div className="login__content__logo">
             <img src={IMAGES.LOGO} alt="Logo is not imported!" />
           </div>
 
           <Tabs defaultActiveKey="1" 
-            activeKey={state.activeTab} 
+            activeKey={state.activeTab}
             onChange={handleChangeTab}
           >
             <TabPane tab={t("Login")} key="1">

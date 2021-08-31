@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 import Footer from '../Footer';
-import { ROUTER_URL } from 'constants';
+import { ROUTER_URL } from 'constants/index';
 
 PrivateLayout.propTypes = {
    exact: PropTypes.bool,
