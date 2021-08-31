@@ -1,9 +1,34 @@
 {
+  "home":"Trang chủ",
+  "hello nam": "Chào nam",
 
-  "home":"Home",
-  "rooms":"Danh sách phòng",
-  "about us":"về chúng tôi",
-  "blog":"Blog",
-  "contact":"Liên hệ"
+  "Login": "Đăng nhập",
+  "Remember me": "Ghi nhớ đăng nhập",
+  "Register": "Đăng kí",
+  "Register now": "Đăng kí ngay",
+
+  "Password": "Mật khẩu",
+  "Confirm": "Xác nhận mật khẩu",
+  "Please enter a valid password!": "Nhập vào mật khẩu!",
+  "The two passwords do not match!": "Mật khẩu không khớp!",
+  "Please confirm your password!": "Chưa xác nhận mật khẩu!",
+  "Must be a minimum of 6 characters": "Mật khẩu ít nhất 6 kí tự!",
+
+  "Full name": "Họ và tên",
+  "Please enter a valid first name!": "Nhập vào họ tên!",
+
+  "Email is not valid!": "Email không hợp lệ!",
+  "Please enter a valid email!": "Nhập vào email!",
+  
+  "Phone": "Số điện thoại",
+  "Please enter a valid phone!": "Nhập vào số điện thoại!",
+  "Phone number is not valid!": "Số điện thoại không hợp lệ!",
+
+  "I have read and agreed to": "Tôi đã đọc và đồng ý với",
+  " the terms": " các điều khoản",
+  "You have an account?": "Bạn đã có tài khoản?",
+  "You don't have an account?": "Bạn chưa có tài khoản?",
+
+  "Sorry, the page you visited does not exist.": "Xin lỗi, trang bạn tìm kiếm không tồn tại."
   
 }

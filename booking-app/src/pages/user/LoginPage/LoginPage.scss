@@ -1,0 +1,77 @@
+@import '../../../styles/main.scss';
+
+.login {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem auto;
+
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+
+  &__container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem;
+
+    background-image: url("../../../assets/images/gallery/xbg_7.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__content {
+    width: 28rem;
+    margin: auto;
+    padding: 2rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.65rem;
+
+    background-color: rgba(255, 255, 255, .95);
+    z-index: 1;
+
+    &__logo {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 1rem auto;
+    }
+  }
+}
+
+// Responsive -----------
+@include Responsive(xs) {
+  .login {
+  
+    &__container {  
+      background-image: none;
+    }
+  
+    &__content {  
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+@include Responsive(sm) {
+  .login {
+  
+    &__content {
+      width: 26rem;
+      margin: auto;
+    }
+  }
+}
+
+
+// custom Antd ----------
+.ant-btn-primary {
+  height: 36px;
+
+  text-transform: uppercase;
+  font-size: .95rem;
+  border-radius: 4px;
+}
+.ant-tabs-tab-btn {
+  font-size: 1.5rem;
+  font-weight: 400;
+}

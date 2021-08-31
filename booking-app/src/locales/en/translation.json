@@ -1,8 +1,33 @@
 {
-      "home":"Home",
-      "rooms":"Rooms",
-      "about us":"About Us",
-      "blog":"Blog",
-      "contact":"Contact"
+  "home": "Home",
+  "hello nam": "hello nam",
 
+  "Login": "Login",
+  "Remember me": "Remember me",
+  "Register": "Register",
+  "Register now": "Register now",
+
+  "Password": "Password",
+  "Confirm": "Confirm password",
+  "Please enter a valid password!": "Please enter a valid password!",
+  "The two passwords do not match!": "The two passwords do not match!",
+  "Please confirm your password!": "Please confirm your password!",
+  "Must be a minimum of 6 characters": "Must be a minimum of 6 characters",
+
+  "Full name": "Full name",
+  "Please enter a valid first name!": "Please enter a valid first name!",
+
+  "Email is not valid!": "Email is not valid!",
+  "Please enter a valid email!": "Please enter a valid email!",
+
+  "Phone": "Phone number",
+  "Please enter a valid phone!": "Please enter a valid phone!",
+  "Phone number is not valid!": "Phone number is not valid!",
+
+  "I have read and agreed to": "I have read and agreed to",
+  " the terms": " the terms",
+  "You have an account?": "You have an account?",
+  "You don't have an account?": "You don't have an account?",
+
+  "Sorry, the page you visited does not exist.": "Sorry, the page you visited does not exist."
 }
