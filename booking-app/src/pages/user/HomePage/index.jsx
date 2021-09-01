@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import MakeReservation from "./components/MakeReservation";
+import Slider from "react-slick";
+
+
 
 import PillowImg from "assets/images/pillow.png";
 import SpecialImg from "assets/images/special.png";
@@ -13,11 +15,6 @@ import Rooms2 from "assets/images/rooms2.webp";
 import Rooms3 from "assets/images/rooms3.webp";
 
 import LoadVideo from "assets/images/load.png";
-import CardAbout from "./components/CardAbout";
-
-import User1 from "assets/images/user1.webp";
-import User2 from "assets/images/user2.webp";
-import User3 from "assets/images/user3.webp";
 
 import News1 from "assets/images/news1.jpg";
 import News2 from "assets/images/news2.jpg";
@@ -27,14 +24,16 @@ import { IoIosWifi } from "react-icons/io";
 import { MdRestaurant } from "react-icons/md";
 import { FaSwimmingPool, FaHeadphonesAlt, FaBath } from "react-icons/fa";
 import { BiCalendarCheck } from "react-icons/bi";
+import "./HomePage.scss";
 
+import CardAbout from "./components/CardAbout";
 import CardService from "./components/CardService";
 import CardRoom from "./components/CardRoom";
-
-import "./HomePage.scss";
+import MakeReservation from "./components/MakeReservation";
 import CardFeedBack from "./components/CardFeedBack";
-import Slider from "react-slick";
 import CardBlog from "./components/CardBlog";
+import { ListBlog, ListFeedBack, ListService } from "constants/index";
+
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 const ListService = [
   {
@@ -173,8 +172,8 @@ const ListBlog = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
   },
-
 ];
+
 function HomePage(props) {
   const { t } = useTranslation();
   const customSlider = useRef();

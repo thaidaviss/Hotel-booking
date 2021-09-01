@@ -1,4 +1,4 @@
-@import '../../../styles/main.scss';
+@import 'styles/main.scss';
 
 .login {
   width: 100%;
@@ -7,7 +7,7 @@
 
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
-  
+
   &__container {
     display: flex;
     width: 100%;
@@ -29,6 +29,8 @@
   }
 
   &__content {
+    font-family: $font-family-heading;
+    color: $black;
     width: 28%;
     margin: .65rem auto;
     padding-top: 0.3rem;
@@ -44,6 +46,37 @@
       margin: 1rem auto;
     }
   }
+
+  .ant-tabs-top>.ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-top>div>.ant-tabs-nav .ant-tabs-ink-bar {
+
+    background-color: $primary;
+  }
+
+  .ant-checkbox-checked::after {
+    border: 1px solid $primary;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  .ant-btn-block {
+    background-color: $primary;
+    border: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
+  .ant-tabs-tab-btn {
+    text-transform: uppercase;
+    font-family: $font-family-heading;
+    color: $primary;
+  }
 }
 
 // Responsive -----------
@@ -54,7 +87,7 @@
       width: 62%;
       height: 100vh;
     }
-  
+
     &__content {
       width: 34%;
       margin: auto;
@@ -74,22 +107,23 @@
       width: 100%;
       height: 300px;
     }
-  
+
     &__content {
       width: 85%;
       margin: auto;
     }
   }
 }
+
 // Mobile device
 @include Responsive(xs) {
   .login {
-  
+
     &__side {
       width: 100%;
       height: 300px;
     }
-  
+
     &__content {
       margin: auto;
     }

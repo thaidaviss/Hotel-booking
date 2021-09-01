@@ -1,15 +1,23 @@
-import { ROUTER_URL } from "constants/index";
-import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import _ from "lodash";
+
 import { Link } from "react-router-dom";
-import FlagVN from "assets/images/flag-vi.png";
-import FlagEN from "assets/images/flag-en.png";
+
+import React, { useEffect, useState } from "react";
+
+import { ROUTER_URL } from "constants/index";
+import { IMAGES } from "constants/images.constants";
+
+import { useTranslation } from "react-i18next";
+import { GiHamburgerMenu } from "react-icons/gi";
+
 import "./Header.scss";
 import { useState } from "react";
 import _ from "lodash";
 import { Button } from "antd";
 import {GiHamburgerMenu} from "react-icons/gi"
 import { IMAGES } from "constants/images.constants";
+
+
 function Header(props) {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("en");
@@ -17,19 +25,17 @@ function Header(props) {
     setLang(lang);
     i18n.changeLanguage(lang);
   };
-  const [ScrollTop,setScrollTop] = useState(0);
+  const [ScrollTop, setScrollTop] = useState(0);
   useEffect(() => {
-   
-      window.addEventListener("scroll", 
+    window.addEventListener(
+      "scroll",
       _.debounce((e) => {
-        
-        setScrollTop(window.scrollY) 
-      },20));
-
-    
+        setScrollTop(window.scrollY);
+      }, 20)
+    );
   }, [window.scrollY]);
   return (
-    <div className={ScrollTop >0?"header header__white":"header"} >
+    <div className={ScrollTop > 0 ? "header header__white" : "header"}>
       {/* <!-- navigation menu --> */}
       <div className="navbar">
         <div className="container">
@@ -60,19 +66,19 @@ function Header(props) {
               <div className="navbar__list-lang">
                 <div className="dis-lang">
                   <div className="flag-img">
-                    <img src={lang == "en" ? FlagEN : FlagVN} alt="" />
+                    <img src={lang === "en" ? IMAGES.FlagEN : IMAGES.FlagVN} alt="" />
                   </div>
-                  <span>{lang == "en" ? "English" : "Tiếng Việt"}</span>
+                  <span>{lang === "en" ? "English" : "Tiếng Việt"}</span>
                   <ul>
                     <li className="flag-item" onClick={() => handleChangeLang("vi")}>
                       <div className="flag-img">
-                        <img src={FlagVN} alt="" />
+                        <img src={IMAGES.FlagVN} alt="" />
                       </div>
                       <span>Tiếng Việt</span>
                     </li>
                     <li className="flag-item" onClick={() => handleChangeLang("en")}>
                       <div className="flag-img">
-                        <img src={FlagEN} alt="" />
+                        <img src={IMAGES.FlagEN} alt="" />
                       </div>
                       <span>English</span>
                     </li>
@@ -87,8 +93,10 @@ function Header(props) {
             </div>
 
             <label htmlFor="toggle-nav" className="navbar__icon-navbar">
-             <span><GiHamburgerMenu className="icon-menu" /></span>
-             <h3>MENU</h3>
+              <span>
+                <GiHamburgerMenu className="icon-menu" />
+              </span>
+              <h3>MENU</h3>
             </label>
           </div>
         </div>
@@ -111,7 +119,7 @@ function Header(props) {
               <Link to={ROUTER_URL.CONTACT}>{t("contact")}</Link>
             </li>
             <li className="navbar__list-item">
-              <button color="primary">{t("login")}</button>
+              <button className="btn-login">{t("login")}</button>
             </li>
           </ul>
         </div>
