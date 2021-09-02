@@ -73,6 +73,13 @@
     font-family: $font-family-heading;
     color: $primary;
   }
+  a{
+    font-size: 1rem;
+    color: $primary;
+    &:hover{
+      color: $black;
+    }
+  }
 }
 
 // Responsive -----------

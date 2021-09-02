@@ -26,7 +26,6 @@ function PrivateLayout(props) {
     
         <Component/>
     
-      <Footer/>
     </Route>
 
   );
