@@ -1,10 +1,11 @@
 
 export const ROUTER_URL = {
   LOGIN: "/login",
+  REGISTER:"/register",
   HOME:"/",
   NEWS:"/news",
   ABOUT:"/about",
-  ROOM: (id)=> `/rooms/${id}`,
+  ROOM: "/rooms/:id",
   ROOMS: "/rooms",
   CONTACT:"/contact",
   PROFILE:"/profile",

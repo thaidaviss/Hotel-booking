@@ -12,8 +12,8 @@ function MakeReservation(props) {
       <div className="reservation__item">
         <div className="reservation__item-title">{t("CHECK-IN")}</div>
         <DatePicker
+          className="reservation__select"
           placeholder="Check-in Date"
-         style={{ width:200 }}
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           selectsStart
@@ -24,8 +24,8 @@ function MakeReservation(props) {
       <div className="reservation__item">
         <div className="reservation__item-title">{t("CHECK-OUT")}</div>
         <DatePicker
-        placeholder="Check-out Date"
-         style={{ width:200 }}
+          className="reservation__select"
+          placeholder="Check-out Date"
           selected={endDate}
           onChange={(date) => setEndDate(date)}
           selectsEnd
@@ -37,9 +37,9 @@ function MakeReservation(props) {
       <div className="reservation__item">
         <div className="reservation__item-title">{t("GUESTS")}</div>
         <Select
-         placeholder="Number people"
+          className="reservation__select"
+          placeholder="Number people"
           showSearch
-          style={{ width:100 }}
           optionFilterProp="children"
           filterOption={(input, option) =>
             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -53,7 +53,6 @@ function MakeReservation(props) {
           <Option value="3">3 people</Option>
           <Option value="4">4 people</Option>
           <Option value="5">5 people</Option>
-      
         </Select>
       </div>
       <div className="reservation__item">

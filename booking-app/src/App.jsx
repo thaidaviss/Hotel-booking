@@ -5,8 +5,9 @@ import RoomListPage from "pages/admin/RoomList";
 import HomePage from "pages/user/HomePage";
 import LoginPage from "pages/user/LoginPage";
 import NotFound from "pages/user/NotFound";
+import RoomsPage from "pages/user/RoomsPage";
 import { useEffect } from "react";
-import { Route, Router, Switch } from "react-router-dom";
+import { Route,Router, Switch } from "react-router-dom";
 import history from "utils/history";
 import "./App.css";
 import AdminLayout from 'pages/admin/components/AdminLayout';
@@ -15,6 +16,10 @@ import AdminLayout from 'pages/admin/components/AdminLayout';
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ROUTER_URL } from "constants/index";
+import AdminPage from "pages/admin";
+
+
 function App() {
   useEffect(() => {
     AOS.init();
@@ -24,14 +29,17 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <DefaultLayout exact path="/" component={HomePage} />
-          <FullLayout exact path="/login" component={LoginPage} />
-          <PrivateLayout path="/admin" component={AdminLayout} />
           
+          <DefaultLayout exact path={ROUTER_URL.ROOMS} component={RoomsPage} />
 
-          <Route path="*">
+          <FullLayout exact path={ROUTER_URL.LOGIN} component={LoginPage} />
+          <FullLayout exact path={ROUTER_URL.REGISTER} component={LoginPage} />
+          <PrivateLayout  path={ROUTER_URL.ADMIN} component={AdminPage } />
+          <DefaultLayout exact path={ROUTER_URL.HOME} component={HomePage} />
+          <Route >
             <NotFound />
           </Route>
+
         </Switch>
       </Router>
     </div>
