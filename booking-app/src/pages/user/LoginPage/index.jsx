@@ -1,40 +1,49 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Tabs, Form, Input, Button, Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import './LoginPage.scss';
-import { IMAGES } from 'constants/images.constants';
-
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Tabs, Form, Input, Button, Checkbox } from "antd";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import "./LoginPage.scss";
+import { IMAGES } from "constants/images.constants";
+import history from "utils/history";
+import { ROUTER_URL } from "constants/index";
+import { useEffect } from "react";
 
 const { TabPane } = Tabs;
 
-LoginPage.propTypes = {
-  
-};
+LoginPage.propTypes = {};
 
 function LoginPage(props) {
   const { t, i18n } = useTranslation();
-  const [ state, setState] = useState({ activeTab: "1" });
-  
+  const [state, setState] = useState({ activeTab: "1" });
+  useEffect(() => {
+    if (history.location.pathname === ROUTER_URL.REGISTER)
+       setState( {activeTab:"2"});
+  }, []);
   function handleChangeTab(activeKey) {
-    setState({activeTab: activeKey});
+    setState({ activeTab: activeKey });
+    if (activeKey == "1") {
+      //tab 1 login
+      history.replace(ROUTER_URL.LOGIN);
+    } else {
+      //tab 2 register
+      history.replace(ROUTER_URL.REGISTER);
+    }
   }
-  
+
   return (
     <div className="login">
       <div className="login__container">
         <div className="login__side"></div>
-        
+
         <div className="login__content">
           <div className="login__content__logo">
-            <img src={IMAGES.LOGO} alt="Logo is not imported!" />
+            <Link to={ROUTER_URL.HOME}>
+              <img src={IMAGES.LOGO} alt="Logo is not imported!" />
+            </Link>
           </div>
 
-          <Tabs defaultActiveKey="1" 
-            activeKey={state.activeTab}
-            onChange={handleChangeTab}
-          >
+          <Tabs defaultActiveKey={state.activeTab} activeKey={state.activeTab} onChange={handleChangeTab}>
             <TabPane tab={t("Login")} key="1">
               <Form
                 name="basic"
@@ -72,7 +81,6 @@ function LoginPage(props) {
                   }}
                 >
                   {t("You don't have an account?")}&nbsp;
-
                   <Link to="/login" onClick={() => handleChangeTab("2")}>
                     {t("Register now")}
                   </Link>
@@ -162,9 +170,7 @@ function LoginPage(props) {
                         if (!value || getFieldValue("password") === value) {
                           return Promise.resolve();
                         }
-                        return Promise.reject(
-                          new Error(`${t("The two passwords do not match!")}`)
-                        );
+                        return Promise.reject(new Error(`${t("The two passwords do not match!")}`));
                       },
                     }),
                   ]}

@@ -1,16 +1,18 @@
 
 export const ROUTER_URL = {
   LOGIN: "/login",
+  REGISTER:"/register",
   HOME:"/",
   NEWS:"/news",
   ABOUT:"/about",
   ROOM: (id)=> `/room/${id}`,
-  ROOMS: "room",
+  ROOMS: "/rooms",
   CONTACT:"/contact",
   PROFILE:"/profile",
   BOOKING:"/booking",
   NEW:"/new",
-  ADMIN_ROOMS: "/admin/rooms"
+  ADMIN: "/admin",
+  USER:"/user"
 
 
 };
