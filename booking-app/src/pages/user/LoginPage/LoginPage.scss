@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 3rem auto;
 
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   
   &__container {
@@ -15,6 +15,8 @@
   }
 
   &__side {
+    top: 0;
+    left: 0;
     width: 66%;
     height: 100vh;
 
@@ -92,15 +94,32 @@
   }
 }
 
-// custom Antd ----------
-.ant-btn-primary {
+// Customize Ant ----------
+
+.login-btn {
   height: 36px;
 
   text-transform: uppercase;
   font-size: .95rem;
+  background-color: $primary;
+  border: $primary;
   border-radius: 4px;
 }
+.login-link {
+  color: $primary;
+}
+.login-link:hover {
+  color: #1890ff;
+}
+
+// input[type="checkbox"]::selection
+// {
+//   background: $primary !important;
+// }
+
 .ant-tabs-tab-btn {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 400;
+  color: $primary;
+  text-transform: uppercase;
 }

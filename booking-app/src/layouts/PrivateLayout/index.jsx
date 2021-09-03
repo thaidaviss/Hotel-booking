@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Redirect, Route } from 'react-router-dom';
-import Footer from '../Footer';
 import { ROUTER_URL } from 'constants/index';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
 PrivateLayout.propTypes = {
    exact: PropTypes.bool,
@@ -23,10 +22,9 @@ function PrivateLayout(props) {
   if (isAuth ===true)
   return (
     <Route exact={exact} path={path}>
-    
+        
         <Component/>
     
-      <Footer/>
     </Route>
 
   );

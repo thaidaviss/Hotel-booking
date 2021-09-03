@@ -23,9 +23,10 @@ import News1 from "assets/images/news1.jpg";
 import News2 from "assets/images/news2.jpg";
 import News3 from "assets/images/news3.jpg";
 
-import { IoIosWifi, IoMdRestaurant } from "react-icons/io";
+import { IoIosWifi } from "react-icons/io";
+import { MdRestaurant } from "react-icons/md";
+import { FaSwimmingPool, FaHeadphonesAlt, FaBath } from "react-icons/fa";
 import { BiCalendarCheck } from "react-icons/bi";
-import { FaSwimmingPool } from "react-icons/fa";
 
 import CardService from "./components/CardService";
 import CardRoom from "./components/CardRoom";
@@ -48,7 +49,7 @@ const ListService = [
   },
   {
     id: 3,
-    Icon: <IoMdRestaurant />,
+    Icon: <MdRestaurant />,
     title: "Restaurant",
   },
   {
@@ -58,12 +59,12 @@ const ListService = [
   },
   {
     id: 5,
-    Icon: <IoIosWifi />,
+    Icon: <FaBath />,
     title: "Beauty & Health",
   },
   {
     id: 6,
-    Icon: <IoIosWifi />,
+    Icon: <FaHeadphonesAlt />,
     title: "Help & Support",
   },
 ];

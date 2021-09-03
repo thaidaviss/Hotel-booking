@@ -1,0 +1,25 @@
+@import '../../../../styles/main.scss';
+
+.admin {
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__content {
+    position: fixed;
+    top: $admin-header-height;
+    left: $sidebar-width;
+
+    width: $admin-content-width;
+    min-height: $admin-content-height;
+
+  }
+
+  &__content-main {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    
+  }
+}

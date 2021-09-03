@@ -35,7 +35,7 @@ function LoginPage(props) {
             activeKey={state.activeTab}
             onChange={handleChangeTab}
           >
-            <TabPane tab={t("Login")} key="1">
+            <TabPane className="login-tab" tab={t("Login")} key="1">
               <Form
                 name="basic"
                 layout="vertical"
@@ -73,20 +73,20 @@ function LoginPage(props) {
                 >
                   {t("You don't have an account?")}&nbsp;
 
-                  <Link to="/login" onClick={() => handleChangeTab("2")}>
+                  <Link className="login-link" to="/login" onClick={() => handleChangeTab("2")}>
                     {t("Register now")}
                   </Link>
                 </div>
 
                 <Form.Item>
-                  <Button type="primary" htmlType="submit" block>
+                  <Button className="login-btn" type="primary" htmlType="submit" block>
                     {t("Login")}
                   </Button>
                 </Form.Item>
               </Form>
             </TabPane>
 
-            <TabPane tab={t("Register")} key="2">
+            <TabPane className="login-tab" tab={t("Register")} key="2">
               <Form
                 name="basic"
                 layout="vertical"
@@ -175,7 +175,7 @@ function LoginPage(props) {
                 <Form.Item name="agree" valuePropName="checked">
                   <Checkbox>
                     {t("I have read and agreed to")}
-                    <Link to="/term">{t(" the terms")}</Link>
+                    <Link className="login-link" to="/term">{t(" the terms")}</Link>
                   </Checkbox>
                 </Form.Item>
 
@@ -186,13 +186,13 @@ function LoginPage(props) {
                   }}
                 >
                   {t("You have an account?")}&nbsp;
-                  <Link to="/login" onClick={() => handleChangeTab("1")}>
+                  <Link className="login-link" to="/login" onClick={() => handleChangeTab("1")}>
                     {t("Login")}
                   </Link>
                 </div>
 
                 <Form.Item>
-                  <Button type="primary" htmlType="submit" block>
+                  <Button className="login-btn" type="primary" htmlType="submit" block>
                     {t("Register")}
                   </Button>
                 </Form.Item>

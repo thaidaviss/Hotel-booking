@@ -22,7 +22,6 @@ function FullLayout(props) {
     
         <Component/>
     
-      <Footer/>
     </Route>
 
   );

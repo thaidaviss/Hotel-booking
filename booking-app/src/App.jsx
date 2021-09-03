@@ -1,16 +1,20 @@
 
-import Aos from 'aos';
+import AOS from 'aos';
 import DefaultLayout from 'layouts/DefaultLayout';
 import FullLayout from 'layouts/FullLayout';
 import PrivateLayout from 'layouts/PrivateLayout';
-import RoomListPage from 'pages/admin/RoomList';
+import AdminLayout from 'pages/admin/components/AdminLayout';
+
 import HomePage from 'pages/user/HomePage';
 import LoginPage from 'pages/user/LoginPage';
 import NotFound from 'pages/user/NotFound';
+
 import { useEffect } from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import history from 'utils/history';
 import './App.css';
+
+
 
 function App() {
   useEffect(() => {
@@ -23,8 +27,9 @@ function App() {
         <Switch>
           <DefaultLayout exact path="/" component={HomePage}/>
           <FullLayout exact path="/login" component={LoginPage} />
-          <PrivateLayout exact path="/admin/rooms" component={RoomListPage} />
+          <PrivateLayout path="/admin" component={AdminLayout} />
           
+
           <Route path="*">
             <NotFound />
           </Route>

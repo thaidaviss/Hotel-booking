@@ -9,6 +9,7 @@ import { useState } from "react";
 import _ from "lodash";
 import { Button } from "antd";
 import {GiHamburgerMenu} from "react-icons/gi"
+import { IMAGES } from "constants/images.constants";
 function Header(props) {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("en");
@@ -27,7 +28,6 @@ function Header(props) {
 
     
   }, [window.scrollY]);
-  console.log(ScrollTop);
   return (
     <div className={ScrollTop >0?"header header__white":"header"} >
       {/* <!-- navigation menu --> */}
@@ -35,8 +35,7 @@ function Header(props) {
         <div className="container">
           <div className="navbar__logo">
             <Link to={ROUTER_URL.HOME}>
-              <h3>UnWind</h3>
-              <h4>hotel booking</h4>
+              <img src={IMAGES.LOGO} alt="Logo is not found!" />
             </Link>
           </div>
           <div className="navbar__list">
