@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 
-
-
 import PillowImg from "assets/images/pillow.png";
 import SpecialImg from "assets/images/special.png";
 
@@ -28,6 +26,8 @@ import CardBlog from "./components/CardBlog";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 import { ListBlog, ListFeedBack, ListService } from "constants/index";
+import { BackTop } from "antd";
+import { FaAngleDoubleUp } from "react-icons/fa";
 
 function HomePage(props) {
   const { t } = useTranslation();
@@ -243,7 +243,7 @@ function HomePage(props) {
           <div className="testimonial__list">
             <Slider {...settings}>
               {ListFeedBack.map((user) => (
-                <CardFeedBack {...user}  key={`testimonial__item-${user.id}`}/>
+                <CardFeedBack {...user} key={`testimonial__item-${user.id}`} />
               ))}
             </Slider>
           </div>
@@ -295,6 +295,9 @@ function HomePage(props) {
           </div>
         </div>
       </div>
+      <BackTop>
+        <div className="up-top"><FaAngleDoubleUp /></div>
+      </BackTop>
     </div>
   );
 }

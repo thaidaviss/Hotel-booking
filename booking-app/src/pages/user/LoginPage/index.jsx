@@ -8,17 +8,20 @@ import { IMAGES } from "constants/images.constants";
 import history from "utils/history";
 import { ROUTER_URL } from "constants/index";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { registerAction } from "redux/actions";
 
 const { TabPane } = Tabs;
 
 LoginPage.propTypes = {};
 
 function LoginPage(props) {
-  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  
+  const { t } = useTranslation();
   const [state, setState] = useState({ activeTab: "1" });
   useEffect(() => {
-    if (history.location.pathname === ROUTER_URL.REGISTER)
-       setState( {activeTab:"2"});
+    if (history.location.pathname === ROUTER_URL.REGISTER) setState({ activeTab: "2" });
   }, []);
   function handleChangeTab(activeKey) {
     setState({ activeTab: activeKey });
@@ -30,7 +33,10 @@ function LoginPage(props) {
       history.replace(ROUTER_URL.REGISTER);
     }
   }
-
+  const handleOnRegister = (values)=>{
+ 
+    dispatch(registerAction({data:values}));
+  }
   return (
     <div className="login">
       <div className="login__container">
@@ -43,7 +49,11 @@ function LoginPage(props) {
             </Link>
           </div>
 
-          <Tabs defaultActiveKey={state.activeTab} activeKey={state.activeTab} onChange={handleChangeTab}>
+          <Tabs
+            defaultActiveKey={state.activeTab}
+            activeKey={state.activeTab}
+            onChange={handleChangeTab}
+          >
             <TabPane tab={t("Login")} key="1">
               <Form
                 name="basic"
@@ -99,7 +109,7 @@ function LoginPage(props) {
                 name="basic"
                 layout="vertical"
                 initialValues={{ agree: true }}
-                onFinish={() => null}
+                onFinish={(values) => handleOnRegister(values)}
               >
                 <Form.Item
                   name="name"
@@ -137,6 +147,14 @@ function LoginPage(props) {
                   rules={[
                     { required: true, message: `${t("Please enter a valid email!")}` },
                     { type: "email", message: `${t("Email is not valid!")}` },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value || getFieldValue('password') === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                      },
+                    }),
                   ]}
                 >
                   <Input placeholder="Email" />

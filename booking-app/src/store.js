@@ -11,4 +11,4 @@ const store = configureStore({
     middleware: [...getDefaultMiddleware({ thunk: false }), sagaMiddleware],
   });
   sagaMiddleware.run(rootSaga);
-export default store;
+export default store; 

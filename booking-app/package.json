@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fancyapps/ui": "^4.0.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -21,6 +22,7 @@
     "react": "^17.0.2",
     "react-datepicker": "^4.2.1",
     "react-dom": "^17.0.2",
+    "react-fancybox": "^0.2.5",
     "react-i18next": "^11.11.4",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
@@ -35,7 +37,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node ./server/main.js"
   },
   "eslintConfig": {
     "extends": [
@@ -54,5 +57,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3",
+    "json-server-auth": "^2.1.0"
   }
 }
