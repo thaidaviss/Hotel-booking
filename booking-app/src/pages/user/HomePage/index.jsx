@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 
-
-
 import PillowImg from "assets/images/pillow.png";
 import SpecialImg from "assets/images/special.png";
 
@@ -388,7 +386,7 @@ function HomePage(props) {
           <div className="testimonial__list">
             <Slider {...settings}>
               {ListFeedBack.map((user) => (
-                <CardFeedBack {...user}  key={`testimonial__item-${user.id}`}/>
+                <CardFeedBack {...user} key={`testimonial__item-${user.id}`} />
               ))}
             </Slider>
           </div>
@@ -440,6 +438,9 @@ function HomePage(props) {
           </div>
         </div>
       </div>
+      <BackTop>
+        <div className="up-top"><FaAngleDoubleUp /></div>
+      </BackTop>
     </div>
   );
 }

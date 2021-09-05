@@ -69,6 +69,34 @@
     padding-bottom: 3rem;
     
   }
+  
+  .ant-checkbox-checked::after {
+    border: 1px solid $primary;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: $primary;
+    border-color: $primary;
+  }
+.ant-slider-handle {
+  border: solid 2px rgba($primary,0.8);
+}
+.ant-slider-track {
+  position: absolute;
+  height: 4px;
+  background-color:  rgba($primary,0.8);
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+.ant-slider-handle:focus {
+  border-color: rgba($primary,0.8);
+}
+.ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+  border-color: rgba($primary,0.8);
+}
+.ant-slider:hover .ant-slider-track {
+  background-color: rgba($primary,0.8);
+}
 }
 @include Responsive(lg){
   .rooms-page{

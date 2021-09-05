@@ -9,7 +9,8 @@ import News3 from "assets/images/news3.jpg";
 
 import { IoIosWifi, IoMdRestaurant } from "react-icons/io";
 import { BiCalendarCheck } from "react-icons/bi";
-import { FaSwimmingPool } from "react-icons/fa";
+import { FaHandsHelping, FaSwimmingPool } from "react-icons/fa";
+import { GiLotus } from "react-icons/gi";
 
 
 export const ListService = [
@@ -35,12 +36,12 @@ export const ListService = [
   },
   {
     id: 5,
-    Icon: <IoIosWifi />,
+    Icon: <GiLotus />,
     title: "Beauty & Health",
   },
   {
     id: 6,
-    Icon: <IoIosWifi />,
+    Icon: <FaHandsHelping />,
     title: "Help & Support",
   },
 ];

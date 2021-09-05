@@ -275,9 +275,11 @@
   .news {
     padding-top: 5rem;
     padding-bottom: 5rem;
-    &__list{
+
+    &__list {
       margin: 0 3rem;
     }
+
     &__title {
       display: flex;
       justify-content: space-between;
@@ -293,7 +295,7 @@
         margin-left: 1rem;
         border: none;
         border-radius: 2px;
-        
+
         background-color: $white;
         transition: all 0.5s;
         cursor: pointer;
@@ -311,6 +313,23 @@
 
     }
 
+  }
+
+  .up-top {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: $primary;
+    color: $white;
+    &:hover{
+     
+    }
   }
 }
 
