@@ -1,7 +1,6 @@
 import DefaultLayout from "layouts/DefaultLayout";
 import FullLayout from "layouts/FullLayout";
 import PrivateLayout from "layouts/PrivateLayout";
-import RoomListPage from "pages/admin/RoomList";
 import HomePage from "pages/user/HomePage";
 import LoginPage from "pages/user/LoginPage";
 import NotFound from "pages/user/NotFound";

@@ -17,7 +17,8 @@ export const ROUTER_URL = {
   LOCATION: "/locations",
   DISCOUNTS: "/discounts",
   REVENUE: "/revenue",
-  ADD_EDIT_ROOM: "/add-edit-room"
+  ADD_EDIT_ROOM: "/add-edit-room",
+  USER:"/user"
 
 
 };
