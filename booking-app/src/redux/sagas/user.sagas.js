@@ -82,7 +82,6 @@ function* register(action) {
       const {
          data
       } = action.payload;
-      console.log(data)
       const response = yield authAPI.register(data);
       yield put({
          type: SUCCESS(USER.REGISTER),

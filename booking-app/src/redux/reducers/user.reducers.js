@@ -35,7 +35,7 @@ const userReducer = createReducer(initialState, {
       userInfo: {
         ...state.userInfo,
         loading: false,
-        error: "tài khoản hoặc mật khẩu không chính xác!"
+        error: action.payload
       },
     };
   },
@@ -116,6 +116,7 @@ const userReducer = createReducer(initialState, {
       userInfo: {
         ...state.userInfo,
         loading: true,
+        error:null
       }
     };
   },

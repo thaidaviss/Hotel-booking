@@ -41,5 +41,6 @@
   "You have an account?": "You have an account?",
   "You don't have an account?": "You don't have an account?",
 
-  "Sorry, the page you visited does not exist.": "Sorry, the page you visited does not exist."
+  "Sorry, the page you visited does not exist.": "Sorry, the page you visited does not exist.",
+  "Email already exists":"Email already exists"
 }

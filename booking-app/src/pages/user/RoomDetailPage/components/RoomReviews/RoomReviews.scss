@@ -9,10 +9,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    button {
-      @include button-custom-v($white, $primary);
-      padding: 0.8rem 1rem;
-    }
   }
 
   &__highlights {

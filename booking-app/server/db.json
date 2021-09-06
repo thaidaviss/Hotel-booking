@@ -1,26 +1,35 @@
 {
-  "users": [{
-    "email": "thaidaviss1999@gmail.com",
-    "password": "$2a$10$eRNlXIH7tcZoYq1aCpoOYOVevu7.fHRNnjQmkjWLHylyTtPjyz.me",
-    "username": "Bùi Đức Thái",
-    "agree": true,
-    "id": 2,
-    "role": "admin"
-
-  }],
-
-  "profiles": [{
-    "id": 1,
-    "userId": 2,
-    "avatar": "",
-    "birth": "",
-    "name": "",
-    "gender": "",
-    "cardID": "",
-    "address": "",
-    "country": ""
-  }],
-  "locations": [{
+  "users": [
+    {
+      "email": "thaidavis11999@gmail.com",
+      "password": "$2a$10$laNofFEu83SwkNYTwnLAE.iK10DG1SzCFYJJi1EBj4wSA3uwLlBuW",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "thaidaviss1999@gmail.com",
+      "password": "$2a$10$SxiRdzmGhvdN59vuN0MJn.47LZyKR29wyHElza.jYvNVD3b6vX3eC",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 4
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userId": 2,
+      "avatar": "",
+      "birth": "",
+      "name": "",
+      "gender": "",
+      "cardID": "",
+      "address": "",
+      "country": ""
+    }
+  ],
+  "locations": [
+    {
       "id": 1,
       "name": "Đà Nẵng"
     },
@@ -33,68 +42,75 @@
       "name": "Hà Nội"
     }
   ],
-  "typeRooms": [{
-    "id": 1,
-    "name": "",
-    "locationId": 1,
-    "description": "",
-    "price": 123,
-    "rating": "",
-    "maxGuest":2,
-    "reviewScore": "",
-    "images": [
-      ""
-    ],
-
-    "roomCodes": [123,101],
-
-    "services": [
-
-    ]
-  }],
-  "comments": [{
-    "id": 1,
-    "roomId": 1,
-    "rating": 1,
-    "title": "",
-    "review": "",
-    "serviceRating": 5,
-    "roomRating": 5,
-    "cleanlinessRating": 5,
-    "foodRating": 5,
-    "image": [
-
-    ]
-  }],
-  "discounts": [{
-    "id": 1,
-    "code": "",
-    "applicable": 1,
-    "expiration": 2,
-    "roomsAccept": [1, 2]
-  }],
-  "blogs": [{
-    "id": 1,
-    "title": "",
-    "description": "",
-    "author": "",
-    "image": ""
-
-  }],
-
-  "bookings": [{
-    "id": 1,
-    "locationId":1,
-    "roomId": 1,
-    "userId": 1,
-    "discountCode": "",
-    "discountPrice":11,
-    
-    "roomCode":101,
-    "checkOut":1,
-    "checkIn":2,
-    "price": 123,
-    "total": 120,
-    "status":"pending"
-  }]
+  "typeRooms": [
+    {
+      "id": 1,
+      "name": "",
+      "locationId": 1,
+      "description": "",
+      "price": 123,
+      "rating": "",
+      "maxGuest": 2,
+      "reviewScore": "",
+      "images": [
+        ""
+      ],
+      "roomCodes": [
+        123,
+        101
+      ],
+      "services": []
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "roomId": 1,
+      "rating": 1,
+      "title": "",
+      "review": "",
+      "serviceRating": 5,
+      "roomRating": 5,
+      "cleanlinessRating": 5,
+      "foodRating": 5,
+      "image": []
+    }
+  ],
+  "discounts": [
+    {
+      "id": 1,
+      "code": "",
+      "applicable": 1,
+      "expiration": 2,
+      "roomsAccept": [
+        1,
+        2
+      ]
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "",
+      "description": "",
+      "author": "",
+      "image": ""
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "locationId": 1,
+      "roomId": 1,
+      "userId": 1,
+      "discountCode": "",
+      "discountPrice": 11,
+      "roomCode": 101,
+      "checkOut": 1,
+      "checkIn": 2,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+    }
+  ]
 }

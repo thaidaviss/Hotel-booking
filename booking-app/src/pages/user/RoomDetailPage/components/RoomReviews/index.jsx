@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
-import { Rate, Checkbox } from "antd";
+import { Rate, Checkbox, Button } from "antd";
 import { useTranslation } from "react-i18next";
 
 import "./RoomReviews.scss"
@@ -62,7 +62,7 @@ function RoomReviews(props) {
           </div>
         </div>
         <div className="room-review__btn">
-          <button>{t("Write a Review")}</button>
+          <Button type="primary">{t("Write a Review")}</Button>
         </div>
       </div>
       {/* <div className="room-review__filter">

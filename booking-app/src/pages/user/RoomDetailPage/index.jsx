@@ -1,6 +1,7 @@
 import Slider from "@ant-design/react-slick";
 import { IMAGES } from "constants/images.constants";
 import { LIST_ROOM } from "constants/rooms.constant";
+import { Form, Input, InputNumber, Button } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { FaCarAlt, FaStar, FaSwimmer, FaWifi } from "react-icons/fa";
@@ -9,6 +10,7 @@ import CommentItem from "./components/Comment";
 import RoomReviews from "./components/RoomReviews";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import "./RoomDetailPage.scss";
+import CheckVariable from "./components/CheckVariable";
 const review = {
   avatar: "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-single3.jpg",
   name: "Harmon Bechtelar",
@@ -17,7 +19,7 @@ const review = {
     "Distinctio at aut perspiciatis dolores. Sed sit ut labore nostrum. Est amet repellat dolore maiores id eligendi eveniet autem praesentium. Porro illo perspiciatis repellat atque laborum voluptatem tempore nobis odio. Fugiat et molestias ab id temporibus dignissimos culpa fugit. Nulla magni iusto dolores at.",
   time: "Reviewd - 1 months ago",
   stars: { room: 3, cleanness: 4, food: 4, service: 5 },
-  interact:{like:2,dislike:1},
+  interact: { like: 2, dislike: 1 },
 };
 function RoomDetailPage(props) {
   const RoomDetail = LIST_ROOM[3];
@@ -33,6 +35,10 @@ function RoomDetailPage(props) {
     autoplaySpeed: 4000,
     nextArrow: <FaChevronLeft />,
     prevArrow: <FaChevronRight />,
+  };
+ 
+  const onFinish = (values) => {
+    console.log(values);
   };
   return (
     <div className="room-detail">
@@ -121,7 +127,9 @@ function RoomDetailPage(props) {
             </div>
           </div>
           <div className="room-detail__right">
-            <div className="room-detail__booking"></div>
+            <div className="room-detail__booking">
+              <CheckVariable />
+            </div>
           </div>
           <div className="room-detail__same"></div>
         </div>
