@@ -11,7 +11,7 @@
   font-family: $font-family-heading;
   background-color: $bg-color;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.1s;
 
   &:hover {
     color: $bg-color;
@@ -31,7 +31,7 @@
   font-weight: 700;
   background-color: $bg-color;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.1s;
 
   &:hover {
     color: $bg-color;

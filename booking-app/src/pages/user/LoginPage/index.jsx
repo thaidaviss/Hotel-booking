@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Tabs, Form, Input, Button, Checkbox } from "antd";
+import { Tabs, Form, Input, Button, Checkbox ,notification} from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./LoginPage.scss";
@@ -8,18 +7,30 @@ import { IMAGES } from "constants/images.constants";
 import history from "utils/history";
 import { ROUTER_URL } from "constants/index";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loginAction, registerAction } from "redux/actions";
+import { useSelector } from "react-redux";
 
 const { TabPane } = Tabs;
 
 LoginPage.propTypes = {};
 
 function LoginPage(props) {
-  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userReducer.userInfo);
+  const { t } = useTranslation();
   const [state, setState] = useState({ activeTab: "1" });
   useEffect(() => {
-    if (history.location.pathname === ROUTER_URL.REGISTER)
-       setState( {activeTab:"2"});
+    if (history.location.pathname === ROUTER_URL.REGISTER) setState({ activeTab: "2" });
   }, []);
+  useEffect(() => {
+    if (userInfo.error !== null) {
+      notification.error({
+        description: t(userInfo.error)  
+     });
+    }
+
+  }, [userInfo.error]);
   function handleChangeTab(activeKey) {
     setState({ activeTab: activeKey });
     if (activeKey == "1") {
@@ -30,7 +41,13 @@ function LoginPage(props) {
       history.replace(ROUTER_URL.REGISTER);
     }
   }
-
+  const handleOnRegister = (values) => {
+    const { username, password, email } = values;
+    dispatch(registerAction({ data: { username, password, email, role: "user" } }));
+  };
+  const handleOnLogin = (value) => {
+    dispatch(loginAction({ data: value }));
+  };
   return (
     <div className="login">
       <div className="login__container">
@@ -52,7 +69,7 @@ function LoginPage(props) {
                 name="basic"
                 layout="vertical"
                 initialValues={{ remember: true }}
-                onFinish={() => null}
+                onFinish={(value) => handleOnLogin(value)}
               >
                 <Form.Item
                   name="email"
@@ -103,10 +120,11 @@ function LoginPage(props) {
                 name="basic"
                 layout="vertical"
                 initialValues={{ agree: true }}
-                onFinish={() => null}
+                onChange={() => {}}
+                onFinish={(values) => handleOnRegister(values)}
               >
                 <Form.Item
-                  name="name"
+                  name="username"
                   hasFeedback
                   rules={[
                     {
@@ -115,24 +133,7 @@ function LoginPage(props) {
                     },
                   ]}
                 >
-                  <Input placeholder={t("Full name")} />
-                </Form.Item>
-
-                <Form.Item
-                  name="phone"
-                  hasFeedback
-                  rules={[
-                    {
-                      required: true,
-                      message: `${t("Please enter a valid phone!")}`,
-                    },
-                    {
-                      pattern: /(84|0[3|5|7|8|9])+([0-9]{8})\b/,
-                      message: `${t("Phone number is not valid!")}`,
-                    },
-                  ]}
-                >
-                  <Input placeholder={t("Phone")} />
+                  <Input placeholder="Username" />
                 </Form.Item>
 
                 <Form.Item
@@ -141,6 +142,11 @@ function LoginPage(props) {
                   rules={[
                     { required: true, message: `${t("Please enter a valid email!")}` },
                     { type: "email", message: `${t("Email is not valid!")}` },
+                    // {
+                    //   validator: (rule,value, cb) => {
+                    //   userInfo.error!==null? cb(userInfo.error) : cb();
+                    //   },
+                    // },
                   ]}
                 >
                   <Input placeholder="Email" />
@@ -202,7 +208,7 @@ function LoginPage(props) {
                 </div>
 
                 <Form.Item>
-                  <Button className="login-btn" type="primary" htmlType="submit" block>
+                  <Button type="primary" htmlType="submit" loading={userInfo.loading} block>
                     {t("Register")}
                   </Button>
                 </Form.Item>

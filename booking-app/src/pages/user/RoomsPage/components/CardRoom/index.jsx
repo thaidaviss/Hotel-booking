@@ -3,9 +3,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import "./CardRoom.scss";
 
-function DisplayService(service) {}
 function CardRoom(props) {
   const { t } = useTranslation();
   const { img, name, description, services, price, rate, map, off } = props;
@@ -23,7 +23,7 @@ function CardRoom(props) {
         <img src={img} alt="" />
       </div>
       <div className="card-room__content">
-        <div className="card-room__name">{t(name)}</div>
+        <Link to="/rooms/1"><div className="card-room__name">{t(name)}</div></Link>
         <div className="card-room__rate">
           <Rate disabled allowHalf defaultValue={rate} className="rate" />
           <div className="map">

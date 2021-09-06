@@ -1,0 +1,87 @@
+@import "styles/main";
+
+.slider-show {
+  display: block;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 5rem;
+  position: relative;
+  .room-detail__img-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 25rem;
+    border-radius: 0.1rem;
+    overflow: hidden;
+
+    .img-slider {
+  
+      width: 100%;
+    
+    }
+  }
+  .slick-arrow{
+    display: none !important;
+  }
+  .slider-show__btn{
+    display: none;
+    font-size: 2.5rem;
+    opacity: 0.8;
+    color: $primary;
+
+    position: absolute;
+    z-index: 1;
+    top: 40%;
+    cursor: pointer;
+    &-prev{
+      left: 0.5rem;
+    }
+
+    &-next{
+      right: 0.5rem;
+    }
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+  &:hover{
+    .slider-show__btn{
+      display: block;
+    }
+  }
+  
+}
+
+.slick-dots {
+  display: flex;
+  height: 6rem;
+  bottom: -3.5rem !important;
+  li {
+    width: 5rem !important;
+    
+  }
+}
+
+.thumbnail__img {
+  left: 0 !important;
+
+ 
+  display: block;
+  width: 5rem;
+  height: 3rem;
+  border-radius: 0.1rem;
+
+  transition: all 0.5s;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+// .slick-active{
+//   .thumbnail__img {
+//     transform: translateY(-0.5rem) !important;
+//   }
+// }
+
