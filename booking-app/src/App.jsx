@@ -12,12 +12,9 @@ import history from "utils/history";
 import "./App.css";
 import AdminLayout from 'pages/admin/components/AdminLayout';
 
-
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ROUTER_URL } from "constants/index";
-import AdminPage from "pages/admin";
 
 
 function App() {
@@ -34,7 +31,7 @@ function App() {
 
           <FullLayout exact path={ROUTER_URL.LOGIN} component={LoginPage} />
           <FullLayout exact path={ROUTER_URL.REGISTER} component={LoginPage} />
-          <PrivateLayout  path={ROUTER_URL.ADMIN} component={AdminPage } />
+          <PrivateLayout  path={ROUTER_URL.ADMIN} component={AdminLayout } />
           <DefaultLayout exact path={ROUTER_URL.HOME} component={HomePage} />
           <Route >
             <NotFound />
