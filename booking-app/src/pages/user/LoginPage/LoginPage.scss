@@ -15,6 +15,8 @@
   }
 
   &__side {
+    position: -webkit-sticky;
+    position: sticky;
     top: 0;
     left: 0;
     width: 66%;
@@ -105,17 +107,14 @@
   border: $primary;
   border-radius: 4px;
 }
+
 .login-link {
   color: $primary;
 }
-.login-link:hover {
-  color: #1890ff;
-}
 
-// input[type="checkbox"]::selection
-// {
-//   background: $primary !important;
-// }
+.login-link:hover {
+  color: tint($primary, 20%);
+}
 
 .ant-tabs-tab-btn {
   font-size: 1.6rem;

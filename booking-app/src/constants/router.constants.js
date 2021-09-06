@@ -13,7 +13,10 @@ export const ROUTER_URL = {
   ADMIN: "/admin",
   USERS: "/users",
   BLOGS: "/blogs",
-  CATEGORIES: "/categories"
+  LOCATION: "/locations",
+  DISCOUNTS: "/discounts",
+  REVENUE: "/revenue",
+  ADD_EDIT_ROOM: "/add-edit-room"
 
 
 };

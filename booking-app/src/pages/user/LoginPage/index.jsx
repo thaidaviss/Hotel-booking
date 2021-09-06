@@ -58,7 +58,7 @@ function LoginPage(props) {
                   hasFeedback
                   rules={[{ required: true, message: `${t("Please enter a valid password!")}` }]}
                 >
-                  <Input.Password placeholder={t("Password")} />
+                  <Input.Password placeholder={t("Password")} style={{ width: "100%" }} />
                 </Form.Item>
 
                 <Form.Item name="remember" valuePropName="checked">
@@ -99,7 +99,7 @@ function LoginPage(props) {
                   rules={[
                     {
                       required: true,
-                      message: `${t("Please enter a valid first name!")}`,
+                      message: `${t("Please enter a valid full name!")}`,
                     },
                   ]}
                 >
@@ -145,7 +145,7 @@ function LoginPage(props) {
                     { min: 6, message: `${t("Must be a minimum of 8 characters")}` },
                   ]}
                 >
-                  <Input.Password placeholder={t("Password")} />
+                  <Input.Password placeholder={t("Password")} style={{ width: "100%" }} />
                 </Form.Item>
 
                 <Form.Item
@@ -169,7 +169,7 @@ function LoginPage(props) {
                     }),
                   ]}
                 >
-                  <Input.Password placeholder={t("Confirm")} />
+                  <Input.Password placeholder={t("Confirm")} style={{ width: "100%" }} />
                 </Form.Item>
 
                 <Form.Item name="agree" valuePropName="checked">

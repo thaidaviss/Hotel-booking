@@ -3,27 +3,35 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './RoomModal.scss';
 
-const RoomModal = (
+const RoomModal = ({
   isShowRoomModal,
   setIsShowRoomModal,
+  locationList,
   modifyRoomData,
-) => {
-  console.log("🚀 ~ file: RoomModal.jsx ~ line 11 ~ setIsShowRoomModal", setIsShowRoomModal)
+}) => {
   const [modifyRoomForm] = Form.useForm();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (isShowRoomModal) {
-  //     modifyRoomForm.resetFields();
-  //   }
-  // }, [isShowRoomModal]);
+  useEffect(() => {
+    if (isShowRoomModal) {
+      modifyRoomForm.resetFields();
+    }
+  }, [isShowRoomModal]);
+
+  function renderLocationOptions() {
+    return locationList.map((locationItem, locationIndex) => (
+      <Select.Option value={locationItem.id} key={`location-${locationItem.id}`}>
+        {locationItem.name}
+      </Select.Option>
+    ));
+  }
 
   return (
     <Modal
-      title={isShowRoomModal === false ? "" : "Create Room"}
-      visible={isShowRoomModal}
+      title={isShowRoomModal === "create" ? "Create Room" : "Edit Room"}
+      visible={!!isShowRoomModal}
       onOk={() => modifyRoomForm.submit()}
-      onCancel={() => setIsShowRoomModal(false)}
+      onCancel={() => setIsShowRoomModal("")}
     >
       <Form
         form={modifyRoomForm}
@@ -55,7 +63,7 @@ const RoomModal = (
             rules={[{ required: true, message: "Please input your location!" }]}
           >
             <Select placeholder="Please select your location!">
-              {/* {renderLocationOptions()} */}
+              {renderLocationOptions()}
             </Select>
           </Form.Item>
 

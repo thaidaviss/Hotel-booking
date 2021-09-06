@@ -1,12 +1,12 @@
 .admin__header {
-    position: fixed;
-    top: 0;
-    left: 260px;
+  position: fixed;
+  top: 0;
+  left: 260px;
+  width: calc(100% - 260px);
 
-    width: calc(100% - 260px);
-
-    background-color: #d7dde4;
-    z-index: 999;
+  background-color: #d7dde4;
+  z-index: 999;
+  transition: all 0.2s ease-in-out;
 
   &__logo {
     display: flex;
@@ -78,9 +78,18 @@
 
   }
 }
+// show when sidebar is mini
+.admin__header--show {
+  position: fixed;
+  top: 0;
+  left: 60px;
+  width: calc(100% - 60px);
+  background-color: #d7dde4;
+}
 
 // Customize ant ---
-.ant-input-affix-wrapper {
+
+.admin__header__search {
   width: 350px;
   line-height: 30px;
   border-radius: 5px;

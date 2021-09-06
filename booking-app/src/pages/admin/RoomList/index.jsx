@@ -6,8 +6,22 @@ import './RoomList.scss';
 
 
 function RoomListPage (props) {
-  const [isShowRoomModal, setIsShowRoomModal] = useState(false);
+  const [isShowRoomModal, setIsShowRoomModal] = useState("");
   const [modifyRoomData, setModifyRoomData] = useState({});
+  const locationList = [
+    {
+      locationId: 1,
+      name: "Da Nang"
+    },
+    {
+      locationId: 2,
+      name: "Ho Chi Minh"
+    },
+    {
+      locationId: 3,
+      name: "Quang Nam"
+    },
+  ];
 
   useEffect(() => {
 
@@ -18,12 +32,14 @@ function RoomListPage (props) {
       key: '1',
       room: 'Suite Room',
       number: 12,
+      locationId: 1,
       price: 200,
     },
     {
       key: '2',
       room: 'Deluxe Room',
       number: 4,
+      locationId: 2,
       price: 350,
     },
   ];
@@ -31,23 +47,21 @@ function RoomListPage (props) {
     {
       title: 'Room',
       dataIndex: 'room',
+      width: 200,
+      fixed: "left",
       key: 'room',
     },
-    {
-      title: 'Number',
-      dataIndex: 'number',
-      key: 'number',
+    { title: 'Number', dataIndex: 'number', key: 'number' },
+    { 
+      title: 'Location', 
+      dataIndex: 'locationId', 
+      key: 'locationId',
+      render: (value) => {
+        const locationData = locationList.find((item) => item.locationId === value);
+        if (locationData) return locationData.name;
+      }, 
     },
-    {
-      title: 'Location',
-      dataIndex: 'location',
-      key: 'location',
-    },
-    {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-    },
+    { title: 'Price', dataIndex: 'price', key: 'price' },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
@@ -63,6 +77,8 @@ function RoomListPage (props) {
     {
       title: 'Action',
       dataIndex: 'action',
+      width: 200,
+      fixed: "right",
       key: 'action',
       render: (_, record) => {
         return (
@@ -95,26 +111,28 @@ function RoomListPage (props) {
 
   return (
     <div>
-      <div className="rooms-list">
+      <div className="room-title">
         <Button 
           className="add-room-btn"
           type="primary"
           onClick={() => {
-            setIsShowRoomModal(true);
+            setIsShowRoomModal("create");
             setModifyRoomData({ room: '', number: 0, price: 0 });
           }}
         >
           Add Room
         </Button>
-        <Table dataSource={roomData} columns={roomColumns} />
+      </div>
+      <div className="room-list">
+        <Table dataSource={roomData} columns={roomColumns} scroll={{x: 1000}} />
       </div>
 
       <RoomModal
         isShowRoomModal={isShowRoomModal}
         setIsShowRoomModal={setIsShowRoomModal}
-        handleSubmitForm={null}
         modifyRoomData={modifyRoomData}
-        categoryList={null}
+        locationList={locationList}
+        handleSubmitForm={null}
       />
     </div>
   );

@@ -1,139 +1,114 @@
 import { IMAGES } from 'constants/images.constants';
-import React from 'react';
-import { MdAttachMoney, MdFilter9Plus, MdInsertChart, MdMailOutline, MdPermIdentity, MdReport, MdStoreMallDirectory, MdTimeline, MdTrendingUp } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { MdAttachMoney, MdFiberNew, MdDashboard, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdPermIdentity, MdStoreMallDirectory, MdStyle, MdRoom } from "react-icons/md";
+import { Link, useLocation } from 'react-router-dom';
 import "./Sidebar.scss";
 
 const SIDEBAR_MENU = [
   {
     title: 'Dashboard',
     path: '/admin',
-    icon: '',
+    icon: <MdDashboard />,
   },
   {
     title: 'Room List',
     path: '/admin/rooms',
-    icon: '',
+    icon: <MdStoreMallDirectory />,
+  },
+  {
+    title: 'Location List',
+    path: '/admin/locations',
+    icon: <MdRoom />,
   },
   {
     title: 'User List',
-    path: '/admin/categories',
-    icon: '',
+    path: '/admin/users',
+    icon: <MdPermIdentity />,
+  },
+  {
+    title: 'Discount List',
+    path: '/admin/discounts',
+    icon: <MdStyle />,
   },
   {
     title: 'Blogs List',
     path: '/admin/blogs',
-    icon: '',
+    icon: <MdFiberNew />,
   },
   {
     title: 'Revenue',
     path: '/admin/revenue',
-    icon: '',
+    icon: <MdAttachMoney />,
   },
-  {
-    title: 'Staff List',
-    path: '/admin/staffs',
-    icon: '',
-  },
+  
 ];
 
 function Sidebar(props) {
+  const { isMiniMenu, setIsMiniMenu } = props;
+  const location  = useLocation();
+  let pathName = location.pathname || "";
+
+  // useEffect(() => {
+  //   pathName = location.pathname || "";
+  // }, []);
 
   return (
-    <div className="sidebar">
-      <div className="sidebar__wrapper">
-        <div className="sidebar__menu">
+    <>
+      <div className={isMiniMenu ? "sidebar--hide" : "sidebar"}>
+        <div className="sidebar__wrapper">
           <div className="sidebar__header">
             <div className="brand">
               <div className="sidebar__header__logo">
-                <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo for admin header" />
+                <img
+                  src={IMAGES.LOGO_HEADER_ADMIN}
+                  alt="Logo for admin header"
+                />
               </div>
 
-              <span className="title">Luxury Hotel</span>
+              {!isMiniMenu && <span className="title">Luxury Hotel</span>}
             </div>
           </div>
 
-          <h3 className="sidebar__title">Admin Manager</h3>
-          <ul className="sidebar__list">
-            <li>
-              <Link className="sidebar__item" to="/admin">
-                <p>
-                  <MdTimeline />
-                </p>
-                Dashboard{" "}
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item" to="/admin/users">
-                <p>
-                  <MdPermIdentity />
-                </p>
-                User List
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item" to="/admin/rooms">
-                <p>
-                  <MdStoreMallDirectory />
-                </p>
-                Room List
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item" to="/admin/categories">
-                <p>
-                  <MdAttachMoney />
-                </p>
-                Category List
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item" to="/admin/blogs">
-                <p>
-                  <MdInsertChart />
-                </p>
-                Blogs List
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item" to="/admin/revenue">
-                <p>
-                  <MdTrendingUp />
-                </p>
-                Revenue
-              </Link>
-            </li>
-          </ul>
-          <h3 className="sidebar__title">Notifications</h3>
-          <ul className="sidebar__list">
-            <li>
-              <Link className="sidebar__item">
-                <p>
-                  <MdMailOutline />{" "}
-                </p>
-                Mail
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item">
-                <p>
-                  <MdFilter9Plus />
-                </p>
-                Feedback
-              </Link>
-            </li>
-            <li>
-              <Link className="sidebar__item">
-                <p>
-                  <MdReport />
-                </p>
-                Reports
-              </Link>
-            </li>
-          </ul>
+          <div className={isMiniMenu ? "sidebar__menu--hide" : "sidebar__menu"}>
+            <h3 className="sidebar__title">Admin Manager</h3>
+            <ul className="sidebar__list">
+              {SIDEBAR_MENU.map((sidebarItem, sidebarIndex) => (
+                <li
+                  className={
+                    pathName === sidebarItem.path
+                      ? "sidebar__item sidebar__item--active"
+                      : "sidebar__item"
+                  }
+                  key={`sidebar-${sidebarIndex}`}
+                >
+                  <Link
+                    to={sidebarItem.path}
+                    className={isMiniMenu ? "link link--hide" : "link"}
+                  >
+                    <span className="item-icon">{sidebarItem.icon}</span>
+                    <span className="item-title">{sidebarItem.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div
+          className="sidebar__footer"
+          onClick={() => setIsMiniMenu(!isMiniMenu)}
+        >
+          {isMiniMenu ? (
+            <span>
+              <MdKeyboardArrowRight />
+            </span>
+          ) : (
+            <span>
+              <MdKeyboardArrowLeft />
+            </span>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

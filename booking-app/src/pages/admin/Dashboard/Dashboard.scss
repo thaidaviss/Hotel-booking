@@ -1,0 +1,14 @@
+.dashboard {
+  display: block;
+  
+  &__feature{
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+  }
+  background-color: #FBFAFB;
+  
+}
+*,*::after,*::before{
+  box-sizing: border-box;
+}

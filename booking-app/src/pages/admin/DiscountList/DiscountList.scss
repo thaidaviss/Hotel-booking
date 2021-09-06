@@ -1,6 +1,6 @@
 @import '../../../styles/main.scss';
 
-.room-title {
+.discount-title {
   display: flex;
   justify-content: flex-end;
 }
@@ -8,7 +8,7 @@
 
 // Customize ant -----
 
-.add-room-btn {
+.add-discount-btn {
   margin-bottom: 1rem;
 
   font-size: .9rem;
@@ -17,7 +17,7 @@
   border: 1px $primary;
   background-color: $primary;
 }
-.room-btn {
+.discount-btn {
   text-transform: none !important;
   border-radius: 4px !important;
 }

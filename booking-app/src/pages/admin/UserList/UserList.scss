@@ -1,6 +1,6 @@
 @import '../../../styles/main.scss';
 
-.room-title {
+.user-title {
   display: flex;
   justify-content: flex-end;
 }
@@ -8,7 +8,7 @@
 
 // Customize ant -----
 
-.add-room-btn {
+.add-user-btn {
   margin-bottom: 1rem;
 
   font-size: .9rem;
@@ -16,8 +16,12 @@
   border-radius: 4px;
   border: 1px $primary;
   background-color: $primary;
+  // &:hover {
+    // cursor: pointer;
+    // background-color: #d6b76e;
+  // }
 }
-.room-btn {
+.user-btn {
   text-transform: none !important;
   border-radius: 4px !important;
 }
