@@ -1,176 +1,32 @@
-import React, { useRef } from "react";
-import { useTranslation } from "react-i18next";
-import Slider from "react-slick";
-
-import PillowImg from "assets/images/pillow.png";
-import SpecialImg from "assets/images/special.png";
-
+import { BackTop } from "antd";
 import About1 from "assets/images/about1.webp";
 import About2 from "assets/images/about2.webp";
-
-import Rooms1 from "assets/images/rooms1.webp";
-import Rooms2 from "assets/images/rooms2.webp";
-import Rooms3 from "assets/images/rooms3.webp";
-
 import LoadVideo from "assets/images/load.png";
-
 import News1 from "assets/images/news1.jpg";
 import News2 from "assets/images/news2.jpg";
 import News3 from "assets/images/news3.jpg";
-
+import PillowImg from "assets/images/pillow.png";
+import Rooms1 from "assets/images/rooms1.webp";
+import Rooms2 from "assets/images/rooms2.webp";
+import Rooms3 from "assets/images/rooms3.webp";
+import SpecialImg from "assets/images/special.png";
+import { ListBlog, ListFeedBack, ListService } from "constants/index";
+import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { BiCalendarCheck } from "react-icons/bi";
+import { FaAngleDoubleUp, FaBath, FaHeadphonesAlt, FaSwimmingPool } from "react-icons/fa";
 import { IoIosWifi } from "react-icons/io";
 import { MdRestaurant } from "react-icons/md";
-import { FaSwimmingPool, FaHeadphonesAlt, FaBath } from "react-icons/fa";
-import { BiCalendarCheck } from "react-icons/bi";
+import Slider from "react-slick";
+import CardAbout from "./components/CardAbout";
+import CardBlog from "./components/CardBlog";
+import CardFeedBack from "./components/CardFeedBack";
+import CardRoom from "./components/CardRoom";
+import CardService from "./components/CardService";
+import MakeReservation from "./components/MakeReservation";
 import "./HomePage.scss";
 
-import CardAbout from "./components/CardAbout";
-import CardService from "./components/CardService";
-import CardRoom from "./components/CardRoom";
-import MakeReservation from "./components/MakeReservation";
-import CardFeedBack from "./components/CardFeedBack";
-import CardBlog from "./components/CardBlog";
-import { ListBlog, ListFeedBack, ListService } from "constants/index";
-
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-const ListService = [
-  {
-    id: 1,
-    Icon: <IoIosWifi />,
-    title: "Free Wifi",
-  },
-  {
-    id: 2,
-    Icon: <BiCalendarCheck />,
-    title: "Easy Booking",
-  },
-  {
-    id: 3,
-    Icon: <MdRestaurant />,
-    title: "Restaurant",
-  },
-  {
-    id: 4,
-    Icon: <FaSwimmingPool />,
-    title: "Swimming Pool",
-  },
-  {
-    id: 5,
-    Icon: <FaBath />,
-    title: "Beauty & Health",
-  },
-  {
-    id: 6,
-    Icon: <FaHeadphonesAlt />,
-    title: "Help & Support",
-  },
-];
-const ListFeedBack = [
-  {
-    id: 1,
-    img: User1,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 2,
-    img: User2,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 3,
-    img: User3,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 1,
-    img: User1,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 2,
-    img: User2,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 3,
-    img: User3,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-];
-const ListBlog = [
-  {
-    id: 1,
-    img:News1,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Changing Hotel Rooms This Year Is Great",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 2,
-    img:News2,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Purple Skies, Pool, and Champagne. This is us",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 3,
-    img:News3,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Implementing Pools by the Sea Side This Year",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 1,
-    img:News1,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Changing Hotel Rooms This Year Is Great",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 2,
-    img:News2,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Purple Skies, Pool, and Champagne. This is us",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 3,
-    img:News3,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Implementing Pools by the Sea Side This Year",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-];
 
 function HomePage(props) {
   const { t } = useTranslation();

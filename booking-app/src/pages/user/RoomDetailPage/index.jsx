@@ -9,8 +9,10 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import CommentItem from "./components/Comment";
 import RoomReviews from "./components/RoomReviews";
 import SliderRoomDetail from "./components/SliderRoomDetail";
-import "./RoomDetailPage.scss";
 import CheckVariable from "./components/CheckVariable";
+import "./RoomDetailPage.scss";
+
+
 const review = {
   avatar: "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-single3.jpg",
   name: "Harmon Bechtelar",

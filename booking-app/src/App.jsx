@@ -14,7 +14,6 @@ import AdminLayout from "pages/admin/components/AdminLayout";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { ROUTER_URL } from "constants/index";
-import AdminPage from "pages/admin";
 import RoomDetailPage from "pages/user/RoomDetailPage";
 import UserProfile from "pages/user/UserProfile";
 
