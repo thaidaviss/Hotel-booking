@@ -3,16 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Select, InputNumber, Rate, Row, Space, Button } from "antd";
 import "./AddEditRoom.scss";
 import history from "utils/history";
-import { createRoomAction, editRoomAction, getRoomDetailAction, getRoomListAction, getTypeListAction } from "redux/actions";
+import { createRoomAction, editRoomAction, getRoomDetailAction } from "redux/actions";
 
 
 
-const AddEditRoomPage = (props) => {
-
+const AddEditRoomPage = ({ match }) => {
   const [modifyRoomForm] = Form.useForm();
 
-  const roomId = 1;
-  const { typeList }  = useSelector((state) => state.typeReducer);
+  const roomId = match.params.id;
+  const { typeList } = useSelector((state) => state.typeReducer);
   const { roomDetail } = useSelector((state) => state.roomReducer);
   const dispatch = useDispatch();
 

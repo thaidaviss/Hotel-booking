@@ -73,12 +73,6 @@
     {
       "id": 5,
       "name": "Luxury Suite Room"
-    },
-    {
-      "name": "room 1",
-      "createdAt": 1631197359538,
-      "updatedAt": 1631197359538,
-      "id": 6
     }
   ],
   "rooms": [
@@ -181,7 +175,7 @@
       "locationId": 1,
       "typeRoomId": 1,
       "profileId": 1,
-      "discountCode": "",
+      "discountCode": "FAL-070925",
       "discountPrice": 11,
       "roomCode": 101,
       "checkOut": 1,
