@@ -1,63 +1,59 @@
 import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined } from '@ant-design/icons';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { useEffect, useState } from "react";
-import RoomModal from "./components/RoomModal";
+import history from "utils/history";
 import './RoomList.scss';
+import { getRoomListAction, getTypeListAction } from "redux/actions";
+// import { ROUTER_URL } from "constants/index";
 
 
 function RoomListPage (props) {
-  const [isShowRoomModal, setIsShowRoomModal] = useState("");
-  const [modifyRoomData, setModifyRoomData] = useState({});
-  const locationList = [
-    {
-      locationId: 1,
-      name: "Da Nang"
-    },
-    {
-      locationId: 2,
-      name: "Ho Chi Minh"
-    },
-    {
-      locationId: 3,
-      name: "Quang Nam"
-    },
-  ];
+  
+  const { roomList } = useSelector((state) => state.roomReducer);
+  const { typeList } = useSelector((state) => state.typeReducer);
+  const dispatch = useDispatch();
+ 
 
   useEffect(() => {
-
+    dispatch(getTypeListAction());
+    dispatch(getRoomListAction());
   }, []);
 
-  const roomData = [
-    {
-      key: '1',
-      room: 'Suite Room',
-      number: 12,
-      maxGuest: 1,
-      price: 200,
-    },
-    {
-      key: '2',
-      room: 'Deluxe Room',
-      number: 4,
-      maxGuest: 2,
-      price: 350,
-    },
-  ];
+
+  const roomData = roomList.data.map((roomItem, roomIndex) => {
+    return {
+      key: roomIndex,
+      ...roomItem,
+    }
+  });
   const roomColumns = [
     {
-      title: 'Room',
-      dataIndex: 'room',
-      width: 200,
+      title: 'Name',
+      dataIndex: 'name',
+      width: 100,
       fixed: "left",
-      key: 'room',
+      key: 'name',
     },
-    { title: 'Number', dataIndex: 'number', key: 'number' },
-    { 
-      title: 'Max Guest', 
-      dataIndex: 'maxGuest', 
-      key: 'maxGuest',
+    {
+      title: 'Type Room',
+      dataIndex: 'typeId',
+      key: 'typeId',
+      render: (value) => {
+        const typeData = typeList.data.find((item) => item.id === value);
+        if (typeData) return typeData.name;
+      }
     },
-    { title: 'Price', dataIndex: 'price', key: 'price' },
+    { title: 'Description', dataIndex: 'description', key: 'description' },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      render: (value) => value.toLocaleString(),
+    },
+    { title: 'Max Guest', dataIndex: 'maxGuest', key: 'maxGuest' },
+    { title: 'Rating', dataIndex: 'rating', key: 'rating' },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
@@ -80,13 +76,10 @@ function RoomListPage (props) {
         return (
           <Space>
             <Button
-              className="room-btn"
+              className="edit-room-btn"
               type="primary"
               ghost
-              onClick={() => {
-                setIsShowRoomModal("edit");
-                setModifyRoomData(record);
-              }}
+              onClick={() => history.replace(`/room/${record.id}/edit`)}
             >
               Edit
             </Button>
@@ -111,25 +104,22 @@ function RoomListPage (props) {
         <Button 
           className="add-room-btn"
           type="primary"
-          onClick={() => {
-            setIsShowRoomModal("create");
-            setModifyRoomData({ room: '', number: 0, price: 0 });
-          }}
+          size="large"
+          icon={<PlusOutlined />}
+          onClick={() => history.replace(`/room/create`)}
         >
-          Add Room
+          New Room
         </Button>
       </div>
       <div className="room-list">
-        <Table dataSource={roomData} columns={roomColumns} scroll={{x: 1000}} />
+        <Table 
+          dataSource={roomData} 
+          columns={roomColumns} 
+          scroll={{x: 1000}} 
+          loading={roomList.load}
+        />
       </div>
 
-      <RoomModal
-        isShowRoomModal={isShowRoomModal}
-        setIsShowRoomModal={setIsShowRoomModal}
-        modifyRoomData={modifyRoomData}
-        locationList={locationList}
-        handleSubmitForm={null}
-      />
     </div>
   );
 }

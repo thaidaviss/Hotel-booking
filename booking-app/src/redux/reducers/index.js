@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import userReducer from './user.reducers';
+import locationReducer from './location.reducer';
+import roomReducer from './room.reducer';
+import typeReducer from './type.reducer';
 
 
 export const rootReducer =  combineReducers({
-  userReducer: userReducer
-})
-
+  roomReducer: roomReducer,
+  locationReducer: locationReducer,
+  typeReducer: typeReducer,
+});

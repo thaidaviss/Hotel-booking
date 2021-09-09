@@ -1,4 +1,4 @@
-export const USER = {
+export const USER_ACTION = {
   LOGIN: 'LOGIN',
   LOGOUT:'LOGOUT',
   REGISTER:'REGISTER',
