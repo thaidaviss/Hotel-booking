@@ -22,29 +22,24 @@ const options_rate = [
     label: <Rate disabled allowHalf defaultValue={2} className="rate" />,
     value: "2 Start",
   },
- 
 ];
 const TimeOfYear = [
   {
-    label:"Jan-Mar",
-    value:1,
-
+    label: "Jan-Mar",
+    value: 1,
   },
   {
-    label:"Apr-Jun",
-    value:2,
-
+    label: "Apr-Jun",
+    value: 2,
   },
   {
-    label:"Jul-Sep",
-    value:3,
-
+    label: "Jul-Sep",
+    value: 3,
   },
   {
-    label:"Oct-Dec",
-    value:4,
-
-  }
+    label: "Oct-Dec",
+    value: 4,
+  },
 ];
 
 function RoomReviews(props) {
@@ -69,7 +64,7 @@ function RoomReviews(props) {
             {t("Write a Review")}
           </Button>
         </div>
-        <ReviewModal  isShowReviewModal={isModalReview} setIsShowReviewModal={setIsModalReview}/>
+        <ReviewModal isShowReviewModal={isModalReview} setIsShowReviewModal={setIsModalReview} />
       </div>
       <ReviewModal
         isShowReviewModal={isShowReviewModal}

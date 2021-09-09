@@ -6,9 +6,7 @@ import News1 from "assets/images/news1.jpg";
 import News2 from "assets/images/news2.jpg";
 import News3 from "assets/images/news3.jpg";
 import PillowImg from "assets/images/pillow.png";
-import Rooms1 from "assets/images/rooms1.webp";
-import Rooms2 from "assets/images/rooms2.webp";
-import Rooms3 from "assets/images/rooms3.webp";
+
 import SpecialImg from "assets/images/special.png";
 import { IMAGES } from "constants/images.constants";
 import { ListBlog, ListFeedBack, ListService } from "constants/index";
