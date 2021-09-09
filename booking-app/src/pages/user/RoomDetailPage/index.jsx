@@ -8,7 +8,7 @@ import MakeReservation from "../HomePage/components/MakeReservation";
 import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import "./RoomDetailPage.scss";
-import { FcFilingCabinet } from "react-icons/fc";
+
 import { Progress } from "antd";
 function RoomDetailPage(props) {
   const RoomDetail = LIST_ROOM[3];
