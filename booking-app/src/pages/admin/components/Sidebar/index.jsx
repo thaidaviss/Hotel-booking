@@ -1,6 +1,6 @@
 import { IMAGES } from 'constants/images.constants';
-import React, { useEffect } from 'react';
-import { MdAttachMoney, MdFiberNew, MdDashboard, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdPermIdentity, MdStoreMallDirectory, MdStyle, MdRoom } from "react-icons/md";
+import React from 'react';
+import { MdAccountBalance, MdAttachMoney, MdDashboard, MdEventAvailable, MdFiberNew, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocalHotel, MdPermIdentity, MdRoom, MdStyle } from "react-icons/md";
 import { Link, useLocation } from 'react-router-dom';
 import "./Sidebar.scss";
 
@@ -13,12 +13,17 @@ const SIDEBAR_MENU = [
   {
     title: 'Room List',
     path: '/admin/rooms',
-    icon: <MdStoreMallDirectory />,
+    icon: <MdLocalHotel />,
   },
   {
-    title: 'Location List',
-    path: '/admin/locations',
-    icon: <MdRoom />,
+    title: 'Room Type',
+    path: '/admin/room-types',
+    icon: <MdAccountBalance />,
+  },
+  {
+    title: 'Booking List',
+    path: '/admin/bookings',
+    icon: <MdEventAvailable />,
   },
   {
     title: 'User List',
@@ -29,6 +34,11 @@ const SIDEBAR_MENU = [
     title: 'Discount List',
     path: '/admin/discounts',
     icon: <MdStyle />,
+  },
+  {
+    title: 'Location List',
+    path: '/admin/locations',
+    icon: <MdRoom />,
   },
   {
     title: 'Blogs List',
@@ -65,12 +75,12 @@ function Sidebar(props) {
                 />
               </div>
 
-              {!isMiniMenu && <span className="title">Luxury Hotel</span>}
+              <span className="title">Luxury Hotel</span>
             </div>
           </div>
 
           <div className={isMiniMenu ? "sidebar__menu--hide" : "sidebar__menu"}>
-            <h3 className="sidebar__title">Admin Manager</h3>
+            {/* <h3 className="sidebar__title">Admin Manager</h3> */}
             <ul className="sidebar__list">
               {SIDEBAR_MENU.map((sidebarItem, sidebarIndex) => (
                 <li
@@ -83,11 +93,15 @@ function Sidebar(props) {
                 >
                   <Link
                     to={sidebarItem.path}
-                    className={isMiniMenu ? "link link--hide" : "link"}
+                    className={isMiniMenu ? "link--hide" : "link"}
                   >
                     <span className="item-icon">{sidebarItem.icon}</span>
                     <span className="item-title">{sidebarItem.title}</span>
                   </Link>
+                  
+                  <ul className="sub-menu">
+                    <li><a className="link__name" href={sidebarItem.path}></a></li>
+                  </ul>
                 </li>
               ))}
             </ul>

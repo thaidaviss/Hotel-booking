@@ -7,6 +7,7 @@ function ModifyLocationModal({
   isShowLocationModal,
   setIsShowLocationModal,
   modifyLocationData,
+  handleSubmitForm,
 }) {
   const [modifyLocationForm] = Form.useForm();
 
@@ -29,12 +30,20 @@ function ModifyLocationModal({
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 20 }}
         initialValues={modifyLocationData}
-        onFinish={(values) => console.log(values)}
+        onFinish={(values) => handleSubmitForm(values)}
       >
         <Form.Item
-          label="Location"
+          label="Name"
           name="name"
-          rules={[{ required: true, message: "Please input new location!" }]}
+          rules={[{ required: true, message: "Please input the name!" }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Address"
+          name="address"
+          rules={[{ required: true, message: "Please input the address!" }]}
         >
           <Input />
         </Form.Item>

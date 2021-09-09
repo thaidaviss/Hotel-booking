@@ -18,7 +18,7 @@ const RoomModal = ({
     }
   }, [isShowRoomModal]);
 
-  function renderLocationOptions() {
+  function renderTypeOptions() {
     return locationList.map((locationItem, locationIndex) => (
       <Select.Option value={locationItem.id} key={`location-${locationItem.id}`}>
         {locationItem.name}
@@ -63,7 +63,7 @@ const RoomModal = ({
             rules={[{ required: true, message: "Please input your location!" }]}
           >
             <Select placeholder="Please select your location!">
-              {renderLocationOptions()}
+              {renderTypeOptions()}
             </Select>
           </Form.Item>
 

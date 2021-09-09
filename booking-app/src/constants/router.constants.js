@@ -3,7 +3,7 @@ export const ROUTER_URL = {
   LOGIN: "/login",
   REGISTER:"/register",
   HOME:"/",
-  NEWS:"/news",
+  // NEWS:"/news",
   ABOUT:"/about",
   ROOM: "/rooms/:id",
   ROOMS: "/rooms",
@@ -17,7 +17,9 @@ export const ROUTER_URL = {
   LOCATION: "/locations",
   DISCOUNTS: "/discounts",
   REVENUE: "/revenue",
-  ADD_EDIT_ROOM: "/add-edit-room",
+  CREATE_ROOM: "room/create",
+  EDIT_ROOM: "room/:id/edit",
+  ROOM_TYPES: "/room-types",
   USER:"/user"
 
 

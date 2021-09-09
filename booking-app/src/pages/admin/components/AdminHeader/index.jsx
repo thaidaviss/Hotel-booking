@@ -5,25 +5,26 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import './AdminHeader.scss';
 
-const settingMenu = (
-  <Menu>
-    <Menu.Item>
-      <Link to="/">
-        1st menu item
-      </Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/">
-        2nd menu item
-      </Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/">
-        3rd menu item
-      </Link>
-    </Menu.Item>
-  </Menu>
-);
+// const settingMenu = (
+//   <Menu>
+//     <Menu.Item>
+//       <Link to="/">
+//         1st menu item
+//       </Link>
+//     </Menu.Item>
+//     <Menu.Item>
+//       <Link to="/">
+//         2nd menu item
+//       </Link>
+//     </Menu.Item>
+//     <Menu.Item>
+//       <Link to="/">
+//         3rd menu item
+//       </Link>
+//     </Menu.Item>
+//   </Menu>
+// );
+
 const accountMenu = (
   <Menu>
     <Menu.Item>
@@ -33,7 +34,7 @@ const accountMenu = (
     </Menu.Item>
     <Menu.Item>
       <Link to="/settings">
-        Edit your Account
+        Edit your Profile
       </Link>
     </Menu.Item>
     <Menu.Item>
@@ -64,11 +65,11 @@ const AdminHeader = (props) => {
             <p>1</p>
           </div>
 
-          <Dropdown className="dropdown" overlay={settingMenu} placement="bottomCenter" arrow>
+          {/* <Dropdown className="dropdown" overlay={settingMenu} placement="bottomCenter" arrow>
             <div className="setting">
               <MdSettings />
             </div>
-          </Dropdown>
+          </Dropdown> */}
 
           <Dropdown className="dropdown" overlay={accountMenu} placement="bottomCenter" arrow>
             <div className="user-avatar">
