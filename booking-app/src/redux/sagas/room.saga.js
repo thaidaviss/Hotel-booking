@@ -1,26 +1,17 @@
 import axios from "axios";
 import { put, takeEvery } from "@redux-saga/core/effects";
-import { FAILURE, REQUEST, ROOM_ACTION, SUCCESS } from "redux/constants";
+import { FAILURE, REQUEST, ROOM_ACTION, SUCCESS } from "redux/constants/index";
 import history from "utils/history";
-import { URL_API } from "Api";
+import { RoomAPI, URL_API } from "Api";
 
 
 function* getRoomListSaga(action) {
   try {
-    // const locationId = action.payload?.locationId;
-    // const searchKey = action.payload?.searchKey;
-    // const filterPrice = action.payload?.filterPrice;
-    const result = yield axios({
-      method: 'GET',
-      url: `${URL_API}/rooms`,
-      params: {
-        _sort: 'id',
-        _order: 'desc',
-        // ...locationId && { locationId },
-        // ...searchKey && { q: searchKey },
-        // ...filterPrice && { gte: filterPrice[0], lte: filterPrice[1] }
-      }
-    });
+   
+  
+    const result = yield RoomAPI.getFilterRoomList({ _sort: 'id',_order: 'desc'});
+    
+    
     yield put({
       type: SUCCESS(ROOM_ACTION.GET_ROOM_LIST),
       payload: {
@@ -35,7 +26,7 @@ function* getRoomListSaga(action) {
 function* getRoomDetailSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield axios.get(`${URL_API}/rooms/${id}?_expand=discounts`);
+    const result = yield RoomAPI.getRoomDetail(id,{_expand:"discounts"});
     yield put({
       type: SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL),
       payload: {

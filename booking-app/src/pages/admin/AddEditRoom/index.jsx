@@ -3,19 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Select, InputNumber, Rate, Row, Space, Button } from "antd";
 import "./AddEditRoom.scss";
 import history from "utils/history";
-import { createRoomAction, editRoomAction, getRoomDetailAction } from "redux/actions";
+import { createRoomAction, editRoomAction, getRoomDetailAction, getRoomListAction, getTypeListAction } from "redux/actions";
 
 
 
-const AddEditRoomPage = ({ match }) => {
+const AddEditRoomPage = (props) => {
+
   const [modifyRoomForm] = Form.useForm();
 
-  const roomId = match.params.id;
-  const { typeList } = useSelector((state) => state.typeReducer);
+  const roomId = 1;
+  const { typeList }  = useSelector((state) => state.typeReducer);
   const { roomDetail } = useSelector((state) => state.roomReducer);
   const dispatch = useDispatch();
 
   const initialValues = roomId ? roomDetail.data : {};
+
+  useEffect(() => {
+    dispatch(getTypeListAction());
+    dispatch(getRoomListAction());
+  }, []);
 
   useEffect(() => {
     if (roomId) {
@@ -43,7 +49,7 @@ const AddEditRoomPage = ({ match }) => {
   };
 
   function renderTypeOptions() {
-    return typeList.map((typeItem, typeIndex) => (
+    return typeList.data.map((typeItem, typeIndex) => (
       <Select.Option value={typeItem.id} key={`type-${typeItem.id}`}>
         {typeItem.name}
       </Select.Option>

@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { REQUEST, ROOM_ACTION } from "redux/constants";
+import { REQUEST, ROOM_ACTION } from "redux/constants/index";
 
 export const getRoomListAction = createAction(REQUEST(ROOM_ACTION.GET_ROOM_LIST));
 export const getRoomDetailAction = createAction(REQUEST(ROOM_ACTION.GET_ROOM_DETAIL));

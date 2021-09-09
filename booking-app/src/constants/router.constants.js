@@ -17,10 +17,11 @@ export const ROUTER_URL = {
   LOCATION: "/locations",
   DISCOUNTS: "/discounts",
   REVENUE: "/revenue",
-  CREATE_ROOM: "room/create",
-  EDIT_ROOM: "room/:id/edit",
+  CREATE_ROOM: "/rooms/create",
+  EDIT_ROOM: "/rooms/:id/edit",
   ROOM_TYPES: "/room-types",
-  USER:"/user"
+  USER:"/user",
+  EDIT:"/edit"
 
 
 

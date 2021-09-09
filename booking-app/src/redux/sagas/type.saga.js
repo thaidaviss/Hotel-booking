@@ -1,12 +1,12 @@
 import axios from "axios";
 import { put, takeEvery } from "@redux-saga/core/effects";
 import { FAILURE, TYPE_ACTION, REQUEST, SUCCESS } from "redux/constants";
-import { URL_API } from "Api/index";
+import { URL_API,typeRoomAPI } from "Api/index";
 
 
 function* getTypeListSaga(action) {
   try {
-    const result = yield axios.get(`${URL_API}/types`);
+    const result = yield typeRoomAPI.getTypeRoomList();
     yield put({
       type: SUCCESS(TYPE_ACTION.GET_TYPE_LIST),
       payload: {
@@ -21,7 +21,7 @@ function* getTypeListSaga(action) {
 function* createTypeSaga(action) {
   try {
     const { data } = action.payload;
-    const result = yield axios.post(`${URL_API}/types`, data);
+    const result = yield typeRoomAPI.addTypeRoomToList(data);
     yield put({
       type: SUCCESS(TYPE_ACTION.CREATE_TYPE),
       payload: {
