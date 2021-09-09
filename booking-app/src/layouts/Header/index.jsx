@@ -11,12 +11,6 @@ import { useTranslation } from "react-i18next";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import "./Header.scss";
-import { useState } from "react";
-import _ from "lodash";
-import { Button } from "antd";
-import {GiHamburgerMenu} from "react-icons/gi"
-import { IMAGES } from "constants/images.constants";
-
 
 function Header(props) {
   const { t, i18n } = useTranslation();

@@ -14,14 +14,6 @@ import Rooms3 from "assets/images/rooms3.webp";
 
 import LoadVideo from "assets/images/load.png";
 
-import News1 from "assets/images/news1.jpg";
-import News2 from "assets/images/news2.jpg";
-import News3 from "assets/images/news3.jpg";
-
-import { IoIosWifi } from "react-icons/io";
-import { MdRestaurant } from "react-icons/md";
-import { FaSwimmingPool, FaHeadphonesAlt, FaBath } from "react-icons/fa";
-import { BiCalendarCheck } from "react-icons/bi";
 import "./HomePage.scss";
 
 import CardAbout from "./components/CardAbout";
@@ -33,144 +25,8 @@ import CardBlog from "./components/CardBlog";
 import { ListBlog, ListFeedBack, ListService } from "constants/index";
 
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-const ListService = [
-  {
-    id: 1,
-    Icon: <IoIosWifi />,
-    title: "Free Wifi",
-  },
-  {
-    id: 2,
-    Icon: <BiCalendarCheck />,
-    title: "Easy Booking",
-  },
-  {
-    id: 3,
-    Icon: <MdRestaurant />,
-    title: "Restaurant",
-  },
-  {
-    id: 4,
-    Icon: <FaSwimmingPool />,
-    title: "Swimming Pool",
-  },
-  {
-    id: 5,
-    Icon: <FaBath />,
-    title: "Beauty & Health",
-  },
-  {
-    id: 6,
-    Icon: <FaHeadphonesAlt />,
-    title: "Help & Support",
-  },
-];
-const ListFeedBack = [
-  {
-    id: 1,
-    img: User1,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 2,
-    img: User2,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 3,
-    img: User3,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 1,
-    img: User1,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 2,
-    img: User2,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-  {
-    id: 3,
-    img: User3,
-    name: "Roger Scott",
-    job: "MARKETING MANAGER",
-    review:
-      " mountains, far from the countries Vokalia and Consonantia, there live the blind texts",
-  },
-];
-const ListBlog = [
-  {
-    id: 1,
-    img:News1,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Changing Hotel Rooms This Year Is Great",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 2,
-    img:News2,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Purple Skies, Pool, and Champagne. This is us",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 3,
-    img:News3,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Implementing Pools by the Sea Side This Year",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 1,
-    img:News1,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Changing Hotel Rooms This Year Is Great",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 2,
-    img:News2,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Purple Skies, Pool, and Champagne. This is us",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-  {
-    id: 3,
-    img:News3,
-    time: Date.now(),
-    author: "Rosalina D. William",
-    title: "Implementing Pools by the Sea Side This Year",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore",
-  },
-];
+import { BackTop } from "antd";
+import { FaAngleDoubleUp } from "react-icons/fa";
 
 function HomePage(props) {
   const { t } = useTranslation();
@@ -439,7 +295,9 @@ function HomePage(props) {
         </div>
       </div>
       <BackTop>
-        <div className="up-top"><FaAngleDoubleUp /></div>
+        <div className="up-top">
+          <FaAngleDoubleUp />
+        </div>
       </BackTop>
     </div>
   );
