@@ -5,11 +5,11 @@
   max-width: 65rem;
   margin: 0 auto;
   padding: 2.5rem 2rem;
-  box-shadow: 2px 2px 4px #e1e1e1;
+  //box-shadow: 2px 2px 4px #e1e1e1;
   border-radius: 2px;
 
   background-color: $white;
-  color: $black;
+  color: $primary;
 
   input,
   .ant-select-item-option-content {
@@ -25,6 +25,7 @@
       font-size: 1.2rem;
       font-weight: 600;
       padding-bottom: 1rem;
+      color: $primary;
 
     }
 
@@ -33,7 +34,7 @@
       font-family: $font-family-heading;
       padding: 1rem 1rem;
       border-radius: 2px;
-      border-radius: 2px 2px 2px #e1e1e1;
+      box-shadow: null;
       color: $white;
       background-color: $primary;
       border: none;

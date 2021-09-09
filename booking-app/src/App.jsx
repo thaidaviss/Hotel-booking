@@ -1,10 +1,16 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { ROUTER_URL } from "constants/index";
 import DefaultLayout from "layouts/DefaultLayout";
 import FullLayout from "layouts/FullLayout";
 import PrivateLayout from "layouts/PrivateLayout";
+import AdminLayout from "pages/admin/components/AdminLayout";
 import HomePage from "pages/user/HomePage";
 import LoginPage from "pages/user/LoginPage";
 import NotFound from "pages/user/NotFound";
+import RoomDetailPage from "pages/user/RoomDetailPage";
 import RoomsPage from "pages/user/RoomsPage";
+import UserProfile from "pages/user/UserProfile";
 import { useEffect } from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import history from "utils/history";
@@ -22,6 +28,7 @@ function App() {
     AOS.init();
     AOS.refresh();
   }, []);
+
   return (
     <div className="App">
       <Router history={history}>

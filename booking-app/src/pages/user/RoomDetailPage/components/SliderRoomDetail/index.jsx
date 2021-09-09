@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "./SliderRoomDetail.scss";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Image } from "antd";
+import { IoMdCamera } from "react-icons/io";
 function SliderRoomDetail(props) {
+  const [visible, setVisible] = useState(false);
   const { imgList } = props;
   const customSlider = useRef();
   const settings = {
@@ -26,14 +29,27 @@ function SliderRoomDetail(props) {
   };
   return (
     <div className="slider-show">
+      <div className="slider-show__icon" >
+        <span onClick={() => setVisible(true)}>
+          <IoMdCamera />
+        </span>
+      </div>
       <Slider {...settings}>
         {imgList.map((img, index) => (
-          <div>
-            <div key={`room-detail__img-${index}`} className="room-detail__img-item">
-              <a href={img} data-fancybox data-caption="This image has a simple caption">
-                <img src={img} className="img-slider" />
-              </a>
-           
+          <div className="slider-show__img">
+            <Image
+              preview={{ visible: false }}
+              width={"100%"}
+              src={img}
+              onClick={() => setVisible(true)}
+            />
+            <div style={{ display: "none" }}>
+              <Image.PreviewGroup preview={{ visible, onVisibleChange: (vis) => setVisible(vis) }}>
+                <Image src={imgList[0]} />
+                <Image src={imgList[1]} />
+                <Image src={imgList[2]} />
+                <Image src={imgList[3]} />
+              </Image.PreviewGroup>
             </div>
           </div>
         ))}

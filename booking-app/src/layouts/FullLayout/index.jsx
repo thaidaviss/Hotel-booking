@@ -1,7 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Route } from 'react-router-dom';
-import Footer from '../Footer';
 
 FullLayout.propTypes = {
    exact: PropTypes.bool,

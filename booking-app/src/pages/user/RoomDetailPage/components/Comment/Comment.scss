@@ -4,6 +4,8 @@
   margin: 2rem 0;
   padding-bottom: 1rem;
   border-bottom: 1px solid #F0F0F0;
+  font-family: $font-family-base;
+
 }
 
 .comment__user {
@@ -50,9 +52,9 @@
 .comment__title {
   clear: both;
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 400;
   padding: 1rem 0 0.5rem 0;
-  color: $primary;
+  color: $black;
 }
 
 .comment__description {

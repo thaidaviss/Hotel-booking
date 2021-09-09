@@ -11,8 +11,15 @@
       "email": "thaidaviss1999@gmail.com",
       "password": "$2a$10$SxiRdzmGhvdN59vuN0MJn.47LZyKR29wyHElza.jYvNVD3b6vX3eC",
       "username": "wiliam1307",
-      "role": "user",
+      "role": "admin",
       "id": 4
+    },
+    {
+      "email": "thaidavis1999@gmail.com",
+      "password": "$2a$10$Py8nCtppU6wwhHgq.GpeiOUjTTt3ihhizp7vMazfHSKltV7DCUd0y",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 5
     }
   ],
   "profiles": [],
@@ -127,15 +134,16 @@
   "comments": [
     {
       "id": 1,
-      "roomId": 1,
-      "title": "Chất lượng tốt, view đẹp",
-      "description": "Phòng có view biển đẹp, dịch vụ tốt."
-    },
-    {
-      "id": 2,
-      "roomId": 3,
-      "title": "Tiện nghi, thoải mái",
-      "description": "Phòng có mọi tiện nghi cần thiết, rất thích."
+      "typeRoomId": 1,
+      "userId":"",
+      "rating": 1,
+      "title": "",
+      "review": "",
+      "serviceRating": 5,
+      "roomRating": 5,
+      "cleanlinessRating": 5,
+      "foodRating": 5,
+      "image": []
     }
   ],
   "discounts": [
@@ -167,5 +175,20 @@
       "image": ""
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": 1,
+      "locationId": 1,
+      "typeRoomId": 1,
+      "profileId": 1,
+      "discountCode": "",
+      "discountPrice": 11,
+      "roomCode": 101,
+      "checkOut": 1,
+      "checkIn": 2,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+    }
+  ]
 }

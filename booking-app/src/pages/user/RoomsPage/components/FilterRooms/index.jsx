@@ -13,10 +13,11 @@ const options_rate = [
   { label: <Rate disabled allowHalf defaultValue={1} className="rate" />, value: "1 Start" },
 ];
 const option_review = [
-  { label: "Exceptional 9+", value: "9" },
-  { label: "Very good 8+", value: "8" },
-  { label: "Good 7+", value: "7" },
-  { label: "Pleasant 6+", value: "6" },
+  { label: "City", value: "city" },
+  { label: "Sea", value: "sea" },
+  { label: "Mountains", value: "mountains" },
+  { label: "Sky", value: "sky" },
+  { label: "Other", value: "other" },
 ];
 function FilterRooms(props) {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ function FilterRooms(props) {
         </div>
       </div>
       <div className="filter-room__review">
-        <div className="filter-room__title">{t("Review score")}</div>
+        <div className="filter-room__title">{t("View score")}</div>
         <div className="filter-room__review-list">
           <Checkbox.Group options={option_review} value={checkedList.review}   onChange={onChangeReview} />
         </div>

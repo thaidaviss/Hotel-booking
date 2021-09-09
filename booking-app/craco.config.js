@@ -10,6 +10,7 @@ module.exports = {
             '@primary-color': "#D5A944",
             '@link-color': "#D5A944",
             '@font-family': 'Open Sans',
+    
           },
           javascriptEnabled: true,
         },

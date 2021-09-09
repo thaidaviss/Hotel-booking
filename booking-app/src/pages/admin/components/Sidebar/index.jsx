@@ -6,8 +6,8 @@ import "./Sidebar.scss";
 
 const SIDEBAR_MENU = [
   {
-    title: 'Dashboard',
-    path: '/admin',
+    title: "Dashboard",
+    path: "/admin",
     icon: <MdDashboard />,
   },
   {
@@ -26,13 +26,13 @@ const SIDEBAR_MENU = [
     icon: <MdEventAvailable />,
   },
   {
-    title: 'User List',
-    path: '/admin/users',
+    title: "User List",
+    path: "/admin/users",
     icon: <MdPermIdentity />,
   },
   {
-    title: 'Discount List',
-    path: '/admin/discounts',
+    title: "Discount List",
+    path: "/admin/discounts",
     icon: <MdStyle />,
   },
   {
@@ -46,21 +46,16 @@ const SIDEBAR_MENU = [
     icon: <MdFiberNew />,
   },
   {
-    title: 'Revenue',
-    path: '/admin/revenue',
+    title: "Revenue",
+    path: "/admin/revenue",
     icon: <MdAttachMoney />,
   },
-  
 ];
 
 function Sidebar(props) {
   const { isMiniMenu, setIsMiniMenu } = props;
-  const location  = useLocation();
+  const location = useLocation();
   let pathName = location.pathname || "";
-
-  // useEffect(() => {
-  //   pathName = location.pathname || "";
-  // }, []);
 
   return (
     <>
@@ -69,10 +64,9 @@ function Sidebar(props) {
           <div className="sidebar__header">
             <div className="brand">
               <div className="sidebar__header__logo">
-                <img
-                  src={IMAGES.LOGO_HEADER_ADMIN}
-                  alt="Logo for admin header"
-                />
+                <Link to={URL_API.HOME}>
+                  <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo for admin header" />
+                </Link>
               </div>
 
               <span className="title">Luxury Hotel</span>
@@ -107,10 +101,7 @@ function Sidebar(props) {
             </ul>
           </div>
         </div>
-        <div
-          className="sidebar__footer"
-          onClick={() => setIsMiniMenu(!isMiniMenu)}
-        >
+        <div className="sidebar__footer" onClick={() => setIsMiniMenu(!isMiniMenu)}>
           {isMiniMenu ? (
             <span>
               <MdKeyboardArrowRight />

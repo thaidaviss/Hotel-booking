@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import { Tabs, Form, Input, Button, Checkbox ,notification} from "antd";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import "./LoginPage.scss";
+import { Button, Checkbox, Form, Input, notification, Tabs } from "antd";
 import { IMAGES } from "constants/images.constants";
-import history from "utils/history";
 import { ROUTER_URL } from "constants/index";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { loginAction, registerAction } from "redux/actions";
-import { useSelector } from "react-redux";
+import history from "utils/history";
+import "./LoginPage.scss";
 
 const { TabPane } = Tabs;
 
@@ -19,21 +17,16 @@ function LoginPage(props) {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userReducer.userInfo);
   const { t } = useTranslation();
-  const [state, setState] = useState({ activeTab: "1" });
-  useEffect(() => {
-    if (history.location.pathname === ROUTER_URL.REGISTER) setState({ activeTab: "2" });
-  }, []);
-  useEffect(() => {
-    if (userInfo.error !== null) {
-      notification.error({
-        description: t(userInfo.error)  
-     });
-    }
 
-  }, [userInfo.error]);
+  const [activeTab, setActiveTab] = useState("1");
+  useEffect(() => {
+    if (history.location.pathname === ROUTER_URL.REGISTER) setActiveTab("2");
+    else setActiveTab("1");
+  }, [history.location.pathname]);
+
   function handleChangeTab(activeKey) {
-    setState({ activeTab: activeKey });
-    if (activeKey == "1") {
+    setActiveTab(activeKey);
+    if (activeKey === "1") {
       //tab 1 login
       history.replace(ROUTER_URL.LOGIN);
     } else {
@@ -60,10 +53,7 @@ function LoginPage(props) {
             </Link>
           </div>
 
-          <Tabs defaultActiveKey="1" 
-            activeKey={state.activeTab}
-            onChange={handleChangeTab}
-          >
+          <Tabs defaultActiveKey="1" activeKey={activeTab} onChange={handleChangeTab}>
             <TabPane className="login-tab" tab={t("Login")} key="1">
               <Form
                 name="basic"
@@ -101,7 +91,6 @@ function LoginPage(props) {
                   }}
                 >
                   {t("You don't have an account?")}&nbsp;
-
                   <Link className="login-link" to="/login" onClick={() => handleChangeTab("2")}>
                     {t("Register now")}
                   </Link>
@@ -191,7 +180,9 @@ function LoginPage(props) {
                 <Form.Item name="agree" valuePropName="checked">
                   <Checkbox>
                     {t("I have read and agreed to")}
-                    <Link className="login-link" to="/term">{t(" the terms")}</Link>
+                    <Link className="login-link" to="/term">
+                      {t(" the terms")}
+                    </Link>
                   </Checkbox>
                 </Form.Item>
 

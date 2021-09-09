@@ -31,7 +31,7 @@ function Header(props) {
         <div className="container">
           <div className="navbar__logo">
             <Link to={ROUTER_URL.HOME}>
-              <img src={IMAGES.LOGO} alt="Logo is not found!" />
+              <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo is not found!" />
             </Link>
           </div>
           <div className="navbar__list">

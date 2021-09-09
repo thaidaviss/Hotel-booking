@@ -10,6 +10,7 @@ import Rooms1 from "assets/images/rooms1.webp";
 import Rooms2 from "assets/images/rooms2.webp";
 import Rooms3 from "assets/images/rooms3.webp";
 import SpecialImg from "assets/images/special.png";
+import { IMAGES } from "constants/images.constants";
 import { ListBlog, ListFeedBack, ListService } from "constants/index";
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -24,9 +25,10 @@ import CardBlog from "./components/CardBlog";
 import CardFeedBack from "./components/CardFeedBack";
 import CardRoom from "./components/CardRoom";
 import CardService from "./components/CardService";
+import FeatureRoom from "./components/FeatureRoom";
 import MakeReservation from "./components/MakeReservation";
+import SliderRooms from "./components/SliderRooms";
 import "./HomePage.scss";
-
 
 function HomePage(props) {
   const { t } = useTranslation();
@@ -52,13 +54,56 @@ function HomePage(props) {
   return (
     <div className="home">
       <div className="banner">
-        <h3 className="banner__title">
-          {t("ENJOY YOUR WONDERFUL HOLIDAYS WITH A GREAT LUXURY EXPERIENCE!")}
+        <div
+          className="banner__line-top"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="1000"
+        >
+          <img src={IMAGES.LINE1} alt="" />
+        </div>
+        <h3
+          className="banner__content"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="1500"
+        >
+          {t("Royal Luxury Hotel")}
         </h3>
-        <h2 className="banner__content">{t("Most Relaxing Place")}</h2>
+        <h2
+          className="banner__title"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="1800"
+        >
+          {t("Most Relaxing Place")}
+        </h2>
+        <div
+          className="banner__line-bottom"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-duration="2000"
+        >
+          <img src={IMAGES.LINE2} alt="" />
+        </div>
         <div className="banner__btn">
-          <button className="btn btn-order">{t("Take a tour")}</button>
-          <button className="btn btn-readmore">{t("Read more")}</button>
+          <button
+            className="btn btn-order"
+            data-aos="fade-right"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="2000"
+          >
+            {t("Take a tour")}
+          </button>
+          <button
+            className="btn btn-readmore"
+            className="btn btn-order"
+            data-aos="fade-left"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="2000"
+          >
+            {t("Read more")}
+          </button>
         </div>
         <div className="reservation-check">
           <MakeReservation />
@@ -111,10 +156,108 @@ function HomePage(props) {
             data-aos-offset="100"
             data-aos-duration="600"
           >
-            <div className="home__title">{t("about us")}</div>
-            <div className="home__heading">{t("Unwind A Hotel Booking Agency")}</div>
+            <div className="home__title">
+              <div>
+                <img src={IMAGES.LINE1} alt="" />
+              </div>
+              {t("about us")}
+            </div>
+            <div className="home__heading">{t("Royal Hotel Booking Agency")}</div>
             <p className="about-us__content">{t("about us content")}</p>
             <button className="about-us__btn">{t("Book your room now")}</button>
+          </div>
+        </div>
+        <div className="about-us__discover">
+          <div className="container">
+            <div className="discover__content">
+              <div className="discover__stars" data-aos="fade-up" data-aos-duration="1200">
+                <img src={IMAGES.STARS} alt="" />
+              </div>
+              <h5 data-aos="fade-up" data-aos-duration="1000">
+                Discover what makes us a five star hotel
+              </h5>
+              <h3 data-aos="fade-up" data-aos-duration="1000">
+                About the Hotel
+              </h3>
+              <div className="discover__line2 " data-aos="fade-up" data-aos-duration="1600">
+                <img src={IMAGES.LINE2} alt="" />
+              </div>
+              <p data-aos="fade-right" data-aos-duration="1000">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et voluptatibus
+                assumenda magnam esse dolore quam. Voluptate, quae pariatur maxime expedita debitis
+                recusandae culpa neque consequatur minus quis aliquam vero.
+              </p>
+              <p data-aos="fade-right" data-aos-duration="1000">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                doloremque laudantium, totam rem aperiam, eaque ipsa quae!
+              </p>
+              <div className="discover__list">
+                <ul className=" discover__list-left">
+                  <li data-aos="fade-left" data-aos-duration="100">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    90 Luxury Rooms
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="300">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    120 Family Rooms
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="900">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    340 Standard Rooms
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="1200">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    10 Restaurants and Bars
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="1500">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    2 Parking Spaces
+                  </li>
+                </ul>
+                <ul className="discover__list-right">
+                  <li data-aos="fade-left" data-aos-duration="300">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    1 Spa Center
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="600">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    4 Fitness Halls
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="900">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    3 Conference Halls
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="1200">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    5 Swimming Pools
+                  </li>
+                  <li data-aos="fade-left" data-aos-duration="1500">
+                    <span>
+                      <RiStarFill />
+                    </span>
+                    1 Beauty Center
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -128,7 +271,11 @@ function HomePage(props) {
             data-aos-offset="100"
             data-aos-duration="600"
           >
-            {t("UNWIND SERVICES")}
+            <div>
+              <img src={IMAGES.LINE1} alt="" />
+            </div>
+
+            {t("ROYAL SERVICES")}
           </div>
           <div
             className="home__heading"
@@ -149,7 +296,7 @@ function HomePage(props) {
           >
             <ul>
               {ListService.map((item) => (
-                <li key={`service__item-${item.id}`}>
+                <li data-aos="fade-right" key={`service__item-${item.id}`}>
                   <CardService {...item} />
                 </li>
               ))}
@@ -157,7 +304,33 @@ function HomePage(props) {
           </div>
         </div>
       </div>
+
       <div className="rooms">
+        <div
+          className="home__title"
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-delay="500"
+          data-aos-offset="100"
+          data-aos-duration="500"
+        >
+          <div>
+            <img src={IMAGES.LINE1} alt="" />
+          </div>
+          {t("OUR ROOMS")}
+        </div>
+        <div
+          className="home__heading"
+          data-aos="fade-up"
+          data-aos-easing="linear"
+          data-aos-delay="500"
+          data-aos-offset="100"
+          data-aos-duration="500"
+        >
+          {t("Featured Rooms")}
+        </div>
+        <FeatureRoom />
+        {/* list room slide */}
         <div className="container">
           <div
             className="home__title"
@@ -167,6 +340,9 @@ function HomePage(props) {
             data-aos-offset="100"
             data-aos-duration="500"
           >
+            <div>
+              <img src={IMAGES.LINE1} alt="" />
+            </div>
             {t("OUR ROOMS")}
           </div>
           <div
@@ -177,34 +353,10 @@ function HomePage(props) {
             data-aos-offset="100"
             data-aos-duration="500"
           >
-            {t("Featured Rooms")}
+            {t("Favorite Rooms")}
           </div>
-
           <div className="rooms__list">
-            <CardRoom
-              dataAos="zoom-in"
-              title="Suite Room"
-              content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-              price="$200"
-              img={Rooms1}
-              isImgTop={false}
-            />
-            <CardRoom
-              dataAos="zoom-in"
-              title="Family Room"
-              content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-              price="$400"
-              img={Rooms2}
-              isImgTop={true}
-            />
-            <CardRoom
-              dataAos="zoom-in"
-              title="Deluxe Room"
-              content="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
-              price="$600"
-              img={Rooms3}
-              isImgTop={false}
-            />
+            <SliderRooms />
           </div>
         </div>
       </div>
@@ -227,6 +379,9 @@ function HomePage(props) {
             data-aos-offset="100"
             data-aos-duration="500"
           >
+            <div>
+              <img src={IMAGES.LINE1} alt="" />
+            </div>
             {t("TESTIMONIALS")}
           </div>
           <div
@@ -260,6 +415,9 @@ function HomePage(props) {
                 data-aos-offset="100"
                 data-aos-duration="500"
               >
+                <div>
+                  <img src={IMAGES.LINE1} alt="" />
+                </div>
                 {t("BLOG")}
               </div>
               <div
@@ -276,7 +434,6 @@ function HomePage(props) {
             <div className="news__title-right">
               <div className="news__title-btn">
                 <button onClick={() => customSlider.current.slickPrev()} className="btn btn-prev ">
-                  {" "}
                   <AiOutlineArrowLeft />
                 </button>
                 <button onClick={() => customSlider.current.slickNext()} className="btn btn-next">
@@ -295,7 +452,9 @@ function HomePage(props) {
         </div>
       </div>
       <BackTop>
-        <div className="up-top"><FaAngleDoubleUp /></div>
+        <div className="up-top">
+          <FaAngleDoubleUp />
+        </div>
       </BackTop>
     </div>
   );

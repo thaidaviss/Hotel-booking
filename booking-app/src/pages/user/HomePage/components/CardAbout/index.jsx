@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import "./CardAbout.scss"
+import "./CardAbout.scss";
 function CardAbout(props) {
   const {img,title,content} = props;
   const {t} = useTranslation();
