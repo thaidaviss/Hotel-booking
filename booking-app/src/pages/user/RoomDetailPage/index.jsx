@@ -1,26 +1,15 @@
-import Slider from "@ant-design/react-slick";
 import { IMAGES } from "constants/images.constants";
 import { LIST_ROOM } from "constants/rooms.constant";
-import { Form, Input, InputNumber, Button } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { FaCarAlt, FaStar, FaSwimmer, FaWifi } from "react-icons/fa";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import CommentItem from "./components/Comment";
-import RoomReviews from "./components/RoomReviews";
+import { FaBath, FaBed, FaChevronLeft, FaChevronRight, FaFan, FaWifi } from "react-icons/fa";
+import { RiComputerLine } from "react-icons/ri";
+import MakeReservation from "../HomePage/components/MakeReservation";
+import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import "./RoomDetailPage.scss";
-import CheckVariable from "./components/CheckVariable";
-const review = {
-  avatar: "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-single3.jpg",
-  name: "Harmon Bechtelar",
-  title: "very comfortable",
-  description:
-    "Distinctio at aut perspiciatis dolores. Sed sit ut labore nostrum. Est amet repellat dolore maiores id eligendi eveniet autem praesentium. Porro illo perspiciatis repellat atque laborum voluptatem tempore nobis odio. Fugiat et molestias ab id temporibus dignissimos culpa fugit. Nulla magni iusto dolores at.",
-  time: "Reviewd - 1 months ago",
-  stars: { room: 3, cleanness: 4, food: 4, service: 5 },
-  interact: { like: 2, dislike: 1 },
-};
+import { FcFilingCabinet } from "react-icons/fc";
+import { Progress } from "antd";
 function RoomDetailPage(props) {
   const RoomDetail = LIST_ROOM[3];
   const { t } = useTranslation();
@@ -36,7 +25,7 @@ function RoomDetailPage(props) {
     nextArrow: <FaChevronLeft />,
     prevArrow: <FaChevronRight />,
   };
- 
+
   const onFinish = (values) => {
     console.log(values);
   };
@@ -44,96 +33,102 @@ function RoomDetailPage(props) {
     <div className="room-detail">
       <div className="room-detail__banner">
         <div className="rooms-page__banner-content">
-          <div className="heading">Royal Luxury Hotel</div>
-          <div className="title">{t(`${RoomDetail.name}`)}</div>
+          <div className="line-1">
+            <img src={IMAGES.LINE1} alt="" />
+          </div>
+          <div className="heading">{t(`${RoomDetail.name}`)}</div>
+          <div className="line-1">
+            <img src={IMAGES.LINE2} alt="" />
+          </div>
         </div>
       </div>
+
       <div className="room-detail__body">
+        <div className="room-detail__reservation">
+          <MakeReservation />
+        </div>
+
         <div className="container">
           <div className="room-detail__left">
             <div className="room-detail__slider">
               <SliderRoomDetail imgList={IMAGES.LIST_ROOM} />
             </div>
-
-            <div className="room-detail__info">
-              <div className="room-detail__title">
-                <div className="room-detail__name">{t(RoomDetail.name)}</div>
-                <div className="room-detail__price">
-                  {t(`Start From `)}
-                  <span>{t(`$${RoomDetail.price}/Night`)}</span>
-                </div>
-              </div>
-              <p className="room-detail__description">{RoomDetail.description}</p>
-              <div className="room-detail__services">
-                <div className="room-detail__services-title">{t("Amenities")}</div>
-                <div className="room-detail__services-list">
-                  <Slider {...settings}>
-                    <div className="room-detail__services-item">
-                      <span>
-                        <FaWifi />
-                      </span>
-                      <p>{t("Free wifi")}</p>
-                    </div>
-                    <div className="room-detail__services-item">
-                      <span>
-                        <FaCarAlt />
-                      </span>
-                      <p>{t("Free park")}</p>
-                    </div>
-                    <div className="room-detail__services-item">
-                      <span>
-                        <FaSwimmer />
-                      </span>
-                      <p>{t("Free pool")}</p>
-                    </div>
-                    <div className="room-detail__services-item">
-                      <span>
-                        <FaWifi />
-                      </span>
-                      <p>{t("Free wifi")}</p>
-                    </div>
-                    <div className="room-detail__services-item">
-                      <span>
-                        <FaCarAlt />
-                      </span>
-                      <p>{t("Free park")}</p>
-                    </div>
-                    <div className="room-detail__services-item">
-                      <span>
-                        <FaSwimmer />
-                      </span>
-                      <p>{t("Free pool")}</p>
-                    </div>
-                  </Slider>
-                </div>
-              </div>
-              <div className="room-detail__location">
-                <div className="room-detail__location-title">{t("Location")}</div>
-
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5566.401256462168!2d108.22097014124382!3d16.06659116273972!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218211e40911f%3A0xe1f91d885f1de98b!2zxJDDoCBO4bq1bmcgRm9vZCBUb3Vy!5e1!3m2!1svi!2s!4v1630741371386!5m2!1svi!2s"
-                  style={{ width: "100%", height: "20rem", border: "2px", borderRadius: "5px" }}
-                  allowFullScreen=""
-                  loading="lazy"
-                ></iframe>
-              </div>
-            </div>
-            <div className="room-detail__review">
-              <RoomReviews />
-              <CommentItem {...review} />
-              <CommentItem {...review} />
-              <CommentItem {...review} />
-              <CommentItem {...review} />
-            </div>
           </div>
           <div className="room-detail__right">
-            <div className="room-detail__booking">
-              <CheckVariable />
-            </div>
+            <ul className="room-detail__services">
+              <li>
+                <span>
+                  <FaBed />
+                </span>
+                <h1> DOUBLE BED</h1>
+              </li>
+              <li>
+                <span>
+                  <FaWifi />
+                </span>
+                <h1>FREE WIFI</h1>
+              </li>
+              <li>
+                <span>
+                  <RiComputerLine />
+                </span>
+                <h1>CABLE TV</h1>
+              </li>
+              <li>
+                <span>
+                  <FaFan />
+                </span>
+                <h1>AIR CONDITION</h1>
+              </li>
+              <li>
+                <span>
+                  <FaBath />
+                </span>
+                <h1>BATHTUB</h1>
+              </li>
+            </ul>
           </div>
           <div className="room-detail__same"></div>
         </div>
+        <div className="room-detail__bottom">
+          <div className="container">
+            <div className="room-detail__left">
+              <div className="room-detail__info">
+                <div className="room-detail__title">
+                  <div className="room-detail__name">{t(RoomDetail.name)}</div>
+                </div>
+                <CollapseInfo RoomDetail={RoomDetail} />
+              </div>
+            </div>
+            <div className="room-detail__right">
+              <h3>OUR GUESTS RATE THIS ROOM AS BELOW</h3>
+              <div className="total__rating">
+                <h2>Service</h2>
+                <Progress percent={50} status="active" />
+                <h2>Room</h2>
+                <Progress percent={80} status="active" />
+                <h2>Cleanness</h2>
+                <Progress percent={90} status="active" />
+                <h2>Food</h2>
+                <Progress percent={100} status="active" />
+                <h2>Total</h2>
+                <Progress percent={100} status="active" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {/* <div className="room-detail__relate">
+        <div className="container">
+        <div className="room-detail__relate-title">
+          Related Rooms
+        </div>
+        <div className="line-2">
+            <img src={IMAGES.LINE2} alt="" />
+          </div>
+        </div>
+      
+      </div> */}
     </div>
   );
 }

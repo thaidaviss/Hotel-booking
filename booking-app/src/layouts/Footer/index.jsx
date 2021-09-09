@@ -1,5 +1,5 @@
-import { ROUTER_URL } from "constants/index";
 import { IMAGES } from "constants/images.constants";
+import { ROUTER_URL } from "constants/index";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -7,11 +7,11 @@ import {
   FaInstagram,
   FaMapMarkedAlt,
   FaPhoneAlt,
-  FaPinterest,
+  FaPinterest
 } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
-import "./Footer.scss";
 import { Link } from "react-router-dom";
+import "./Footer.scss";
 function Footer(props) {
   const { t } = useTranslation();
   return (

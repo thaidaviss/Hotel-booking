@@ -1,75 +1,83 @@
 @import "styles/main";
-.rooms-page{
-  
-  .container{
+
+.rooms-page {
+
+  .container {
     max-width: 90rem;
     margin: 0 auto;
   }
-  &__reservation{
-   position: absolute;
-   bottom: -5rem;
-   width: 100%;
+
+  &__reservation {
+
+    width: 100%;
   }
-  &__banner{
-      background-image: url("../../../assets/images/banner-rooms.jpg");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
 
-      position: relative;
+  &__banner {
+    background-image: url("../../../assets/images/banner-rooms.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 28rem;
+    max-height: 70rem;
 
-      width: 100%;
-      height: 90vh;
-    &-content{
+    &-content {
       width: 100%;
       height: 100%;
-
+      font-family: $font-family-heading;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
       background-color: rgba($color: #000000, $alpha: 0.3);
     }
-    .heading{
+
+    .heading {
       font-size: 4rem;
       font-weight: 600;
       color: $white;
-
-      padding-bottom: 2rem;
+      padding-bottom: 1rem;
     }
-    .title{
+
+    .title {
       font-size: 2rem;
       font-weight: 600;
-   
       color: $white;
+      padding-bottom: 1rem;
     }
   }
-  &__body{
-    width: 100%;
-    min-height: 100vh;
-    padding-top: 4rem; 
 
+  &__body {
+    background-image: url('../../../assets/images/bg-royal.jpg');
+    background-position: center;
+    background-repeat: repeat;
+    width: 100%;
+    padding-top: 4rem;
     background-color: #F8F8F8;
-    .container{
+
+    .container {
       display: flex;
-      padding: 5rem 2rem 2rem 2rem;
+      padding: 3rem 2rem 2rem 2rem;
     }
   }
-  &__filter{
+
+  &__filter {
     width: 26%;
   }
-  &__list{
+
+  &__list {
     width: 75%;
-    margin:0 2rem;
+    margin: 0 2rem;
   }
-  &__pagination{
+
+  &__pagination {
     display: flex;
     justify-content: center;
     padding-bottom: 3rem;
-    
+
   }
-  
+
   .ant-checkbox-checked::after {
     border: 1px solid $primary;
   }
@@ -78,72 +86,88 @@
     background-color: $primary;
     border-color: $primary;
   }
-.ant-slider-handle {
-  border: solid 2px rgba($primary,0.8);
+
+  .ant-slider-handle {
+    border: solid 2px rgba($primary, 0.8);
+  }
+
+  .ant-slider-track {
+    position: absolute;
+    height: 4px;
+    background-color: rgba($primary, 0.8);
+    border-radius: 2px;
+    transition: background-color 0.3s;
+  }
+
+  .ant-slider-handle:focus {
+    border-color: rgba($primary, 0.8);
+  }
+
+  .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
+    border-color: rgba($primary, 0.8);
+  }
+
+  .ant-slider:hover .ant-slider-track {
+    background-color: rgba($primary, 0.8);
+  }
 }
-.ant-slider-track {
-  position: absolute;
-  height: 4px;
-  background-color:  rgba($primary,0.8);
-  border-radius: 2px;
-  transition: background-color 0.3s;
-}
-.ant-slider-handle:focus {
-  border-color: rgba($primary,0.8);
-}
-.ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open) {
-  border-color: rgba($primary,0.8);
-}
-.ant-slider:hover .ant-slider-track {
-  background-color: rgba($primary,0.8);
-}
-}
-@include Responsive(lg){
-  .rooms-page{
+
+@include Responsive(lg) {
+  .rooms-page {
     font-size: 90%;
-    &__banner{
+
+    &__banner {
       height: 45vh;
     }
-    &__list{
+
+    &__list {
       margin: 0 0.5rem;
     }
-    &__body{
-      .container{
+
+    &__body {
+      .container {
         padding-top: 4rem;
       }
     }
   }
 }
-@include Responsive(md){
-  html{
+
+@include Responsive(md) {
+  html {
     font-size: 70%;
   }
-  .rooms-page{
- 
-    &__list{
+
+  .rooms-page {
+
+    &__list {
       width: 100%;
       margin: 0 0.2rem;
     }
-    &__filter{
+
+    &__filter {
       display: none;
     }
-    &__body{
-      .container{
+
+    &__body {
+      .container {
         padding-top: 4rem;
       }
-      button{
+
+      button {
         margin: 0.5rem 1rem;
       }
     }
   }
 }
-@include Responsive(sm){
-  html{
+
+@include Responsive(sm) {
+  html {
     font-size: 60%;
   }
 }
-@include Responsive(xs){
-  html{
+
+@include Responsive(xs) {
+  html {
     font-size: 50%;
   }
 }

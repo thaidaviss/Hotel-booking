@@ -16,7 +16,7 @@
     top: -8px;
     left: 8px;
 
-    color: $white;
+    color: $black;
     overflow: hidden;
 
     &:before,
@@ -103,10 +103,15 @@
 
   &__img {
     width: 30%;
-
-    img {
-      display: block;
-      width: 100%;
+    min-width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    .img {
+    width: 100%;
+    min-height: 15rem;
+   
     }
   }
 
@@ -117,9 +122,10 @@
   }
 
   &__name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: $primary;
+    font-family: $font-family-base;
+    font-size:1.8rem;
+    font-weight: 300;
+    color: $black;
 
     padding-bottom: 1rem;
 
@@ -145,9 +151,9 @@
       width: 50%;
       display: flex;
       align-items: center;
-      font-weight: 600;
-      color: #348C21;
-
+      font-weight: 400;
+      color: $primary;
+      padding-top: 0.7rem;
       span {
         padding-right: 0.2rem;
       }
@@ -202,10 +208,11 @@
 
   &__price {
     font-size: 1.2rem;
-
+    font-family: $font-family-base;
+    font-weight: 300;
     span {
-      font-weight: 600;
-      color: $primary;
+      font-weight: 400;
+      color: $black;
     }
   }
 

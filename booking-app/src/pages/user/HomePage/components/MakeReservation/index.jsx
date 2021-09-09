@@ -19,6 +19,7 @@ function MakeReservation(props) {
           selectsStart
           startDate={startDate}
           endDate={endDate}
+          getPopupContainer={(trigger) => trigger.parentNode}
         />
       </div>
       <div className="reservation__item">
@@ -32,11 +33,14 @@ function MakeReservation(props) {
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
+          getPopupContainer={(trigger) => trigger.parentNode}
         />
       </div>
       <div className="reservation__item">
         <div className="reservation__item-title">{t("GUESTS")}</div>
         <Select
+        
+          getPopupContainer={(trigger) => trigger.parentNode}
           className="reservation__select"
           placeholder="Number people"
           showSearch

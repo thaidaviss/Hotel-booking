@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { FaStar } from "react-icons/fa";
 import { Rate, Checkbox, Button } from "antd";
 import { useTranslation } from "react-i18next";
 
 import "./RoomReviews.scss"
+import ReviewModal from "../../ReviewModal";
 const options_rate = [
   {
     label: <Rate disabled allowHalf defaultValue={5} className="rate" />,
@@ -47,7 +48,7 @@ const TimeOfYear = [
 ]
 function RoomReviews(props) {
   const { t } = useTranslation();
-
+  const [isModalReview,setIsModalReview] = useState(false);
   return (
     <div className="room-review">
       <div className="room-review__write">
@@ -62,8 +63,9 @@ function RoomReviews(props) {
           </div>
         </div>
         <div className="room-review__btn">
-          <Button type="primary">{t("Write a Review")}</Button>
+          <Button type="primary" onClick={()=>setIsModalReview(true)}>{t("Write a Review")}</Button>
         </div>
+        <ReviewModal  isShowReviewModal={isModalReview} setIsShowReviewModal={setIsModalReview}/>
       </div>
       {/* <div className="room-review__filter">
         <div className="room-review__filter-item">

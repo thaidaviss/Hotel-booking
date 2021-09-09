@@ -1,21 +1,11 @@
-import _ from "lodash";
-
-import { Link } from "react-router-dom";
-
-import React, { useEffect, useState } from "react";
-
-import { ROUTER_URL } from "constants/index";
 import { IMAGES } from "constants/images.constants";
-
+import { ROUTER_URL } from "constants/index";
+import _ from "lodash";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import { Link } from "react-router-dom";
 import "./Header.scss";
-import { useState } from "react";
-import _ from "lodash";
-import { Button } from "antd";
-import {GiHamburgerMenu} from "react-icons/gi"
-import { IMAGES } from "constants/images.constants";
 
 
 function Header(props) {
@@ -41,7 +31,7 @@ function Header(props) {
         <div className="container">
           <div className="navbar__logo">
             <Link to={ROUTER_URL.HOME}>
-              <img src={IMAGES.LOGO} alt="Logo is not found!" />
+              <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo is not found!" />
             </Link>
           </div>
           <div className="navbar__list">

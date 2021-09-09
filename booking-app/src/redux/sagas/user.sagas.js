@@ -1,4 +1,5 @@
 
+import { notification } from 'antd';
 import { authAPI } from 'Api';
 import { ROUTER_URL } from 'constants/index';
 import {
@@ -24,10 +25,24 @@ function* login(action) {
          type: SUCCESS(USER.LOGIN),
          payload: response.data
       });
+      yield  notification.success({
+         description: "Login success!"  
+      });
+      
+      if(response.data.user.role==="admin"){
+         console.log("🚀 ~ file: user.sagas.js ~ line 33 ~ function*login ~ response.data.user.role", response.data.user.role)
+         yield history.push(ROUTER_URL.ADMIN)
+      }
+      else{
+         yield history.push(ROUTER_URL.HOME)
+      }
    } catch (e) {
       yield put({
          type: FAIL(USER.LOGIN),
          message: e.message
+      });
+      yield  notification.error({
+         description:e.message
       });
 
    }
@@ -87,14 +102,20 @@ function* register(action) {
          type: SUCCESS(USER.REGISTER),
          payload: response.data
       });
-      yield history.replace(ROUTER_URL.LOGIN);
+    
+      yield  notification.success({
+         description: "Register success!"  
+      });
+      yield history.push(ROUTER_URL.LOGIN)
    } catch (e) {
 
       yield put({
          type: FAIL(USER.REGISTER),
          payload: e.response.data
       });
-
+      yield  notification.error({
+         description: e.response.data 
+      });
    }
 }
 

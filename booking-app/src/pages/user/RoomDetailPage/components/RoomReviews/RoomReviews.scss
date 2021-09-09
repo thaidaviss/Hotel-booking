@@ -13,11 +13,13 @@
 
   &__highlights {
     display: flex;
+    align-items: center;
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 300;
     color: $primary;
     .highlights__stars {
       margin-left: 0.5rem;
+      margin-top: 0.5rem;
       color: #FADB14;
       font-size: 1rem;
     }

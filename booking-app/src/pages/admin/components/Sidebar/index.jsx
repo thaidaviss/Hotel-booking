@@ -1,56 +1,57 @@
-import { IMAGES } from 'constants/images.constants';
-import React, { useEffect } from 'react';
-import { MdAttachMoney, MdFiberNew, MdDashboard, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdPermIdentity, MdStoreMallDirectory, MdStyle, MdRoom } from "react-icons/md";
-import { Link, useLocation } from 'react-router-dom';
+import { URL_API } from "Api/index";
+import { IMAGES } from "constants/images.constants";
+import React from "react";
+import {
+  MdAttachMoney, MdDashboard, MdFiberNew, MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+  MdPermIdentity, MdRoom, MdStoreMallDirectory,
+  MdStyle
+} from "react-icons/md";
+import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.scss";
 
 const SIDEBAR_MENU = [
   {
-    title: 'Dashboard',
-    path: '/admin',
+    title: "Dashboard",
+    path: "/admin",
     icon: <MdDashboard />,
   },
   {
-    title: 'Room List',
-    path: '/admin/rooms',
+    title: "Room List",
+    path: "/admin/rooms",
     icon: <MdStoreMallDirectory />,
   },
   {
-    title: 'Location List',
-    path: '/admin/locations',
+    title: "Location List",
+    path: "/admin/locations",
     icon: <MdRoom />,
   },
   {
-    title: 'User List',
-    path: '/admin/users',
+    title: "User List",
+    path: "/admin/users",
     icon: <MdPermIdentity />,
   },
   {
-    title: 'Discount List',
-    path: '/admin/discounts',
+    title: "Discount List",
+    path: "/admin/discounts",
     icon: <MdStyle />,
   },
   {
-    title: 'Blogs List',
-    path: '/admin/blogs',
+    title: "Blogs List",
+    path: "/admin/blogs",
     icon: <MdFiberNew />,
   },
   {
-    title: 'Revenue',
-    path: '/admin/revenue',
+    title: "Revenue",
+    path: "/admin/revenue",
     icon: <MdAttachMoney />,
   },
-  
 ];
 
 function Sidebar(props) {
   const { isMiniMenu, setIsMiniMenu } = props;
-  const location  = useLocation();
+  const location = useLocation();
   let pathName = location.pathname || "";
-
-  // useEffect(() => {
-  //   pathName = location.pathname || "";
-  // }, []);
 
   return (
     <>
@@ -59,10 +60,9 @@ function Sidebar(props) {
           <div className="sidebar__header">
             <div className="brand">
               <div className="sidebar__header__logo">
-                <img
-                  src={IMAGES.LOGO_HEADER_ADMIN}
-                  alt="Logo for admin header"
-                />
+                <Link to={URL_API.HOME}>
+                  <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo for admin header" />
+                </Link>
               </div>
 
               {!isMiniMenu && <span className="title">Luxury Hotel</span>}
@@ -81,10 +81,7 @@ function Sidebar(props) {
                   }
                   key={`sidebar-${sidebarIndex}`}
                 >
-                  <Link
-                    to={sidebarItem.path}
-                    className={isMiniMenu ? "link link--hide" : "link"}
-                  >
+                  <Link to={sidebarItem.path} className={isMiniMenu ? "link link--hide" : "link"}>
                     <span className="item-icon">{sidebarItem.icon}</span>
                     <span className="item-title">{sidebarItem.title}</span>
                   </Link>
@@ -93,10 +90,7 @@ function Sidebar(props) {
             </ul>
           </div>
         </div>
-        <div
-          className="sidebar__footer"
-          onClick={() => setIsMiniMenu(!isMiniMenu)}
-        >
+        <div className="sidebar__footer" onClick={() => setIsMiniMenu(!isMiniMenu)}>
           {isMiniMenu ? (
             <span>
               <MdKeyboardArrowRight />

@@ -11,8 +11,15 @@
       "email": "thaidaviss1999@gmail.com",
       "password": "$2a$10$SxiRdzmGhvdN59vuN0MJn.47LZyKR29wyHElza.jYvNVD3b6vX3eC",
       "username": "wiliam1307",
-      "role": "user",
+      "role": "admin",
       "id": 4
+    },
+    {
+      "email": "thaidavis1999@gmail.com",
+      "password": "$2a$10$Py8nCtppU6wwhHgq.GpeiOUjTTt3ihhizp7vMazfHSKltV7DCUd0y",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 5
     }
   ],
   "profiles": [
@@ -65,7 +72,8 @@
   "comments": [
     {
       "id": 1,
-      "roomId": 1,
+      "typeRoomId": 1,
+      "userId":"",
       "rating": 1,
       "title": "",
       "review": "",
@@ -101,8 +109,8 @@
     {
       "id": 1,
       "locationId": 1,
-      "roomId": 1,
-      "userId": 1,
+      "typeRoomId": 1,
+      "profileId": 1,
       "discountCode": "",
       "discountPrice": 11,
       "roomCode": 101,

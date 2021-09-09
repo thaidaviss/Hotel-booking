@@ -1,0 +1,14 @@
+export const ROOM = {
+  GET: "GET_ROOM_LIST",
+
+  CREATE: "CREATE_ROOM",
+
+  EDIT: "EDIT_ROOM",
+
+  DELETE: "DELETE_ROOM",
+
+  FILTER:"FIlTER_ROOM",
+
+  DETAIL: "GET_DETAIL",
+
+}

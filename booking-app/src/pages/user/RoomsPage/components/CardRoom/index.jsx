@@ -1,18 +1,20 @@
-import { Rate } from "antd";
-import React from "react";
+import { Rate, Image } from "antd";
+import { IMAGES } from "constants/images.constants";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaBed, FaMapMarkerAlt } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
 import { Link } from "react-router-dom";
+
 import "./CardRoom.scss";
 
 function CardRoom(props) {
   const { t } = useTranslation();
+  const [visible, setVisible] = useState(false);
   const { img, name, description, services, price, rate, map, off } = props;
-  console.log("🚀 ~ file: index.jsx ~ line 10 ~ CardRoom ~ services", services);
 
   return (
-    <div className="card-room">
+    <div className="card-room" data-aos="fade-up">
       {off && (
         <div class="wrap wrap-green">
           <span class="ribbon">off {off}</span>
@@ -20,10 +22,25 @@ function CardRoom(props) {
       )}
 
       <div className="card-room__img">
-        <img src={img} alt="" />
+        <Image
+          className="img"
+          preview={{ visible: false }}
+          width={"100%"}
+          src={img}
+          onClick={() => setVisible(true)}
+        />
+        <div style={{ display: "none" }}>
+          <Image.PreviewGroup preview={{ visible, onVisibleChange: (vis) => setVisible(vis) }}>
+            <Image src={IMAGES.ROOM2} />
+            <Image src={IMAGES.ROOM3} />
+            <Image src={IMAGES.ROOM4} />
+          </Image.PreviewGroup>
+        </div>
       </div>
       <div className="card-room__content">
-        <Link to="/rooms/1"><div className="card-room__name">{t(name)}</div></Link>
+        <Link to="/rooms/1">
+          <div className="card-room__name">{t(name)}</div>
+        </Link>
         <div className="card-room__rate">
           <Rate disabled allowHalf defaultValue={rate} className="rate" />
           <div className="map">
@@ -37,7 +54,7 @@ function CardRoom(props) {
           {services.map((serviceItem) => (
             <div className="card-room__services-item">
               <span>
-                <GiCheckMark />
+                <FaBed />
               </span>
               <p>{t(serviceItem)}</p>
             </div>

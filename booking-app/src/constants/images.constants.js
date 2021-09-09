@@ -12,6 +12,10 @@ import ROOM5 from "assets/images/rooms/xroom-5_luxury-suite.jpg";
 import ROOM6 from "assets/images/rooms/xroom-6_luxury-suite.jpg";
 import ROOM7 from "assets/images/rooms/xroom-7_luxury-suite.jpg";
 import ROOM8 from "assets/images/rooms/xroom-8_luxury-suite.jpg";
+import LINE1 from "assets/images/line1.webp";
+import LINE2 from "assets/images/line2.webp";
+import ABOUT3 from "assets/images/about3.jpg";
+import STARS from "assets/images/stars.png";
 const LIST_ROOM = [
   ROOM1,
   ROOM5,
@@ -33,5 +37,9 @@ export const IMAGES = {
   ROOM5,
   ROOM6,
   ROOM7,
-  ROOM8
+  ROOM8,
+  LINE1,
+  LINE2,
+  ABOUT3,
+  STARS
 };

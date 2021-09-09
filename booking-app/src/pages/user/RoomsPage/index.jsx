@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import MakeReservation from "../HomePage/components/MakeReservation";
 import CardRoom from "./components/CardRoom";
 import FilterRooms from "./components/FilterRooms";
+import { IMAGES } from "constants/images.constants";
 import "./RoomsPage.scss";
 function RoomsPage(props) {
   const { t } = useTranslation();
@@ -17,14 +18,20 @@ function RoomsPage(props) {
     <div className="rooms-page">
       <div className="rooms-page__banner">
         <div className="rooms-page__banner-content">
+          <div className="line-1">
+            <img src={IMAGES.LINE1} alt="" />
+          </div>
           <div className="heading">Royal Luxury Hotel</div>
           <div className="title">{t(" Our Featured Room List")}</div>
-          <div className="rooms-page__reservation">
-            <MakeReservation />
+          <div className="line-2">
+            <img src={IMAGES.LINE2} alt="" />
           </div>
         </div>
       </div>
       <div className="rooms-page__body">
+        <div className="rooms-page__reservation">
+          <MakeReservation />
+        </div>
         <div className="container">
           <div className="rooms-page__filter">
             <FilterRooms />
