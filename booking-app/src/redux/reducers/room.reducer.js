@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ROOM_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants";
+import { ROOM_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants/index";
 
 
 const initialState = {

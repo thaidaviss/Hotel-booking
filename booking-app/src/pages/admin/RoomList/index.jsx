@@ -6,11 +6,12 @@ import moment from "moment";
 import history from "utils/history";
 import './RoomList.scss';
 import { getRoomListAction, getTypeListAction } from "redux/actions";
+import { ROUTER_URL } from "constants/index";
 // import { ROUTER_URL } from "constants/index";
 
 
 function RoomListPage (props) {
-  
+
   const { roomList } = useSelector((state) => state.roomReducer);
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
@@ -38,8 +39,8 @@ function RoomListPage (props) {
     },
     {
       title: 'Type Room',
-      dataIndex: 'typeId',
-      key: 'typeId',
+      dataIndex: 'typeRoomId',
+      key: 'typeRoomId',
       render: (value) => {
         const typeData = typeList.data.find((item) => item.id === value);
         if (typeData) return typeData.name;
@@ -79,7 +80,7 @@ function RoomListPage (props) {
               className="edit-room-btn"
               type="primary"
               ghost
-              onClick={() => history.replace(`/room/${record.id}/edit`)}
+              onClick={() => history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`)}
             >
               Edit
             </Button>
@@ -106,7 +107,7 @@ function RoomListPage (props) {
           type="primary"
           size="large"
           icon={<PlusOutlined />}
-          onClick={() => history.replace(`/room/create`)}
+          onClick={() => history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`)}
         >
           New Room
         </Button>

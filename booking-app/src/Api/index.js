@@ -5,3 +5,4 @@ export * from "./constants.api";
 export * from "./user.api";
 export * from "./auth.api";
 export * from "./room.api";
+export * from "./typeRoom.api"
