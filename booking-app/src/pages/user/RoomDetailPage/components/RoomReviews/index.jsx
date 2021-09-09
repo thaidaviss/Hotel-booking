@@ -4,7 +4,6 @@ import { Rate, Checkbox, Button } from "antd";
 import { useTranslation } from "react-i18next";
 import ReviewModal from "../ReviewModal";
 import "./RoomReviews.scss";
-import ReviewModal from "../../ReviewModal";
 const options_rate = [
   {
     label: <Rate disabled allowHalf defaultValue={5} className="rate" />,
@@ -65,10 +64,7 @@ function RoomReviews(props) {
         </div>
         <ReviewModal isShowReviewModal={isModalReview} setIsShowReviewModal={setIsModalReview} />
       </div>
-      <ReviewModal
-        isShowReviewModal={isShowReviewModal}
-        setIsShowReviewModal={setIsShowReviewModal}
-      />
+    
     </div>
   );
 }

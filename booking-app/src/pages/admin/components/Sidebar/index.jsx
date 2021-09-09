@@ -1,3 +1,4 @@
+import { URL_API } from 'Api';
 import { IMAGES } from 'constants/images.constants';
 import React from 'react';
 import { MdAccountBalance, MdAttachMoney, MdDashboard, MdEventAvailable, MdFiberNew, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocalHotel, MdPermIdentity, MdRoom, MdStyle } from "react-icons/md";
