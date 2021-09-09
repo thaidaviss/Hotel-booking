@@ -32,14 +32,14 @@ function RoomListPage (props) {
       key: '1',
       room: 'Suite Room',
       number: 12,
-      locationId: 1,
+      maxGuest: 1,
       price: 200,
     },
     {
       key: '2',
       room: 'Deluxe Room',
       number: 4,
-      locationId: 2,
+      maxGuest: 2,
       price: 350,
     },
   ];
@@ -53,13 +53,9 @@ function RoomListPage (props) {
     },
     { title: 'Number', dataIndex: 'number', key: 'number' },
     { 
-      title: 'Location', 
-      dataIndex: 'locationId', 
-      key: 'locationId',
-      render: (value) => {
-        const locationData = locationList.find((item) => item.locationId === value);
-        if (locationData) return locationData.name;
-      }, 
+      title: 'Max Guest', 
+      dataIndex: 'maxGuest', 
+      key: 'maxGuest',
     },
     { title: 'Price', dataIndex: 'price', key: 'price' },
     {

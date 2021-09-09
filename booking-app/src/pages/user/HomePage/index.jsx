@@ -3,9 +3,7 @@ import About1 from "assets/images/about1.webp";
 import About2 from "assets/images/about2.webp";
 import LoadVideo from "assets/images/load.png";
 import PillowImg from "assets/images/pillow.png";
-import Rooms1 from "assets/images/rooms1.webp";
-import Rooms2 from "assets/images/rooms2.webp";
-import Rooms3 from "assets/images/rooms3.webp";
+
 import SpecialImg from "assets/images/special.png";
 import { IMAGES } from "constants/images.constants";
 import { ListBlog, ListFeedBack, ListService } from "constants/index";
