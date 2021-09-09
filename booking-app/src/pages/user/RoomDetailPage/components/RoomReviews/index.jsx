@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import ReviewModal from "../ReviewModal";
 import "./RoomReviews.scss"
 import ReviewModal from "../../ReviewModal";
+
+
 const options_rate = [
   {
     label: <Rate disabled allowHalf defaultValue={5} className="rate" />,

@@ -1,6 +1,5 @@
 {
-  "users": [
-    {
+  "users": [{
       "email": "thaidavis11999@gmail.com",
       "password": "$2a$10$laNofFEu83SwkNYTwnLAE.iK10DG1SzCFYJJi1EBj4wSA3uwLlBuW",
       "username": "wiliam1307",
@@ -23,8 +22,7 @@
     }
   ],
   "profiles": [],
-  "locations": [
-    {
+  "locations": [{
       "id": 1,
       "name": "Đà Nẵng",
       "address": "38 Đống Đa, quận Hải Châu, Tp. Đà Nẵng",
@@ -56,23 +54,58 @@
   "typeRooms": [
     {
       "id": 1,
-      "name": "Superior Room Single"
+      "name": "Superior Room Single",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
     },
     {
       "id": 2,
-      "name": "Superior Room Twin"
+      "name": "Superior Room Twin",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
     },
     {
       "id": 3,
-      "name": "Deluxe Room"
+      "name": "Deluxe Room",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
     },
     {
       "id": 4,
-      "name": "Suite Room"
+      "name": "Suite Room",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
     },
     {
       "id": 5,
-      "name": "Luxury Suite Room"
+      "name": "Luxury Suite Room",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
     }
   ],
   "rooms": [
@@ -80,49 +113,17 @@
       "id": 1,
       "name": "101",
       "typeRoomId": 2,
-      "description": "",
-      "price": 300,
-      "discountId": 1,
       "rating": "",
-      "maxGuest": 4,
       "createdAt": 1631092999151,
-      "updatedAt": 1631093012330,
-      "images": [
-        ""
-      ],
-      "services": []
+      "updatedAt": 1631093012330
     },
     {
       "id": 2,
       "name": "102",
       "typeRoomId": 2,
-      "description": "",
-      "price": 320,
-      "discountId": 3,
       "rating": "",
-      "maxGuest": 4,
       "createdAt": 1631092999151,
-      "updatedAt": 1631093012330,
-      "images": [
-        ""
-      ],
-      "services": []
-    },
-    {
-      "id": 3,
-      "name": "103",
-      "typeRoomId": 3,
-      "description": "",
-      "price": 400,
-      "discountId": 1,
-      "rating": "",
-      "maxGuest": 4,
-      "createdAt": 1631092999151,
-      "updatedAt": 1631093012330,
-      "images": [
-        ""
-      ],
-      "services": []
+      "updatedAt": 1631093012330
     }
   ],
   "comments": [
@@ -144,18 +145,21 @@
     {
       "id": 1,
       "name": "SPR-010315",
+      "typeRoomId": 1,
       "applicable": 1,
       "expiration": 2
     },
     {
       "id": 2,
       "name": "SUM-040620",
+      "typeRoomId": 1,
       "applicable": 1,
       "expiration": 2
     },
     {
       "id": 3,
       "name": "FAL-070925",
+      "typeRoomId": 1,
       "applicable": 1,
       "expiration": 2
     }
