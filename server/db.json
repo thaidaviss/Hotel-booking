@@ -1,0 +1,192 @@
+{
+  "users": [{
+      "email": "thaidavis11999@gmail.com",
+      "password": "$2a$10$laNofFEu83SwkNYTwnLAE.iK10DG1SzCFYJJi1EBj4wSA3uwLlBuW",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "thaidaviss1999@gmail.com",
+      "password": "$2a$10$SxiRdzmGhvdN59vuN0MJn.47LZyKR29wyHElza.jYvNVD3b6vX3eC",
+      "username": "wiliam1307",
+      "role": "admin",
+      "id": 4
+    },
+    {
+      "email": "thaidavis1999@gmail.com",
+      "password": "$2a$10$Py8nCtppU6wwhHgq.GpeiOUjTTt3ihhizp7vMazfHSKltV7DCUd0y",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 5
+    }
+  ],
+  "profiles": [],
+  "locations": [{
+      "id": 1,
+      "name": "Đà Nẵng",
+      "address": "38 Đống Đa, quận Hải Châu, Tp. Đà Nẵng",
+      "createdAt": 1628339995854,
+      "updatedAt": 1628339995854
+    },
+    {
+      "id": 2,
+      "name": "TP. Hồ Chí Minh",
+      "address": "151 Nguyễn Văn Bình, quận 1, Tp. Hồ Chí Minh",
+      "createdAt": 1628339995854,
+      "updatedAt": 1628339995854
+    },
+    {
+      "id": 3,
+      "name": "Hà Nội",
+      "address": "90 Lý Thường Kiệt, quận Hoàn Kiếm, Tp. Hà Nội",
+      "createdAt": 1628339995854,
+      "updatedAt": 1628339995854
+    },
+    {
+      "name": "Quảng Nam",
+      "address": "15 Phan Chu Trinh, Tam Kỳ, Quảng Nam",
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330,
+      "id": 4
+    }
+  ],
+  "typeRooms": [
+    {
+      "id": 1,
+      "name": "Superior Room Single",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
+    },
+    {
+      "id": 2,
+      "name": "Superior Room Twin",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
+    },
+    {
+      "id": 3,
+      "name": "Deluxe Room",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
+    },
+    {
+      "id": 4,
+      "name": "Suite Room",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
+    },
+    {
+      "id": 5,
+      "name": "Luxury Suite Room",
+      "description": "",
+      "maxGuest": 4,
+      "price": 300,
+      "images": [
+        ""
+      ],
+      "services": []
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "name": "101",
+      "typeRoomId": 2,
+      "rating": "",
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 2,
+      "name": "102",
+      "typeRoomId": 2,
+      "rating": "",
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "typeRoomId": 1,
+      "userId":"",
+      "rating": 1,
+      "title": "",
+      "review": "",
+      "serviceRating": 5,
+      "roomRating": 5,
+      "cleanlinessRating": 5,
+      "foodRating": 5,
+      "image": []
+    }
+  ],
+  "discounts": [
+    {
+      "id": 1,
+      "name": "SPR-010315",
+      "typeRoomId": 1,
+      "applicable": 1,
+      "expiration": 2
+    },
+    {
+      "id": 2,
+      "name": "SUM-040620",
+      "typeRoomId": 1,
+      "applicable": 1,
+      "expiration": 2
+    },
+    {
+      "id": 3,
+      "name": "FAL-070925",
+      "typeRoomId": 1,
+      "applicable": 1,
+      "expiration": 2
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "",
+      "description": "",
+      "author": "",
+      "image": ""
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "locationId": 1,
+      "typeRoomId": 1,
+      "profileId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomCode": 101,
+      "checkOut": 1,
+      "checkIn": 2,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+    }
+  ]
+}

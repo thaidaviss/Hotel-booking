@@ -1,0 +1,6 @@
+export const USER_ACTION = {
+  LOGIN: 'LOGIN',
+  LOGOUT:'LOGOUT',
+  REGISTER:'REGISTER',
+  CHECK_LOGIN: "IS_LOGIN",
+}
