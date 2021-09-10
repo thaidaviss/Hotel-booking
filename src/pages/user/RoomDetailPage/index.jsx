@@ -9,6 +9,7 @@ import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import CheckVariable from "./components/CheckVariable";
 import "./RoomDetailPage.scss";
+import { Progress } from "antd";
 
 
 const review = {

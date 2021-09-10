@@ -2,47 +2,28 @@ import { BackTop } from "antd";
 import About1 from "assets/images/about1.webp";
 import About2 from "assets/images/about2.webp";
 import LoadVideo from "assets/images/load.png";
-<<<<<<< HEAD:booking-app/src/pages/user/HomePage/index.jsx
-
-import "./HomePage.scss";
-
-=======
-import News1 from "assets/images/news1.jpg";
-import News2 from "assets/images/news2.jpg";
-import News3 from "assets/images/news3.jpg";
 import PillowImg from "assets/images/pillow.png";
-
 import SpecialImg from "assets/images/special.png";
 import { IMAGES } from "constants/images.constants";
 import { ListBlog, ListFeedBack, ListService } from "constants/index";
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { BiCalendarCheck } from "react-icons/bi";
-import { FaAngleDoubleUp, FaBath, FaHeadphonesAlt, FaSwimmingPool } from "react-icons/fa";
-import { IoIosWifi } from "react-icons/io";
-import { MdRestaurant } from "react-icons/md";
+import { FaAngleDoubleUp } from "react-icons/fa";
+import { RiStarFill } from "react-icons/ri";
 import Slider from "react-slick";
->>>>>>> b6386eeb53220018ff8e9da6716087592eb15dc6:src/pages/user/HomePage/index.jsx
 import CardAbout from "./components/CardAbout";
 import CardBlog from "./components/CardBlog";
 import CardFeedBack from "./components/CardFeedBack";
-import CardRoom from "./components/CardRoom";
 import CardService from "./components/CardService";
 import FeatureRoom from "./components/FeatureRoom";
 import MakeReservation from "./components/MakeReservation";
-<<<<<<< HEAD:booking-app/src/pages/user/HomePage/index.jsx
-import CardFeedBack from "./components/CardFeedBack";
-import CardBlog from "./components/CardBlog";
-import { ListBlog, ListFeedBack, ListService } from "constants/index";
-
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { BackTop } from "antd";
-import { FaAngleDoubleUp } from "react-icons/fa";
-=======
 import SliderRooms from "./components/SliderRooms";
 import "./HomePage.scss";
->>>>>>> b6386eeb53220018ff8e9da6716087592eb15dc6:src/pages/user/HomePage/index.jsx
+
+
+
+
 
 function HomePage(props) {
   const { t } = useTranslation();

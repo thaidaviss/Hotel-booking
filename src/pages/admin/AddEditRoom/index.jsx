@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Select, InputNumber, Rate, Row, Space, Button } from "antd";
 import "./AddEditRoom.scss";
 import history from "utils/history";
-import { createRoomAction, editRoomAction, getRoomDetailAction } from "redux/actions";
+import { createRoomAction, editRoomAction, getRoomDetailAction, getRoomListAction, getTypeListAction } from "redux/actions";
 
 
 

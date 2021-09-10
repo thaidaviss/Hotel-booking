@@ -15,7 +15,7 @@ LoginPage.propTypes = {};
 
 function LoginPage(props) {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userReducer.userInfo);
+  const userInfo = useSelector((state) => state.userReducer?.userInfo);
   const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState("1");
@@ -199,7 +199,7 @@ function LoginPage(props) {
                 </div>
 
                 <Form.Item>
-                  <Button type="primary" htmlType="submit" loading={userInfo.loading} block>
+                  <Button type="primary" htmlType="submit" loading={userInfo?.loading} block>
                     {t("Register")}
                   </Button>
                 </Form.Item>
