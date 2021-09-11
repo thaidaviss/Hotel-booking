@@ -166,7 +166,7 @@
       "rating": 4,
       "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
       "maxGuest": 4,
-      "price": 300,
+      "price": 450,
       "images": [
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
@@ -239,7 +239,7 @@
       "id": 1,
       "name": "101",
       "typeRoomId": 2,
-      "rating": "",
+      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -247,7 +247,7 @@
       "id": 2,
       "name": "102",
       "typeRoomId": 2,
-      "rating": "",
+      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     }

@@ -1,7 +1,7 @@
 
 import { ROUTER_URL } from "constants/index";
 import PrivateLayout from "layouts/PrivateLayout";
-import AddEditRoomPage from "pages/admin/AddEditRoom";
+import AddEditTypePage from "pages/admin/AddEditType";
 import BlogListPage from "pages/admin/BlogList";
 import DashBoardPage from "pages/admin/Dashboard";
 import DiscountListPage from "pages/admin/DiscountList";
@@ -47,8 +47,8 @@ function AdminLayout(props) {
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.BLOGS}`} component={BlogListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.LOCATION}`} component={LocationListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOM_TYPES}`} component={RoomTypesPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditRoomPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditRoomPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditTypePage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
 
               <NotFoundPage />
 

@@ -1,7 +1,8 @@
-import axios from "axios";
 import { put, takeEvery } from "@redux-saga/core/effects";
-import { FAILURE, TYPE_ACTION, REQUEST, SUCCESS } from "redux/constants";
-import { URL_API,typeRoomAPI } from "Api/index";
+import { typeRoomAPI } from "Api/index";
+import { ROUTER_URL } from "constants/index";
+import { FAILURE, REQUEST, SUCCESS, TYPE_ACTION } from "redux/constants";
+import history from "utils/history";
 
 
 function* getTypeListSaga(action) {
@@ -44,6 +45,7 @@ function* createTypeSaga(action) {
         data: result.data
       },
     });
+    yield history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}`);
   } catch (e) {
     yield put({ type: FAILURE(TYPE_ACTION.CREATE_TYPE), payload: e.message });
   }
@@ -52,13 +54,14 @@ function* createTypeSaga(action) {
 function* editTypeSaga(action) {
   try {
     const { id, data } = action.payload;
-    const result = yield axios.patch(`${URL_API}/types/${id}`, data);
+    const result = yield typeRoomAPI.editTypeRoomInList(id, data);
     yield put({
       type: SUCCESS(TYPE_ACTION.EDIT_TYPE),
       payload: {
         data: result.data,
       }
     });
+    yield history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}`);
   } catch (e) {
     yield put({ type: FAILURE(TYPE_ACTION.EDIT_TYPE), payload: e.message });
   }
@@ -67,7 +70,8 @@ function* editTypeSaga(action) {
 function* deleteTypeSaga(action) {
   try {
     const { id } = action.payload;
-    yield axios.delete(`${URL_API}/types/${id}`);
+    yield typeRoomAPI.deleteTypeRoomInList(id);
+    // yield axios.delete(`${URL_API}/types/${id}`);
     yield put({
       type: SUCCESS(TYPE_ACTION.DELETE_TYPE),
       payload: { id }

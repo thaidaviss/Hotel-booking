@@ -20,6 +20,11 @@ const initialState = {
     load: false,
     error: null,
   },
+  typeDetail: {
+    data: {},
+    load: false,
+    error: null,
+  },
 };
 
 const typeReducer = createReducer(initialState, {
@@ -86,6 +91,39 @@ const typeReducer = createReducer(initialState, {
       ...state,
       typeList: {
         ...state.typeList,
+        load: false,
+        error,
+      },
+    }
+  },
+
+  [REQUEST(TYPE_ACTION.GET_TYPE_DETAIL)]: (state, action) => {
+    return {
+      ...state,
+      typeDetail: {
+        ...state.typeDetail,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(TYPE_ACTION.GET_TYPE_DETAIL)]: (state, action) => {
+    const { data } = action.payload;
+    return {
+      ...state,
+      typeDetail: {
+        ...state.typeDetail,
+        data,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(TYPE_ACTION.GET_TYPE_DETAIL)]: (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      typeDetail: {
+        ...state.typeDetail,
         load: false,
         error,
       },

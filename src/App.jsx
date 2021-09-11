@@ -19,7 +19,6 @@ import history from "utils/history";
 import "./App.css";
 
 
-
 function App() {
   useEffect(() => {
     AOS.init();

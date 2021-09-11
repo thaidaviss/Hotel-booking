@@ -1,4 +1,4 @@
-import IMG_ROOM from "../assets/images/room1.jpg"
+// import IMG_ROOM from "../assets/images/room1.jpg"
 import {
   IMAGES
 } from "./images.constants"
