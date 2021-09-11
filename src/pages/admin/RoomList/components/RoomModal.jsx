@@ -1,15 +1,16 @@
-import { Modal, Form, Input, Select, InputNumber } from 'antd';
+import { Modal, Form, Input, Select, InputNumber, Rate } from 'antd';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './RoomModal.scss';
 
 const RoomModal = ({
   isShowRoomModal,
   setIsShowRoomModal,
-  locationList,
   modifyRoomData,
+  handleSubmitForm,
 }) => {
   const [modifyRoomForm] = Form.useForm();
+  const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,9 +20,9 @@ const RoomModal = ({
   }, [isShowRoomModal]);
 
   function renderTypeOptions() {
-    return locationList.map((locationItem, locationIndex) => (
-      <Select.Option value={locationItem.id} key={`location-${locationItem.id}`}>
-        {locationItem.name}
+    return typeList.data.map((typeItem, typeIndex) => (
+      <Select.Option value={typeItem.id} key={`type-${typeItem.id}`}>
+        {typeItem.name}
       </Select.Option>
     ));
   }
@@ -39,41 +40,32 @@ const RoomModal = ({
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 20 }}
         initialValues={modifyRoomData}
-        onFinish={(values) => console.log(values)}
+        onFinish={(values) => handleSubmitForm(values)}
       >
         <Form.Item
-          label="Room"
-          name="room"
-          rules={[{ required: true, message: "Please input name of room!" }]}
+          label="Name"
+          name="name"
+          rules={[{ required: true, message: "Please input code of room!" }]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item
-          label="Number"
-          name="number"
-          rules={[{ required: true, message: "Please input the number of room!" }]}
+          label="Type Room"
+          name="typeRoomId"
+          rules={[{ required: true, message: "Please input type of room!" }]}
           >
-          <InputNumber style={{ width: "100%" }} />
+          <Select placeholder="Please select your type room!">
+              {renderTypeOptions()}
+            </Select>
         </Form.Item>
 
           <Form.Item
-            label="Location"
-            name="locationId"
-            rules={[{ required: true, message: "Please input your location!" }]}
+            label="Rating"
+            name="rating"
           >
-            <Select placeholder="Please select your location!">
-              {renderTypeOptions()}
-            </Select>
+            <Rate defaultValue={5} value={5} style={{ width: "100%" }} />
           </Form.Item>
-
-        <Form.Item
-          label="Price"
-          name="price"
-          rules={[{ required: true, message: "Please input your price!" }]}
-        >
-          <InputNumber style={{ width: "100%" }} />
-        </Form.Item>
       </Form>
     </Modal>
   );

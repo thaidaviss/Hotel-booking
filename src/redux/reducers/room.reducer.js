@@ -49,38 +49,38 @@ const roomReducer = createReducer(initialState, {
     }
   },
 
-  [REQUEST(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
-    return {
-      ...state,
-      roomDetail: {
-        ...state.roomDetail,
-        load: true,
-      },
-    };
-  },
-  [SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
-    const { data } = action.payload;
-    return {
-      ...state,
-      roomDetail: {
-        ...state.roomDetail,
-        data,
-        load: false,
-        error: null,
-      },
-    }
-  },
-  [FAILURE(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
-    const { error } = action.payload;
-    return {
-      ...state,
-      roomDetail: {
-        ...state.roomDetail,
-        load: false,
-        error,
-      },
-    }
-  },
+  // [REQUEST(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
+  //   return {
+  //     ...state,
+  //     roomDetail: {
+  //       ...state.roomDetail,
+  //       load: true,
+  //     },
+  //   };
+  // },
+  // [SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
+  //   const { data } = action.payload;
+  //   return {
+  //     ...state,
+  //     roomDetail: {
+  //       ...state.roomDetail,
+  //       data,
+  //       load: false,
+  //       error: null,
+  //     },
+  //   }
+  // },
+  // [FAILURE(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
+  //   const { error } = action.payload;
+  //   return {
+  //     ...state,
+  //     roomDetail: {
+  //       ...state.roomDetail,
+  //       load: false,
+  //       error,
+  //     },
+  //   }
+  // },
 
   [SUCCESS(ROOM_ACTION.CREATE_ROOM)]: (state, action) => {
     const { data } = action.payload;

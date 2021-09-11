@@ -1,16 +1,19 @@
 import { Button, Popconfirm, Space, Table } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import history from "utils/history";
 import './RoomList.scss';
-import { getRoomListAction, getTypeListAction } from "redux/actions";
+import { createRoomAction, deleteRoomAction, editRoomAction, getRoomListAction, getTypeListAction } from "redux/actions";
 import { ROUTER_URL } from "constants/index";
-// import { ROUTER_URL } from "constants/index";
+import RoomModal from "./components/RoomModal";
 
 
 function RoomListPage (props) {
+  // "" "edit" "create"
+  const [isShowRoomModal, setIsShowRoomModal] = useState('');
+  const [modifyRoomData, setModifyRoomData] = useState({});
 
   const { roomList } = useSelector((state) => state.roomReducer);
   const { typeList } = useSelector((state) => state.typeReducer);
@@ -22,6 +25,19 @@ function RoomListPage (props) {
     dispatch(getRoomListAction());
   }, []);
 
+  function handleSubmitForm(values) {
+    if (isShowRoomModal === 'create') {
+      dispatch(createRoomAction({
+        data: values,
+      }));
+    } else {
+      dispatch(editRoomAction({
+        id: modifyRoomData.id,
+        data: values,
+      }));
+    }
+    setIsShowRoomModal('');
+  }
 
   const roomData = roomList.data.map((roomItem, roomIndex) => {
     return {
@@ -41,19 +57,11 @@ function RoomListPage (props) {
       title: 'Type Room',
       dataIndex: 'typeRoomId',
       key: 'typeRoomId',
-      render: (value) => {
-        const typeData = typeList.data.find((item) => item.id === value);
+      render: (id) => {
+        const typeData = typeList.data.find((item) => item.id === id);
         if (typeData) return typeData.name;
       }
     },
-    { title: 'Description', dataIndex: 'description', key: 'description' },
-    {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-      render: (value) => value.toLocaleString(),
-    },
-    { title: 'Max Guest', dataIndex: 'maxGuest', key: 'maxGuest' },
     { title: 'Rating', dataIndex: 'rating', key: 'rating' },
     {
       title: 'Create At',
@@ -80,13 +88,18 @@ function RoomListPage (props) {
               className="edit-room-btn"
               type="primary"
               ghost
-              onClick={() => history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`)}
+              onClick={() => 
+                {
+                  // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`);
+                  setIsShowRoomModal('edit');
+                  setModifyRoomData(record);
+                }}
             >
               Edit
             </Button>
             <Popconfirm
               title="Are you sure to delete this room?"
-              onConfirm={() => null}
+              onConfirm={() => dispatch(deleteRoomAction({ id: record.id }))}
               onCancel={() => null}
               okText="Yes"
               cancelText="No"
@@ -107,7 +120,13 @@ function RoomListPage (props) {
           type="primary"
           size="large"
           icon={<PlusOutlined />}
-          onClick={() => history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`)}
+          onClick={() => 
+            {
+              // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
+              setIsShowRoomModal("create");
+              setModifyRoomData({ name: "", rating: 0 });
+            }
+          }
         >
           New Room
         </Button>
@@ -116,11 +135,16 @@ function RoomListPage (props) {
         <Table 
           dataSource={roomData} 
           columns={roomColumns} 
-          scroll={{x: 1000}} 
           loading={roomList.load}
+          scroll={{x: 1000}}
         />
       </div>
-
+      <RoomModal 
+        isShowRoomModal={isShowRoomModal}
+        setIsShowRoomModal={setIsShowRoomModal}
+        modifyRoomData={modifyRoomData}
+        handleSubmitForm={handleSubmitForm}
+      />
     </div>
   );
 }

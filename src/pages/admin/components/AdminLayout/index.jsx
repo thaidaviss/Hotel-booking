@@ -13,7 +13,7 @@ import RoomListPage from "pages/admin/RoomList";
 import UserListPage from "pages/admin/UserList";
 import LocationListPage from "pages/admin/LocationList";
 import DiscountListPage from "pages/admin/DiscountList";
-import AddEditRoomPage from "pages/admin/AddEditRoom";
+import AddEditTypePage from "pages/admin/AddEditType";
 import NotFoundPage from "pages/user/NotFound";
 
 import "./AdminLayout.scss";
@@ -46,8 +46,8 @@ function AdminLayout(props) {
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.BLOGS}`} component={BlogListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.LOCATION}`} component={LocationListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOM_TYPES}`} component={RoomTypesPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditRoomPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditRoomPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditTypePage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
 
               <NotFoundPage />
 

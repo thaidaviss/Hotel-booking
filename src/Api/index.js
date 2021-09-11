@@ -1,4 +1,4 @@
-export const URL_API = "http://localhost:3001/api"
+export const URL_API = "https://booking-app-wiliam.herokuapp.com/api"
 export * from "./auth.api";
 export * from "./booking.api";
 export * from "./constants.api";

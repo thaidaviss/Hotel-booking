@@ -1,10 +1,10 @@
-import { Button, Checkbox, Form, Input, notification, Tabs } from "antd";
-import { IMAGES } from "constants/images.constants";
-import { ROUTER_URL } from "constants/index";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Button, Checkbox, Form, Input, Tabs } from "antd";
+import { IMAGES } from "constants/images.constants";
+import { ROUTER_URL } from "constants/index";
+import { useDispatch, useSelector } from "react-redux";
 import { loginAction, registerAction } from "redux/actions";
 import history from "utils/history";
 import "./LoginPage.scss";
@@ -15,7 +15,7 @@ LoginPage.propTypes = {};
 
 function LoginPage(props) {
   const dispatch = useDispatch();
-  const userInfo = useSelector((state) => state.userReducer.userInfo);
+  const { userInfo } = useSelector((state) => state.userReducer);
   const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState("1");

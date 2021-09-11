@@ -1,3 +1,4 @@
+import { Progress } from "antd";
 import { IMAGES } from "constants/images.constants";
 import { LIST_ROOM } from "constants/rooms.constant";
 import React from "react";
@@ -7,7 +8,6 @@ import { RiComputerLine } from "react-icons/ri";
 import MakeReservation from "../HomePage/components/MakeReservation";
 import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
-import CheckVariable from "./components/CheckVariable";
 import "./RoomDetailPage.scss";
 
 

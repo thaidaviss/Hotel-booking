@@ -36,7 +36,7 @@
       .title {
         margin: 0;
         padding: 0;
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         font-family: $font-family-heading;
         font-weight: 700;
         color: $primary;
@@ -92,7 +92,7 @@
 
     span.item-title {
       padding-left: 1rem;
-      transition: all 0.25s ease-in-out;
+      // transition: all 0.25s ease-in-out;
     }
 
     .link {
@@ -203,7 +203,7 @@
 
     li span.item-title {
       display: none;
-      transition: all 0.25s ease-in-out;
+      // transition: all 0.25s ease-in-out;
     }
 
     li.sidebar__item:hover > .link--hide {

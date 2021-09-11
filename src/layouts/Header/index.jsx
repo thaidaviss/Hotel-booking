@@ -6,10 +6,7 @@ import { useTranslation } from "react-i18next";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-<<<<<<< HEAD:booking-app/src/layouts/Header/index.jsx
-=======
 
->>>>>>> b6386eeb53220018ff8e9da6716087592eb15dc6:src/layouts/Header/index.jsx
 
 function Header(props) {
   const { t, i18n } = useTranslation();

@@ -9,9 +9,7 @@ function UserListPage() {
   const [isShowUserModal, setIsShowUserModal] = useState("");
   const [modifyUserData, setModifyUserData] = useState({});
 
-  useEffect(() => {
-
-  }, []);
+ 
 
   const userData = [
     {

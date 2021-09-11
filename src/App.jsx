@@ -15,13 +15,7 @@ import { useEffect } from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import history from "utils/history";
 import "./App.css";
-import AdminLayout from "pages/admin/components/AdminLayout";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { ROUTER_URL } from "constants/index";
-import RoomDetailPage from "pages/user/RoomDetailPage";
-import UserProfile from "pages/user/UserProfile";
 
 function App() {
   useEffect(() => {

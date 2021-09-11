@@ -1,10 +1,9 @@
+import { Button, Rate } from "antd";
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
-import { Rate, Checkbox, Button } from "antd";
 import { useTranslation } from "react-i18next";
+import { FaStar } from "react-icons/fa";
 import ReviewModal from "../ReviewModal";
-import "./RoomReviews.scss"
-import ReviewModal from "../../ReviewModal";
+import "./RoomReviews.scss";
 
 
 const options_rate = [
@@ -66,7 +65,7 @@ function RoomReviews(props) {
             {t("Write a Review")}
           </Button>
         </div>
-        <ReviewModal isShowReviewModal={isModalReview} setIsShowReviewModal={setIsModalReview} />
+        <ReviewModal isShowReviewModal={isShowReviewModal} setIsShowReviewModal={setIsShowReviewModal} />
       </div>
       <ReviewModal
         isShowReviewModal={isShowReviewModal}

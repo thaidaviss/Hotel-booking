@@ -1,20 +1,17 @@
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Image, Popconfirm, Space, Table } from 'antd';
+import { ROUTER_URL } from 'constants/index';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table, Button, Popconfirm, Space } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-
-import RoomTypesModal from './components/RoomTypesModal';
-import moment from 'moment';
+import { deleteTypeAction, getTypeListAction } from 'redux/actions';
+import history from 'utils/history';
 import './RoomTypes.scss';
-import { createTypeAction, deleteRoomAction, editTypeAction, getTypeListAction } from 'redux/actions';
 
 
 
-const RoomTypesPage = () => {
-  // "", "create", "edit"
-  const [isShowTypeModal, setIsShowTypeModal] = useState('');
-  const [modifyTypeData, setModifyTypeData] = useState({});
-
+const RoomTypesPage = (props) => {
+  const [ visible, setVisible ] = useState(false);
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
   
@@ -22,43 +19,66 @@ const RoomTypesPage = () => {
     dispatch(getTypeListAction());
   }, []);
 
-  function handleSubmitForm(values) {
-    if (isShowTypeModal === 'create') {
-      dispatch(createTypeAction({
-        data: values,
-      }));
-    } else {
-      dispatch(editTypeAction({
-        id: modifyTypeData.id,
-        data: values,
-      }));
-    }
-    setIsShowTypeModal('');
-  }
 
   const roomTypesColumns = [
     {
-      title: 'Name',
+      title: 'Type of Room',
       dataIndex: 'name',
       key: 'name',
+      fixed: "left",
       width: 250,
+      render: (value, record) => {
+        return (
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Image
+              className="typeRoom-images"
+              preview={{ visible: false }}
+              width={50}
+              src={record.images[0]}
+            />
+            <p style={{ paddingLeft: "1rem" }}>{value}</p>
+            <div style={{ display: "none" }}>
+              <Image.PreviewGroup
+                preview={{ visible, onVisibleChange: (boolean) => setVisible(boolean) }}
+              >
+                <Image src={record.images[0]} />
+                <Image src={record.images[1]} />
+                <Image src={record.images[2]} />
+                <Image src={record.images[3]} />
+              </Image.PreviewGroup>
+            </div>
+          </div>
+        );
+      }
+    },
+    { title: 'Description', dataIndex: 'description', key: 'description', width: 650 },
+    { title: 'Type of View', dataIndex: 'view', key: 'view', width: 200 },
+    { title: 'Max Guest', dataIndex: 'maxGuest', key: 'maxGuest', width: 150 },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      width: 150,
+      render: (value) => value?.toLocaleString(),
     },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
       key: 'createdAt',
+      width: 150,
       render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
     },
     {
       title: 'Update At',
       dataIndex: 'updatedAt',
       key: 'updatedAt',
+      width: 150,
       render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
     },
     {
       title: 'Action',
       dataIndex: 'action',
-      width: 230,
+      width: 200,
       fixed: "right",
       key: 'action',
       render: (_, record) => {
@@ -69,15 +89,17 @@ const RoomTypesPage = () => {
               type="primary"
               ghost
               onClick={() => {
-                setIsShowTypeModal('edit');
-                setModifyTypeData(record);
+                // dispatch(editTypeAction(record.id));
+                history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`);
+                // setIsShowTypeModal('edit');
+                // setModifyTypeData(record);
               }}
             >
               Edit
             </Button>
             <Popconfirm
               title="Are you sure to delete this type?"
-              onConfirm={() => dispatch(deleteRoomAction({ id: record.id }))}
+              onConfirm={() => dispatch(deleteTypeAction({ id: record.id }))}
               onCancel={() => null}
               okText="Yes"
               cancelText="No"
@@ -106,23 +128,29 @@ const RoomTypesPage = () => {
           size="large"
           icon={<PlusOutlined />}
           onClick={() => {
-            setIsShowTypeModal("create");
-            setModifyTypeData({ name: "" });
+            // setIsShowTypeModal("create");
+            // setModifyTypeData({ name: "" });
+            history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
           }}
         >
           New Room Type
         </Button>
       </div>
       <div className="roomType-list">
-        <Table dataSource={roomTypesData} columns={roomTypesColumns} loading={typeList.load} />
+        <Table 
+          dataSource={roomTypesData} 
+          columns={roomTypesColumns} 
+          loading={typeList.load} 
+          scroll={{x: 2500}}
+        />
       </div>
 
-      <RoomTypesModal
+      {/* <RoomTypesModal
         isShowTypeModal={isShowTypeModal}
         setIsShowTypeModal={setIsShowTypeModal}
         modifyTypeData={modifyTypeData}
         handleSubmitForm={handleSubmitForm}
-      />
+      /> */}
     </div>
   );
 }

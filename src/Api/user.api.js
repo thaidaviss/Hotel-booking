@@ -1,5 +1,5 @@
 import { API } from "./constants.api";
-import queryString from "query-string"
+// import queryString from "query-string"
 import { URL_API } from "Api";
 
 export const UserAPI = {
