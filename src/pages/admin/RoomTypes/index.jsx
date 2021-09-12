@@ -30,7 +30,10 @@ const RoomTypesPage = (props) => {
       width: 250,
       render: (value, record) => {
         return (
-          <ImageSliderItem images = {record.images} value={value}/>
+          <ImageSliderItem 
+            images={record?.images ? record.images : []} 
+            value={value}
+          />
         );
       }
     },

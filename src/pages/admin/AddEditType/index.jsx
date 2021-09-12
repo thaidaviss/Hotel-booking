@@ -13,7 +13,7 @@ const { TextArea } = Input;
 const AddEditTypePage = (props) => {
   const [ uploadImages, setUploadImages ] = useState([]);
   const [modifyRoomForm] = Form.useForm();
-  
+
   const { typeDetail } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
   const params = useParams();
@@ -30,11 +30,12 @@ const AddEditTypePage = (props) => {
   useEffect(() => {
     if (typeDetail.data.id) {
       modifyRoomForm.resetFields();
-      setUploadImages([...typeDetail.data.images]);
+      // setUploadImages([...typeDetail.data.images]);
     }
   }, [typeDetail.data]);
 
   function handleSubmitForm(values) {
+   
     if (typeRoomId) {
       dispatch(editTypeAction({
         id: typeRoomId,
@@ -45,6 +46,7 @@ const AddEditTypePage = (props) => {
         data: values,
       }));
     }
+ 
   };
 
   function renderRoomTypeImages() {
@@ -107,7 +109,7 @@ const AddEditTypePage = (props) => {
             <Input />
           </Form.Item>
 
-          <Form.Item
+          {/* <Form.Item
             label="Image"
             name="images"
             validateFirst
@@ -150,7 +152,7 @@ const AddEditTypePage = (props) => {
                 </Row>
               )}
             </Upload>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item
             label="Description"
@@ -188,40 +190,40 @@ const AddEditTypePage = (props) => {
 
           <Form.Item 
             label="Services"
-            name="services"
+            name="utilities"
             rules={[
               { required: true, message: "Please input the services of room!" },
             ]}
           >
-            <Checkbox.Group>
+            <Checkbox.Group onChange={(value)=>console.log(value)}>
               <Row>
                 <Col span={8}>
-                  <Checkbox value="Wifi" style={{ lineHeight: "32px" }}>
+                  <Checkbox value="Wifi" value={{ "wifi": "Free Wi-Fi" }}  style={{ lineHeight: "32px" }}>
                     Free Wifi
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Breakfast" style={{ lineHeight: "32px" }}>
+                  <Checkbox value="Breakfast" value={{ "Breakfast": "Breakfast" }}  style={{ lineHeight: "32px" }}>
                     Breakfast
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Seating Area" style={{ lineHeight: "32px" }}>
+                  <Checkbox value="Seating Area"  value={{ "Seating": "Seating Area" }}  style={{ lineHeight: "32px" }}>
                     Seating Area
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Minibar" style={{ lineHeight: "32px" }}>
+                  <Checkbox value="Minibar"  value={{ "Minibar": "Minibar" }} style={{ lineHeight: "32px" }}>
                     Minibar
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Luxury Bed" style={{ lineHeight: "32px" }}>
+                  <Checkbox value="Luxury Bed" value={{ "bed":"Luxury Bed" }}  style={{ lineHeight: "32px" }}>
                     Luxury Bed
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Facilities" style={{ lineHeight: "32px" }}>
+                  <Checkbox value="Facilities"value={{ "facilities": "facilities" }}  style={{ lineHeight: "32px" }}>
                     Facilities (tea/coffee machine, media equipments, ...)
                   </Checkbox>
                 </Col>

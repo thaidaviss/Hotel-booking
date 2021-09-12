@@ -1,5 +1,6 @@
 {
-  "users": [{
+  "users": [
+    {
       "email": "thaidavis11999@gmail.com",
       "password": "$2a$10$laNofFEu83SwkNYTwnLAE.iK10DG1SzCFYJJi1EBj4wSA3uwLlBuW",
       "username": "wiliam1307",
@@ -22,7 +23,8 @@
     }
   ],
   "profiles": [],
-  "locations": [{
+  "locations": [
+    {
       "id": 1,
       "name": "Đà Nẵng",
       "address": "38 Đống Đa, quận Hải Châu, Tp. Đà Nẵng",
@@ -68,9 +70,24 @@
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.768.768.jpg"
       ],
       "services": [
-        "Wifi",
-        "Breakfast",
-        "Facilities"
+        {
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "bed": "1 double bed"
+        },
+        {
+          "roomSize": "Room size: 17 m²/183 ft²"
+        },
+        {
+          "view": "City view"
+        },
+        {
+          "smoking": "Non-smoking"
+        },
+        {
+          "shower": "Shower"
+        }
       ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
@@ -115,7 +132,6 @@
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/5.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/6.jpg"
       ],
-
       "services": [
         "Wifi",
         "Breakfast",
@@ -171,10 +187,59 @@
       ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
+    },
+    {
+      "name": "Suite Room 2",
+      "description": "“Tiện ích trong Tiếng Anh” là utility dùng để diễn tả đến tính hữu ích hoặc tiện ích của một vật nhằm đáp ứng nhu cầu sử dụng của người sử dụng trong cuộc sống. có nhiều từ trong tiếng anh đồng nghĩa với “utility”. hãy tham khảo bài viết sau để có thể nắm bắt và phân biệt từ một cách chính xác nhất.",
+      "view": "garden",
+      "maxGuest": 4,
+      "services": [
+        "Wifi",
+        "Minibar",
+        "Luxury Bed",
+        "Breakfast",
+        "Seating Area",
+        "Facilities"
+      ],
+      "price": 500,
+      "createdAt": 1631456180360,
+      "updatedAt": 1631456180360,
+      "id": 6
+    },
+    {
+      "name": "Suite Room 21",
+      "description": "Our Deluxe king size room has a seating area, ample storage, digital safe, minibar and luxurious duck down bedding. This room can also be configured with an extra roll-away bed for families of 3",
+      "view": "front",
+      "maxGuest": 3,
+      "utilities": [
+        {
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "Breakfast": "Breakfast"
+        },
+        {
+          "Seating": "Seating Area"
+        },
+        {
+          "bed": "Luxury Bed"
+        },
+        {
+          "Minibar": "Minibar"
+        },
+        {
+          "facilities": "facilities"
+        }
+      ],
+      "price": 1000,
+      "createdAt": 1631457553496,
+      "updatedAt": 1631457613988,
+      "id": 7
     }
   ],
   "rooms": [
     {
+      
       "id": 1,
       "name": "101",
       "typeRoomId": 2,
@@ -195,7 +260,7 @@
     {
       "id": 1,
       "typeRoomId": 1,
-      "userId":"",
+      "userId": "",
       "rating": 1,
       "title": "",
       "review": "",
@@ -211,23 +276,22 @@
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
-      "start":1631092999151,
-      "end":1631093012330
+      "start": 1631092999151,
+      "end": 1631093012330
     },
     {
       "id": 2,
       "name": "SUM-040620",
       "typeRoomId": 3,
-      "start":1631092999151,
-      "end":1631093012330
-     
+      "start": 1631092999151,
+      "end": 1631093012330
     },
     {
       "id": 3,
       "name": "FAL-070925",
       "typeRoomId": 2,
-      "start":1631092999151,
-      "end":1631093012330
+      "start": 1631092999151,
+      "end": 1631093012330
     }
   ],
   "blogs": [
