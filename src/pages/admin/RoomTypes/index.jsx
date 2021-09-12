@@ -6,12 +6,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTypeAction, getTypeListAction } from 'redux/actions';
 import history from 'utils/history';
+import ImageSliderItem from './components/ImageSliderItem';
 import './RoomTypes.scss';
 
 
 
 const RoomTypesPage = (props) => {
-  const [ visible, setVisible ] = useState(false);
+  
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
   
@@ -29,31 +30,16 @@ const RoomTypesPage = (props) => {
       width: 250,
       render: (value, record) => {
         return (
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Image
-              className="typeRoom-images"
-              preview={{ visible: false }}
-              width={50}
-              src={record.images[0]}
-            />
-            <p style={{ paddingLeft: "1rem" }}>{value}</p>
-            <div style={{ display: "none" }}>
-              <Image.PreviewGroup
-                preview={{ visible, onVisibleChange: (boolean) => setVisible(boolean) }}
-              >
-                <Image src={record.images[0]} />
-                <Image src={record.images[1]} />
-                <Image src={record.images[2]} />
-                <Image src={record.images[3]} />
-              </Image.PreviewGroup>
-            </div>
-          </div>
+          <ImageSliderItem images = {record.images} value={value}/>
         );
       }
     },
     { title: 'Description', dataIndex: 'description', key: 'description', width: 650 },
     { title: 'Type of View', dataIndex: 'view', key: 'view', width: 200 },
     { title: 'Max Guest', dataIndex: 'maxGuest', key: 'maxGuest', width: 150 },
+    { title: 'Services', dataIndex: 'services', key: 'services', width: 350,
+      render: (value) => `${value}, `   
+    },
     {
       title: 'Price',
       dataIndex: 'price',

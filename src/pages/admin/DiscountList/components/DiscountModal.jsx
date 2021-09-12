@@ -13,6 +13,11 @@ const DiscountModal = ({
 }) => {
   const [modifyDiscountForm] = Form.useForm();
   const dispatch = useDispatch();
+  const newDiscountData = {
+    ...modifyDiscountData,
+    start: () => moment(modifyDiscountData.start, dateFormat),
+    end: () => moment(modifyDiscountData.end, dateFormat)
+  }
 
   useEffect(() => {
     if (isShowDiscountModal) {
@@ -32,11 +37,7 @@ const DiscountModal = ({
         name="modify-discount"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 20 }}
-        initialValues={{
-          ...modifyDiscountData, 
-          start: () => moment(modifyDiscountData.start, dateFormat),
-          end: () => moment(modifyDiscountData.end, dateFormat)
-        }}
+        initialValues={newDiscountData}
         onFinish={(values) => console.log(values)}
       >
         <Form.Item

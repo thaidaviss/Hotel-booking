@@ -60,12 +60,18 @@
       "maxGuest": 1,
       "price": 300,
       "images": [
-        "https://live.staticflickr.com/65535/51407689648_7c7061b0e7_b.jpg",
-        "https://live.staticflickr.com/65535/51445889819_b4d8cddc47_b.jpg",
-        "https://live.staticflickr.com/65535/51446106345_19df21ef20_b.jpg",
-        "https://live.staticflickr.com/65535/51445889819_b4d8cddc47_b.jpg"
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-4-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-2-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.768.768.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.768.768.jpg"
       ],
-      "services": [],
+      "services": [
+        "Wifi",
+        "Breakfast",
+        "Facilities"
+      ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -77,12 +83,20 @@
       "maxGuest": 2,
       "price": 350,
       "images": [
-        "https://live.staticflickr.com/65535/51445889904_e8c566aa37_b.jpg",
-        "https://live.staticflickr.com/65535/51445889904_e8c566aa37_b.jpg",
-        "https://live.staticflickr.com/65535/51445889904_e8c566aa37_b.jpg",
-        "https://live.staticflickr.com/65535/51445889904_e8c566aa37_b.jpg"
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00118?$LargeViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00112?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00118?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00189?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524191-Luxury%20Suite%20Top%20LUXR?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524190-Luxury%20Suite%202%20LUXR?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524189-Luxury%20Suite%201%20LUXR?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/ritz-carlton-primary-black?$MedLgViewport33pct$"
       ],
-      "services": [],
+      "services": [
+        "Wifi",
+        "Breakfast",
+        "Facilities"
+      ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -94,12 +108,20 @@
       "maxGuest": 3,
       "price": 420,
       "images": [
-        "https://live.staticflickr.com/65535/51408401295_f73b428f56_b.jpg",
-        "https://live.staticflickr.com/65535/51445889649_7d1de315b3_b.jpg",
-        "https://live.staticflickr.com/65535/51408401295_f73b428f56_b.jpg",
-        "https://live.staticflickr.com/65535/51408401295_f73b428f56_b.jpg"
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/1.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/2.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/3.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/4.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/5.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/6.jpg"
       ],
-      "services": [],
+
+      "services": [
+        "Wifi",
+        "Breakfast",
+        "Luxury Bed",
+        "Facilities"
+      ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -116,7 +138,13 @@
         "https://live.staticflickr.com/65535/51407421691_ef0571f876_b.jpg",
         "https://live.staticflickr.com/65535/51407421691_ef0571f876_b.jpg"
       ],
-      "services": [],
+      "services": [
+        "Wifi",
+        "Breakfast",
+        "Seating Area",
+        "Luxury Bed",
+        "Facilities"
+      ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -133,7 +161,14 @@
         "https://live.staticflickr.com/65535/51407689568_2957bc2138_b.jpg",
         "https://live.staticflickr.com/65535/51408401260_3a8e647baa_b.jpg"
       ],
-      "services": [],
+      "services": [
+        "Wifi",
+        "Breakfast",
+        "Seating Area",
+        "Luxury Bed",
+        "Facilities",
+        "Minibar"
+      ],
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     }
@@ -176,22 +211,23 @@
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
-      "applicable": 1,
-      "expiration": 2
+      "start":1631092999151,
+      "end":1631093012330
     },
     {
       "id": 2,
       "name": "SUM-040620",
-      "typeRoomId": 1,
-      "applicable": 1,
-      "expiration": 2
+      "typeRoomId": 3,
+      "start":1631092999151,
+      "end":1631093012330
+     
     },
     {
       "id": 3,
       "name": "FAL-070925",
-      "typeRoomId": 1,
-      "applicable": 1,
-      "expiration": 2
+      "typeRoomId": 2,
+      "start":1631092999151,
+      "end":1631093012330
     }
   ],
   "blogs": [
