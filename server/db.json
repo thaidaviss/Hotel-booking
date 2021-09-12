@@ -269,22 +269,23 @@
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
-      "applicable": 1,
-      "expiration": 2
+      "start":1631092999151,
+      "end":1631093012330
     },
     {
       "id": 2,
       "name": "SUM-040620",
-      "typeRoomId": 1,
-      "applicable": 1,
-      "expiration": 2
+      "typeRoomId": 3,
+      "start":1631092999151,
+      "end":1631093012330
+     
     },
     {
       "id": 3,
       "name": "FAL-070925",
-      "typeRoomId": 1,
-      "applicable": 1,
-      "expiration": 2
+      "typeRoomId": 2,
+      "start":1631092999151,
+      "end":1631093012330
     }
   ],
   "blogs": [{

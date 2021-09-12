@@ -4,3 +4,4 @@ export * from './user.constant';
 export * from './type.constant';
 export * from './location.constant';
 export * from "./image.constant"
+export * from './discount.constant';

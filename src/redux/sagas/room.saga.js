@@ -38,7 +38,6 @@ function* createRoomSaga(action) {
   try {
     const { data } = action.payload;
     const result = yield RoomAPI.addRoomToList(data);
-    // const result = yield axios.post(`${URL_API}/rooms`, data);
     yield put({
       type: SUCCESS(ROOM_ACTION.CREATE_ROOM),
       payload: {
@@ -56,7 +55,6 @@ function* editRoomSaga(action) {
   try {
     const { id, data } = action.payload;
     const result = yield RoomAPI.editRoomInList(id, data);
-    // const result = yield axios.patch(`${URL_API}/rooms/${id}`, data);
     yield put({
       type: SUCCESS(ROOM_ACTION.EDIT_ROOM),
       payload: {
@@ -72,7 +70,6 @@ function* deleteRoomSaga(action) {
   try {
     const { id } = action.payload;
     yield RoomAPI.deleteRoomInList(id);
-    // yield axios.delete(`${URL_API}/rooms/${id}`);
     yield put({
       type: SUCCESS(ROOM_ACTION.DELETE_ROOM),
       payload: { id }

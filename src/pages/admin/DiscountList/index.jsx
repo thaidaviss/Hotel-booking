@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined } from '@ant-design/icons';
 import moment from "moment";
+import { useDispatch } from 'react-redux';
+import { getDiscountListAction } from 'redux/actions';
+
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
 
 const DiscountListPage = () => {
   const [isShowDiscountModal, setIsShowDiscountModal] = useState("");
   const [modifyDiscountData, setModifyDiscountData] = useState({});
+  const { discountList } = useSelector((state) => state.discountReducer);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-
+    dispatch(getDiscountListAction());
   }, []);
 
-  const discountData = [
-    {
-      key: '1',
-      name: 'MG01-30',
-      start: "12/05/2021",
-      end: "13/06/2021",
-      value: 5,
-    },
-    {
-      key: '2',
-      name: 'MG02-15',
-      start: "12/07/2021",
-      end: "27/07/2021",
-      value: 12,
-    },
-  ];
+  const discountData = discountList.data.map((discountItem, discountIndex) => {
+    return {
+      key: discountIndex,
+      ...discountItem,
+    }
+  });
   const discountColumns = [
     {
       title: 'Name',
@@ -40,11 +37,13 @@ const DiscountListPage = () => {
       title: 'Start Date', 
       dataIndex: 'start', 
       key: 'start',
+      render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
     { 
       title: 'End Date', 
       dataIndex: 'end', 
       key: 'end',
+      render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
     { title: 'Value', dataIndex: 'value', key: 'value' },
     {
@@ -100,12 +99,14 @@ const DiscountListPage = () => {
         <Button 
           className="add-discount-btn"
           type="primary"
+          size="large"
+          icon={<PlusOutlined />}
           onClick={() => {
             setIsShowDiscountModal("create");
             setModifyDiscountData({ 
               name: '', 
-              start: "01/01/2015",
-              end: "02/01/2015", 
+              start:1631092999151,
+              end:1631093012330,
               value: 0 
             });
           }}
@@ -114,7 +115,11 @@ const DiscountListPage = () => {
         </Button>
       </div>
       <div className="discount-list">
-        <Table dataSource={discountData} columns={discountColumns} scroll={{x: 1000}} />
+        <Table 
+          dataSource={discountData}
+          columns={discountColumns}
+          loading={discountList.load}
+          scroll={{x: 1000}} />
       </div>
 
       <DiscountModal
