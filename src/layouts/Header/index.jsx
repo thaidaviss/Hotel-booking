@@ -13,15 +13,19 @@ import { logoutAction } from "redux/actions";
 
 function Header(props) {
   const dispatch = useDispatch();
+  const [ScrollTop, setScrollTop] = useState(0);
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("en");
   const handleChangeLang = (lang) => {
     setLang(lang);
     i18n.changeLanguage(lang);
   };
-  const userInfo = JSON.parse(localStorage.getItem("userData"));
-  const [ScrollTop, setScrollTop] = useState(0);
-  
+
+  let userInfo = JSON.parse(localStorage.getItem("userData"));
+  useEffect(() => {
+    userInfo = JSON.parse(localStorage.getItem("userData"));
+  }, []);
+
   useEffect(() => {
     window.addEventListener(
       "scroll",
@@ -33,11 +37,17 @@ function Header(props) {
   const menu = (
     <Menu>
       <Menu.Item>
-        <Link rel="noopener noreferrer" className="user-item">Profile</Link>
-        
+        <Link rel="noopener noreferrer" className="user-item">
+          Profile
+        </Link>
       </Menu.Item>
       <Menu.Item>
-        <p rel="noopener noreferrer"  className="user-item" href="" onClick={()=>dispatch(logoutAction())}>
+        <p
+          rel="noopener noreferrer"
+          className="user-item"
+          href=""
+          onClick={() => dispatch(logoutAction())}
+        >
           Logout
         </p>
       </Menu.Item>
@@ -59,7 +69,7 @@ function Header(props) {
                 <Link to={ROUTER_URL.HOME}>{t("home")}</Link>
               </li>
               <li className="navbar__list-item">
-                <Link to={ROUTER_URL.ABOUT}>{t("about us")}</Link>
+                <Link to={ROUTER_URL.HOME}>{t("about us")}</Link>
               </li>
               <li className="navbar__list-item">
                 <Link to={ROUTER_URL.ROOMS}>{t("rooms")}</Link>
@@ -99,7 +109,9 @@ function Header(props) {
                   <div className="link-profile">
                     <Dropdown overlay={menu}>
                       <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-                        <span><FaUserCircle /></span>{" "}
+                        <span>
+                          <FaUserCircle />
+                        </span>{" "}
                         <p>{userInfo.user.username}</p>
                       </a>
                     </Dropdown>

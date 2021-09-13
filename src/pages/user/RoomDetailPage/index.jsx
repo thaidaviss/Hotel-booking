@@ -9,7 +9,6 @@ import MakeReservation from "../HomePage/components/MakeReservation";
 import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import "./RoomDetailPage.scss";
-import { Progress } from "antd";
 
 
 const review = {
