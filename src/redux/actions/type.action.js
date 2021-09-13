@@ -1,6 +1,8 @@
 import { createAction } from "@reduxjs/toolkit";
 import { TYPE_ACTION, REQUEST } from "redux/constants";
 
+
+export const getFilterTypeListAction = createAction(REQUEST(TYPE_ACTION.GET_FILTER_TYPE_LIST));
 export const getTypeListAction = createAction(REQUEST(TYPE_ACTION.GET_TYPE_LIST));
 export const getTypeDetailAction = createAction(REQUEST(TYPE_ACTION.GET_TYPE_DETAIL));
 export const createTypeAction = createAction(REQUEST(TYPE_ACTION.CREATE_TYPE));

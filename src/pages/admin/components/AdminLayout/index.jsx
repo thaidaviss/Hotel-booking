@@ -1,23 +1,24 @@
 
-import { useState } from "react";
-import { Switch, useRouteMatch } from "react-router-dom";
 import { ROUTER_URL } from "constants/index";
-
 import PrivateLayout from "layouts/PrivateLayout";
-import Sidebar from "../Sidebar";
-import AdminHeader from "../AdminHeader";
-
 import BlogListPage from "pages/admin/BlogList";
 import DashBoardPage from "pages/admin/Dashboard";
-import RoomListPage from "pages/admin/RoomList";
-import UserListPage from "pages/admin/UserList";
-import LocationListPage from "pages/admin/LocationList";
 import DiscountListPage from "pages/admin/DiscountList";
+import LocationListPage from "pages/admin/LocationList";
+import RoomListPage from "pages/admin/RoomList";
+import RoomTypesPage from "pages/admin/RoomTypes";
+import UserListPage from "pages/admin/UserList";
 import AddEditTypePage from "pages/admin/AddEditType";
 import NotFoundPage from "pages/user/NotFound";
-
+import { useState } from "react";
+import { Switch, useRouteMatch } from "react-router-dom";
+import AdminHeader from "../AdminHeader";
+import Sidebar from "../Sidebar";
 import "./AdminLayout.scss";
-import RoomTypesPage from "pages/admin/RoomTypes";
+
+
+
+
 
 
 function AdminLayout(props) {

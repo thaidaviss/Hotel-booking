@@ -21,16 +21,16 @@ function* login(action) {
          data
       } = action.payload
       const response = yield authAPI.login(data);
+      console.log(response.data);
       yield put({
          type: SUCCESS(USER_ACTION.LOGIN),
-         payload: response.data
+         payload: response,
       });
       yield  notification.success({
          description: "Login success!"  
       });
       
       if(response.data.user.role==="admin"){
-         console.log("🚀 ~ file: user.sagas.js ~ line 33 ~ function*login ~ response.data.user.role", response.data.user.role)
          yield history.push(ROUTER_URL.ADMIN)
       }
       else{
@@ -39,7 +39,7 @@ function* login(action) {
    } catch (e) {
       yield put({
          type: FAILURE(USER_ACTION.LOGIN),
-         message: e.message
+         payload: e.message
       });
       yield  notification.error({
          description:e.message
@@ -64,12 +64,12 @@ function* login(action) {
 //      });
 
 //      yield put({
-//         type: SUCCESS(USER_ACTION.CHECK_LOGIN),
+//         type: SUCCESS(USER.CHECK_LOGIN),
 //         payload: action.payload
 //      });
 //   } catch (e) {
 //      yield put({
-//         type: FAILURE(USER_ACTION.CHECK_LOGIN),
+//         type: FAIL(USER.CHECK_LOGIN),
 //         message: e.message
 //      });
 //   }
@@ -127,6 +127,6 @@ function* userSaga() {
    yield takeEvery(REQUEST(USER_ACTION.LOGIN), login);
    yield takeEvery(REQUEST(USER_ACTION.REGISTER), register);
    yield takeEvery(REQUEST(USER_ACTION.LOGOUT), logout);
-   // yield takeEvery(REQUEST(USER_ACTION.CHECK_LOGIN), checkLogin);
+   // yield takeEvery(REQUEST(USER.CHECK_LOGIN), checkLogin);
 }
 export default userSaga;

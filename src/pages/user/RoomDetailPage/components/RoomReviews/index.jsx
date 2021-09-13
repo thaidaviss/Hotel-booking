@@ -65,7 +65,6 @@ function RoomReviews(props) {
             {t("Write a Review")}
           </Button>
         </div>
-        <ReviewModal isShowReviewModal={isShowReviewModal} setIsShowReviewModal={setIsShowReviewModal} />
       </div>
       <ReviewModal
         isShowReviewModal={isShowReviewModal}

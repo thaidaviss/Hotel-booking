@@ -1,149 +1,109 @@
-import {
-  createReducer
-} from "@reduxjs/toolkit";
-import {
-  FAILURE,
-  REQUEST,
-  SUCCESS,
-  USER_ACTION
-} from "../constants";
-
+import { createReducer } from "@reduxjs/toolkit";
+import { USER_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants";
 
 
 const initialState = {
-  userInfo: {
+  userInfo:{
     data: {},
-    loading: false,
+    load: false,
     error: null,
-  },
-}
+  }
+};
 
-const userReducer = createReducer(initialState, {
+export const userReducer = createReducer(initialState, {
   [REQUEST(USER_ACTION.LOGIN)]: (state, action) => {
+    localStorage.removeItem("userData");
     return {
       ...state,
       userInfo: {
         ...state.userInfo,
-        loading: true,
-        error: null
-      },
-    };
-  },
-  [FAILURE(USER_ACTION.LOGIN)]: (state, action) => {
-    return {
-      ...state,
-      userInfo: {
-        ...state.userInfo,
-        loading: false,
-        error: action.payload
+        load: true,
       },
     };
   },
   [SUCCESS(USER_ACTION.LOGIN)]: (state, action) => {
-    localStorage.setItem("userData", JSON.stringify(action.payload));
+    const { data } = action.payload;
+    localStorage.setItem("userData",JSON.stringify(data));
     return {
       ...state,
       userInfo: {
-        ...state.userInfo,
-        data: action.payload,
-        loading: false,
+        data,
+        load: false,
         error: null,
       },
-    };
+    }
   },
-  [REQUEST(USER_ACTION.CHECK_LOGIN)]: (state, action) => {
-    return {
-      ...state,
-    };
-  },
-  [FAILURE(USER_ACTION.CHECK_LOGIN)]: (state, action) => {
-    localStorage.removeItem('userData');
+  [FAILURE(USER_ACTION.LOGIN)]: (state, action) => {
+    const { error } = action.payload;
     return {
       ...state,
       userInfo: {
         ...state.userInfo,
-        loading: false,
-        error: null,
+        load: false,
+        error,
       },
-    };
+    }
   },
-  [SUCCESS(USER_ACTION.CHECK_LOGIN)]: (state, action) => {
-    return {
-      ...state,
-      userInfo: {
-        ...state.userInfo,
-        data: action.payload,
-
-      },
-    };
-  },
-  [REQUEST(USER_ACTION.LOGOUT)]: (state, action) => {
-    return {
-      ...state,
-      userInfo: {
-        ...state.userInfo,
-        loading: true,
-
-      },
-
-    };
-  },
-  [SUCCESS(USER_ACTION.LOGOUT)]: (state, action) => {
-    localStorage.removeItem('userData');
-    return {
-      ...state,
-      userInfo: {
-        data: {},
-        loading: false,
-        error: null
-      },
-    };
-  },
-  [FAILURE(USER_ACTION.LOGOUT)]: (state, action) => {
-
-    return {
-      ...state,
-      userInfo: {
-        data: {},
-        loading: false,
-        error: null
-      },
-    };
-  },
+//register
   [REQUEST(USER_ACTION.REGISTER)]: (state, action) => {
+    localStorage.removeItem("userData")
     return {
       ...state,
       userInfo: {
         ...state.userInfo,
-        loading: true,
-        error:null
-      }
+        load: true,
+      },
     };
   },
   [SUCCESS(USER_ACTION.REGISTER)]: (state, action) => {
     return {
       ...state,
       userInfo: {
-        ...state.userInfo,
-
-        loading: false,
-        error: null
-      }
-    };
+        load: false,
+        error: null,
+      },
+    }
   },
   [FAILURE(USER_ACTION.REGISTER)]: (state, action) => {
-   
+    const { error } = action.payload;
     return {
       ...state,
-
       userInfo: {
         ...state.userInfo,
-        loading: false,
-        error: action.payload,
-      }
+        load: false,
+        error,
+      },
+    }
+  },
+  //logout
+  [REQUEST(USER_ACTION.LOGOUT)]: (state, action) => {
+    localStorage.removeItem("userData")
+    return {
+      ...state,
+      userInfo: {
+        ...state.userInfo,
+        load: true,
+      },
     };
-  }
-
+  },
+  [SUCCESS(USER_ACTION.LOGOUT)]: (state, action) => {
+    return {
+      ...state,
+      userInfo: {
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(USER_ACTION.LOGOUT)]: (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      userInfo: {
+        ...state.userInfo,
+        load: false,
+        error,
+      },
+    }
+  },
 });
-
-export default userReducer;

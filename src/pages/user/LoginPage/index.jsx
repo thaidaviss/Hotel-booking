@@ -1,3 +1,6 @@
+import { Button, Checkbox, Form, Input, Tabs } from "antd";
+import { IMAGES } from "constants/images.constants";
+import { ROUTER_URL } from "constants/index";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -15,7 +18,7 @@ LoginPage.propTypes = {};
 
 function LoginPage(props) {
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.userReducer);
+  const userInfo = useSelector((state) => state.userReducer?.userInfo);
   const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState("1");
@@ -199,7 +202,7 @@ function LoginPage(props) {
                 </div>
 
                 <Form.Item>
-                  <Button type="primary" htmlType="submit" loading={userInfo.loading} block>
+                  <Button type="primary" htmlType="submit" loading={userInfo?.loading} block>
                     {t("Register")}
                   </Button>
                 </Form.Item>
