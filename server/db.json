@@ -67,7 +67,7 @@
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/5.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/6.jpg"
       ],
-      "services": [{
+      "untilities": [{
           "wifi": "Free Wi-Fi"
         },
         {
@@ -103,7 +103,7 @@
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/s5.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/s6.jpg"
       ],
-      "services": [{
+      "untilities": [{
           "wifi": "Free Wi-Fi"
         },
         {
@@ -139,7 +139,7 @@
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/5.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/6.jpg"
       ],
-      "services": [{
+      "untilities": [{
           "wifi": "Free Wi-Fi"
         },
         {
@@ -175,7 +175,7 @@
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.768.768.jpg",
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.768.768.jpg"
       ],
-      "services": [{
+      "untilities": [{
           "wifi": "Free Wi-Fi"
         },
         {
@@ -213,7 +213,7 @@
         "https://s7d2.scene7.com/is/image/ritzcarlton/50524189-Luxury%20Suite%201%20LUXR?$MedViewport100pct$",
         "https://s7d2.scene7.com/is/image/ritzcarlton/ritz-carlton-primary-black?$MedLgViewport33pct$"
       ],
-      "services": [{
+      "utilities": [{
           "wifi": "Free Wi-Fi"
         },
         {
@@ -269,23 +269,23 @@
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
-      "start":1631092999151,
-      "end":1631093012330
+      "start": 1631092999151,
+      "end": 1631093012330
     },
     {
       "id": 2,
       "name": "SUM-040620",
       "typeRoomId": 3,
-      "start":1631092999151,
-      "end":1631093012330
-     
+      "start": 1631092999151,
+      "end": 1631093012330
+
     },
     {
       "id": 3,
       "name": "FAL-070925",
       "typeRoomId": 2,
-      "start":1631092999151,
-      "end":1631093012330
+      "start": 1631092999151,
+      "end": 1631093012330
     }
   ],
   "blogs": [{
