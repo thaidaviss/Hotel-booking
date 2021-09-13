@@ -10,7 +10,7 @@ const ImageSliderItem = (props) => {
             <Image
             className="img"
             preview={{ visible: false }}
-            width={50}
+            width={100}
               src={images[0]}
               onClick={() => setVisible(true)}
             />

@@ -1,4 +1,4 @@
-import { Pagination } from "antd";
+import { Pagination, Space, Spin } from "antd";
 import { LIST_ROOM } from "constants/rooms.constant";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,23 +10,32 @@ import "./RoomsPage.scss";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getFilterTypeListAction } from "redux/actions/index";
+const queryString = require("query-string");
 function RoomsPage(props) {
   const dispatch = useDispatch();
-  const listTypeRoom = useSelector(state=>state.typeReducer.typeList);
-  console.log(listTypeRoom);
+  const listTypeRoom = useSelector((state) => state.typeReducer.typeList);
+  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
   const { t } = useTranslation();
   let myRef = useRef();
-  const [page, setPage] = useState({
-    "_page": 1,
-    "_limit": 4,
-    "_totalRows": 5
-  });
+  const [page, setPage] = useState({ ...listTypeRoom.pagination });
+  useEffect(() => {
+    setPage({...page,_page:1})
+  },[checkedList.rating, checkedList.price]);
+  useEffect(() => {
+    dispatch(
+      getFilterTypeListAction({
+        params: {
+          ...page,
+          rating: checkedList.rating,
+          price_gte: checkedList.price[0] * 100,
+          price_lte: checkedList.price[1] * 100,
+        },
+      })
+    );
 
-  useEffect(()=>{
-    dispatch(getFilterTypeListAction({params:page}));
-    window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop});
-  },[page._page])
-  
+    window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
+  }, [page._page, checkedList.rating, checkedList.price]);
+
   return (
     <div className="rooms-page">
       <div className="rooms-page__banner">
@@ -47,16 +56,27 @@ function RoomsPage(props) {
         </div>
         <div className="container">
           <div className="rooms-page__filter">
-            <FilterRooms />
+            <FilterRooms checkedList={checkedList} setCheckedList={setCheckedList} />
           </div>
           <div className="rooms-page__list">
-            {listTypeRoom.data.map((room) => (
-              <CardRoom room={room} />
-            ))}
+            {listTypeRoom.load === true ? (
+              <Space
+                style={{ textAlign: "center", width: "100%", display: "block", padding: "10rem 0" }}
+              >
+                <Spin size="large" />
+              </Space>
+            ) : (
+              listTypeRoom.data.map((room) => <CardRoom room={room} />)
+            )}
           </div>
         </div>
         <div className="rooms-page__pagination">
-          <Pagination defaultCurrent={page._page} total={page._totalRows*page._limit} size={page._limit} onChange={(value)=>setPage({...page,_page:value})}/>
+          <Pagination
+            defaultCurrent={page._page}
+            total={page._totalRows * page._limit}
+            size={page._limit}
+            onChange={(value) => setPage({ ...page, _page: value })}
+          />
         </div>
       </div>
     </div>

@@ -1,74 +1,79 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Image, Popconfirm, Space, Table } from 'antd';
-import { ROUTER_URL } from 'constants/index';
-import moment from 'moment';
-import { default as React, default as React, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteTypeAction } from 'redux/actions';
-import { getTypeListAction } from 'redux/actions/index';
-import history from 'utils/history';
-import ImageSliderItem from './components/ImageSliderItem';
-import './RoomTypes.scss';
-
-
-
+import { PlusOutlined } from "@ant-design/icons";
+import { Button, Popconfirm, Space, Table } from "antd";
+import { ROUTER_URL } from "constants/index";
+import moment from "moment";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTypeAction } from "redux/actions";
+import { getTypeListAction } from "redux/actions/index";
+import history from "utils/history";
+import ImageSliderItem from "./components/ImageSliderItem";
+import "./RoomTypes.scss";
 
 const RoomTypesPage = (props) => {
-  
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getTypeListAction());
   }, []);
 
-
   const roomTypesColumns = [
     {
-      title: 'Type of Room',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Type of Room",
+      dataIndex: "name",
+      key: "name",
       fixed: "left",
-      width: 250,
+      width: 200,
       render: (value, record) => {
-        return (
-          <ImageSliderItem images = {record.images} value={value}/>
-        );
-      }
+        return <ImageSliderItem images={record.images} value={value} key={`image-${record.id}`} />;
+      },
     },
-    { title: 'Description', dataIndex: 'description', key: 'description', width: 650 },
-    { title: 'Type of View', dataIndex: 'view', key: 'view', width: 200 },
-    { title: 'Max Guest', dataIndex: 'maxGuest', key: 'maxGuest', width: 150 },
-    { title: 'Services', dataIndex: 'services', key: 'services', width: 350,
-      render: (value) => `${value}, `   
+    { title: "Description", dataIndex: "description", key: "description", width: 400 },
+    {
+      title: "Type of View",
+      dataIndex: "view",
+      key:"view",
+      width: 100,
+      render: (_, record) => {
+        return <div>{record.utilities.map((item)=>{if(item.view) return item.view})}</div>;
+      },
+    },
+    { title: "Max Guest", dataIndex: "maxGuest", key: "maxGuest", width: 80 },
+    {
+      title: "Services",
+      dataIndex: "utilities",
+      key: "utilities",
+      width: 350,
+      render: (value) => `- ${value.map((item)=> item[Object.keys(item)[0]])}`,
     },
     {
-      title: 'Price',
-      dataIndex: 'price',
-      key: 'price',
-      width: 150,
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+      width: 80,
       render: (value) => value?.toLocaleString(),
     },
     {
-      title: 'Create At',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
-      width: 150,
-      render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
+      title: "Create At",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      width: 80,
+      render: (value) => value && moment(value).format("DD/MM/YYYY HH:mm"),
     },
     {
-      title: 'Update At',
-      dataIndex: 'updatedAt',
-      key: 'updatedAt',
-      width: 150,
-      render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
+      title: "Update At",
+      dataIndex: "updatedAt",
+      key: "updatedAt",
+      width: 80,
+      render: (value) => value && moment(value).format("DD/MM/YYYY HH:mm"),
     },
     {
-      title: 'Action',
-      dataIndex: 'action',
-      width: 200,
+      title: "Action",
+      dataIndex: "action",
+      width:100,
       fixed: "right",
-      key: 'action',
+      key: "action",
       render: (_, record) => {
         return (
           <Space>
@@ -78,7 +83,9 @@ const RoomTypesPage = (props) => {
               ghost
               onClick={() => {
                 // dispatch(editTypeAction(record.id));
-                history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`);
+                history.push(
+                  `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`
+                );
                 // setIsShowTypeModal('edit');
                 // setModifyTypeData(record);
               }}
@@ -95,8 +102,8 @@ const RoomTypesPage = (props) => {
               <Button danger>Delete</Button>
             </Popconfirm>
           </Space>
-        )
-      }
+        );
+      },
     },
   ];
 
@@ -104,13 +111,13 @@ const RoomTypesPage = (props) => {
     return {
       key: roomTypeIndex,
       ...roomTypeItem,
-    }
+    };
   });
 
   return (
     <div>
       <div className="roomType-title">
-        <Button 
+        <Button
           className="add-roomType-btn"
           type="primary"
           size="large"
@@ -125,11 +132,11 @@ const RoomTypesPage = (props) => {
         </Button>
       </div>
       <div className="roomType-list">
-        <Table 
-          dataSource={roomTypesData} 
-          columns={roomTypesColumns} 
-          loading={typeList.load} 
-          scroll={{x: 2500}}
+        <Table
+          dataSource={roomTypesData}
+          columns={roomTypesColumns}
+          loading={typeList.load}
+          scroll={{ x: 2450 }}
         />
       </div>
 
@@ -141,6 +148,6 @@ const RoomTypesPage = (props) => {
       /> */}
     </div>
   );
-}
+};
 
 export default RoomTypesPage;

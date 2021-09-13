@@ -36,7 +36,7 @@ function SliderRoomDetail(props) {
       </div>
       <Slider {...settings}>
         {imgList.map((img, index) => (
-          <div className="slider-show__img">
+          <div className="slider-show__img" key={`slider-show__img-${index}`}>
             <Image
               preview={{ visible: false }}
               width={"100%"}

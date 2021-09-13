@@ -2,7 +2,7 @@ import { Image, Rate } from "antd";
 import { ROUTER_URL } from "constants/index";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import {  FaShower } from "react-icons/fa";
+import { FaShower } from "react-icons/fa";
 import { GoHome } from "react-icons/go";
 import { IoIosBed } from "react-icons/io";
 import { MdSmokingRooms } from "react-icons/md";
@@ -109,25 +109,25 @@ function CardRoom(props) {
           src={room.images[0]}
           onClick={() => setVisible(true)}
         />
-        <div className = "card-room__thumb"> 
-        <div className = "card-room__thumb-item"> 
-         <Image
-          className="img-small"
-          preview={{ visible: false }}
-          width={"100%"}
-          src={room.images[1]}
-          onClick={() => setVisible(true)}
-        />
-        </div>
-        <div className = "card-room__thumb-item"> 
-         <Image
-          className="img-small"
-          preview={{ visible: false }}
-          width={"100%"}
-          src={room.images[2]}
-          onClick={() => setVisible(true)}
-        />
-        </div>
+        <div className="card-room__thumb">
+          <div className="card-room__thumb-item">
+            <Image
+              className="img-small"
+              preview={{ visible: false }}
+              width={"100%"}
+              src={room.images[1]}
+              onClick={() => setVisible(true)}
+            />
+          </div>
+          <div className="card-room__thumb-item">
+            <Image
+              className="img-small"
+              preview={{ visible: false }}
+              width={"100%"}
+              src={room.images[2]}
+              onClick={() => setVisible(true)}
+            />
+          </div>
         </div>
 
         <div style={{ display: "none" }}>
@@ -139,7 +139,7 @@ function CardRoom(props) {
         </div>
       </div>
       <div className="card-room__content">
-        <Link to="/rooms/1">
+        <Link to={`${ROUTER_URL.ROOMS}/${room.id}`}>
           <div className="card-room__name">{t(room.name)}</div>
         </Link>
         <div className="card-room__rate">
@@ -151,16 +151,15 @@ function CardRoom(props) {
             <p>{room.map}</p>
           </div> */}
         </div>
-        <p className="card-room__description">
-          {room.description}
-        </p>
+        <p className="card-room__description">{room.description}</p>
         <div className="card-room__services">
-          {room.services.map((serviceItem) => renderItemService(serviceItem))}
+          {room.utilities.map((serviceItem) => renderItemService(serviceItem))}
         </div>
 
         <div className="card-room__choice">
           <div className="card-room__price">
-            <small>{t(`$${(room.price/off)*100} / Night `)}</small> <span>{t(`$${room.price} / Night`)}</span>{" "}
+            <small>{t(`$${((room.price / off) * 100)?.toLocaleString()} / Night `)}</small>{" "}
+            <span>{t(`$${room.price?.toLocaleString()} / Night`)}</span>{" "}
           </div>
           <div className="card-room__btn">
             <button onClick={() => history.push(ROUTER_URL.BOOKING)}>Booking Now</button>

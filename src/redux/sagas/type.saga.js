@@ -1,12 +1,24 @@
-import { put, takeEvery } from "@redux-saga/core/effects";
-import { typeRoomAPI } from "Api/index";
-import { ROUTER_URL } from "constants/index";
-import { FAILURE, REQUEST, SUCCESS, TYPE_ACTION } from "redux/constants";
+import {
+  put,
+  takeEvery
+} from "@redux-saga/core/effects";
+import {
+  typeRoomAPI
+} from "Api/index";
+import {
+  ROUTER_URL
+} from "constants/index";
+import {
+  FAILURE,
+  REQUEST,
+  SUCCESS,
+  TYPE_ACTION
+} from "redux/constants";
 import history from "utils/history";
 
 
 function* getTypeListSaga(action) {
-  const {data} = action.payload;
+
   try {
     const result = yield typeRoomAPI.getTypeRoomList();
     yield put({
@@ -16,12 +28,37 @@ function* getTypeListSaga(action) {
       },
     });
   } catch (e) {
-    yield put({ type: FAILURE(TYPE_ACTION.GET_TYPE_LIST), payload: e.message });
+    yield put({
+      type: FAILURE(TYPE_ACTION.GET_TYPE_LIST),
+      payload: e.message
+    });
+  }
+}
+
+function* getTypeDetailSaga(action) {
+  const {
+    params
+  } = action.payload;
+  try {
+    const result = yield typeRoomAPI.getTypeRoomDetail(params.id);
+    yield put({
+      type: SUCCESS(TYPE_ACTION.GET_TYPE_DETAIL),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(TYPE_ACTION.GET_TYPE_DETAIL),
+      payload: e.message
+    });
   }
 }
 
 function* getFilterTypeListSaga(action) {
-  const {params} = action.payload;
+  const {
+    params
+  } = action.payload;
   try {
     const result = yield typeRoomAPI.getFilterTypeRoomList(params);
     yield put({
@@ -31,13 +68,18 @@ function* getFilterTypeListSaga(action) {
       },
     });
   } catch (e) {
-    yield put({ type: FAILURE(TYPE_ACTION.GET_FILTER_TYPE_LIST), payload: e.message });
+    yield put({
+      type: FAILURE(TYPE_ACTION.GET_FILTER_TYPE_LIST),
+      payload: e.message
+    });
   }
 }
 
 function* createTypeSaga(action) {
   try {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const result = yield typeRoomAPI.addTypeRoomToList(data);
     yield put({
       type: SUCCESS(TYPE_ACTION.CREATE_TYPE),
@@ -47,13 +89,19 @@ function* createTypeSaga(action) {
     });
     yield history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}`);
   } catch (e) {
-    yield put({ type: FAILURE(TYPE_ACTION.CREATE_TYPE), payload: e.message });
+    yield put({
+      type: FAILURE(TYPE_ACTION.CREATE_TYPE),
+      payload: e.message
+    });
   }
 }
 
 function* editTypeSaga(action) {
   try {
-    const { id, data } = action.payload;
+    const {
+      id,
+      data
+    } = action.payload;
     const result = yield typeRoomAPI.editTypeRoomInList(id, data);
     yield put({
       type: SUCCESS(TYPE_ACTION.EDIT_TYPE),
@@ -63,27 +111,39 @@ function* editTypeSaga(action) {
     });
     yield history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}`);
   } catch (e) {
-    yield put({ type: FAILURE(TYPE_ACTION.EDIT_TYPE), payload: e.message });
+    yield put({
+      type: FAILURE(TYPE_ACTION.EDIT_TYPE),
+      payload: e.message
+    });
   }
 }
 
 function* deleteTypeSaga(action) {
   try {
-    const { id } = action.payload;
+    const {
+      id
+    } = action.payload;
     yield typeRoomAPI.deleteTypeRoomInList(id);
     // yield axios.delete(`${URL_API}/types/${id}`);
     yield put({
       type: SUCCESS(TYPE_ACTION.DELETE_TYPE),
-      payload: { id }
+      payload: {
+        id
+      }
     });
   } catch (e) {
-    yield put({ type: FAILURE(TYPE_ACTION.DELETE_TYPE), payload: e.message });
+    yield put({
+      type: FAILURE(TYPE_ACTION.DELETE_TYPE),
+      payload: e.message
+    });
   }
 }
 
 
 export default function* typeSaga() {
   yield takeEvery(REQUEST(TYPE_ACTION.GET_TYPE_LIST), getTypeListSaga);
+  yield takeEvery(REQUEST(TYPE_ACTION.GET_TYPE_DETAIL), getTypeDetailSaga);
+
   yield takeEvery(REQUEST(TYPE_ACTION.GET_FILTER_TYPE_LIST), getFilterTypeListSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.CREATE_TYPE), createTypeSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.EDIT_TYPE), editTypeSaga);

@@ -1,16 +1,16 @@
-import "./FilterRooms.scss";
-import { Select, Checkbox, Rate, Slider } from "antd";
-import React, { useState } from "react";
+import { Checkbox, Rate, Select, Slider } from "antd";
+import React from "react";
 import { useTranslation } from "react-i18next";
+import "./FilterRooms.scss";
 
 
 const { Option } = Select;
 const options_rate = [
-  { label: <Rate disabled allowHalf defaultValue={5} className="rate" />, value: "5 Start" },
-  { label: <Rate disabled allowHalf defaultValue={4} className="rate" />, value: "4 Start" },
-  { label: <Rate disabled allowHalf defaultValue={3} className="rate" />, value: "3 Start" },
-  { label: <Rate disabled allowHalf defaultValue={2} className="rate" />, value: "2 Start" },
-  { label: <Rate disabled allowHalf defaultValue={1} className="rate" />, value: "1 Start" },
+  { label: <Rate disabled allowHalf defaultValue={5} className="rate" />, value: "5" },
+  { label: <Rate disabled allowHalf defaultValue={4} className="rate" />, value: "4" },
+  { label: <Rate disabled allowHalf defaultValue={3} className="rate" />, value: "3" },
+  { label: <Rate disabled allowHalf defaultValue={2} className="rate" />, value: "2" },
+ 
 ];
 const option_review = [
   { label: "City", value: "city" },
@@ -19,20 +19,20 @@ const option_review = [
   { label: "Sky", value: "sky" },
   { label: "Other", value: "other" },
 ];
-function FilterRooms(props) {
+function FilterRooms({checkedList, setCheckedList}) {
   const { t } = useTranslation();
-  const [checkedList, setCheckedList] = useState({star:[],review:[]});
+  
   function onChangeStar(checkedValues) {
-    setCheckedList({...checkedList,star:checkedValues});
+    setCheckedList({...checkedList,rating:checkedValues});
   }
   function onChangeReview(checkedValues) {
     setCheckedList({...checkedList,review:checkedValues});
   }
   function formatter(value) {
-    return `${value} million`;
+    return `${value*100} USD`;
   }
   function handleClearFilter (){
-    setCheckedList({star:[],review:[]})
+    setCheckedList({star:[],review:[],price:[0,100]})
   }
   return (
     <div className="filter-room">
@@ -43,7 +43,7 @@ function FilterRooms(props) {
       <div className="filter-room__rate">
         <div className="filter-room__title">{t("Star rating")}</div>
         <div className="filter-room__rate-list">
-          <Checkbox.Group options={options_rate} value={checkedList.star} onChange={onChangeStar} />
+          <Checkbox.Group options={options_rate} value={checkedList.rating} onChange={onChangeStar} />
         </div>
       </div>
       <div className="filter-room__review">
@@ -55,10 +55,10 @@ function FilterRooms(props) {
       <div className="filter-room__Price">
         <div className="filter-room__title">{t("Price range")}</div>
         <div className="filter-room__Price-list">
-        <Slider range defaultValue={[0, 10]}  tipFormatter={formatter}/>
+        <Slider range value={checkedList.price}  tipFormatter={formatter} onChange={(value)=>setCheckedList({...checkedList,price:value})}/>
         <div className="number-price">
-          <span>0 million</span>
-          <span>100 million</span>
+          <span>0 USD</span>
+          <span>10000 USD</span>
         </div>
         </div>
       </div>

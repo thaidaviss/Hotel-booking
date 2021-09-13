@@ -18,21 +18,36 @@ function* getRoomListSaga(action) {
     yield put({ type: FAILURE(ROOM_ACTION.GET_ROOM_LIST), payload: e.message });
   }
 }
+function* getFilterRoomListSaga(action) {
+  const {params}= action.payload;
+  try {
+    const result = yield RoomAPI.getFilterRoomList({ _sort: 'id', _order: 'desc',...params});
+    
+    yield put({
+      type: SUCCESS(ROOM_ACTION.GET_FILTER_ROOM_LIST),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(ROOM_ACTION.GET_FILTER_ROOM_LIST), payload: e.message });
+  }
+}
 
-// function* getRoomDetailSaga(action) {
-//   try {
-//     const { id } = action.payload;
-//     const result = yield RoomAPI.getRoomDetail(id,{ _expand:"discounts" });
-//     yield put({
-//       type: SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL),
-//       payload: {
-//         data: result.data
-//       },
-//     });
-//   } catch (e) {
-//     yield put({ type: FAILURE(ROOM_ACTION.GET_ROOM_DETAIL), payload: e.message });
-//   }
-// }
+function* getRoomDetailSaga(action) {
+  try {
+    const { id } = action.payload;
+    const result = yield RoomAPI.getRoomDetail(id,{ _expand:"discounts" });
+    yield put({
+      type: SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(ROOM_ACTION.GET_ROOM_DETAIL), payload: e.message });
+  }
+}
 
 function* createRoomSaga(action) {
   try {
@@ -81,6 +96,7 @@ function* deleteRoomSaga(action) {
 
 export default function* roomSaga() {
   yield takeEvery(REQUEST(ROOM_ACTION.GET_ROOM_LIST), getRoomListSaga);
+  yield takeEvery(REQUEST(ROOM_ACTION.GET_FILTER_ROOM_LIST), getFilterRoomListSaga);
   // yield takeEvery(REQUEST(ROOM_ACTION.GET_ROOM_DETAIL), getRoomDetailSaga);
   yield takeEvery(REQUEST(ROOM_ACTION.CREATE_ROOM), createRoomSaga);
   yield takeEvery(REQUEST(ROOM_ACTION.EDIT_ROOM), editRoomSaga);

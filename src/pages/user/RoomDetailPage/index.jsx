@@ -1,15 +1,18 @@
 import { Progress } from "antd";
 import { IMAGES } from "constants/images.constants";
 import { LIST_ROOM } from "constants/rooms.constant";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FaBath, FaBed, FaChevronLeft, FaChevronRight, FaFan, FaWifi } from "react-icons/fa";
 import { RiComputerLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { getTypeDetailAction } from "redux/actions";
 import MakeReservation from "../HomePage/components/MakeReservation";
 import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import "./RoomDetailPage.scss";
-import { Progress } from "antd";
 
 
 const review = {
@@ -23,7 +26,14 @@ const review = {
   interact: { like: 2, dislike: 1 },
 };
 function RoomDetailPage(props) {
-  const RoomDetail = LIST_ROOM[3];
+  const params = useParams();
+  const dispatch = useDispatch();
+  const roomId = params.id;
+  console.log(roomId);
+  useEffect(()=>{
+      dispatch(getTypeDetailAction({params:{id:roomId}}))
+  },[])
+  const RoomDetail = useSelector(state=>state.typeReducer.typeDetail);
   const { t } = useTranslation();
   const settings = {
     dots: false,
@@ -48,7 +58,7 @@ function RoomDetailPage(props) {
           <div className="line-1">
             <img src={IMAGES.LINE1} alt="" />
           </div>
-          <div className="heading">{t(`${RoomDetail.name}`)}</div>
+          <div className="heading">{t(`${RoomDetail.data.name}`)}</div>
           <div className="line-1">
             <img src={IMAGES.LINE2} alt="" />
           </div>
@@ -63,7 +73,7 @@ function RoomDetailPage(props) {
         <div className="container">
           <div className="room-detail__left">
             <div className="room-detail__slider">
-              <SliderRoomDetail imgList={IMAGES.LIST_ROOM} />
+              <SliderRoomDetail imgList={RoomDetail.data.images} />
             </div>
           </div>
           <div className="room-detail__right">
@@ -107,9 +117,9 @@ function RoomDetailPage(props) {
             <div className="room-detail__left">
               <div className="room-detail__info">
                 <div className="room-detail__title">
-                  <div className="room-detail__name">{t(RoomDetail.name)}</div>
+                  <div className="room-detail__name">{t(RoomDetail.data.name)}</div>
                 </div>
-                <CollapseInfo RoomDetail={RoomDetail} />
+                <CollapseInfo RoomDetail={RoomDetail.data} />
               </div>
             </div>
             <div className="room-detail__right">

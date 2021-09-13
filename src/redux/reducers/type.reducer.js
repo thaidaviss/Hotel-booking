@@ -13,15 +13,17 @@ const initialState = {
   typeList: {
     data: [],
     pagination: {
-      "_page": 1,
-      "_limit": 1,
-      "_totalRows": 3
+      _page: 1,
+      _limit: 4,
+      _totalRows: 5,
     },
     load: false,
     error: null,
   },
   typeDetail: {
-    data: {},
+    data: {
+      images:[],
+    },
     load: false,
     error: null,
   },
@@ -73,7 +75,7 @@ const typeReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST)]: (state, action) => {
-  
+
     return {
       ...state,
       typeList: {
@@ -107,7 +109,9 @@ const typeReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(TYPE_ACTION.GET_TYPE_DETAIL)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     return {
       ...state,
       typeDetail: {
@@ -119,7 +123,9 @@ const typeReducer = createReducer(initialState, {
     }
   },
   [FAILURE(TYPE_ACTION.GET_TYPE_DETAIL)]: (state, action) => {
-    const { error } = action.payload;
+    const {
+      error
+    } = action.payload;
     return {
       ...state,
       typeDetail: {

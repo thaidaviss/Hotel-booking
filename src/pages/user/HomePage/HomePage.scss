@@ -29,9 +29,11 @@
 
     div {
       img {
+        
         display: block;
         max-width: 80%;
         margin: 0 auto;
+        margin-bottom: 0.3rem;
       }
     }
   }
@@ -44,6 +46,7 @@
     font-weight: 400;
     line-height: 89.6px;
     text-align: center;
+   
 
   }
 
@@ -76,7 +79,7 @@
       width: 100%;
       z-index: 1;
       position: absolute;
-      bottom: -7rem;
+      bottom: -5rem;
 
     }
 
