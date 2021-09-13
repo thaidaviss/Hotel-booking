@@ -6,7 +6,7 @@ import history from "utils/history";
 
 
 function* getTypeListSaga(action) {
-  const {data} = action.payload;
+
   try {
     const result = yield typeRoomAPI.getTypeRoomList();
     yield put({

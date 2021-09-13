@@ -51,6 +51,11 @@
     width: 200px;
     font-size: 1.1rem;
   }
+
+  .ant-picker-dropdown,
+  .ant-select-dropdown {
+    z-index: 10 !important;
+  }
 }
 
 @include Responsive(md) {
@@ -114,9 +119,7 @@
 
 }
 
-.ant-picker-dropdown,.ant-select-dropdown {
-  z-index: 9 !important;
-}
+
 
 @include Responsive(xs) {
   .reservation {

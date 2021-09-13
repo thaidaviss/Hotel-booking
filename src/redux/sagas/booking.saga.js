@@ -63,8 +63,8 @@ function* deleteLocationSaga(action) {
 
 
 export default function* bookingSaga() {
-  yield takeEvery(REQUEST(LOCATION_ACTION.GET_LOCATION_LIST), getLocationListSaga);
-  yield takeEvery(REQUEST(LOCATION_ACTION.CREATE_LOCATION), createLocationSaga);
-  yield takeEvery(REQUEST(LOCATION_ACTION.EDIT_LOCATION), editLocationSaga);
-  yield takeEvery(REQUEST(LOCATION_ACTION.DELETE_LOCATION), deleteLocationSaga);
+  // yield takeEvery(REQUEST(LOCATION_ACTION.GET_LOCATION_LIST), getLocationListSaga);
+  // yield takeEvery(REQUEST(LOCATION_ACTION.CREATE_LOCATION), createLocationSaga);
+  // yield takeEvery(REQUEST(LOCATION_ACTION.EDIT_LOCATION), editLocationSaga);
+  // yield takeEvery(REQUEST(LOCATION_ACTION.DELETE_LOCATION), deleteLocationSaga);
 }
