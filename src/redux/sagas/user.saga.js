@@ -21,16 +21,16 @@ function* login(action) {
          data
       } = action.payload
       const response = yield authAPI.login(data);
+      console.log(response.data);
       yield put({
          type: SUCCESS(USER_ACTION.LOGIN),
-         payload: response.data
+         payload: response,
       });
       yield  notification.success({
          description: "Login success!"  
       });
       
       if(response.data.user.role==="admin"){
-         console.log("🚀 ~ file: user.sagas.js ~ line 33 ~ function*login ~ response.data.user.role", response.data.user.role)
          yield history.push(ROUTER_URL.ADMIN)
       }
       else{
@@ -39,7 +39,7 @@ function* login(action) {
    } catch (e) {
       yield put({
          type: FAILURE(USER_ACTION.LOGIN),
-         message: e.message
+         payload: e.message
       });
       yield  notification.error({
          description:e.message

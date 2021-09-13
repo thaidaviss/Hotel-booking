@@ -51,65 +51,191 @@
       "id": 4
     }
   ],
-  "typeRooms": [
-    {
+
+  "typeRooms": [{
       "id": 1,
       "name": "Superior Room Single",
-      "description": "",
+      "rating": 4,
+      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
       "maxGuest": 4,
       "price": 300,
       "images": [
-        ""
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/1.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/2.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/3.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/4.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/5.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/6.jpg"
       ],
-      "services": []
+      "services": [{
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "bed": "1 double bed"
+        },
+        {
+          "roomSize": "Room size: 17 m²/183 ft²"
+        },
+        {
+          "view": "City view"
+        },
+        {
+          "smoking": "Non-smoking"
+        },
+        {
+          "shower": "Shower"
+        }
+
+      ]
     },
     {
       "id": 2,
       "name": "Superior Room Twin",
-      "description": "",
+      "rating": 4,
+      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
       "maxGuest": 4,
       "price": 300,
       "images": [
-        ""
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/s1.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/s2.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/s3.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/s4.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/s5.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/s6.jpg"
       ],
-      "services": []
+      "services": [{
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "bed": "1 double bed"
+        },
+        {
+          "roomSize": "Room size: 17 m²/183 ft²"
+        },
+        {
+          "view": "City view"
+        },
+        {
+          "smoking": "Non-smoking"
+        },
+        {
+          "shower": "Shower"
+        }
+
+      ]
     },
     {
       "id": 3,
-      "name": "Deluxe Room",
-      "description": "",
+      "name": "Deluxe Room Single",
+      "rating": 4,
+      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
       "maxGuest": 4,
       "price": 300,
       "images": [
-        ""
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/d1.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/d2.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/d3.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/4.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/5.jpg",
+        "https://danangpetrohotel.com.vn/dataUpload/Room/room/6.jpg"
       ],
-      "services": []
+      "services": [{
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "bed": "1 double bed"
+        },
+        {
+          "roomSize": "Room size: 17 m²/183 ft²"
+        },
+        {
+          "view": "City view"
+        },
+        {
+          "smoking": "Non-smoking"
+        },
+        {
+          "shower": "Shower"
+        }
+
+      ]
     },
     {
       "id": 4,
       "name": "Suite Room",
-      "description": "",
+      "rating": 4,
+      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
       "maxGuest": 4,
       "price": 300,
       "images": [
-        ""
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-4-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-2-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.768.768.jpg",
+        "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.768.768.jpg"
       ],
-      "services": []
+      "services": [{
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "bed": "1 double bed"
+        },
+        {
+          "roomSize": "Room size: 17 m²/183 ft²"
+        },
+        {
+          "view": "City view"
+        },
+        {
+          "smoking": "Non-smoking"
+        },
+        {
+          "shower": "Shower"
+        }
+
+      ]
     },
     {
       "id": 5,
       "name": "Luxury Suite Room",
-      "description": "",
+      "rating": 4,
+      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
       "maxGuest": 4,
       "price": 300,
       "images": [
-        ""
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00118?$LargeViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00112?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00118?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00189?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524191-Luxury%20Suite%20Top%20LUXR?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524190-Luxury%20Suite%202%20LUXR?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524189-Luxury%20Suite%201%20LUXR?$MedViewport100pct$",
+        "https://s7d2.scene7.com/is/image/ritzcarlton/ritz-carlton-primary-black?$MedLgViewport33pct$"
       ],
-      "services": []
+      "services": [{
+          "wifi": "Free Wi-Fi"
+        },
+        {
+          "bed": "1 double bed"
+        },
+        {
+          "roomSize": "Room size: 17 m²/183 ft²"
+        },
+        {
+          "view": "City view"
+        },
+        {
+          "smoking": "Non-smoking"
+        },
+        {
+          "shower": "Shower"
+        }
+
+      ]
     }
   ],
-  "rooms": [
-    {
+  "rooms": [{
       "id": 1,
       "name": "101",
       "typeRoomId": 2,
@@ -126,23 +252,20 @@
       "updatedAt": 1631093012330
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "typeRoomId": 1,
-      "userId":"",
-      "rating": 1,
-      "title": "",
-      "review": "",
-      "serviceRating": 5,
-      "roomRating": 5,
-      "cleanlinessRating": 5,
-      "foodRating": 5,
-      "image": []
-    }
-  ],
-  "discounts": [
-    {
+  "comments": [{
+    "id": 1,
+    "typeRoomId": 1,
+    "userId": "",
+    "rating": 1,
+    "title": "",
+    "review": "",
+    "serviceRating": 5,
+    "roomRating": 5,
+    "cleanlinessRating": 5,
+    "foodRating": 5,
+    "image": []
+  }],
+  "discounts": [{
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
@@ -164,29 +287,25 @@
       "expiration": 2
     }
   ],
-  "blogs": [
-    {
-      "id": 1,
-      "title": "",
-      "description": "",
-      "author": "",
-      "image": ""
-    }
-  ],
-  "bookings": [
-    {
-      "id": 1,
-      "locationId": 1,
-      "typeRoomId": 1,
-      "profileId": 1,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomCode": 101,
-      "checkOut": 1,
-      "checkIn": 2,
-      "price": 123,
-      "total": 120,
-      "status": "pending"
-    }
-  ]
+  "blogs": [{
+    "id": 1,
+    "title": "",
+    "description": "",
+    "author": "",
+    "image": ""
+  }],
+  "bookings": [{
+    "id": 1,
+    "locationId": 1,
+    "typeRoomId": 1,
+    "profileId": 1,
+    "discountCode": "FAL-070925",
+    "discountPrice": 11,
+    "roomCode": 101,
+    "checkOut": 1,
+    "checkIn": 2,
+    "price": 123,
+    "total": 120,
+    "status": "pending"
+  }]
 }

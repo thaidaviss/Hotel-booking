@@ -8,7 +8,7 @@ export const RoomAPI = {
   getRoomDetail: (id,params)=>API.get(`${URL_API}/rooms/${id}?${queryString.stringify(params)}`),
   getFilterRoomList:(params)=> API.get(`${URL_API}/rooms?${queryString.stringify(params)}`),
   addRoomToList:(data) => API.post(`${URL_API}/rooms`,data),
-  deleteRoomInList: (id)=> API.delete(URL_API,id),
-  editRoomInList:(id,data)=> API.patch(URL_API,id,data),
+  deleteRoomInList: (id)=> API.delete(`${URL_API}/rooms`,id),
+  editRoomInList:(id,data)=> API.patch(`${URL_API}/rooms`,id,data),
   
 }

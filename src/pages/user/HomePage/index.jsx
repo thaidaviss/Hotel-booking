@@ -86,7 +86,7 @@ function HomePage(props) {
             className="btn btn-order"
             data-aos="fade-right"
             data-aos-anchor-placement="top-bottom"
-            data-aos-duration="2000"
+            data-aos-duration="1000"
           >
             {t("Take a tour")}
           </button>

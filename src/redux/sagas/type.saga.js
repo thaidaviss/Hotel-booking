@@ -5,6 +5,7 @@ import { URL_API,typeRoomAPI } from "Api/index";
 
 
 function* getTypeListSaga(action) {
+  const {data} = action.payload;
   try {
     const result = yield typeRoomAPI.getTypeRoomList();
     yield put({
@@ -15,6 +16,21 @@ function* getTypeListSaga(action) {
     });
   } catch (e) {
     yield put({ type: FAILURE(TYPE_ACTION.GET_TYPE_LIST), payload: e.message });
+  }
+}
+
+function* getFilterTypeListSaga(action) {
+  const {params} = action.payload;
+  try {
+    const result = yield typeRoomAPI.getFilterTypeRoomList(params);
+    yield put({
+      type: SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(TYPE_ACTION.GET_FILTER_TYPE_LIST), payload: e.message });
   }
 }
 
@@ -64,6 +80,7 @@ function* deleteTypeSaga(action) {
 
 export default function* typeSaga() {
   yield takeEvery(REQUEST(TYPE_ACTION.GET_TYPE_LIST), getTypeListSaga);
+  yield takeEvery(REQUEST(TYPE_ACTION.GET_FILTER_TYPE_LIST), getFilterTypeListSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.CREATE_TYPE), createTypeSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.EDIT_TYPE), editTypeSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.DELETE_TYPE), deleteTypeSaga);

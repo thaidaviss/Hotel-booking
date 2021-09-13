@@ -1,21 +1,27 @@
 import { IMAGES } from "constants/images.constants";
 import { ROUTER_URL } from "constants/index";
 import _ from "lodash";
+import { Menu, Dropdown } from "antd";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-
+import { useDispatch } from "react-redux";
+import { logoutAction } from "redux/actions";
 
 function Header(props) {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("en");
   const handleChangeLang = (lang) => {
     setLang(lang);
     i18n.changeLanguage(lang);
   };
+  const userInfo = JSON.parse(localStorage.getItem("userData"));
   const [ScrollTop, setScrollTop] = useState(0);
+  
   useEffect(() => {
     window.addEventListener(
       "scroll",
@@ -24,6 +30,19 @@ function Header(props) {
       }, 20)
     );
   }, [window.scrollY]);
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <Link rel="noopener noreferrer" className="user-item">Profile</Link>
+        
+      </Menu.Item>
+      <Menu.Item>
+        <p rel="noopener noreferrer"  className="user-item" href="" onClick={()=>dispatch(logoutAction())}>
+          Logout
+        </p>
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <div className={ScrollTop > 0 ? "header header__white" : "header"}>
       {/* <!-- navigation menu --> */}
@@ -76,9 +95,20 @@ function Header(props) {
                 </div>
               </div>
               <div className="navbar__list-user">
-                <Link to={ROUTER_URL.LOGIN} className="link-user">
-                  {t("login")}
-                </Link>
+                {userInfo?.user?.role === "user" ? (
+                  <div className="link-profile">
+                    <Dropdown overlay={menu}>
+                      <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+                        <span><FaUserCircle /></span>{" "}
+                        <p>{userInfo.user.username}</p>
+                      </a>
+                    </Dropdown>
+                  </div>
+                ) : (
+                  <Link to={ROUTER_URL.LOGIN} className="link-user">
+                    {t("login")}
+                  </Link>
+                )}
               </div>
             </div>
 
@@ -109,7 +139,10 @@ function Header(props) {
               <Link to={ROUTER_URL.CONTACT}>{t("contact")}</Link>
             </li>
             <li className="navbar__list-item">
-              <button className="btn-login">{t("login")}</button>
+              <Link to={ROUTER_URL.LOGIN}>
+                {" "}
+                <button className="btn-login">{t("login")}</button>
+              </Link>
             </li>
           </ul>
         </div>

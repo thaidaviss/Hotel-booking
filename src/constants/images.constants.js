@@ -16,6 +16,7 @@ import LINE1 from "assets/images/line1.webp";
 import LINE2 from "assets/images/line2.webp";
 import ABOUT3 from "assets/images/about3.jpg";
 import STARS from "assets/images/stars.png";
+import Avatar_default from "assets/images/default-avatar.png";
 const LIST_ROOM = [
   ROOM1,
   ROOM5,
@@ -23,6 +24,7 @@ const LIST_ROOM = [
   ROOM8
 ]
 export const IMAGES = {
+  Avatar_default,
   LOGO,
   LOGO_HEADER_ADMIN,
   LOGO_HEADER_USER,

@@ -1,12 +1,11 @@
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Popconfirm, Space, Table } from 'antd';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Table, Button, Popconfirm, Space } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-
+import { createTypeAction, deleteRoomAction, editTypeAction, getTypeListAction } from 'redux/actions/index';
 import RoomTypesModal from './components/RoomTypesModal';
-import moment from 'moment';
 import './RoomTypes.scss';
-import { createTypeAction, deleteRoomAction, editTypeAction, getTypeListAction } from 'redux/actions';
 
 
 

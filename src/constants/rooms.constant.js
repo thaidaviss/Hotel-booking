@@ -10,13 +10,26 @@ export const LIST_ROOM = [{
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     price: 400,
     off: "40%",
-    services: ["Free Wifi",
-      "View city",
-      "Breakfast",
-      "1 Super king bed",
-      "Size room 45 m²/484 ft²",
-      "1 Bathroom"
-    ],
+    services: [{
+      "wifi": "Free Wi-Fi"
+    },
+    {
+      "bed": "1 double bed"
+    },
+    {
+      "roomSize": "Room size: 17 m²/183 ft²"
+    },
+    {
+      "view": "City view"
+    },
+    {
+      "smoking": "Non-smoking"
+    },
+    {
+      "shower": "Shower"
+    }
+
+  ],
     map: "39 Tho Nhuom,Hoan Kiem, Hoan Kiem District, Hanoi, Vietnam",
     urlMap: "https://www.agoda.com/search?city=2758",
     rate: 4
@@ -28,12 +41,25 @@ export const LIST_ROOM = [{
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     price: 400.00,
     off: "40%",
-    services: ["Free Wifi",
-      "View city",
-      "Breakfast",
-      "1 Super king bed",
-      "Size room 45 m²/484 ft²",
-      "1 Bathroom"
+    services: [{
+        "wifi": "Free Wi-Fi"
+      },
+      {
+        "bed": "1 double bed"
+      },
+      {
+        "roomSize": "Room size: 17 m²/183 ft²"
+      },
+      {
+        "view": "City view"
+      },
+      {
+        "smoking": "Non-smoking"
+      },
+      {
+        "shower": "Shower"
+      }
+
     ],
     map: "39 Tho Nhuom,Hoan Kiem, Hoan Kiem District, Hanoi, Vietnam",
     urlMap: "https://www.agoda.com/search?city=2758",
@@ -46,13 +72,26 @@ export const LIST_ROOM = [{
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     price: 500.00,
     off: "30%",
-    services: ["Free Wifi",
-      "View city",
-      "Breakfast",
-      "1 Super king bed",
-      "Size room 45 m²/484 ft²",
-      "1 Bathroom"
-    ],
+    services: [{
+      "wifi": "Free Wi-Fi"
+    },
+    {
+      "bed": "1 double bed"
+    },
+    {
+      "roomSize": "Room size: 17 m²/183 ft²"
+    },
+    {
+      "view": "City view"
+    },
+    {
+      "smoking": "Non-smoking"
+    },
+    {
+      "shower": "Shower"
+    }
+
+  ],
     map: "39 Tho Nhuom,Hoan Kiem, Hoan Kiem District, Hanoi, Vietnam",
     urlMap: "https://www.agoda.com/search?city=2758",
     rate: 4
@@ -63,13 +102,26 @@ export const LIST_ROOM = [{
     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 
     price: 700.00,
-    services: ["Free Wifi",
-      "View city",
-      "Breakfast",
-      "1 Super king bed",
-      "Size room 45 m²/484 ft²",
-      "1 Bathroom"
-    ],
+    services: [{
+      "wifi": "Free Wi-Fi"
+    },
+    {
+      "bed": "1 double bed"
+    },
+    {
+      "roomSize": "Room size: 17 m²/183 ft²"
+    },
+    {
+      "view": "City view"
+    },
+    {
+      "smoking": "Non-smoking"
+    },
+    {
+      "shower": "Shower"
+    }
+
+  ],
     map: "39 Tho Nhuom,Hoan Kiem, Hoan Kiem District, Hanoi, Vietnam",
     urlMap: "https://www.agoda.com/search?city=2758",
     rate: 4
