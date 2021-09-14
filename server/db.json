@@ -1,28 +1,68 @@
 {
-  "users": [{
-      "email": "thaidavis11999@gmail.com",
-      "password": "$2a$10$laNofFEu83SwkNYTwnLAE.iK10DG1SzCFYJJi1EBj4wSA3uwLlBuW",
-      "username": "wiliam1307",
+  "users": [
+    {
+      "email": "phuongtran.jdan@gmail.com",
+      "password": "$2a$10$xgMM8teOMGQAsABlQ28E7eJdVJdLJtraCVQw3J6F7P6FG4V1Y0pVu",
+      "username": "phuongtran191",
       "role": "user",
-      "id": 3
+      "id": 1,
+      "name": "Trần Nguyễn Công Phương",
+      "avatar": [
+        "https://live.staticflickr.com/65535/51470208301_2e424eb83e_m.jpg"
+      ],
+      "phone": "0353862465",
+      "age": 29,
+      "gender": "male",
+      "address": "Phú Ninh - Quảng Nam",
+      "birthday": null,
+      "status": "active",
+      "createdAt": 1628339995854,
+      "updatedAt": 1631590504468,
+      "key": 0
     },
     {
       "email": "thaidaviss1999@gmail.com",
-      "password": "$2a$10$SxiRdzmGhvdN59vuN0MJn.47LZyKR29wyHElza.jYvNVD3b6vX3eC",
+      "password": "$2a$10$Ucsp.nxu/HOLerPhl6sz6O6UOSqCH2i.cQXfL//jNgT/3QGoFdXtW",
       "username": "wiliam1307",
       "role": "admin",
-      "id": 4
+      "id": 2,
+      "avatar": [
+        "https://live.staticflickr.com/65535/51470203231_89fc8f707a_m.jpg"
+      ],
+      "key": 1,
+      "status": "active",
+      "createdAt": 1628339995854,
+      "updatedAt": 1631590099557,
+      "name": "Nguyễn Phương Hằng",
+      "phone": "0362152512",
+      "age": 46,
+      "gender": "female",
+      "birthday": null
     },
     {
       "email": "thaidavis1999@gmail.com",
-      "password": "$2a$10$Py8nCtppU6wwhHgq.GpeiOUjTTt3ihhizp7vMazfHSKltV7DCUd0y",
-      "username": "wiliam1307",
+      "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
+      "username": "cristiano7",
       "role": "user",
-      "id": 5
+      "id": 3,
+      "avatar": [
+        "https://live.staticflickr.com/65535/51470911828_c4b03d93b0_m.jpg"
+      ],
+      "key": 2,
+      "status": "active",
+      "createdAt": 1628339995854,
+      "updatedAt": 1631591278228,
+      "name": "Cristiano Ronaldo",
+      "phone": "0129111000",
+      "age": 36,
+      "gender": "male",
+      "address": "Portugal",
+      "birthday": null
     }
   ],
   "profiles": [],
-  "locations": [{
+  "locations": [
+    {
       "id": 1,
       "name": "Đà Nẵng",
       "address": "38 Đống Đa, quận Hải Châu, Tp. Đà Nẵng",
@@ -51,8 +91,8 @@
       "id": 4
     }
   ],
-
-  "typeRooms": [{
+  "typeRooms": [
+    {
       "id": 1,
       "name": "Superior Room Single",
       "rating": 4,
@@ -86,7 +126,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -123,7 +162,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -196,7 +234,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -238,7 +275,8 @@
       ]
     }
   ],
-  "rooms": [{
+  "rooms": [
+    {
       "id": 1,
       "name": "101",
       "typeRoomId": 2,
@@ -248,47 +286,49 @@
     },
     {
       "id": 2,
-      "name": "102",
+      "name": "106",
       "typeRoomId": 2,
       "rating": 5,
       "createdAt": 1631092999151,
-      "updatedAt": 1631093012330
+      "updatedAt": 1631541787348
+    },
+    {
+      "name": "201",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1631541812854,
+      "updatedAt": 1631541812854,
+      "id": 3
     }
   ],
-  "comments": [{
-    "id": 1,
-    "typeRoomId": 1,
-    "userId": "",
-    "rating": 1,
-    "title": "",
-    "review": "",
-    "serviceRating": 5,
-    "roomRating": 5,
-    "cleanlinessRating": 5,
-    "foodRating": 5,
-    "image": []
-  }],
-  "discounts": [{
+  "comments": [],
+  "discounts": [
+    {
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
       "start": 1631092999151,
-      "end": 1631093012330
+      "end": 1631093012330,
+      "createdAt": 1631541812854,
+      "updatedAt": 1631541812854
     },
     {
       "id": 2,
       "name": "SUM-040620",
       "typeRoomId": 3,
       "start": 1631092999151,
-      "end": 1631093012330
-
+      "end": 1631093012330,
+      "createdAt": 1631541812854,
+      "updatedAt": 1631541812854
     },
     {
       "id": 3,
       "name": "FAL-070925",
       "typeRoomId": 2,
       "start": 1631092999151,
-      "end": 1631093012330
+      "end": 1631093012330,
+      "createdAt": 1631541812854,
+      "updatedAt": 1631541812854
     }
   ],
   "blogs": [
@@ -300,20 +340,5 @@
       "image": ""
     }
   ],
-  "bookings": [
-    {
-      "id": 1,
-      "locationId": 1,
-      "typeRoomId": 1,
-      "profileId": 1,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomCode": 101,
-      "checkOut": 1,
-      "checkIn": 2,
-      "price": 123,
-      "total": 120,
-      "status": "pending"
-    }
-  ]
+  "bookings": []
 }

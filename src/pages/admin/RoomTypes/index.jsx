@@ -1,12 +1,13 @@
 import { PlusOutlined } from '@ant-design/icons';
-import { Button, Image, Popconfirm, Space, Table } from 'antd';
+import { Button, Tag, Image, Popconfirm, Space, Table } from 'antd';
 import { ROUTER_URL } from 'constants/index';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTypeAction, getTypeListAction } from 'redux/actions';
 import history from 'utils/history';
 import ImageSliderItem from './components/ImageSliderItem';
+import UtilityItem from './components/UtilityItem';
 import './RoomTypes.scss';
 
 
@@ -20,17 +21,18 @@ const RoomTypesPage = (props) => {
   }, []);
 
   const roomTypesColumns = [
+    { title: "No.", dataIndex: "id", key: "id", width: 30, fixed: "left", },
     {
       title: "Type of Room",
       dataIndex: "name",
       key: "name",
       fixed: "left",
-      width: 200,
+      width: 150,
       render: (value, record) => {
         return <ImageSliderItem images={record.images} value={value} key={`image-${record.id}`} />;
       },
     },
-    { title: "Description", dataIndex: "description", key: "description", width: 400 },
+    { title: "Description", dataIndex: "description", key: "description", width: 250 },
     {
       title: "Type of View",
       dataIndex: "view",
@@ -42,11 +44,13 @@ const RoomTypesPage = (props) => {
     },
     { title: "Max Guest", dataIndex: "maxGuest", key: "maxGuest", width: 80 },
     {
-      title: "Services",
+      title: "Utilities",
       dataIndex: "utilities",
       key: "utilities",
-      width: 350,
-      render: (value) => `- ${value.map((item)=> item[Object.keys(item)[0]])}`,
+      width: 200,
+      render: (value, record) => {
+        return <UtilityItem value={value} key={`utility-${record.id}`} />;
+      },
     },
     {
       title: "Price",
@@ -83,7 +87,6 @@ const RoomTypesPage = (props) => {
               type="primary"
               ghost
               onClick={() => {
-                // dispatch(editTypeAction(record.id));
                 history.push(
                   `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`
                 );

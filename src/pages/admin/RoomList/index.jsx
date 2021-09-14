@@ -46,10 +46,11 @@ function RoomListPage (props) {
     }
   });
   const roomColumns = [
+    { title: 'No.', dataIndex: 'id', key: 'id', width: 80 },
     {
       title: 'Name',
       dataIndex: 'name',
-      width: 100,
+      width: 150,
       fixed: "left",
       key: 'name',
     },
@@ -62,17 +63,19 @@ function RoomListPage (props) {
         if (typeData) return typeData.name;
       }
     },
-    { title: 'Rating', dataIndex: 'rating', key: 'rating' },
+    { title: 'Rating', dataIndex: 'rating', key: 'rating', width: 100 },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
       key: 'createdAt',
+      width: 200,
       render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
     },
     {
       title: 'Update At',
       dataIndex: 'updatedAt',
       key: 'updatedAt',
+      width: 200,
       render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
     },
     {
