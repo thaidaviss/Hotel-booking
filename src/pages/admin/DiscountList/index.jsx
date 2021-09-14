@@ -4,12 +4,13 @@ import { Button, Popconfirm, Space, Table } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 import moment from "moment";
 import { useDispatch } from 'react-redux';
-import { getDiscountListAction } from 'redux/actions';
+import { createDiscountAction, editDiscountAction, getDiscountListAction } from 'redux/actions';
 
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
 
 const DiscountListPage = () => {
+  // "" , "edit", "create"
   const [isShowDiscountModal, setIsShowDiscountModal] = useState("");
   const [modifyDiscountData, setModifyDiscountData] = useState({});
   const { discountList } = useSelector((state) => state.discountReducer);
@@ -19,6 +20,24 @@ const DiscountListPage = () => {
     dispatch(getDiscountListAction());
   }, []);
 
+
+  function handleSubmitForm(values) {
+    // values.start = moment(values.start).format('DD/MM/YYYY');
+    // values.end = moment(values.end).format('DD/MM/YYYY');
+    if (isShowDiscountModal === 'create') {
+      dispatch(createDiscountAction({
+        data: values,
+      }));
+    } else {
+      dispatch(editDiscountAction({
+        id: modifyDiscountData.id,
+        data: values,
+      }));
+    }
+    setIsShowDiscountModal("");
+  };
+
+
   const discountData = discountList.data.map((discountItem, discountIndex) => {
     return {
       key: discountIndex,
@@ -26,6 +45,7 @@ const DiscountListPage = () => {
     }
   });
   const discountColumns = [
+    { title: 'No.', dataIndex: 'id', key: 'id', width: 80, fixed: "left", },
     {
       title: 'Name',
       dataIndex: 'name',
@@ -34,8 +54,8 @@ const DiscountListPage = () => {
       key: 'name',
     },
     { 
-      title: 'Start Date', 
-      dataIndex: 'start', 
+      title: 'Start Date',
+      dataIndex: 'start',
       key: 'start',
       render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
@@ -105,8 +125,8 @@ const DiscountListPage = () => {
             setIsShowDiscountModal("create");
             setModifyDiscountData({ 
               name: '', 
-              start:1631092999151,
-              end:1631093012330,
+              start: 1631092999151,
+              end: 1631093012330,
               value: 0 
             });
           }}
@@ -126,7 +146,7 @@ const DiscountListPage = () => {
         isShowDiscountModal={isShowDiscountModal}
         setIsShowDiscountModal={setIsShowDiscountModal}
         modifyDiscountData={modifyDiscountData}
-        handleSubmitForm={null}
+        handleSubmitForm={handleSubmitForm}
       />
     </div>
   );

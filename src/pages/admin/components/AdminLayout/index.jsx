@@ -15,8 +15,7 @@ import { Switch, useRouteMatch } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
 import "./AdminLayout.scss";
-
-
+import AddEditUserPage from "pages/admin/AddEditUser";
 
 
 
@@ -49,6 +48,8 @@ function AdminLayout(props) {
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOM_TYPES}`} component={RoomTypesPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditTypePage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_USER}`} component={AddEditUserPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_USER}`} component={AddEditUserPage} />
 
               <NotFoundPage />
 

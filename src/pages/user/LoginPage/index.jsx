@@ -3,14 +3,12 @@ import { IMAGES } from "constants/images.constants";
 import { ROUTER_URL } from "constants/index";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { Button, Checkbox, Form, Input, Tabs } from "antd";
-import { IMAGES } from "constants/images.constants";
-import { ROUTER_URL } from "constants/index";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { loginAction, registerAction } from "redux/actions";
 import history from "utils/history";
 import "./LoginPage.scss";
+
 
 const { TabPane } = Tabs;
 

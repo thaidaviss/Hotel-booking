@@ -22,7 +22,9 @@ export const ROUTER_URL = {
   ROOM_TYPES: "/room-types",
   USER:"/user",
   EDIT:"/edit",
-  PAYMENT:"/payment"
+  PAYMENT:"/payment",
+  CREATE_USER: "/users/create",
+  EDIT_USER: "/users/:id/edit"
 
 
 };

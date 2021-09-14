@@ -10,14 +10,10 @@ const DiscountModal = ({
   isShowDiscountModal,
   setIsShowDiscountModal,
   modifyDiscountData,
+  handleSubmitForm,
 }) => {
   const [modifyDiscountForm] = Form.useForm();
   const dispatch = useDispatch();
-  const newDiscountData = {
-    ...modifyDiscountData,
-    start: () => moment(modifyDiscountData.start, dateFormat),
-    end: () => moment(modifyDiscountData.end, dateFormat)
-  }
 
   useEffect(() => {
     if (isShowDiscountModal) {
@@ -37,8 +33,8 @@ const DiscountModal = ({
         name="modify-discount"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 20 }}
-        initialValues={newDiscountData}
-        onFinish={(values) => console.log(values)}
+        initialValues={modifyDiscountData}
+        onFinish={(values) => handleSubmitForm(values)}
       >
         <Form.Item
           label="Name"
@@ -69,7 +65,7 @@ const DiscountModal = ({
           name="value"
           rules={[{ required: true, message: "Please input your value discount!" }]}
         >
-          <InputNumber style={{ width: "100%" }} />
+          <InputNumber style={{ width: "100%" }} max={100} />
         </Form.Item>
       </Form>
     </Modal>

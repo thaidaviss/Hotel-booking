@@ -1,6 +1,6 @@
 
 import { notification } from 'antd';
-import { authAPI } from 'Api';
+import { authAPI, UserAPI } from 'Api';
 import { ROUTER_URL } from 'constants/index';
 import {
    put,
@@ -123,10 +123,78 @@ function* register(action) {
  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
  Allows concurrent fetches of user.
 */
+
+function* getUserListSaga(action) {
+  try {
+    const result = yield UserAPI.getUserList();
+    yield put({
+      type: SUCCESS(USER_ACTION.GET_USER_LIST),
+      payload: {
+        data: result.data,
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(USER_ACTION.GET_USER_LIST), payload: e.message });
+  }
+}
+
+function* getUserDetailSaga(action) {
+   try {
+     const { id } = action.payload;
+     const result = yield UserAPI.getUserDetail(id,{ _embed:"bookings" });
+     yield put({
+       type: SUCCESS(USER_ACTION.GET_USER_DETAIL),
+       payload: {
+         data: result.data
+       },
+     });
+   } catch (e) {
+     yield put({ type: FAILURE(USER_ACTION.GET_USER_DETAIL), payload: e.message });
+   }
+ }
+
+function* createUserSaga(action) {
+  try {
+    const { data } = action.payload;
+    const result = yield UserAPI.addUserToList(data);
+    yield put({
+      type: SUCCESS(USER_ACTION.CREATE_USER),
+      payload: {
+        data: result.data,
+      },
+    });
+    yield history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}`);
+  } catch (e) {
+    yield put({ type: FAILURE(USER_ACTION.CREATE_USER), payload: e.message });
+  }
+}
+
+function* editUserSaga(action) {
+  try {
+    const { id, data } = action.payload;
+    const result = yield UserAPI.editUserInList(id, data);
+    yield put({
+      type: SUCCESS(USER_ACTION.EDIT_USER),
+      payload: {
+        data: result.data,
+      },
+    });
+    yield history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}`);
+  } catch (e) {
+    yield put({ type: FAILURE(USER_ACTION.EDIT_USER), payload: e.message });
+  }
+}
+ 
+
 function* userSaga() {
    yield takeEvery(REQUEST(USER_ACTION.LOGIN), login);
    yield takeEvery(REQUEST(USER_ACTION.REGISTER), register);
    yield takeEvery(REQUEST(USER_ACTION.LOGOUT), logout);
    // yield takeEvery(REQUEST(USER.CHECK_LOGIN), checkLogin);
+
+   yield takeEvery(REQUEST(USER_ACTION.GET_USER_LIST), getUserListSaga);
+   yield takeEvery(REQUEST(USER_ACTION.GET_USER_DETAIL), getUserDetailSaga);
+   yield takeEvery(REQUEST(USER_ACTION.CREATE_USER), createUserSaga);
+   yield takeEvery(REQUEST(USER_ACTION.EDIT_USER), editUserSaga);
 }
 export default userSaga;

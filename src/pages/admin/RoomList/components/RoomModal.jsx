@@ -33,6 +33,7 @@ const RoomModal = ({
       visible={!!isShowRoomModal}
       onOk={() => modifyRoomForm.submit()}
       onCancel={() => setIsShowRoomModal("")}
+      confirmLoading={typeList.load}
     >
       <Form
         form={modifyRoomForm}
