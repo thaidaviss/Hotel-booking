@@ -1,5 +1,8 @@
+@import '../../../styles/main.scss';
 
-
+.user-form-container {
+  min-height: $admin-content-height;
+}
 .user-form-title {
   margin-bottom: 1rem;
 }

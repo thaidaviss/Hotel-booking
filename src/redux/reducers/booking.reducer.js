@@ -1,14 +1,14 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ROOM_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants/index";
+import { BOOKING_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants/index";
 
 
 const initialState = {
-  roomList: {
+  bookingList: {
     data: [],
     load: false,
     error: null,
   },
-  roomDetail: {
+  bookingDetail: {
     data: {},
     load: false,
     error: null,
@@ -16,113 +16,139 @@ const initialState = {
 }
 
 const bookingReducer = createReducer(initialState, {
-  [REQUEST(ROOM_ACTION.GET_ROOM_LIST)]: (state, action) => {
+  [REQUEST(BOOKING_ACTION.GET_BOOKING_LIST)]: (state, action) => {
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
         load: true,
       },
     };
   },
-  [SUCCESS(ROOM_ACTION.GET_ROOM_LIST)]: (state, action) => {
+  [SUCCESS(BOOKING_ACTION.GET_BOOKING_LIST)]: (state, action) => {
     const { data } = action.payload;
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
         data,
         load: false,
         error: null,
       },
     }
   },
-  [FAILURE(ROOM_ACTION.GET_ROOM_LIST)]: (state, action) => {
+  [FAILURE(BOOKING_ACTION.GET_BOOKING_LIST)]: (state, action) => {
     const { error } = action.payload;
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
         load: false,
         error,
       },
     }
   },
 
-  [REQUEST(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
+  [REQUEST(BOOKING_ACTION.GET_BOOKING_DETAIL)]: (state, action) => {
     return {
       ...state,
-      roomDetail: {
-        ...state.roomDetail,
+      bookingDetail: {
+        ...state.bookingDetail,
         load: true,
       },
     };
   },
-  [SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
+  [SUCCESS(BOOKING_ACTION.GET_BOOKING_DETAIL)]: (state, action) => {
     const { data } = action.payload;
     return {
       ...state,
-      roomDetail: {
-        ...state.roomDetail,
+      bookingDetail: {
+        ...state.bookingDetail,
         data,
         load: false,
         error: null,
       },
     }
   },
-  [FAILURE(ROOM_ACTION.GET_ROOM_DETAIL)]: (state, action) => {
+  [FAILURE(BOOKING_ACTION.GET_BOOKING_DETAIL)]: (state, action) => {
     const { error } = action.payload;
     return {
       ...state,
-      roomDetail: {
-        ...state.roomDetail,
+      bookingDetail: {
+        ...state.bookingDetail,
         load: false,
         error,
       },
     }
   },
 
-  [SUCCESS(ROOM_ACTION.CREATE_ROOM)]: (state, action) => {
+  [SUCCESS(BOOKING_ACTION.CREATE_BOOKING)]: (state, action) => {
     const { data } = action.payload;
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
         data: [
           data,
-          ...state.roomList.data,
+          ...state.bookingList.data,
         ],
       },
     }
   },
 
-  [SUCCESS(ROOM_ACTION.EDIT_ROOM)]: (state, action) => {
+  [SUCCESS(BOOKING_ACTION.CHECK_IN_BOOKING)]: (state, action) => {
     const { data } = action.payload;
-    const newRoomList = [...state.roomList.data];
-    const roomIndex = newRoomList.findIndex((room) => room.id === data.id);
-    newRoomList.splice(roomIndex, 1, data);
+    const newBookingList = [...state.bookingList.data];
+    const bookingIndex = newBookingList.findIndex((booking) => booking.id === data.id);
+    newBookingList.splice(bookingIndex, 1, data);
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
-        data: newRoomList,
+      bookingList: {
+        ...state.bookingList,
+        data: newBookingList,
+      },
+    };
+  },
+  [SUCCESS(BOOKING_ACTION.CHECK_OUT_BOOKING)]: (state, action) => {
+    const { data } = action.payload;
+    const newBookingList = [...state.bookingList.data];
+    const bookingIndex = newBookingList.findIndex((booking) => booking.id === data.id);
+    newBookingList.splice(bookingIndex, 1, data);
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        data: newBookingList,
+      },
+    };
+  },
+  [SUCCESS(BOOKING_ACTION.CANCEL_BOOKING)]: (state, action) => {
+    const { data } = action.payload;
+    const newBookingList = [...state.bookingList.data];
+    const bookingIndex = newBookingList.findIndex((booking) => booking.id === data.id);
+    newBookingList.splice(bookingIndex, 1, data);
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        data: newBookingList,
       },
     };
   },
 
-  [SUCCESS(ROOM_ACTION.DELETE_ROOM)]: (state, action) => {
-    const { id } = action.payload;
-    const newRoomList = [...state.roomList.data];
-    const roomIndex = newRoomList.findIndex((room) => room.id === id);
-    newRoomList.splice(roomIndex, 1);
-    return {
-      ...state,
-      roomList: {
-        ...state.roomList,
-        data: newRoomList,
-      },
-    };
-  },
+  // [SUCCESS(BOOKING_ACTION.DELETE_BOOKING)]: (state, action) => {
+  //   const { id } = action.payload;
+  //   const newBookingList = [...state.bookingList.data];
+  //   const bookingIndex = newBookingList.findIndex((booking) => booking.id === id);
+  //   newBookingList.splice(bookingIndex, 1);
+  //   return {
+  //     ...state,
+  //     bookingList: {
+  //       ...state.bookingList,
+  //       data: newBookingList,
+  //     },
+  //   };
+  // },
 });
 
 export default bookingReducer;

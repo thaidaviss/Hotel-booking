@@ -2,13 +2,19 @@ import { URL_API } from "Api";
 import { API } from "./constants.api";
 
 export const BookingAPI = {
- addBooking:(data)=> API.post(`${URL_API}/orders`,{...data,status:"booked"}),
+  getBookingList: () => API.get(`${URL_API}/bookings`),
 
- getHistoryBooking: (idUser)=>API.get(`${URL_API}/orders?idUser=${idUser}`),
+  addBooking: (data) =>
+    API.post(`${URL_API}/bookings`, { ...data, status: "booked" }),
 
- cancelBooking: (id,data)=> API.patch(`${URL_API}/orders`,id,{...data,status:"canceled"}),
+  getBookingDetail: (idUser) => API.get(`${URL_API}/bookings?idUser=${idUser}`),
 
- checkOutBooking: (id,data)=> API.patch(`${URL_API}/orders`,id,{...data,status:"check in"}),
- 
- checkInBooking: (id,data)=> API.patch(`${URL_API}/orders`,id,{...data,status:"check Out"}),
-}
+  cancelBooking: (id, data) =>
+    API.patch(`${URL_API}/bookings`, id, { ...data, status: "canceled" }),
+
+  checkOutBooking: (id, data) =>
+    API.patch(`${URL_API}/bookings`, id, { ...data, status: "check-in" }),
+
+  checkInBooking: (id, data) =>
+    API.patch(`${URL_API}/bookings`, id, { ...data, status: "check-out" }),
+};

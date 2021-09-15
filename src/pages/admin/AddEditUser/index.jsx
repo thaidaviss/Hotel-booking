@@ -69,7 +69,7 @@ const AddEditUserPage = (props) => {
   // }
 
   return (
-    <div>
+    <div className="user-form-container">
       <Row justify="space-between" className="user-form-title">
         <h3 style={{ fontWeight: "bold", fontSize: "1.2rem" }}>
           {userId ? "Edit User" : "Create User"}

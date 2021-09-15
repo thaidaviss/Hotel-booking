@@ -19,7 +19,7 @@ const UserModal = ({
 
   useEffect(() => {
     if (isShowUserModal) {
-      modifyUserForm.resetFields();
+      // modifyUserForm.resetFields();
     }
   }, [isShowUserModal]);
 
@@ -30,6 +30,7 @@ const UserModal = ({
       width={700}
       footer={[
         <Button
+          key={`${modifyUserData.id}`}
           type="primary"
           ghost
           onClick={() => setIsShowUserModal(false)}

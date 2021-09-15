@@ -1,23 +1,23 @@
-import { Modal, Form, Input, Select, InputNumber, Rate } from 'antd';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import './RoomModal.scss';
+import { Modal, Form, Input, Select, InputNumber, Rate } from "antd";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./BookingModal.scss";
 
-const RoomModal = ({
-  isShowRoomModal,
-  setIsShowRoomModal,
-  modifyRoomData,
+const BookingModal = ({
+  isShowBookingModal,
+  setIsShowBookingModal,
+  modifyBookingData,
   handleSubmitForm,
 }) => {
-  const [modifyRoomForm] = Form.useForm();
+  const [modifyBookingForm] = Form.useForm();
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isShowRoomModal) {
-      modifyRoomForm.resetFields();
+    if (isShowBookingModal) {
+      modifyBookingForm.resetFields();
     }
-  }, [isShowRoomModal]);
+  }, [isShowBookingModal]);
 
   function renderTypeOptions() {
     return typeList.data.map((typeItem, typeIndex) => (
@@ -29,17 +29,17 @@ const RoomModal = ({
 
   return (
     <Modal
-      title={isShowRoomModal === "create" ? "Create Room" : "Edit Room"}
-      visible={!!isShowRoomModal}
-      onOk={() => modifyRoomForm.submit()}
-      onCancel={() => setIsShowRoomModal("")}
+      title={isShowBookingModal === "create" ? "New Booking" : "Edit Booking"}
+      visible={isShowBookingModal}
+      onOk={() => modifyBookingForm.submit()}
+      onCancel={() => setIsShowBookingModal("")}
     >
       <Form
-        form={modifyRoomForm}
+        form={modifyBookingForm}
         name="modify-room"
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 20 }}
-        initialValues={modifyRoomData}
+        initialValues={modifyBookingData}
         onFinish={(values) => handleSubmitForm(values)}
       >
         <Form.Item
@@ -54,21 +54,18 @@ const RoomModal = ({
           label="Type Room"
           name="typeRoomId"
           rules={[{ required: true, message: "Please input type of room!" }]}
-          >
+        >
           <Select placeholder="Please select your type room!">
-              {renderTypeOptions()}
-            </Select>
+            {renderTypeOptions()}
+          </Select>
         </Form.Item>
 
-          <Form.Item
-            label="Rating"
-            name="rating"
-          >
-            <Rate defaultValue={5} value={5} style={{ width: "100%" }} />
-          </Form.Item>
+        <Form.Item label="Rating" name="rating">
+          <Rate defaultValue={5} value={5} style={{ width: "100%" }} />
+        </Form.Item>
       </Form>
     </Modal>
   );
-}
+};
 
-export default RoomModal;
+export default BookingModal;

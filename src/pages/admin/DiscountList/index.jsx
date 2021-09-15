@@ -22,8 +22,8 @@ const DiscountListPage = () => {
 
 
   function handleSubmitForm(values) {
-    // values.start = moment(values.start).format('DD/MM/YYYY');
-    // values.end = moment(values.end).format('DD/MM/YYYY');
+    // values.start = new Date(values.start).getTime();
+    // values.end = new Date(values.end).getTime();
     if (isShowDiscountModal === 'create') {
       dispatch(createDiscountAction({
         data: values,
@@ -135,7 +135,8 @@ const DiscountListPage = () => {
         </Button>
       </div>
       <div className="discount-list">
-        <Table 
+        <Table
+          size="small"
           dataSource={discountData}
           columns={discountColumns}
           loading={discountList.load}

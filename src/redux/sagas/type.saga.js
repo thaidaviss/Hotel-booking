@@ -23,7 +23,7 @@ function* getTypeListSaga(action) {
 function* getTypeDetailSaga(action) {
   try {
     const { id } = action.payload;
-    const result = yield typeRoomAPI.getTypeRoomDetail(id,{ _embed:"discounts" });
+    const result = yield typeRoomAPI.getTypeRoomDetail(id,{ _expanded:"discounts" });
     yield put({
       type: SUCCESS(TYPE_ACTION.GET_TYPE_DETAIL),
       payload: {

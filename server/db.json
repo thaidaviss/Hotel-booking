@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "phuongtran.jdan@gmail.com",
-      "password": "$2a$10$xgMM8teOMGQAsABlQ28E7eJdVJdLJtraCVQw3J6F7P6FG4V1Y0pVu",
+      "password": "$2a$10$gGU3F00TW5LG22LBBz.YtudFKfbk5wpBvfEilHn0clH6zKrnFek9a",
       "username": "phuongtran191",
       "role": "user",
       "id": 1,
@@ -17,7 +17,7 @@
       "birthday": null,
       "status": "active",
       "createdAt": 1628339995854,
-      "updatedAt": 1631590504468,
+      "updatedAt": 1631612316721,
       "key": 0
     },
     {

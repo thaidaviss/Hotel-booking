@@ -37,6 +37,7 @@ function UserListPage() {
       dataIndex: 'name',
       width: 250,
       fixed: "left",
+      sorter: true,
       key: 'name',
       render: (value, record) => {
         return <AvatarItem avatar={record.avatar} value={value} key={`avatar-${record.id}`} />;
@@ -59,6 +60,10 @@ function UserListPage() {
       dataIndex: 'role',
       key: 'role',
       width: 80,
+      render: (value) => {
+        if (value === "admin") return <Tag color="red">{value}</Tag>;
+        return <Tag color="blue">{value}</Tag>
+      }
     },
     { 
       title: 'Status',
@@ -160,6 +165,7 @@ function UserListPage() {
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <div className="user-title">
+        <p className="user-list-title">UserList Manager</p>
         <Button 
           className="add-user-btn"
           type="primary"
@@ -175,7 +181,8 @@ function UserListPage() {
         </Button>
       </div>
       <div className="user-list">
-        <Table 
+        <Table
+          size="small"
           dataSource={userData}
           columns={userColumns}
           loading={userList.load}

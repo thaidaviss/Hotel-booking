@@ -1,6 +1,7 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Tag, Image, Popconfirm, Space, Table } from 'antd';
 import { ROUTER_URL } from 'constants/index';
+import middlewares from 'json-server-auth';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -137,6 +138,7 @@ const RoomTypesPage = (props) => {
       </div>
       <div className="roomType-list">
         <Table
+          size="small"
           dataSource={roomTypesData}
           columns={roomTypesColumns}
           loading={typeList.load}

@@ -1,13 +1,11 @@
-import { Button, Popconfirm, Space, Table } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
+import { Button, Popconfirm, Space, Table } from "antd";
+import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
-import history from "utils/history";
-import './RoomList.scss';
 import { createRoomAction, deleteRoomAction, editRoomAction, getRoomListAction, getTypeListAction } from "redux/actions";
-import { ROUTER_URL } from "constants/index";
 import RoomModal from "./components/RoomModal";
+import './RoomList.scss';
 
 
 function RoomListPage (props) {
@@ -93,7 +91,6 @@ function RoomListPage (props) {
               ghost
               onClick={() => 
                 {
-                  // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`);
                   setIsShowRoomModal('edit');
                   setModifyRoomData(record);
                 }}
@@ -125,7 +122,6 @@ function RoomListPage (props) {
           icon={<PlusOutlined />}
           onClick={() => 
             {
-              // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
               setIsShowRoomModal("create");
               setModifyRoomData({ name: "", rating: 0 });
             }

@@ -186,20 +186,6 @@ const AddEditTypePage = (props) => {
             <Input />
           </Form.Item>
 
-          {/* <Form.Item
-            label="Type of View"
-            name="view"
-            rules={[{ required: true, message: "Please input type of view!" }]}
-          >
-            <Select placeholder="Please select type of view">
-              <Select.Option value="lake">Lake View</Select.Option>
-              <Select.Option value="mountain">Mountain View</Select.Option>
-              <Select.Option value="garden">Garden View</Select.Option>
-              <Select.Option value="front">Front View</Select.Option>
-              <Select.Option value="top">Top View</Select.Option>
-            </Select>
-          </Form.Item> */}
-
           <Form.Item
             label="Max Guest"
             name="maxGuest"
