@@ -18,7 +18,6 @@ import history from "utils/history";
 
 
 function* getTypeListSaga(action) {
-
   try {
     const result = yield typeRoomAPI.getTypeRoomList();
     yield put({
@@ -55,21 +54,23 @@ function* getTypeDetailSaga(action) {
   }
 }
 
-function* getFilterTypeListSaga(action) {
-  const {
-    params
-  } = action.payload;
+function* getTypeDetailSaga(action) {
   try {
-    const result = yield typeRoomAPI.getFilterTypeRoomList(params);
+    const {
+      id
+    } = action.payload;
+    const result = yield typeRoomAPI.getTypeRoomDetail(id, {
+      _embed: "discounts"
+    });
     yield put({
-      type: SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST),
+      type: SUCCESS(TYPE_ACTION.GET_TYPE_DETAIL),
       payload: {
         data: result.data
       },
     });
   } catch (e) {
     yield put({
-      type: FAILURE(TYPE_ACTION.GET_FILTER_TYPE_LIST),
+      type: FAILURE(TYPE_ACTION.GET_TYPE_DETAIL),
       payload: e.message
     });
   }

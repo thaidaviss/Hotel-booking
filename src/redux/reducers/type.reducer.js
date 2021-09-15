@@ -30,6 +30,7 @@ const initialState = {
 };
 
 const typeReducer = createReducer(initialState, {
+  // get list
   [REQUEST(TYPE_ACTION.GET_TYPE_LIST)]: (state, action) => {
     return {
       ...state,
@@ -65,6 +66,7 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
+  // get filter list
   [REQUEST(TYPE_ACTION.GET_FILTER_TYPE_LIST)]: (state, action) => {
     return {
       ...state,
@@ -98,7 +100,7 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
-
+  // get detail
   [REQUEST(TYPE_ACTION.GET_TYPE_DETAIL)]: (state, action) => {
     return {
       ...state,
@@ -135,11 +137,18 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
-
+  // create type list
+  // [REQUEST(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
+  //   return {
+  //     ...state,
+  //     typeList: {
+  //       ...state.typeList,
+  //       load: true,
+  //     },
+  //   }
+  // },
   [SUCCESS(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
-    const {
-      data
-    } = action.payload;
+    const { data } = action.payload;
     return {
       ...state,
       typeList: {
@@ -148,10 +157,31 @@ const typeReducer = createReducer(initialState, {
           data,
           ...state.typeList.data,
         ],
+        load: false,
       },
     }
   },
-
+  // [FAILURE(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
+  //   const { error } = action.payload;
+  //   return {
+  //     ...state,
+  //     typeList: {
+  //       ...state.typeList,
+  //       load: false,
+  //       error,
+  //     },
+  //   }
+  // },
+  // edit type
+  // [REQUEST(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
+  //   return {
+  //     ...state,
+  //     typeList: {
+  //       ...state.typeList,
+  //       load: true,
+  //     },
+  //   }
+  // },
   [SUCCESS(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
     const {
       data
@@ -167,7 +197,28 @@ const typeReducer = createReducer(initialState, {
       },
     };
   },
+  // [FAILURE(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
+  //   const { error } = action.payload;
+  //   return {
+  //     ...state,
+  //     typeList: {
+  //       ...state.typeList,
+  //       load: false,
+  //       error,
+  //     },
+  //   }
+  // },
 
+  // delete type
+  // [REQUEST(TYPE_ACTION.DELETE_TYPE)]: (state, action) => {
+  //   return {
+  //     ...state,
+  //     typeList: {
+  //       ...state.typeList,
+  //       load: true,
+  //     },
+  //   }
+  // },
   [SUCCESS(TYPE_ACTION.DELETE_TYPE)]: (state, action) => {
     const {
       id
@@ -183,6 +234,18 @@ const typeReducer = createReducer(initialState, {
       },
     };
   },
+  // [FAILURE(TYPE_ACTION.DELETE_TYPE)]: (state, action) => {
+  //   const { error } = action.payload;
+  //   return {
+  //     ...state,
+  //     typeList: {
+  //       ...state.typeList,
+  //       load: false,
+  //       error,
+  //     },
+  //   }
+  // },
+
 });
 
 export default typeReducer;

@@ -9,6 +9,7 @@ import { loginAction, registerAction } from "redux/actions";
 import history from "utils/history";
 import "./LoginPage.scss";
 
+
 const { TabPane } = Tabs;
 
 LoginPage.propTypes = {};

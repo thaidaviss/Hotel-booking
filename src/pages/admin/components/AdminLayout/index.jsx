@@ -1,7 +1,6 @@
 
 import { ROUTER_URL } from "constants/index";
 import PrivateLayout from "layouts/PrivateLayout";
-import AddEditTypePage from "pages/admin/AddEditType";
 import BlogListPage from "pages/admin/BlogList";
 import DashBoardPage from "pages/admin/Dashboard";
 import DiscountListPage from "pages/admin/DiscountList";
@@ -9,14 +8,14 @@ import LocationListPage from "pages/admin/LocationList";
 import RoomListPage from "pages/admin/RoomList";
 import RoomTypesPage from "pages/admin/RoomTypes";
 import UserListPage from "pages/admin/UserList";
+import AddEditTypePage from "pages/admin/AddEditType";
 import NotFoundPage from "pages/user/NotFound";
 import { useState } from "react";
 import { Switch, useRouteMatch } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
 import "./AdminLayout.scss";
-
-
+import AddEditUserPage from "pages/admin/AddEditUser";
 
 
 
@@ -49,6 +48,8 @@ function AdminLayout(props) {
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOM_TYPES}`} component={RoomTypesPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditTypePage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_USER}`} component={AddEditUserPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_USER}`} component={AddEditUserPage} />
 
               <NotFoundPage />
 

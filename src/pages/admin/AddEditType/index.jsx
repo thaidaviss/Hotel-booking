@@ -30,11 +30,14 @@ const AddEditTypePage = (props) => {
   useEffect(() => {
     if (typeDetail.data.id) {
       modifyRoomForm.resetFields();
-      setUploadImages([...typeDetail.data.images]);
+      // setUploadImages([...typeDetail.data.images]);
     }
   }, [typeDetail.data]);
 
   function handleSubmitForm(values) {
+    values.utilities.push({'view':values.view});
+    const listImage = values.images.trim().split(",");
+    values.images = listImage;
     if (typeRoomId) {
       dispatch(editTypeAction({
         id: typeRoomId,
@@ -47,21 +50,21 @@ const AddEditTypePage = (props) => {
     }
   };
 
-  function renderRoomTypeImages() {
-    return uploadImages.map((imageItem, imageIndex) => (
-      <Col span={6}>
-        <Image 
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-          key={`image-${imageIndex}`}
-          width="100%"
-          src={imageItem}
-        />
-      </Col>
-    ))
-  }
+  // function renderRoomTypeImages() {
+  //   return uploadImages.map((imageItem, imageIndex) => (
+  //     <Col span={6}>
+  //       <Image 
+  //         onClick={(e) => {
+  //           e.preventDefault();
+  //           e.stopPropagation();
+  //         }}
+  //         key={`image-${imageIndex}`}
+  //         width="100%"
+  //         src={imageItem}
+  //       />
+  //     </Col>
+  //   ))
+  // }
 
   return (
     <div>
@@ -108,6 +111,16 @@ const AddEditTypePage = (props) => {
           </Form.Item>
 
           <Form.Item
+            label="Images"
+            name="images"
+            rules={[
+              { required: true, message: "Please input images of type room!" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          {/* <Form.Item
             label="Image"
             name="images"
             validateFirst
@@ -150,7 +163,7 @@ const AddEditTypePage = (props) => {
                 </Row>
               )}
             </Upload>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item
             label="Description"
@@ -165,6 +178,17 @@ const AddEditTypePage = (props) => {
           <Form.Item
             label="Type of View"
             name="view"
+          
+            rules={[
+              { required: true, message: "Please input type of view!" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          {/* <Form.Item
+            label="Type of View"
+            name="view"
             rules={[{ required: true, message: "Please input type of view!" }]}
           >
             <Select placeholder="Please select type of view">
@@ -174,7 +198,7 @@ const AddEditTypePage = (props) => {
               <Select.Option value="front">Front View</Select.Option>
               <Select.Option value="top">Top View</Select.Option>
             </Select>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item
             label="Max Guest"
@@ -187,42 +211,42 @@ const AddEditTypePage = (props) => {
           </Form.Item>
 
           <Form.Item 
-            label="Services"
-            name="services"
+            label="Utilities"
+            name="utilities"
             rules={[
-              { required: true, message: "Please input the services of room!" },
+              { required: true, message: "Please input the utilities of room!" },
             ]}
           >
             <Checkbox.Group>
               <Row>
                 <Col span={8}>
-                  <Checkbox value="Wifi" style={{ lineHeight: "32px" }}>
-                    Free Wifi
+                  <Checkbox value={{ "wifi": "Free Wi-Fi" }} style={{ lineHeight: "32px" }}>
+                    Free Wi-Fi
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Breakfast" style={{ lineHeight: "32px" }}>
-                    Breakfast
+                  <Checkbox value={{ "bed": "1 double bed" }} style={{ lineHeight: "32px" }}>
+                    1 double bed
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Seating Area" style={{ lineHeight: "32px" }}>
-                    Seating Area
+                  <Checkbox value={{ "roomSize": "Room size: 17 m²/183 ft²" }} style={{ lineHeight: "32px" }}>
+                    Room size: 17 m²/183 ft²
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Minibar" style={{ lineHeight: "32px" }}>
+                  <Checkbox value={{ "view": "City view" }} style={{ lineHeight: "32px" }}>
                     Minibar
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Luxury Bed" style={{ lineHeight: "32px" }}>
-                    Luxury Bed
+                  <Checkbox value={{ "smoking": "Non-smoking" }} style={{ lineHeight: "32px" }}>
+                    Non-smoking
                   </Checkbox>
                 </Col>
                 <Col span={8}>
-                  <Checkbox value="Facilities" style={{ lineHeight: "32px" }}>
-                    Facilities (tea/coffee machine, media equipments, ...)
+                  <Checkbox value={{ "shower": "Shower" }} style={{ lineHeight: "32px" }}>
+                    Shower
                   </Checkbox>
                 </Col>
               </Row>

@@ -23,8 +23,6 @@ import "./HomePage.scss";
 
 
 
-
-
 function HomePage(props) {
   const { t } = useTranslation();
   const customSlider = useRef();

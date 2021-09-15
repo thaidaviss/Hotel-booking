@@ -1,74 +1,93 @@
-import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Popconfirm, Space, Table, Tag } from "antd";
+import { ROUTER_URL } from 'constants/index';
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserListAction, editUserAction } from 'redux/actions/index';
+import history from 'utils/history';
+import AvatarItem from './components/AvatarItem';
 import UserModal from "./components/UserModal";
 import './UserList.scss';
 
 
 function UserListPage() {
-  const [isShowUserModal, setIsShowUserModal] = useState("");
+  const [isShowUserModal, setIsShowUserModal] = useState(false);
+  const [status, setStatus] = useState("active");
   const [modifyUserData, setModifyUserData] = useState({});
+  const { userList } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
 
- 
+  useEffect(() => {
+    dispatch(getUserListAction());
+  }, []);
 
-  const userData = [
-    {
-      key: '1',
-      name: 'Tran Nguyen Cong Phuong',
-      age: 29,
-      gender: "male",
-      address: "Tam Dan - Phu Ninh - Quang Nam",
-      birthday: "19/01/1993",
-      role: "admin",
-    },
-    {
-      key: '2',
-      name: 'Pham Hong Nam',
-      age: 30,
-      gender: "male",
-      address: "Ba Dong - Ba To - Quang Ngai",
-      birthday: "02/11/1992",
-      role: "user",
-    },
-    {
-      key: '3',
-      name: 'Elizabeth Tran',
-      age: 30,
-      gender: "female",
-      address: "Tam Dan - Phu Ninh - Quang Nam",
-      birthday: "19/01/1992",
-      role: "staff",
-    },
-  ];
+  const userData = userList.data.map((userItem, userIndex) => {
+    return {
+      key: userIndex,
+      ...userItem,
+    };
+  });
+
+
   const userColumns = [
+    { title: 'No.', dataIndex: 'id', key: 'id', width: 80, fixed: "left", },
     {
       title: 'Full Name',
       dataIndex: 'name',
       width: 250,
       fixed: "left",
       key: 'name',
+      render: (value, record) => {
+        return <AvatarItem avatar={record.avatar} value={value} key={`avatar-${record.id}`} />;
+      }
     },
-    { title: 'Age', dataIndex: 'age', key: 'age' },
-    { title: 'Gender', dataIndex: 'gender', key: 'gender' },
-    { title: 'Address', dataIndex: 'address', width: 250, key: 'address' },
-    { title: 'Day of birth', dataIndex: 'birthday', key: 'birthday' },
-    { title: 'Role', dataIndex: 'role', key: 'role' },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      width: 230,
+      key: 'email',
+    },
+    {
+      title: 'Phone number',
+      dataIndex: 'phone',
+      width: 150,
+      key: 'phone',
+    },
+    { 
+      title: 'Role',
+      dataIndex: 'role',
+      key: 'role',
+      width: 80,
+    },
+    { 
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      width: 80,
+      render: (value) => {
+        if (value === "active") return <Tag color="green">{value}</Tag>;
+        return <Tag color="red">{value}</Tag>
+      }
+    },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
       key: 'createdAt',
+      width: 120,
       render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
     },
     {
       title: 'Update At',
       dataIndex: 'updatedAt',
       key: 'updatedAt',
+      width: 120,
       render: (value) => value && moment(value).format('DD/MM/YYYY HH:mm'),
     },
     {
       title: 'Action',
       dataIndex: 'action',
-      width: 200,
+      width: 240,
       fixed: "right",
       key: 'action',
       render: (_, record) => {
@@ -76,23 +95,61 @@ function UserListPage() {
           <Space>
             <Button
               className="user-btn"
+              style={{ color:"#4BB543", borderColor:"#4BB543" }}
+              ghost
+              onClick={() => {
+                setIsShowUserModal(true);
+                setModifyUserData(record);
+              }}
+            >
+              View
+            </Button>
+            <Button
+              className="user-btn"
               type="primary"
               ghost
               onClick={() => {
-                setIsShowUserModal("edit");
-                setModifyUserData(record);
+                history.push(
+                  `${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}/${record.id}${ROUTER_URL.EDIT}`
+                );
               }}
             >
               Edit
             </Button>
             <Popconfirm
-              title="Are you sure to delete this user?"
-              onConfirm={() => null}
+              title={
+                record.status === "active" 
+                ? "Are you sure to inactive user?"
+                : "Are you sure to active user?"
+              }
+              onConfirm={() => {
+                if (record.status === "active") {
+                  record.status = "inactive";
+                } else {
+                  record.status = "active";
+                }
+                dispatch(editUserAction({ id: record.id, data: record }));
+                setStatus(record.status);
+              }}
               onCancel={() => null}
               okText="Yes"
               cancelText="No"
             >
-              <Button className="user-btn" danger>Delete</Button>
+              {record.status === "active" 
+              ? (
+                <Button className="user-btn" danger>
+                  Inactive
+                </Button>
+              )
+              : (
+                <Button className="user-btn"
+                  style={{ color:"#4BB543", borderColor:"#4BB543" }}
+                  ghost
+                >
+                  Active
+                </Button>
+              )
+              }
             </Popconfirm>
           </Space>
         )
@@ -101,35 +158,36 @@ function UserListPage() {
   ];
 
   return (
-    <div>
+    <div style={{ width: "100%", height: "100%" }}>
       <div className="user-title">
         <Button 
           className="add-user-btn"
           type="primary"
+          size="large"
+          icon={<PlusOutlined />}
           onClick={() => {
-            setIsShowUserModal("create");
-            setModifyUserData({
-              name: "",
-              age: 0,
-              gender: "",
-              address: "",
-              birthday: "01/01/2015",
-              role: "",
-            });
+            history.push(
+              `${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_USER}`
+            );
           }}
         >
           Add User
         </Button>
       </div>
       <div className="user-list">
-        <Table dataSource={userData} columns={userColumns} scroll={{x: 1500}} />
+        <Table 
+          dataSource={userData}
+          columns={userColumns}
+          loading={userList.load}
+          scroll={{x: 1400}}
+        />
       </div>
 
       <UserModal
         isShowUserModal={isShowUserModal}
         setIsShowUserModal={setIsShowUserModal}
         modifyUserData={modifyUserData}
-        locationList={null}
+        userList={userList}
         handleSubmitForm={null}
       />
     </div>

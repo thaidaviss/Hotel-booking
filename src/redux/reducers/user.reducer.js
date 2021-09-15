@@ -7,10 +7,21 @@ const initialState = {
     data: {},
     load: false,
     error: null,
-  }
+  },
+  userList:{
+    data: [],
+    load: false,
+    error: null,
+  },
+  userDetail: {
+    data: {},
+    load: false,
+    error: null,
+  },
 };
 
-export const userReducer = createReducer(initialState, {
+const userReducer = createReducer(initialState, {
+  // Handle Login USER
   [REQUEST(USER_ACTION.LOGIN)]: (state, action) => {
     localStorage.removeItem("userData");
     return {
@@ -106,4 +117,102 @@ export const userReducer = createReducer(initialState, {
       },
     }
   },
+
+  // Handle USER-LIST ---------------
+  [REQUEST(USER_ACTION.GET_USER_LIST)]: (state, action) => {
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(USER_ACTION.GET_USER_LIST)]: (state, action) => {
+    const { data } = action.payload;
+    return {
+      ...state,
+      userList: {
+        data,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(USER_ACTION.GET_USER_LIST)]: (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        load: false,
+        error,
+      },
+    }
+  },
+  // get detail
+  [REQUEST(USER_ACTION.GET_USER_DETAIL)]: (state, action) => {
+    return {
+      ...state,
+      userDetail: {
+        ...state.userDetail,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(USER_ACTION.GET_USER_DETAIL)]: (state, action) => {
+    const { data } = action.payload;
+    return {
+      ...state,
+      userDetail: {
+        ...state.userDetail,
+        data,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(USER_ACTION.GET_USER_DETAIL)]: (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      userDetail: {
+        ...state.userDetail,
+        load: false,
+        error,
+      },
+    }
+  },
+
+  [SUCCESS(USER_ACTION.CREATE_USER)]: (state, action) => {
+    const { data } = action.payload;
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        data: [
+          data,
+          ...state.userList.data,
+        ],
+        load: false,
+      },
+    }
+  },
+
+  [SUCCESS(USER_ACTION.EDIT_USER)]: (state, action) => {
+    const { data } = action.payload;
+    const newUserList = [...state.userList.data];
+    const userIndex = newUserList.findIndex((user) => user.id === data.id);
+    newUserList.splice(userIndex, 1, data);
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        data: newUserList,
+      },
+    };
+  },
+  
 });
+
+export default userReducer;

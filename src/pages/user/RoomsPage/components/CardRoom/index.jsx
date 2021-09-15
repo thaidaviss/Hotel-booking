@@ -158,8 +158,8 @@ function CardRoom(props) {
 
         <div className="card-room__choice">
           <div className="card-room__price">
-            <small>{t(`$${((room.price / off) * 100)?.toLocaleString()} / Night `)}</small>{" "}
-            <span>{t(`$${room.price?.toLocaleString()} / Night`)}</span>{" "}
+            <small>{t(`$${(room.price / off) * 100} / Night `)}</small>{" "}
+            <span>{t(`$${room.price} / Night`)}</span>{" "}
           </div>
           <div className="card-room__btn">
             <button onClick={() => history.push(ROUTER_URL.BOOKING)}>Booking Now</button>
