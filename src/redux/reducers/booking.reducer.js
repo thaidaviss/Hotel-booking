@@ -2,7 +2,7 @@ import {
   createReducer
 } from "@reduxjs/toolkit";
 import {
-  ROOM_ACTION,
+  BOOKING_ACTION,
   FAILURE,
   REQUEST,
   SUCCESS
@@ -10,52 +10,91 @@ import {
 
 
 const initialState = {
-  listRoom: {
-    
-  },
-  load: false,
-  error: null,
+  bookingList: {
+    data: [],
+    load: false,
+    error: null,
+  }
+
 
 }
 
 const bookingReducer = createReducer(initialState, {
-  [REQUEST(ROOM_ACTION.GET_ROOM_LIST)]: (state, action) => {
+  [REQUEST(BOOKING_ACTION.GET_LIST_BOOKING)]: (state, action) => {
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
         load: true,
       },
     };
   },
-  [SUCCESS(ROOM_ACTION.GET_ROOM_LIST)]: (state, action) => {
+  [SUCCESS(BOOKING_ACTION.GET_LIST_BOOKING)]: (state, action) => {
     const {
       data
     } = action.payload;
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
         data,
         load: false,
         error: null,
       },
     }
   },
-  [FAILURE(ROOM_ACTION.GET_ROOM_LIST)]: (state, action) => {
+  [FAILURE(BOOKING_ACTION.GET_LIST_BOOKING)]: (state, action) => {
     const {
       error
     } = action.payload;
     return {
       ...state,
-      roomList: {
-        ...state.roomList,
+      bookingList: {
+        ...state.bookingList,
+        load: false,
+        error,
+      },
+    }
+  },
+  ///////////////////////////////////////
+
+  [REQUEST(BOOKING_ACTION.CREATE_BOOKING)]: (state, action) => {
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(BOOKING_ACTION.CREATE_BOOKING)]: (state, action) => {
+    const {
+      data
+    } = action.payload;
+    const NewListBooking = [...state.bookingList.data];
+    NewListBooking.push(data);
+    return {
+      ...state,
+      bookingList: {
+        data: NewListBooking,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(BOOKING_ACTION.CREATE_BOOKING)]: (state, action) => {
+    const {
+      error
+    } = action.payload;
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
         load: false,
         error,
       },
     }
   }
-
 
 });
 

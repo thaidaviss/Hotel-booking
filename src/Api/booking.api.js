@@ -2,6 +2,8 @@ import { URL_API } from "Api";
 import { API } from "./constants.api";
 
 export const BookingAPI = {
+  getListBooking:()=> API.get(`${URL_API}/bookings`),
+
  addBooking:(data)=> API.post(`${URL_API}/bookings`,{...data,status:"booked"}),
 
  getHistoryBooking: (idUser)=>API.get(`${URL_API}/bookings?idUser=${idUser}`),

@@ -18,13 +18,14 @@ import { Route, Router, Switch } from "react-router-dom";
 import history from "utils/history";
 import "./App.css";
 
-
 function App() {
+ 
+
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
-
+  
   return (
     <div className="App">
       <Router history={history}>

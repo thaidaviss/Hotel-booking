@@ -24,7 +24,18 @@
       font-size: 1rem;
     }
   }
-
+  .btn-review{
+    font-size: 1.2rem;
+    padding: 0.3rem 0.9rem;
+    border: none;
+    color: #fff;
+    font-weight: 400;
+    background-color:$primary;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
   &__filter {
     margin-top: 1rem;
     padding: 1rem;

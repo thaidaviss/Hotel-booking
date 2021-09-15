@@ -61,9 +61,9 @@ function RoomReviews(props) {
           </div>
         </div>
         <div className="room-review__btn">
-          <Button onClick={() => setIsShowReviewModal(true)} type="primary">
+          <button onClick={() => setIsShowReviewModal(true)} className="btn-review">
             {t("Write a Review")}
-          </Button>
+          </button>
         </div>
       </div>
       <ReviewModal

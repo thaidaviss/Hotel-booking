@@ -1,22 +1,48 @@
-import { Modal, Form, Input, Upload, message, Rate, Row, Col } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { InboxOutlined } from '@ant-design/icons';
-import './ReviewModal.scss';
-
+import { Modal, Form, Input, Upload, message, Rate, Row, Col } from "antd";
+import React, { useEffect, useState } from "react";
+import { InboxOutlined } from "@ant-design/icons";
+import "./ReviewModal.scss";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { addCommentAction, getCommentListAction } from "redux/actions";
 
 const { TextArea } = Input;
 const { Dragger } = Upload;
 
-const ReviewModal = ({ isShowReviewModal ,setIsShowReviewModal }) => {
+const ReviewModal = ({ isShowReviewModal, setIsShowReviewModal }) => {
+  const dispatch = useDispatch();
+  const roomId = useParams().id;
   const [reviewForm] = Form.useForm();
   const [reviewData, setReviewData] = useState({});
+  const userInfo = useSelector((state) => state.userReducer.userInfo);
 
   useEffect(() => {
     if (isShowReviewModal) {
       reviewForm.resetFields();
     }
   }, [isShowReviewModal]);
+  const handleSubmit = (values) => {
+    const review = {
+      typeRoomId: roomId,
+      userId: userInfo.data.user.id,
+      rating: values.rating,
+      title: values.title,
+      review: values.review,
+      stars: {
+        service: values.service,
+        room: values.room,
+        food: values.food,
+        cleanness: values.cleanness,
+      },
+      image: values.photoReview || [],
+    };
+    dispatch(addCommentAction({ params: review }));
 
+    setIsShowReviewModal(false);
+    dispatch(getCommentListAction({ id: roomId, params: {} }));
+  };
+  console.log("hollo");
   return (
     <Modal
       title={isShowReviewModal === true && "Write your review here"}
@@ -31,32 +57,28 @@ const ReviewModal = ({ isShowReviewModal ,setIsShowReviewModal }) => {
         name="create-review"
         labelCol={{ span: 24 }}
         initialValues={reviewData}
-        onFinish={(values) => console.log(values)}
+        onFinish={(values) => handleSubmit(values)}
       >
         <Form.Item
           label="Overall Rating"
-          name="overall"
+          name="rating"
           rules={[{ required: true, message: "Please input overall rating!" }]}
         >
-          <Rate allowHalf />
+          <Rate />
         </Form.Item>
 
         <Form.Item
           label="Title of your review"
           name="title"
-          rules={[
-            { required: true, message: "Please input your title review!" },
-          ]}
+          rules={[{ required: true, message: "Please input your title review!" }]}
         >
           <Input placeholder="Enter your title review here ..." />
         </Form.Item>
 
         <Form.Item
           label="Details of your review"
-          name="detail"
-          rules={[
-            { required: true, message: "Please input your detail review!" },
-          ]}
+          name="review"
+          rules={[{ required: true, message: "Please input your detail review!" }]}
         >
           <TextArea
             rows={5}
@@ -68,59 +90,50 @@ const ReviewModal = ({ isShowReviewModal ,setIsShowReviewModal }) => {
           <Col span={6}>
             <Form.Item
               label="Service"
-              name="serviceRating"
-              rules={[
-                { required: true, message: "Please input service rating!" },
-              ]}
+              name="service"
+              rules={[{ required: true, message: "Please input service rating!" }]}
             >
-              <Rate allowHalf />
+              <Rate />
             </Form.Item>
           </Col>
 
           <Col span={6}>
             <Form.Item
               label="Room"
-              name="roomRating"
+              name="room"
               rules={[{ required: true, message: "Please input room rating!" }]}
             >
-              <Rate allowHalf />
+              <Rate />
             </Form.Item>
           </Col>
 
           <Col span={6}>
             <Form.Item
               label="Cleanliness"
-              name="cleanlinessRating"
-              rules={[
-                { required: true, message: "Please input cleanliness rating!" },
-              ]}
+              name="cleanness"
+              rules={[{ required: true, message: "Please input cleanliness rating!" }]}
             >
-              <Rate allowHalf />
+              <Rate />
             </Form.Item>
           </Col>
 
           <Col span={6}>
             <Form.Item
               label="Food"
-              name="foodRating"
+              name="food"
               rules={[{ required: true, message: "Please input food rating!" }]}
             >
-              <Rate allowHalf />
+              <Rate />
             </Form.Item>
           </Col>
         </Row>
 
-        <Form.Item
-          label="Do You have photos to share? (Optional)"
-          name="photoReview"
-        >
+        <Form.Item label="Do You have photos to share? (Optional)" name="photoReview">
           <Dragger maxCount={4}>
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
             </p>
-            <p className="ant-upload-text">
-              Drag or drop to your image assets or browse
-            </p>
+            <p className="ant-upload-text">Drag or drop to your image assets or browse</p>
             <p className="ant-upload-hint">
               Support for a single or bulk upload. Maximum 4 photos.
             </p>
@@ -129,6 +142,6 @@ const ReviewModal = ({ isShowReviewModal ,setIsShowReviewModal }) => {
       </Form>
     </Modal>
   );
-}
+};
 
 export default ReviewModal;

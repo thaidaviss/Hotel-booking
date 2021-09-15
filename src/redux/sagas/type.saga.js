@@ -139,13 +139,77 @@ function* deleteTypeSaga(action) {
   }
 }
 
+function* getCommentListSaga(action) {
+  const {
+    id,
+    params
+  } = action.payload
+  try {
+    const result = yield typeRoomAPI.getCommentListTypeRoom(id, params);
+    yield put({
+      type: SUCCESS(TYPE_ACTION.GET_LIST_COMMENT),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(TYPE_ACTION.GET_LIST_COMMENT),
+      payload: e.message
+    });
+  }
+}
+
+function* addCommentSaga(action) {
+  const {
+    params
+  } = action.payload
+  try {
+    const result = yield typeRoomAPI.addCommentRoomToList(params);
+
+
+    yield put({
+      type: SUCCESS(TYPE_ACTION.ADD_COMMENT),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(TYPE_ACTION.ADD_COMMENT),
+      payload: e.message
+    });
+  }
+}
+function * checkVariable(action){
+  const {
+    params
+  } = action.payload
+  try {
+    const result = yield typeRoomAPI.addCommentRoomToList(params);
+
+
+    yield put({
+      type: SUCCESS(TYPE_ACTION.ADD_COMMENT),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(TYPE_ACTION.ADD_COMMENT),
+      payload: e.message
+    });
+  }
+}
 
 export default function* typeSaga() {
   yield takeEvery(REQUEST(TYPE_ACTION.GET_TYPE_LIST), getTypeListSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.GET_TYPE_DETAIL), getTypeDetailSaga);
-
+  yield takeEvery(REQUEST(TYPE_ACTION.GET_LIST_COMMENT), getCommentListSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.GET_FILTER_TYPE_LIST), getFilterTypeListSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.CREATE_TYPE), createTypeSaga);
+  yield takeEvery(REQUEST(TYPE_ACTION.ADD_COMMENT), addCommentSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.EDIT_TYPE), editTypeSaga);
   yield takeEvery(REQUEST(TYPE_ACTION.DELETE_TYPE), deleteTypeSaga);
 }

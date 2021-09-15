@@ -21,7 +21,7 @@
       "id": 5
     }
   ],
-  "profiles": [],
+
   "locations": [{
       "id": 1,
       "name": "Đà Nẵng",
@@ -51,7 +51,6 @@
       "id": 4
     }
   ],
-
   "typeRooms": [{
       "id": 1,
       "name": "Superior Room Single",
@@ -85,7 +84,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -121,7 +119,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -157,7 +154,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -193,7 +189,6 @@
         {
           "shower": "Shower"
         }
-
       ]
     },
     {
@@ -231,14 +226,13 @@
         {
           "shower": "Shower"
         }
-
       ]
     }
   ],
   "rooms": [{
       "id": 1,
       "name": "101",
-      "typeRoomId": 2,
+      "typeRoomId": 1,
       "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
@@ -246,25 +240,237 @@
     {
       "id": 2,
       "name": "102",
+      "typeRoomId": 1,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 3,
+      "name": "103",
+      "typeRoomId": 1,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 4,
+      "name": "104",
+      "typeRoomId": 1,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 5,
+      "name": "105",
+      "typeRoomId": 1,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+
+    {
+      "id": 6,
+      "name": "201",
       "typeRoomId": 2,
       "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
+    },
+    {
+      "id": 7,
+      "name": "202",
+      "typeRoomId": 2,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 8,
+      "name": "203",
+      "typeRoomId": 2,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 9,
+      "name": "204",
+      "typeRoomId": 2,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 10,
+      "name": "106",
+      "typeRoomId": 2,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+
+    {
+      "id": 11,
+      "name": "301",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 12,
+      "name": "302",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 13,
+      "name": "303",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 14,
+      "name": "304",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 15,
+      "name": "306",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+
+    {
+      "id": 16,
+      "name": "401",
+      "typeRoomId": 4,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 17,
+      "name": "402",
+      "typeRoomId": 4,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 18,
+      "name": "403",
+      "typeRoomId": 4,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 19,
+      "name": "404",
+      "typeRoomId": 4,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 20,
+      "name": "406",
+      "typeRoomId": 4,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+
+    {
+      "id": 21,
+      "name": "501",
+      "typeRoomId": 5,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 22,
+      "name": "502",
+      "typeRoomId": 5,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 23,
+      "name": "503",
+      "typeRoomId": 5,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 24,
+      "name": "504",
+      "typeRoomId": 5,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+    },
+    {
+      "id": 25,
+      "name": "506",
+      "typeRoomId": 5,
+      "rating": 5,
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
     }
+
+
   ],
   "comments": [{
-    "id": 1,
-    "typeRoomId": 1,
-    "userId": "",
-    "rating": 1,
-    "title": "",
-    "review": "",
-    "serviceRating": 5,
-    "roomRating": 5,
-    "cleanlinessRating": 5,
-    "foodRating": 5,
-    "image": []
-  }],
+      "typeRoomId": 1,
+      "userId": 4,
+      "rating": 5,
+      "title": "very good!",
+      "review": "service is good and room is coftible",
+      "stars": {
+        "service": 5,
+        "room": 4,
+        "food": 3,
+        "cleanness": 3
+      },
+      "image": [],
+      "createdAt": 1631590734064,
+      "updatedAt": 1631590734064,
+      "id": 2
+    },
+    {
+      "typeRoomId": "1",
+      "userId": 4,
+      "rating": 5,
+      "title": "very good!",
+      "review": "very good",
+      "stars": {
+        "service": 4,
+        "room": 4,
+        "food": 4,
+        "cleanness": 5
+      },
+      "image": [],
+      "createdAt": 1631618709294,
+      "updatedAt": 1631618709294,
+      "id": 3
+    }
+  ],
   "discounts": [{
       "id": 1,
       "name": "SPR-010315",
@@ -278,7 +484,6 @@
       "typeRoomId": 3,
       "start": 1631092999151,
       "end": 1631093012330
-
     },
     {
       "id": 3,
@@ -296,17 +501,105 @@
     "image": ""
   }],
   "bookings": [{
-    "id": 1,
-    "locationId": 1,
-    "typeRoomId": 1,
-    "profileId": 1,
-    "discountCode": "FAL-070925",
-    "discountPrice": 11,
-    "roomCode": 101,
-    "checkOut": 1,
-    "checkIn": 2,
-    "price": 123,
-    "total": 120,
-    "status": "pending"
-  }]
+      "id": 1,
+      "typeRoomId": 2,
+      "userId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 1,
+      "checkOut": 1631093012330,
+      "checkIn": 1631092999151,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    },
+    {
+      "id": 2,
+
+      "typeRoomId": 2,
+      "userId": 2,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 2,
+      "checkOut": 1631093012330,
+      "checkIn": 1631092999151,
+
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    },
+    {
+      "id": 3,
+      "typeRoomId": 1,
+      "userId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 1,
+      "checkOut": 1631898000000,
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    },
+    {
+      "id": 4,
+      "typeRoomId": 1,
+      "userId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 2,
+      "checkOut": 1631898000000,
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    },
+    {
+      "id": 5,
+      "typeRoomId": 1,
+      "userId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId":3,
+      "checkOut": 1631898000000,
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    },
+    {
+      "id": 6,
+      "typeRoomId": 1,
+      "userId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 4,
+      "checkOut": 1631898000000,
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    },
+    {
+      "id": 8,
+      "typeRoomId": 1,
+      "userId": 1,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 5,
+      "checkOut": 1631898000000,
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending"
+
+    }
+
+  ]
 }
