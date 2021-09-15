@@ -104,23 +104,27 @@
   &__img {
     width: 30%;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0;
     height: 100%;
+
     .img {
-    display: block;
+      display: block;
     }
-   
+
   }
-  &__thumb{
+
+  &__thumb {
     margin-top: 0.2rem;
     width: 100%;
     display: flex;
-    &-item{
+
+    &-item {
       width: 50%;
-      &+&{
+
+      &+& {
         margin-left: 0.2rem;
       }
     }
@@ -135,7 +139,7 @@
 
   &__name {
     font-family: $font-family-base;
-    font-size:1.8rem;
+    font-size: 1.8rem;
     font-weight: 300;
     color: $black;
 
@@ -159,13 +163,14 @@
     min-width: 25rem;
 
     &-item {
-      font-size: 1rem;
+      font-size: 1.1rem;
       width: 50%;
       display: flex;
       align-items: center;
       font-weight: 400;
-      color:rgb(0, 128, 111);
+      color: rgb(0, 128, 111);
       padding-top: 0.7rem;
+
       span {
         padding-right: 0.5rem;
         font-weight: 300;
@@ -180,7 +185,7 @@
     padding-bottom: 1.5rem;
     line-height: 1.2;
     display: block;
-    height: 2.2rem;
+    height: 2.6rem;
     overflow: hidden;
   }
 
@@ -228,13 +233,15 @@
     font-size: 1.2rem;
     font-family: $font-family-base;
     font-weight: 300;
-    small{
+
+    small {
       font-size: 1rem;
       color: red;
       font-style: italic;
       text-decoration: line-through;
       padding-right: 0.7rem;
     }
+
     span {
       font-weight: 400;
       font-size: 1.3rem;
@@ -245,6 +252,35 @@
   &:hover {
     box-shadow: 4px 4px 6px #e1e1e1, 4px -2px 4px #e1e1e1;
   }
+
+  &__status {
+    position: absolute;
+    top: 10rem;
+    right: 2rem;
+    // transform: rotate(-10deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    color: rgb(225, 45, 45);
+    border: 2px solid;
+    &-variable{
+      color: green
+    }
+  }
+  .btn-disabled{
+    opacity: 0.5 !important;
+    cursor: auto;
+    &:hover{
+      color: $white;
+    background-color: $primary;
+    }
+  }
+
 }
 
 @include Responsive(lg) {
@@ -269,12 +305,12 @@
     font-size: 90%;
   }
 
- 
+
 
 }
 
 @include Responsive(sm) {
-   .card-room .wrap .ribbon {
+  .card-room .wrap .ribbon {
     width: 129px;
     height: 20px;
     line-height: 19px;

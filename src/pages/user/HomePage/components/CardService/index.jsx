@@ -4,7 +4,6 @@ import "./CardService.scss";
 function CardService(props) {
   const { t } = useTranslation();
   const { Icon, title } = props;
-  console.log("🚀 ~ file: index.jsx ~ line 7 ~ CardService ~ props", Icon);
 
   return (
     <div className="service">

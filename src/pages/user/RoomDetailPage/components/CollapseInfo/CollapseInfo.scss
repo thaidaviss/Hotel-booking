@@ -63,7 +63,16 @@
     display: flex;
     justify-content: space-between;
   }
-
+  .table__value{
+    &-icon{
+      color: $primary;
+      font-size: 1.2rem;
+    }
+    &-cancel{
+      color: rgb(110, 110, 110);
+      font-size: 1.2rem;
+    }
+  }
   tr:nth-child(even) {
     background-color: #F8F5F3;
   }

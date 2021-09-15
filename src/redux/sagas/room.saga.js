@@ -21,7 +21,7 @@ function* getRoomListSaga(action) {
 function* getFilterRoomListSaga(action) {
   const {params}= action.payload;
   try {
-    const result = yield RoomAPI.getFilterRoomList({ _sort: 'id', _order: 'desc',...params});
+    const result = yield RoomAPI.getFilterRoomList({ _sort: 'id', _order: 'asc',...params});
     
     yield put({
       type: SUCCESS(ROOM_ACTION.GET_FILTER_ROOM_LIST),

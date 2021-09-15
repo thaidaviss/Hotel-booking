@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import history from "utils/history";
 import './RoomList.scss';
-import { createRoomAction, deleteRoomAction, editRoomAction, getRoomListAction, getTypeListAction } from "redux/actions";
+import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction, getRoomListAction, getTypeListAction } from "redux/actions";
 import { ROUTER_URL } from "constants/index";
 import RoomModal from "./components/RoomModal";
 
@@ -19,11 +19,15 @@ function RoomListPage (props) {
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
  
-
+  const [page,setPage] = useState({...roomList.pagination})
   useEffect(() => {
-    dispatch(getTypeListAction());
-    dispatch(getRoomListAction());
-  }, []);
+    dispatch(getFilterTypeListAction({params:page}));
+    dispatch(getFilterRoomListAction({params:page}));
+  }, [page._page]);
+  const handleTableChange=(pagination, filters, sorter) => {
+    setPage({...page,_page:pagination.current})
+  }
+  
 
   function handleSubmitForm(values) {
     if (isShowRoomModal === 'create') {
@@ -91,6 +95,7 @@ function RoomListPage (props) {
               className="edit-room-btn"
               type="primary"
               ghost
+      
               onClick={() => 
                 {
                   // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`);
@@ -106,6 +111,7 @@ function RoomListPage (props) {
               onCancel={() => null}
               okText="Yes"
               cancelText="No"
+              
             >
               <Button className="room-btn" danger>Delete</Button>
             </Popconfirm>
@@ -136,10 +142,13 @@ function RoomListPage (props) {
       </div>
       <div className="room-list">
         <Table 
+          // style={{height:"80vh"}}
+          pagination={{current:page._page,pageSize:page._limit,total:((Math.ceil(page._totalRows/page._limit))*10)}}
           dataSource={roomData} 
           columns={roomColumns} 
           loading={roomList.load}
-          scroll={{x: 1000}}
+          scroll={{x: 1000,y:"60vh"}}
+          onChange={handleTableChange}
         />
       </div>
       <RoomModal 
