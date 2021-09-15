@@ -1,26 +1,31 @@
 import { Pagination, Space, Spin } from "antd";
-import { LIST_ROOM } from "constants/rooms.constant";
+import { IMAGES } from "constants/images.constants";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { getFilterTypeListAction } from "redux/actions/index";
 import MakeReservation from "../HomePage/components/MakeReservation";
 import CardRoom from "./components/CardRoom";
 import FilterRooms from "./components/FilterRooms";
-import { IMAGES } from "constants/images.constants";
 import "./RoomsPage.scss";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { getFilterTypeListAction } from "redux/actions/index";
-const queryString = require("query-string");
+
+
+
 function RoomsPage(props) {
-  const dispatch = useDispatch();
-  const listTypeRoom = useSelector((state) => state.typeReducer.typeList);
-  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
-  const { t } = useTranslation();
   let myRef = useRef();
-  const [page, setPage] = useState({ ...listTypeRoom.pagination });
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const listTypeRoom = useSelector((state) => state.typeReducer.typeList);
+  const listVariable = useSelector((state) => state.typeReducer.roomVariableList.data);
+
+  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
+
+  const [page, setPage] = useState({ ...listTypeRoom.pagination});
   useEffect(() => {
-    setPage({...page,_page:1})
-  },[checkedList.rating, checkedList.price]);
+    setPage({ ...page, _page: 1 });
+  }, [checkedList.rating, checkedList.price]);
+
   useEffect(() => {
     dispatch(
       getFilterTypeListAction({
@@ -32,10 +37,21 @@ function RoomsPage(props) {
         },
       })
     );
-
     window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
-  }, [page._page, checkedList.rating, checkedList.price]);
+  }, [dispatch,page, checkedList.rating, checkedList.price]);
 
+  const isVariable = (typeRoom) => {
+    const listTypeRoomVariable = Object.keys(listVariable);
+    if (listTypeRoomVariable.length === 0) {
+      return true;
+    }
+    const check =
+      listTypeRoomVariable.findIndex(
+        (typeRoomVariable) => parseInt(typeRoomVariable) === typeRoom.id
+      ) !== -1;
+
+    return check;
+  };
   return (
     <div className="rooms-page">
       <div className="rooms-page__banner">
@@ -66,14 +82,16 @@ function RoomsPage(props) {
                 <Spin size="large" />
               </Space>
             ) : (
-              listTypeRoom.data.map((room) => <CardRoom room={room} />)
+              listTypeRoom.data.map((typeRoom, index) => (
+                <CardRoom room={typeRoom} isVariable={isVariable(typeRoom)} key={`card-room__room-${index}`} />
+              ))
             )}
           </div>
         </div>
         <div className="rooms-page__pagination">
           <Pagination
             defaultCurrent={page._page}
-            total={page._totalRows * page._limit}
+            total={page._totalRows }
             size={page._limit}
             onChange={(value) => setPage({ ...page, _page: value })}
           />

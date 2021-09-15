@@ -18,7 +18,7 @@ function LocationListPage() {
   
   useEffect(() => {
     dispatch(getLocationListAction());
-  }, []);
+  }, [dispatch]);
 
   function handleSubmitForm(values) {
     if (isShowLocationModal === 'create') {

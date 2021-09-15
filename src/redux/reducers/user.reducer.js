@@ -4,7 +4,7 @@ import { USER_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants";
 
 const initialState = {
   userInfo:{
-    data: {},
+    data: JSON.parse(localStorage.getItem("userData"))||{},
     load: false,
     error: null,
   },

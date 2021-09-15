@@ -1,5 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Tag, Image, Popconfirm, Space, Table } from "antd";
+import { Button, Popconfirm, Space, Table } from "antd";
 import { ROUTER_URL } from "constants/index";
 import moment from "moment";
 import React, { useEffect } from "react";
@@ -16,7 +16,7 @@ const RoomTypesPage = (props) => {
 
   useEffect(() => {
     dispatch(getTypeListAction());
-  }, []);
+  }, [dispatch]);
 
   const roomTypesColumns = [
     { title: "No.", dataIndex: "id", key: "id", width: 30, fixed: "left" },
@@ -39,7 +39,7 @@ const RoomTypesPage = (props) => {
       render: (_, record) => {
         return (
           <div>
-            {record.utilities.map((item) => {
+            {record.utilities.forEach((item) => {
               if (item.view) return item.view;
             })}
           </div>
@@ -147,13 +147,6 @@ const RoomTypesPage = (props) => {
           scroll={{ x: 2450 }}
         />
       </div>
-
-      {/* <RoomTypesModal
-        isShowTypeModal={isShowTypeModal}
-        setIsShowTypeModal={setIsShowTypeModal}
-        modifyTypeData={modifyTypeData}
-        handleSubmitForm={handleSubmitForm}
-      /> */}
     </div>
   );
 };

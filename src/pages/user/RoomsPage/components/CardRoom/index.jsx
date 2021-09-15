@@ -10,76 +10,74 @@ import { Link } from "react-router-dom";
 import history from "utils/history";
 import "./CardRoom.scss";
 
-const renderItemService = (service) => {
+const renderItemService = (service,index) => {
   switch (Object.keys(service)[0]) {
     case "wifi": {
       return (
-        <div className="card-room__services-item">
+        <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
           <span>
             <i className="fa fa-wifi"></i>
           </span>
           <p>{service[Object.keys(service)[0]]}</p>
         </div>
       );
-      break;
+
     }
     case "bed": {
       return (
-        <div className="card-room__services-item">
+        <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
           <span>
             <IoIosBed />
           </span>
           <p>{service[Object.keys(service)[0]]}</p>
         </div>
       );
-      break;
+
     }
     case "roomSize": {
       return (
-        <div className="card-room__services-item">
+        <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
           <span>
             <GoHome />
           </span>
           <p>{service[Object.keys(service)[0]]}</p>
         </div>
       );
-      break;
     }
     case "view": {
       return (
-        <div className="card-room__services-item">
+        <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
           <span>
             <i className="fa fa-columns"></i>
           </span>
           <p>{service[Object.keys(service)[0]]}</p>
         </div>
       );
-      break;
     }
     case "smoking": {
       return (
-        <div className="card-room__services-item">
+        <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
           <span>
             <MdSmokingRooms />
           </span>
           <p>{service[Object.keys(service)[0]]}</p>
         </div>
       );
-      break;
+     
     }
     case "shower": {
       return (
-        <div className="card-room__services-item">
+        <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
           <span>
             <FaShower />
           </span>
           <p>{service[Object.keys(service)[0]]}</p>
         </div>
       );
-      break;
+     
     }
     default:
-      <div className="card-room__services-item">
+      <div className="card-room__services-item"key={`card-room__services-item-${index}`}>
         <span>
           <i className="fa fa-check"></i>
         </span>
@@ -88,24 +86,38 @@ const renderItemService = (service) => {
   }
 };
 function CardRoom(props) {
-  const { room } = props;
+  const { room,isVariable,guests,date } = props;
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
 
   const off = 40;
+
+  const handleBooking = ()=>{
+    const bookingInfo = {
+      guests: guests??1,
+      room: room.name,
+      checkIn: date[0],
+      dateIn: "Sunday",
+      checkOut: date[1],
+      dateOut: "Monday",
+      numberNight: 1,
+      price: 200,
+      images: ["https://danangpetrohotel.com.vn/dataUpload/Room/room/1.jpg"],
+    };
+  }
   return (
-    <div className="card-room" data-aos="fade-up">
+    <div className="card-room" data-aos="fade-up" >
       {off && (
-        <div class="wrap wrap-green">
-          <span class="ribbon">off {off}%</span>
+        <div className="wrap wrap-green">
+          <span className="ribbon">off {off}%</span>
         </div>
       )}
-
       <div className="card-room__img">
         <Image
           className="img-large"
           preview={{ visible: false }}
           width={"100%"}
+          height={"12rem"}
           src={room.images[0]}
           onClick={() => setVisible(true)}
         />
@@ -115,6 +127,7 @@ function CardRoom(props) {
               className="img-small"
               preview={{ visible: false }}
               width={"100%"}
+              height={"6rem"}
               src={room.images[1]}
               onClick={() => setVisible(true)}
             />
@@ -124,6 +137,7 @@ function CardRoom(props) {
               className="img-small"
               preview={{ visible: false }}
               width={"100%"}
+              height={"6rem"}
               src={room.images[2]}
               onClick={() => setVisible(true)}
             />
@@ -153,7 +167,7 @@ function CardRoom(props) {
         </div>
         <p className="card-room__description">{room.description}</p>
         <div className="card-room__services">
-          {room.utilities.map((serviceItem) => renderItemService(serviceItem))}
+          {room.utilities.map((serviceItem,index) => renderItemService(serviceItem,index))}
         </div>
 
         <div className="card-room__choice">
@@ -162,10 +176,13 @@ function CardRoom(props) {
             <span>{t(`$${room.price} / Night`)}</span>{" "}
           </div>
           <div className="card-room__btn">
-            <button onClick={() => history.push(ROUTER_URL.BOOKING)}>Booking Now</button>
+            <button onClick={() => history.push(ROUTER_URL.BOOKING)} className={!isVariable?"btn-disabled":""} disabled={!isVariable}>Booking Now</button>
           </div>
         </div>
       </div>
+     { !isVariable&&<div className={"card-room__status"}>
+          Fullybooked
+      </div>}
     </div>
   );
 }

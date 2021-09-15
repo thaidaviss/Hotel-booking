@@ -18,7 +18,7 @@ function Footer(props) {
     <div className="footer">
       <div className="container">
         <div className="footer__logo">
-          <img src={IMAGES.LOGO} alt="oops...not found image!" />
+          <img src={IMAGES.LOGO} alt="oops...not found images!" />
         </div>
         <div className="footer__address">
           <div className="footer__title">{t("Address")}</div>
