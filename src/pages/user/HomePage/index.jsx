@@ -90,7 +90,6 @@ function HomePage(props) {
           </button>
           <button
             className="btn btn-readmore"
-            className="btn btn-order"
             data-aos="fade-left"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="2000"

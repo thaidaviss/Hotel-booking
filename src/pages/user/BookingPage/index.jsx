@@ -8,7 +8,9 @@ import "./BookingPage.scss";
 import { Link } from "react-router-dom";
 import { Form, Input} from "antd";
 import history from "utils/history";
+import { useDispatch, useSelector } from "react-redux";
 function BookingPage(props) {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const bookingInfo = {
     guests: 4,
@@ -21,6 +23,7 @@ function BookingPage(props) {
     price: 200,
     images: ["https://danangpetrohotel.com.vn/dataUpload/Room/room/1.jpg"],
   };
+  const BookingInfo = useSelector(state=>state.bookingReducer);
   const onFinish = (values) => {
     console.log("Success:", values);
     history.push(ROUTER_URL.PAYMENT);

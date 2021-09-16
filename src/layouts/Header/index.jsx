@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import "./Header.scss";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "redux/actions";
+import { useSelector } from "react-redux";
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -21,10 +22,7 @@ function Header(props) {
     i18n.changeLanguage(lang);
   };
 
-  let userInfo = JSON.parse(localStorage.getItem("userData"));
-  useEffect(() => {
-    userInfo = JSON.parse(localStorage.getItem("userData"));
-  }, []);
+  let userInfo = useSelector((state) => state.userReducer.userInfo);
 
   useEffect(() => {
     window.addEventListener(
@@ -105,14 +103,14 @@ function Header(props) {
                 </div>
               </div>
               <div className="navbar__list-user">
-                {userInfo?.user?.role === "user" ? (
+                {userInfo.data.user ? (
                   <div className="link-profile">
                     <Dropdown overlay={menu}>
                       <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
                         <span>
                           <FaUserCircle />
                         </span>{" "}
-                        <p>{userInfo.user.username}</p>
+                        <p>{userInfo.data.user.username}</p>
                       </a>
                     </Dropdown>
                   </div>

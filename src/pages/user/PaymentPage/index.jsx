@@ -1,12 +1,11 @@
-import { ROUTER_URL, PAYMENT } from "constants/index";
 import { IMAGES } from "constants/images.constants";
+import { PAYMENT } from "constants/index";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import "./BookingPage.scss";
 import { Link } from "react-router-dom";
-import { Form, Input, Button, Checkbox } from "antd";
+import "./BookingPage.scss";
 
 function PaymentPage(props) {
   const { t } = useTranslation();

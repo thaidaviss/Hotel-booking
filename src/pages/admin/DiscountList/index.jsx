@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Button, Popconfirm, Space, Table } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
+import { Button, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createDiscountAction, editDiscountAction, getDiscountListAction } from 'redux/actions';
-
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
+
 
 const DiscountListPage = () => {
   // "" , "edit", "create"
@@ -18,7 +17,7 @@ const DiscountListPage = () => {
 
   useEffect(() => {
     dispatch(getDiscountListAction());
-  }, []);
+  }, [dispatch]);
 
 
   function handleSubmitForm(values) {

@@ -1,4 +1,3 @@
-import { Button, Rate } from "antd";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaStar } from "react-icons/fa";
@@ -6,42 +5,42 @@ import ReviewModal from "../ReviewModal";
 import "./RoomReviews.scss";
 
 
-const options_rate = [
-  {
-    label: <Rate disabled allowHalf defaultValue={5} className="rate" />,
-    value: "5 Start",
-  },
-  {
-    label: <Rate disabled allowHalf defaultValue={4} className="rate" />,
-    value: "4 Start",
-  },
-  {
-    label: <Rate disabled allowHalf defaultValue={3} className="rate" />,
-    value: "3 Start",
-  },
-  {
-    label: <Rate disabled allowHalf defaultValue={2} className="rate" />,
-    value: "2 Start",
-  },
-];
-const TimeOfYear = [
-  {
-    label: "Jan-Mar",
-    value: 1,
-  },
-  {
-    label: "Apr-Jun",
-    value: 2,
-  },
-  {
-    label: "Jul-Sep",
-    value: 3,
-  },
-  {
-    label: "Oct-Dec",
-    value: 4,
-  },
-];
+// const options_rate = [
+//   {
+//     label: <Rate disabled allowHalf defaultValue={5} className="rate" />,
+//     value: "5 Start",
+//   },
+//   {
+//     label: <Rate disabled allowHalf defaultValue={4} className="rate" />,
+//     value: "4 Start",
+//   },
+//   {
+//     label: <Rate disabled allowHalf defaultValue={3} className="rate" />,
+//     value: "3 Start",
+//   },
+//   {
+//     label: <Rate disabled allowHalf defaultValue={2} className="rate" />,
+//     value: "2 Start",
+//   },
+// ];
+// const TimeOfYear = [
+//   {
+//     label: "Jan-Mar",
+//     value: 1,
+//   },
+//   {
+//     label: "Apr-Jun",
+//     value: 2,
+//   },
+//   {
+//     label: "Jul-Sep",
+//     value: 3,
+//   },
+//   {
+//     label: "Oct-Dec",
+//     value: 4,
+//   },
+// ];
 
 function RoomReviews(props) {
   const { t } = useTranslation();
@@ -61,9 +60,9 @@ function RoomReviews(props) {
           </div>
         </div>
         <div className="room-review__btn">
-          <Button onClick={() => setIsShowReviewModal(true)} type="primary">
+          <button onClick={() => setIsShowReviewModal(true)} className="btn-review">
             {t("Write a Review")}
-          </Button>
+          </button>
         </div>
       </div>
       <ReviewModal

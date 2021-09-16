@@ -1,7 +1,6 @@
-import { Button, Select, Form, Input, InputNumber, Row, Space, Upload, Image, Checkbox, Col } from "antd";
-import { UploadOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Col, Form, Input, InputNumber, Row, Space } from "antd";
 import { ROUTER_URL } from "constants/index";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { createTypeAction, editTypeAction, getTypeDetailAction } from "redux/actions";
@@ -11,7 +10,6 @@ import "./AddEditRoom.scss";
 const { TextArea } = Input;
 
 const AddEditTypePage = (props) => {
-  const [ uploadImages, setUploadImages ] = useState([]);
   const [modifyRoomForm] = Form.useForm();
   
   const { typeDetail } = useSelector((state) => state.typeReducer);
@@ -25,14 +23,14 @@ const AddEditTypePage = (props) => {
     if (typeRoomId) {
       dispatch(getTypeDetailAction({ id: typeRoomId }));
     }
-  }, [typeRoomId]);
+  }, [typeRoomId,dispatch]);
 
   useEffect(() => {
     if (typeDetail.data.id) {
       modifyRoomForm.resetFields();
       // setUploadImages([...typeDetail.data.images]);
     }
-  }, [typeDetail.data]);
+  }, [typeDetail.data,modifyRoomForm]);
 
   function handleSubmitForm(values) {
     values.utilities.push({'view':values.view});

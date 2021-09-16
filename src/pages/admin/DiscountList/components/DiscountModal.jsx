@@ -1,8 +1,7 @@
-import { Modal, Form, Input, Select, InputNumber, DatePicker } from 'antd';
-import moment from 'moment';
+import { DatePicker, Form, Input, InputNumber, Modal } from 'antd';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import './DiscountModal.scss';
+
 
 const dateFormat = 'DD/MM/YYYY';
 
@@ -13,13 +12,13 @@ const DiscountModal = ({
   handleSubmitForm,
 }) => {
   const [modifyDiscountForm] = Form.useForm();
-  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (isShowDiscountModal) {
       modifyDiscountForm.resetFields();
     }
-  }, [isShowDiscountModal]);
+  }, [isShowDiscountModal,modifyDiscountForm]);
 
   return (
     <Modal

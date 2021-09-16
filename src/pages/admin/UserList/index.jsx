@@ -13,14 +13,14 @@ import './UserList.scss';
 
 function UserListPage() {
   const [isShowUserModal, setIsShowUserModal] = useState(false);
-  const [status, setStatus] = useState("active");
+  // const [status, setStatus] = useState("active");
   const [modifyUserData, setModifyUserData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserListAction());
-  }, []);
+  }, [dispatch]);
 
   const userData = userList.data.map((userItem, userIndex) => {
     return {
@@ -129,7 +129,7 @@ function UserListPage() {
                   record.status = "active";
                 }
                 dispatch(editUserAction({ id: record.id, data: record }));
-                setStatus(record.status);
+                // setStatus(record.status);
               }}
               onCancel={() => null}
               okText="Yes"
