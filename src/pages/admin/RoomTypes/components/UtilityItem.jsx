@@ -14,18 +14,18 @@ const UtilityItem = (props) => {
   };
 
   return (
-    <>
-      {value.map((item, index)=> (
-        <div style={{ marginTop: ".7rem" }} key={`item-${index}`}>
-          <Tag 
-            color={UTILITY_COLORS[Object.keys(item)]}
-          >
-            {item[Object.keys(item)]}
-          </Tag>
-        </div>
+    <div style={{ display: "flex", width: 200, flexWrap: "wrap" }}>
+      {value.map((item, index) => (
+        <Tag
+          style={{ marginTop: ".7rem" }}
+          key={`item-${index}`}
+          color={UTILITY_COLORS[Object.keys(item)]}
+        >
+          {item[Object.keys(item)]}
+        </Tag>
       ))}
-    </>
-  )
+    </div>
+  );
 }
 
 export default UtilityItem;

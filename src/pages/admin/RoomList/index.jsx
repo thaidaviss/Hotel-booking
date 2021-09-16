@@ -1,11 +1,9 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
-import './RoomList.scss';
-import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction, getRoomListAction, getTypeListAction } from "redux/actions";
+import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction } from "redux/actions";
 import RoomModal from "./components/RoomModal";
 import './RoomList.scss';
 
@@ -125,19 +123,27 @@ function RoomListPage (props) {
   return (
     <div>
       <div className="room-title">
-        <Button 
-          className="add-room-btn"
-          type="primary"
-          icon={<PlusOutlined />}
-          onClick={() => 
-            {
-              setIsShowRoomModal("create");
-              setModifyRoomData({ name: "", rating: 0 });
+        <p className="room-list-title">RoomList Manager</p>
+        <Space>
+          <Input
+            className="room-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          <Button 
+            className="add-room-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => 
+              {
+                setIsShowRoomModal("create");
+                setModifyRoomData({ name: "", rating: 0 });
+              }
             }
-          }
-        >
-          New Room
-        </Button>
+          >
+            New Room
+          </Button>
+        </Space>
       </div>
       <div className="room-list">
         <Table
@@ -145,7 +151,7 @@ function RoomListPage (props) {
           dataSource={roomData} 
           columns={roomColumns} 
           loading={roomList.load}
-          scroll={{x: 1000, y: "60vh"}}
+          scroll={{x: 1000, y: "62vh"}}
           pagination={{
             current:page._page,
             pageSize:page._limit,

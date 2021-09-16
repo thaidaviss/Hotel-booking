@@ -48,33 +48,33 @@ const UserModal = ({
         <Form.Item
           label="Full Name"
           name="name"
-          rules={[{ required: true, message: "Please input full name!" }]}
+          // rules={[{ required: true, message: "Please input full name!" }]}
         >
-          <Input disabled />
+          <Input readOnly />
         </Form.Item>
 
         <Form.Item
           label="User Name"
           name="username"
-          rules={[{ required: true, message: "Please input username!" }]}
+          // rules={[{ required: true, message: "Please input username!" }]}
         >
-          <Input disabled />
+          <Input readOnly />
         </Form.Item>
 
         <Form.Item
           label="Email"
           name="email"
-          rules={[{ required: true, message: "Please input user email!" }]}
+          // rules={[{ required: true, message: "Please input user email!" }]}
         >
-          <Input disabled />
+          <Input readOnly />
         </Form.Item>
 
         <Form.Item
           label="Phone Number"
           name="phone"
-          rules={[{ required: true, message: "Please input user phone number!" }]}
+          // rules={[{ required: true, message: "Please input user phone number!" }]}
         >
-          <InputNumber disabled style={{ width: "100%" }} />
+          <InputNumber readOnly style={{ width: "100%" }} />
         </Form.Item>
 
         <Form.Item
@@ -82,13 +82,13 @@ const UserModal = ({
           name="age"
           // rules={[{ required: true, message: "Please input age of user!" }]}
           >
-          <InputNumber disabled style={{ width: "100%" }} />
+          <InputNumber readOnly style={{ width: "100%" }} />
         </Form.Item>
 
         <Form.Item
           label="Gender"
           name="gender"
-          rules={[{ required: true, message: "Please input user gender!" }]}
+          // rules={[{ required: true, message: "Please input user gender!" }]}
         >
           <Select disabled placeholder="Please select user gender!">
             <Select.Option value="male">Male</Select.Option>
@@ -101,7 +101,7 @@ const UserModal = ({
           name="address"
           // rules={[{ required: true, message: "Please input user address!" }]}
         >
-          <Input disabled />
+          <Input readOnly />
         </Form.Item>
 
         <Form.Item

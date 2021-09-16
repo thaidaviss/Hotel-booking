@@ -12,37 +12,32 @@ const SIDEBAR_MENU = [
     icon: <MdDashboard />,
   },
   {
-    title: 'Room List',
+    title: 'Room Manager',
     path: '/admin/rooms',
     icon: <MdLocalHotel />,
   },
   {
-    title: 'Room Type',
+    title: 'Type Manager',
     path: '/admin/room-types',
     icon: <MdAccountBalance />,
   },
   {
-    title: 'Booking List',
+    title: 'Booking Manager',
     path: '/admin/bookings',
     icon: <MdEventAvailable />,
   },
   {
-    title: "User List",
+    title: "Account Manager",
     path: "/admin/users",
     icon: <MdPermIdentity />,
   },
   {
-    title: "Discount List",
+    title: "Discount Manager",
     path: "/admin/discounts",
     icon: <MdStyle />,
   },
   {
-    title: 'Location List',
-    path: '/admin/locations',
-    icon: <MdRoom />,
-  },
-  {
-    title: 'Blogs List',
+    title: 'Blogs Manager',
     path: '/admin/blogs',
     icon: <MdFiberNew />,
   },
@@ -75,7 +70,6 @@ function Sidebar(props) {
           </div>
 
           <div className={isMiniMenu ? "sidebar__menu--hide" : "sidebar__menu"}>
-            {/* <h3 className="sidebar__title">Admin Manager</h3> */}
             <ul className="sidebar__list">
               {SIDEBAR_MENU.map((sidebarItem, sidebarIndex) => (
                 <li

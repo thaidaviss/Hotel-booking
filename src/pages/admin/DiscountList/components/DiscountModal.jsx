@@ -11,6 +11,7 @@ const DiscountModal = ({
   modifyDiscountData,
   handleSubmitForm,
 }) => {
+  console.log("🚀 ~ file: DiscountModal.jsx ~ line 15 ~  modifyDiscountData",  modifyDiscountData)
   const [modifyDiscountForm] = Form.useForm();
 
 
@@ -62,9 +63,15 @@ const DiscountModal = ({
         <Form.Item
           label="Value"
           name="value"
-          rules={[{ required: true, message: "Please input your value discount!" }]}
+          rules={[
+            { required: true, message: "Please input your discount value!" },
+          ]}
         >
-          <InputNumber style={{ width: "100%" }} max={100} />
+          <InputNumber 
+            style={{ width: "100%" }}
+            formatter={value => `% ${value}`}
+            min={0} max={90} 
+          />
         </Form.Item>
       </Form>
     </Modal>
