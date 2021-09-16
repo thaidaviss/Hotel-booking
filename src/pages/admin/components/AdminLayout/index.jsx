@@ -16,6 +16,7 @@ import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
 import "./AdminLayout.scss";
 import AddEditUserPage from "pages/admin/AddEditUser";
+import BookingListPage from "pages/admin/BookingList";
 
 
 
@@ -50,6 +51,7 @@ function AdminLayout(props) {
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_USER}`} component={AddEditUserPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_USER}`} component={AddEditUserPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.BOOKINGS}`} component={BookingListPage} />
 
               <NotFoundPage />
 

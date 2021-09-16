@@ -13,7 +13,7 @@ import './UserList.scss';
 
 function UserListPage() {
   const [isShowUserModal, setIsShowUserModal] = useState(false);
-  const [status, setStatus] = useState("active");
+  // const [status, setStatus] = useState("active");
   const [modifyUserData, setModifyUserData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
@@ -22,22 +22,22 @@ function UserListPage() {
     dispatch(getUserListAction());
   }, []);
 
+
   const userData = userList.data.map((userItem, userIndex) => {
     return {
       key: userIndex,
       ...userItem,
     };
   });
-
-
   const userColumns = [
-    { title: 'No.', dataIndex: 'id', key: 'id', width: 80, fixed: "left", },
+    { title: 'No.', dataIndex: 'id', key: 'id', width: 50, fixed: "left", },
     {
       title: 'Full Name',
       dataIndex: 'name',
       width: 250,
       fixed: "left",
       key: 'name',
+      sorter: true,
       render: (value, record) => {
         return <AvatarItem avatar={record.avatar} value={value} key={`avatar-${record.id}`} />;
       }
@@ -45,13 +45,13 @@ function UserListPage() {
     {
       title: 'Email',
       dataIndex: 'email',
-      width: 230,
+      width: 220,
       key: 'email',
     },
     {
       title: 'Phone number',
       dataIndex: 'phone',
-      width: 150,
+      width: 120,
       key: 'phone',
     },
     { 
@@ -59,6 +59,20 @@ function UserListPage() {
       dataIndex: 'role',
       key: 'role',
       width: 80,
+      render: (value) => {
+        if (value === "user") return <Tag color="green">{value}</Tag>;
+        return <Tag color="gold">{value}</Tag>
+      },
+      filters: [
+        {
+          text: 'Admin',
+          value: 'admin',
+        },
+        {
+          text: 'User',
+          value: 'user',
+        },
+      ],
     },
     { 
       title: 'Status',
@@ -129,7 +143,6 @@ function UserListPage() {
                   record.status = "active";
                 }
                 dispatch(editUserAction({ id: record.id, data: record }));
-                setStatus(record.status);
               }}
               onCancel={() => null}
               okText="Yes"
@@ -175,11 +188,12 @@ function UserListPage() {
         </Button>
       </div>
       <div className="user-list">
-        <Table 
+        <Table
+          size="small"
           dataSource={userData}
           columns={userColumns}
           loading={userList.load}
-          scroll={{x: 1400}}
+          scroll={{x: 1300}}
         />
       </div>
 
