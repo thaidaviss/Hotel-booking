@@ -1,5 +1,5 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table, Tag } from "antd";
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Input, Popconfirm, Space, Table, Tag } from "antd";
 import { ROUTER_URL } from 'constants/index';
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -13,7 +13,6 @@ import './UserList.scss';
 
 function UserListPage() {
   const [isShowUserModal, setIsShowUserModal] = useState(false);
-  // const [status, setStatus] = useState("active");
   const [modifyUserData, setModifyUserData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
@@ -113,7 +112,10 @@ function UserListPage() {
               ghost
               onClick={() => {
                 setIsShowUserModal(true);
-                setModifyUserData(record);
+                setModifyUserData({
+                  ...record,
+                  birthday: moment(record.birthday)
+                });
               }}
             >
               View
@@ -171,29 +173,35 @@ function UserListPage() {
   ];
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div>
       <div className="user-title">
-        <Button 
-          className="add-user-btn"
-          type="primary"
-          size="large"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            history.push(
-              `${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_USER}`
-            );
-          }}
-        >
-          Add User
-        </Button>
+        <p className="user-list-title">UserList Manager</p>
+        <Space>
+          <Input
+            className="user-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          <Button
+            className="add-user-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_USER}`);
+            }}
+          >
+            Add User
+          </Button>
+        </Space>
       </div>
+
       <div className="user-list">
         <Table
           size="small"
           dataSource={userData}
           columns={userColumns}
           loading={userList.load}
-          scroll={{x: 1300}}
+          scroll={{ x: 1300 }}
         />
       </div>
 

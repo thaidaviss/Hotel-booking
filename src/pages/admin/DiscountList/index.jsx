@@ -22,16 +22,17 @@ const DiscountListPage = () => {
 
 
   function handleSubmitForm(values) {
-    // values.start = moment(values.start).format('DD/MM/YYYY');
-    // values.end = moment(values.end).format('DD/MM/YYYY');
+    const newValues = {...values};
+    newValues.start = moment(newValues.start).valueOf();
+    newValues.end = moment(newValues.end).valueOf();
     if (isShowDiscountModal === 'create') {
       dispatch(createDiscountAction({
-        data: values,
+        data: newValues,
       }));
     } else {
       dispatch(editDiscountAction({
         id: modifyDiscountData.id,
-        data: values,
+        data: newValues,
       }));
     }
     setIsShowDiscountModal("");
@@ -65,7 +66,7 @@ const DiscountListPage = () => {
       key: 'end',
       render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
-    { title: 'Value', dataIndex: 'value', key: 'value' },
+    { title: 'Value', dataIndex: 'value', key: 'value', render: (value) => `${value}%` },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
@@ -93,7 +94,11 @@ const DiscountListPage = () => {
               ghost
               onClick={() => {
                 setIsShowDiscountModal("edit");
-                setModifyDiscountData(record);
+                setModifyDiscountData({
+                  ...record, 
+                  start: moment(record.start), 
+                  end: moment(record.end)
+                });
               }}
             >
               Edit
@@ -119,14 +124,13 @@ const DiscountListPage = () => {
         <Button 
           className="add-discount-btn"
           type="primary"
-          size="large"
           icon={<PlusOutlined />}
           onClick={() => {
             setIsShowDiscountModal("create");
             setModifyDiscountData({ 
               name: '', 
-              start: 1631092999151,
-              end: 1631093012330,
+              start: moment(1631092999151),
+              end: moment(1631093012330),
               value: 0 
             });
           }}

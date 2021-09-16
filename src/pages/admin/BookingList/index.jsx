@@ -149,7 +149,7 @@ const BookingListPage = (props) => {
       title: "Change Booking Status",
       dataIndex: "action",
       width: 490,
-      fixed: "right",
+      // fixed: "right",
       key: "action",
       render: (_, record) => {
         return (

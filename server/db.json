@@ -14,7 +14,7 @@
       "age": 29,
       "gender": "male",
       "address": "Phú Ninh - Quảng Nam",
-      "birthday": null,
+      "birthday": 1628339995854,
       "status": "active",
       "createdAt": 1628339995854,
       "updatedAt": 1631763368370,
@@ -37,7 +37,7 @@
       "phone": "0362152512",
       "age": 46,
       "gender": "female",
-      "birthday": null
+      "birthday": 1628339995854
     },
     {
       "email": "thaidavis1999@gmail.com",
@@ -57,7 +57,7 @@
       "age": 36,
       "gender": "male",
       "address": "Portugal",
-      "birthday": null
+      "birthday": 1628339995854
     }
   ],
   "locations": [
@@ -517,28 +517,31 @@
       "id": 1,
       "name": "SPR-010315",
       "typeRoomId": 1,
-      "start": 1631092999151,
-      "end": 1631093012330,
+      "start": 1610643600000,
+      "end": 1614877200000,
       "createdAt": 1631541812854,
-      "updatedAt": 1631541812854
+      "updatedAt": 1631797786141,
+      "value": 8
     },
     {
       "id": 2,
       "name": "SUM-040620",
       "typeRoomId": 3,
-      "start": 1631092999151,
-      "end": 1631093012330,
+      "start": 1622566800000,
+      "end": 1624554000000,
       "createdAt": 1631541812854,
-      "updatedAt": 1631541812854
+      "updatedAt": 1631797745205,
+      "value": 12
     },
     {
       "id": 3,
       "name": "FAL-070925",
       "typeRoomId": 2,
       "start": 1631092999151,
-      "end": 1631093012330,
+      "end": 1633626000000,
       "createdAt": 1631541812854,
-      "updatedAt": 1631541812854
+      "updatedAt": 1631797703035,
+      "value": 10
     }
   ],
   "blogs": [
@@ -588,7 +591,8 @@
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
-      "status": "pending"
+      "status": "pending",
+      "updatedAt": 1631793319041
     },
     {
       "id": 4,
