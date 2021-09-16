@@ -2,9 +2,9 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Button, Popconfirm, Space, Table } from "antd";
 import { ROUTER_URL } from "constants/index";
 import moment from "moment";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTypeAction, getTypeListAction } from "redux/actions";
+import { deleteTypeAction, getFilterTypeListAction, getTypeListAction } from "redux/actions";
 import history from "utils/history";
 import ImageSliderItem from "./components/ImageSliderItem";
 import UtilityItem from "./components/UtilityItem";
@@ -13,10 +13,16 @@ import "./RoomTypes.scss";
 const RoomTypesPage = (props) => {
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
+  const [page, setPage] = useState({...typeList.pagination});
+
 
   useEffect(() => {
-    dispatch(getTypeListAction());
-  }, [dispatch]);
+    dispatch(getFilterTypeListAction({ params: page }));
+  }, [page._page]);
+
+  const handleTableChange = (pagination, filters, sorter) => {
+    setPage({ ...page, _page: pagination.current });
+  };
 
   const roomTypesColumns = [
     { title: "No.", dataIndex: "id", key: "id", width: 30, fixed: "left" },
@@ -25,17 +31,17 @@ const RoomTypesPage = (props) => {
       dataIndex: "name",
       key: "name",
       fixed: "left",
-      width: 150,
+      width: 170,
       render: (value, record) => {
         return <ImageSliderItem images={record.images} value={value} key={`image-${record.id}`} />;
       },
     },
-    { title: "Description", dataIndex: "description", key: "description", width: 250 },
+    { title: "Description", dataIndex: "description", key: "description", width: 200 },
     {
       title: "Type of View",
       dataIndex: "view",
       key: "view",
-      width: 100,
+      width: 60,
       render: (_, record) => {
         return (
           <div>
@@ -51,7 +57,7 @@ const RoomTypesPage = (props) => {
       title: "Utilities",
       dataIndex: "utilities",
       key: "utilities",
-      width: 200,
+      width: 120,
       render: (value, record) => {
         return <UtilityItem value={value} key={`utility-${record.id}`} />;
       },
@@ -60,21 +66,21 @@ const RoomTypesPage = (props) => {
       title: "Price",
       dataIndex: "price",
       key: "price",
-      width: 80,
-      render: (value) => value?.toLocaleString(),
+      width: 50,
+      render: (value) => `$ ${value}`,
     },
     {
       title: "Create At",
       dataIndex: "createdAt",
       key: "createdAt",
-      width: 80,
+      width: 60,
       render: (value) => value && moment(value).format("DD/MM/YYYY HH:mm"),
     },
     {
       title: "Update At",
       dataIndex: "updatedAt",
       key: "updatedAt",
-      width: 80,
+      width: 60,
       render: (value) => value && moment(value).format("DD/MM/YYYY HH:mm"),
     },
     {
@@ -114,7 +120,6 @@ const RoomTypesPage = (props) => {
       },
     },
   ];
-
   const roomTypesData = typeList.data.map((roomTypeItem, roomTypeIndex) => {
     return {
       key: roomTypeIndex,
@@ -128,23 +133,26 @@ const RoomTypesPage = (props) => {
         <Button
           className="add-roomType-btn"
           type="primary"
-          size="large"
           icon={<PlusOutlined />}
           onClick={() => {
-            // setIsShowTypeModal("create");
-            // setModifyTypeData({ name: "" });
             history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
           }}
         >
-          New Room Type
+          New Type
         </Button>
       </div>
       <div className="roomType-list">
         <Table
+          size="small"
           dataSource={roomTypesData}
           columns={roomTypesColumns}
           loading={typeList.load}
-          scroll={{ x: 2450 }}
+          scroll={{ x: 1500, y: "60vh" }}
+          pagination={{
+            current:page._page,pageSize:page._limit,
+            total:((Math.ceil(page._totalRows/page._limit))*10)
+          }}
+          onChange={handleTableChange}
         />
       </div>
     </div>

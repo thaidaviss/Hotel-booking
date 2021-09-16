@@ -3,7 +3,9 @@ import { Button, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction } from "redux/actions";
+import moment from "moment";
+import './RoomList.scss';
+import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction, getRoomListAction, getTypeListAction } from "redux/actions";
 import RoomModal from "./components/RoomModal";
 import './RoomList.scss';
 
@@ -16,16 +18,18 @@ function RoomListPage (props) {
   const { roomList } = useSelector((state) => state.roomReducer);
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
- 
-  const [page,setPage] = useState({...roomList.pagination})
+  // set pagination of table
+  const [page, setPage] = useState({...roomList.pagination});
+
   useEffect(() => {
-    dispatch(getFilterTypeListAction({params:page}));
-    dispatch(getFilterRoomListAction({params:page}));
-  }, [page,dispatch]);
-  const handleTableChange=(pagination, filters, sorter) => {
-    setPage({...page,_page:pagination.current})
-  }
-  
+    dispatch(getFilterTypeListAction({ params: page }));
+    dispatch(getFilterRoomListAction({ params: page }));
+  }, [page._page]);
+
+
+  const handleTableChange = (pagination, filters, sorter) => {
+    setPage({ ...page, _page: pagination.current });
+  };
 
   function handleSubmitForm(values) {
     if (isShowRoomModal === 'create') {
@@ -48,7 +52,7 @@ function RoomListPage (props) {
     }
   });
   const roomColumns = [
-    { title: 'No.', dataIndex: 'id', key: 'id', width: 80 },
+    { title: 'No.', dataIndex: 'id', key: 'id', width: 80, fixed: "left" },
     {
       title: 'Name',
       dataIndex: 'name',
@@ -96,7 +100,6 @@ function RoomListPage (props) {
       
               onClick={() => 
                 {
-                  // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`);
                   setIsShowRoomModal('edit');
                   setModifyRoomData(record);
                 }}
@@ -125,11 +128,9 @@ function RoomListPage (props) {
         <Button 
           className="add-room-btn"
           type="primary"
-          size="large"
           icon={<PlusOutlined />}
           onClick={() => 
             {
-              // history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
               setIsShowRoomModal("create");
               setModifyRoomData({ name: "", rating: 0 });
             }
@@ -139,13 +140,17 @@ function RoomListPage (props) {
         </Button>
       </div>
       <div className="room-list">
-        <Table 
-          // style={{height:"80vh"}}
-          pagination={{current:page._page,pageSize:page._limit,total:((Math.ceil(page._totalRows/page._limit))*10)}}
+        <Table
+          size="small"
           dataSource={roomData} 
           columns={roomColumns} 
           loading={roomList.load}
-          scroll={{x: 1000,y:"60vh"}}
+          scroll={{x: 1000, y: "60vh"}}
+          pagination={{
+            current:page._page,
+            pageSize:page._limit,
+            total:((Math.ceil(page._totalRows/page._limit))*10)
+          }}
           onChange={handleTableChange}
         />
       </div>

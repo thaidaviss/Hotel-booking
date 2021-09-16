@@ -5,8 +5,8 @@
   justify-content: flex-end;
 }
 .roomType-list {
-  // height: 100%;
-  min-height: $admin-content-height;
+  height: 100%;
+  // height: $admin-content-height;
 }
 
 
@@ -29,11 +29,6 @@
   text-transform: none !important;
   border-radius: 4px !important;
 }
-
-// .typeRoom-images {
-//   display: flex;
-//   align-items: center;
-// }
 
 .ant-table-content {
   font-family: $font-family-base;

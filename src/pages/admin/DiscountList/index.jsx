@@ -134,7 +134,8 @@ const DiscountListPage = () => {
         </Button>
       </div>
       <div className="discount-list">
-        <Table 
+        <Table
+          size="small"
           dataSource={discountData}
           columns={discountColumns}
           loading={discountList.load}

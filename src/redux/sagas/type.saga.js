@@ -126,7 +126,7 @@ function* deleteTypeSaga(action) {
       id
     } = action.payload;
     yield typeRoomAPI.deleteTypeRoomInList(id);
-    // yield axios.delete(`${URL_API}/types/${id}`);
+    // yield axios.delete(${URL_API}/types/${id});
     yield put({
       type: SUCCESS(TYPE_ACTION.DELETE_TYPE),
       payload: {
@@ -183,27 +183,27 @@ function* addCommentSaga(action) {
     });
   }
 }
-// function * checkVariable(action){
-//   const {
-//     params
-//   } = action.payload
-//   try {
-//     const result = yield typeRoomAPI.addCommentRoomToList(params);
+function * checkVariable(action){
+  const {
+    params
+  } = action.payload
+  try {
+    const result = yield typeRoomAPI.addCommentRoomToList(params);
 
 
-//     yield put({
-//       type: SUCCESS(TYPE_ACTION.ADD_COMMENT),
-//       payload: {
-//         data: result.data
-//       },
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: FAILURE(TYPE_ACTION.ADD_COMMENT),
-//       payload: e.message
-//     });
-//   }
-// }
+    yield put({
+      type: SUCCESS(TYPE_ACTION.ADD_COMMENT),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(TYPE_ACTION.ADD_COMMENT),
+      payload: e.message
+    });
+  }
+}
 
 export default function* typeSaga() {
   yield takeEvery(REQUEST(TYPE_ACTION.GET_TYPE_LIST), getTypeListSaga);

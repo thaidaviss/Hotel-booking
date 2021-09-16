@@ -14,8 +14,8 @@ const initialState = {
     data: [],
     pagination: {
       _page: 1,
-      _limit: 4,
-  
+      _limit: 3,
+      _totalRows: 5,
     },
     load: false,
     error: null,
@@ -87,20 +87,20 @@ const typeReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST)]: (state, action) => {
-
+    const {data} = action.payload;
     return {
       ...state,
       typeList: {
-        ...action.payload.data,
+        ...state.typeList,
+        data: data.data,
+        pagination: data.pagination,
         load: false,
         error: null,
       },
     }
   },
   [FAILURE(TYPE_ACTION.GET_FILTER_TYPE_LIST)]: (state, action) => {
-    const {
-      error
-    } = action.payload;
+    const { error } = action.payload;
     return {
       ...state,
       typeList: {
@@ -147,16 +147,7 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
-  // create type list
-  // [REQUEST(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
-  //   return {
-  //     ...state,
-  //     typeList: {
-  //       ...state.typeList,
-  //       load: true,
-  //     },
-  //   }
-  // },
+  
   [SUCCESS(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
     const { data } = action.payload;
     return {
@@ -171,27 +162,7 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
-  // [FAILURE(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
-  //   const { error } = action.payload;
-  //   return {
-  //     ...state,
-  //     typeList: {
-  //       ...state.typeList,
-  //       load: false,
-  //       error,
-  //     },
-  //   }
-  // },
-  // edit type
-  // [REQUEST(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
-  //   return {
-  //     ...state,
-  //     typeList: {
-  //       ...state.typeList,
-  //       load: true,
-  //     },
-  //   }
-  // },
+  
   [SUCCESS(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
     const {
       data
@@ -207,28 +178,7 @@ const typeReducer = createReducer(initialState, {
       },
     };
   },
-  // [FAILURE(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
-  //   const { error } = action.payload;
-  //   return {
-  //     ...state,
-  //     typeList: {
-  //       ...state.typeList,
-  //       load: false,
-  //       error,
-  //     },
-  //   }
-  // },
 
-  // delete type
-  // [REQUEST(TYPE_ACTION.DELETE_TYPE)]: (state, action) => {
-  //   return {
-  //     ...state,
-  //     typeList: {
-  //       ...state.typeList,
-  //       load: true,
-  //     },
-  //   }
-  // },
   [SUCCESS(TYPE_ACTION.DELETE_TYPE)]: (state, action) => {
     const {
       id
