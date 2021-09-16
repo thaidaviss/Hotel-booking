@@ -1,27 +1,49 @@
-import axios from "axios";
 import { put, takeEvery } from "@redux-saga/core/effects";
-import { FAILURE, LOCATION_ACTION, REQUEST, SUCCESS } from "redux/constants";
-import { URL_API } from "Api/index";
+import { notification } from "antd";
+import { BookingAPI } from "Api/index";
+import { ROUTER_URL } from "constants/index";
+import { BOOKING_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants";
+import history from "utils/history";
 
 
-function* getLocationListSaga(action) {
+function* getListBookingSaga(action) {
   try {
-    const result = yield axios.get(`${URL_API}/locations`);
+    const result = yield BookingAPI.getListBooking();
     yield put({
-      type: SUCCESS(LOCATION_ACTION.GET_LOCATION_LIST),
+      type: SUCCESS(BOOKING_ACTION.GET_LIST_BOOKING),
       payload: {
         data: result.data
       },
     });
   } catch (e) {
-    yield put({ type: FAILURE(LOCATION_ACTION.GET_LOCATION_LIST), payload: e.message });
+    yield put({ type: FAILURE(BOOKING_ACTION.GET_LIST_BOOKING), payload: e.message });
+  }
+}
+function* createBookingSaga(action) {
+  const {data} = action.payload;
+  try {
+    const result = yield BookingAPI.addBooking(data);
+    history.push(ROUTER_URL.HOME);
+    
+    notification.success({description:"You have successfully booked your room !"})
+    yield put({
+      type: SUCCESS(BOOKING_ACTION.CREATE_BOOKING),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(BOOKING_ACTION.CREATE_BOOKING), payload: e.message });
   }
 }
 
 
 
 
+
+
+
 export default function* bookingSaga() {
-  // yield takeEvery(REQUEST(LOCATION_ACTION.GET_LOCATION_LIST), getLocationListSaga);
- 
+  yield takeEvery(REQUEST(BOOKING_ACTION.GET_LIST_BOOKING), getListBookingSaga);
+  yield takeEvery(REQUEST(BOOKING_ACTION.CREATE_BOOKING), createBookingSaga);
 }

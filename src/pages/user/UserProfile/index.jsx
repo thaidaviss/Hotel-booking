@@ -1,12 +1,9 @@
 import { Button, Upload } from "antd";
 import { uploadImage } from "fb";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addImageUploadAction } from "redux/actions/image.action";
+import React, { useState } from "react";
 
 function UserProfile(props) {
-  const dispatch = useDispatch();
+
   const [fileList, setFileList] = useState([]);
   const [listImg, setListImage] = useState([]);
 
@@ -31,13 +28,12 @@ function UserProfile(props) {
   };
   const handleUpload = () => {
 
-    fileList.map((image) => {
+    fileList.forEach((image) => {
       const url= uploadImage(image);
       setListImage([...listImg,url]);
 
     });
   };
-  console.log(listImg)
   return (
     <div>
       <Upload

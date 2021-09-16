@@ -5,6 +5,7 @@ import { URL_API } from "Api";
 
 export const DiscountAPI = {
   getDiscountList:()=>API.get(`${URL_API}/discounts`),
+  checkDiscount:(name)=>API.get(`${URL_API}/discounts?name=${name}`),
   getDiscountDetail: (id,params)=>API.get(`${URL_API}/discounts/${id}?${queryString.stringify(params)}`),
   getFilterDiscountList:(params)=> API.get(`${URL_API}/discounts?${queryString.stringify(params)}`),
   addDiscountToList:(data) => API.post(`${URL_API}/discounts`,data),

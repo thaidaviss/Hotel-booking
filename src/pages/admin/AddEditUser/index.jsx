@@ -1,6 +1,6 @@
 import { Button, DatePicker, Form, Input, InputNumber, Row, Select, Space } from "antd";
 import { ROUTER_URL } from "constants/index";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { createUserAction, editUserAction, getUserDetailAction } from "redux/actions";
@@ -11,7 +11,7 @@ import "./AddEditUser.scss";
 const dateFormat = 'DD/MM/YYYY';
 
 const AddEditUserPage = (props) => {
-  const [uploadImages, setUploadImages] = useState([]);
+ 
   const [modifyUserForm] = Form.useForm();
 
   const { userDetail } = useSelector((state) => state.userReducer);
@@ -25,14 +25,14 @@ const AddEditUserPage = (props) => {
     if (userId) {
       dispatch(getUserDetailAction({ id: userId }));
     }
-  }, [userId]);
+  }, [userId,dispatch]);
 
   useEffect(() => {
     if (userDetail.data.id) {
       modifyUserForm.resetFields();
       // setUploadImages([...userDetail.data.avatar]);
     }
-  }, [userDetail.data]);
+  }, [userDetail.data,modifyUserForm]);
 
   function handleSubmitForm(values) {
     // values.birthday = moment(values.birthday).format("DD/MM/YYYY");

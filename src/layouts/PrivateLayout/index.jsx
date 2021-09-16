@@ -1,7 +1,6 @@
 import { ROUTER_URL } from 'constants/index';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
 PrivateLayout.propTypes = {
@@ -18,7 +17,7 @@ PrivateLayout.defaultProps = {
 
 function PrivateLayout(props) {
   const { exact, path, component: Component } = props;
-  const isAuth = JSON.parse(localStorage.getItem("userData"))?.user?.role==="admin";
+  const isAuth = JSON.parse(localStorage.getItem("userData"))?.accessToken!==undefined;
   if (isAuth ===true)
   return (
     <Route exact={exact} path={path}>

@@ -76,7 +76,7 @@ a {
 
     &__list {
       width: 80%;
-
+      
       @include LayoutFlex(row, space-between, center, nowrap);
 
       &-menu {

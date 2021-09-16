@@ -23,7 +23,7 @@ function LoginPage(props) {
   useEffect(() => {
     if (history.location.pathname === ROUTER_URL.REGISTER) setActiveTab("2");
     else setActiveTab("1");
-  }, [history.location.pathname]);
+  }, []);
 
   function handleChangeTab(activeKey) {
     setActiveTab(activeKey);

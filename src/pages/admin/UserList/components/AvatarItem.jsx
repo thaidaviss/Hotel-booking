@@ -1,5 +1,5 @@
 import { Image } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 
 const AvatarItem = (props) => {
   const { avatar, value } =props;

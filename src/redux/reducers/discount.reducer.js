@@ -8,6 +8,11 @@ const initialState = {
     load: false,
     error: null,
   },
+  discountDetail:{
+    data: {},
+    load: false,
+    error: null,
+  }
 };
 
 const discountReducer = createReducer(initialState, {
@@ -84,6 +89,38 @@ const discountReducer = createReducer(initialState, {
       },
     };
   },
+  [REQUEST(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL)]: (state, action) => {
+    return {
+      ...state,
+      discountDetail: {
+        ...state.discountDetail,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL)]: (state, action) => {
+    const { data } = action.payload;
+    return {
+      ...state,
+      discountDetail: {
+        data,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL)]: (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      discountDetail: {
+        ...state.discountDetail,
+        load: false,
+        error,
+      },
+    }
+  },
+
 });
 
 export default discountReducer;

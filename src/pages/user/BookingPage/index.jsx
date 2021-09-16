@@ -1,35 +1,85 @@
-import { ROUTER_URL } from "constants/index";
+import { Form, Input, notification } from "antd";
 import { IMAGES } from "constants/images.constants";
+import { ROUTER_URL, Tax } from "constants/index";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import "./BookingPage.scss";
-import { Link } from "react-router-dom";
-import { Form, Input} from "antd";
+import { useDispatch } from "react-redux";
+import { Link, Redirect, useLocation } from "react-router-dom";
+import { createBookingAction } from "redux/actions/booking.action";
 import history from "utils/history";
+import PaymentPage from "./components/PaymentPage";
+import "./BookingPage.scss";
+import { clearRoomVariableAction, getDiscountDetailAction } from "redux/actions";
+import { values } from "lodash";
+
 function BookingPage(props) {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
-  const bookingInfo = {
-    guests: 4,
-    room: "Superior Room Single",
-    checkIn: "12/09/2021",
-    dateIn: "Sunday",
-    checkOut: "13/09/2021",
-    dateOut: "Monday",
-    numberNight: 1,
-    price: 200,
-    images: ["https://danangpetrohotel.com.vn/dataUpload/Room/room/1.jpg"],
-  };
+  const pathName = useLocation();
+  const discount = useRef("");
+
+  const bookingInfoLocal = JSON.parse(sessionStorage.getItem("bookingInfo"));
+  const userLogin = JSON.parse(localStorage.getItem("userData"));
+
+  const [bookingInfo, setBookingInfo] = useState({
+    name: userLogin.user.name,
+    phone: userLogin.user.phone,
+    email: userLogin.user.email,
+    address: userLogin.user.address,
+    discount: null,
+    ...bookingInfoLocal,
+  });
+
+  useEffect(() => {
+    return () => {
+      sessionStorage.removeItem("bookingInfo");
+      sessionStorage.removeItem("checkVariable");
+    };
+  }, []);
+
   const onFinish = (values) => {
-    console.log("Success:", values);
+    const total = bookingInfo.price * Tax + bookingInfo.price * bookingInfo.numberNight;
+    setBookingInfo({ ...bookingInfo, ...values, total: total });
     history.push(ROUTER_URL.PAYMENT);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  const handleApplyDiscount = (values) => {
+    console.log(discount.current.state.value);
+    dispatch(getDiscountDetailAction({ name: discount.current.state.value }));
+  };
 
+  const BookingRoom = () => {
+    if (bookingInfo) {
+      const DataPayment = {
+        typeRoomId: bookingInfo.typeRoomId,
+        userId: userLogin.user.id,
+        discountCode: "FAL-070925",
+        discountPrice: 11,
+        roomId: bookingInfo.roomId,
+        checkOut: new Date(bookingInfo.date[1]).getTime(),
+        checkIn: new Date(bookingInfo.date[0]).getTime(),
+        numberNight: bookingInfo.numberNight,
+        price: bookingInfo.price,
+        total: bookingInfo.total,
+        status: "pending",
+      };
+      dispatch(createBookingAction({ data: DataPayment }));
+      dispatch(clearRoomVariableAction());
+    } else {
+      notification.info({ description: "you have not booking!" });
+      return <Redirect to={ROUTER_URL.ROOMS} />;
+    }
+  };
+
+  if (!bookingInfoLocal) {
+    notification.info({ description: "you have not booking!" });
+    return <Redirect to={ROUTER_URL.ROOMS} />;
+  }
   return (
     <>
       <Header />
@@ -45,106 +95,119 @@ function BookingPage(props) {
               <img src={IMAGES.LINE2} alt="" />
             </div>
           </div>
-          {/* <div className="booking__link">
-            <Link >Home </Link>
-            {">"}
-            <Link className="booking__link-active">1. Booking information </Link>
-            {">"}
-            <Link>2. Confirm and complete your payment</Link>
-          </div> */}
         </div>
         <div className="booking__body">
           <div className="container">
-            <div className="booking__left">
-              <div className="booking__booking-info">
-                <div className="booking__title">{t("Booking information")}</div>
-                <div className="booking__group">
-                  <label>{"Guests"}</label>
-                  <Input disabled value={`${bookingInfo.guests} guest`} />
-                </div>
-                <div className="booking__group">
-                  <label>{`${bookingInfo.numberNight}nights for ${bookingInfo.room} at the royal hotel `}</label>
-                  <div className="booking__date">
-                    <div className="booking__date-item">
-                      <div className="line"></div>
-                      <div className="booking__date-title">{t("Check-in")}</div>
-                      <h3>{bookingInfo.checkIn}</h3>
-                      <small>{t(bookingInfo.dateIn)}</small>
-                    </div>
-                    <div className="booking__date-item">
-                      <div className="line red"></div>
-                      <div className="booking__date-title">{t("Check-out")}</div>
-                      <h3>{bookingInfo.checkOut}</h3>
-                      <small>{t(bookingInfo.dateOut)}</small>
+            {pathName.pathname === ROUTER_URL.BOOKING ? (
+              <div className="booking__left">
+                <div className="booking__booking-info">
+                  <div className="booking__title">{t("Booking information")}</div>
+                  <div className="booking__group">
+                    <label>{"Guests"}</label>
+                    <Input disabled value={`${bookingInfo.guest} guest`} />
+                  </div>
+                  <div className="booking__group">
+                    <label>{`${bookingInfo?.numberNight}nights for ${bookingInfo.typeRoom} at the royal hotel `}</label>
+                    <div className="booking__date">
+                      <div className="booking__date-item">
+                        <div className="line"></div>
+                        <div className="booking__date-title">{t("Check-in")}</div>
+                        <h3>{bookingInfo.date[0]}</h3>
+                        <small>{t(bookingInfo.dateIn)}</small>
+                      </div>
+                      <div className="booking__date-item">
+                        <div className="line red"></div>
+                        <div className="booking__date-title">{t("Check-out")}</div>
+                        <h3>{bookingInfo.date[1]}</h3>
+                        <small>{t(bookingInfo.dateOut)}</small>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="booking__group">
-                  <label>{"Damage Policy"}</label>
-                  <p>
-                    You will be responsible for any damage to the rental property caused by you or
-                    your party during your stay.
-                  </p>
-                </div>
-              </div>
-              <div className="booking__your-info">
-                <div className="booking__title">{t("Your information")}</div>
-                <Form
-                  name="your information"
-                  layout={"vertical"}
-                  initialValues={{ remember: true }}
-                  onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}
-                  autoComplete="off"
-                >
-                  <Form.Item
-                    label="Customer name"
-                    name="name"
-                    rules={[{ required: true, message: "Please input your username!" }]}
-                  >
-                    <Input placeholder="Full name as written on your national ID card" />
-                  </Form.Item>
-                  <div className="form__inline">
-                    <div className="form__inline-item">
-                      <Form.Item
-                        label="Mobile number"
-                        name="phone"
-                        rules={[{ required: true, message: "Please input your phone number!" }]}
-                      >
-                        <Input placeholder="e.g:095343532" />
-                      </Form.Item>
-                    </div>
-                    <div className="form__inline-item">
-                      <Form.Item
-                        label="Email"
-                        name="email"
-                        rules={[{ required: true, message: "Please input your email!" }]}
-                      >
-                        <Input placeholder="e.g: email@example.com" />
-                      </Form.Item>
-                    </div>
+                  <div className="booking__group">
+                    <label>{"Damage Policy"}</label>
+                    <p>
+                      You will be responsible for any damage to the rental property caused by you or
+                      your party during your stay.
+                    </p>
                   </div>
-                  <Form.Item
-                    label="Country of residence"
-                    name="country"
-                    rules={[{ required: true, message: "Please select your country!" }]}
+                </div>
+                <div className="booking__your-info">
+                  <div className="booking__title">{t("Your information")}</div>
+                  <Form
+                    name="your information"
+                    layout={"vertical"}
+                    initialValues={bookingInfo}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
                   >
-                    <Input placeholder="e.g: Viet Nam" />
-                  </Form.Item>
-                  <Form.Item label="Promotion" name="discount">
-                    <Input placeholder="e.g: SUMMER21X" />
-                  </Form.Item>
-                  <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
-                    <button className="btn-payments">
-                      Payments
-                      <span>
-                        <i className=" fa fa-angle-double-right"></i>
-                      </span>
-                    </button>
-                  </Form.Item>
-                </Form>
+                    <Form.Item
+                      label="Customer name"
+                      name="name"
+                      rules={[{ required: true, message: "Please input your username!" }]}
+                    >
+                      <Input placeholder="Full name as written on your national ID card" />
+                    </Form.Item>
+                    <div className="form__inline">
+                      <div className="form__inline-item">
+                        <Form.Item
+                          label="Mobile number"
+                          name="phone"
+                          rules={[{ required: true, message: "Please input your phone number!" }]}
+                        >
+                          <Input placeholder="e.g:095343532" />
+                        </Form.Item>
+                      </div>
+                      <div className="form__inline-item">
+                        <Form.Item
+                          label="Email"
+                          name="email"
+                          rules={[{ required: true, message: "Please input your email!" }]}
+                        >
+                          <Input placeholder="e.g: email@example.com" />
+                        </Form.Item>
+                      </div>
+                    </div>
+                    <Form.Item
+                      label="Country of residence"
+                      name="address"
+                      rules={[{ required: true, message: "Please select your country!" }]}
+                    >
+                      <Input placeholder="e.g: VietNam" />
+                    </Form.Item>
+
+                    <Form.Item label="Promotion" name="discount">
+                      <div className="form__inline">
+                        <div className="form__inline-item">
+                          <Input placeholder="e.g: SUMMER21X" ref={discount} />
+                        </div>
+                        <div className="form__inline-item">
+                          <button
+                            className="btn-discount"
+                            type="button"
+                            onClick={(values) => handleApplyDiscount(values)}
+                          >
+                            Apply Discount
+                          </button>
+                        </div>
+                      </div>
+                    </Form.Item>
+
+                    <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
+                      <button className="btn-payments">
+                        Payments
+                        <span>
+                          <i className=" fa fa-angle-double-right"></i>
+                        </span>
+                      </button>
+                    </Form.Item>
+                  </Form>
+                </div>
               </div>
-            </div>
+            ) : (
+              <PaymentPage handleBooking={BookingRoom} />
+            )}
+
             <div className="booking__right">
               <div className="booking__title booking__bill-title ">{t("Your booking details")}</div>
               <div className="booking__bill">
@@ -155,7 +218,7 @@ function BookingPage(props) {
                         <img src={bookingInfo.images[0]} alt="" />
                       </Link>
                     </div>
-                    <div className="name">{t(bookingInfo.room)}</div>
+                    <div className="name">{t(bookingInfo.typeRoom)}</div>
                   </div>
                 </div>
                 <div className="booking__bill-item">
@@ -166,14 +229,14 @@ function BookingPage(props) {
                       </span>
                       <h4>
                         {`${bookingInfo.numberNight} night`}{" "}
-                        <p>{`${bookingInfo.checkIn} - ${bookingInfo.checkOut}`}</p>
+                        <p>{`${bookingInfo.date[0]} - ${bookingInfo.date[1]}`}</p>
                       </h4>
                     </div>
                     <div className="booking__info-item">
                       <span>
                         <i className="fa fa-user-circle"></i>
                       </span>
-                      <h4>{`${bookingInfo.guests} adult`}</h4>
+                      <h4>{`${bookingInfo.guest} adult`}</h4>
                     </div>
                   </div>
                 </div>
@@ -184,14 +247,17 @@ function BookingPage(props) {
                   </div>
                   <div className="booking__total-item">
                     <div className="booking__total-title">{t("Other service fee")}</div>
-                    <div className="booking__total-number">{`${bookingInfo.price * 0.1}$`}</div>
+                    <div className="booking__total-number">{`${bookingInfo.price * Tax}$`}</div>
                   </div>
                 </div>
                 <div className="booking__bill-item">
                   <div className="booking__total-item total">
                     <div className="booking__total-title ">{t("Total")}</div>
                     <div className="booking__total-number">
-                      {`${bookingInfo.price * 0.1 + bookingInfo.price * bookingInfo.numberNight}$`}
+                      {`${(
+                        bookingInfo.price * Tax +
+                        bookingInfo.price * bookingInfo.numberNight
+                      ).toLocaleString()}$`}
                     </div>
                   </div>
                 </div>

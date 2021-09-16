@@ -1,29 +1,11 @@
-import React from 'react';
-import { Input, Menu, Dropdown } from 'antd';
-import { MdNotifications, MdSettings } from 'react-icons/md';
 import { SearchOutlined } from '@ant-design/icons';
+import { Dropdown, Input, Menu } from 'antd';
+import React from 'react';
+import { MdNotifications } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import './AdminHeader.scss';
 
-// const settingMenu = (
-//   <Menu>
-//     <Menu.Item>
-//       <Link to="/">
-//         1st menu item
-//       </Link>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <Link to="/">
-//         2nd menu item
-//       </Link>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <Link to="/">
-//         3rd menu item
-//       </Link>
-//     </Menu.Item>
-//   </Menu>
-// );
+
 
 const accountMenu = (
   <Menu>
@@ -46,7 +28,7 @@ const accountMenu = (
 );
 
 const AdminHeader = (props) => {
-  const { isMiniMenu, setIsMiniMenu } = props;
+  const { isMiniMenu } = props;
   
   return (
     <div className={isMiniMenu ? "admin__header--show" : "admin__header"}>

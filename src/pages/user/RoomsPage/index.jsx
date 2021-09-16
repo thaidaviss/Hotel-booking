@@ -1,26 +1,36 @@
 import { Pagination, Space, Spin } from "antd";
-import { LIST_ROOM } from "constants/rooms.constant";
+import { IMAGES } from "constants/images.constants";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import MakeReservation from "../HomePage/components/MakeReservation";
+import { useDispatch, useSelector } from "react-redux";
+import { getFilterTypeListAction } from "redux/actions/index";
+import MakeReservation from "../../../components/user/MakeReservation";
 import CardRoom from "./components/CardRoom";
 import FilterRooms from "./components/FilterRooms";
-import { IMAGES } from "constants/images.constants";
 import "./RoomsPage.scss";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { getFilterTypeListAction } from "redux/actions/index";
-const queryString = require("query-string");
+
 function RoomsPage(props) {
-  const dispatch = useDispatch();
-  const listTypeRoom = useSelector((state) => state.typeReducer.typeList);
-  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
-  const { t } = useTranslation();
   let myRef = useRef();
-  const [page, setPage] = useState({ ...listTypeRoom.pagination });
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const listTypeRoom = useSelector((state) => state.typeReducer.typeList);
+  const listVariable = useSelector((state) => state.typeReducer.roomVariableList);
+
+  const [isFocus, setIsFocus] = useState(false);
+  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
+
+  const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 4 });
   useEffect(() => {
-    setPage({...page,_page:1})
-  },[checkedList.rating, checkedList.price]);
+    setPage({ ...page, _page: 1 });
+  }, [checkedList.rating, checkedList.price]);
+
+  // useEffect(() => {
+  //   setPage({...listTypeRoom.pagination});
+  // }, [listTypeRoom.pagination]);
+  useEffect(() => {
+    localStorage.removeItem("bookingInfo");
+  }, []);
   useEffect(() => {
     dispatch(
       getFilterTypeListAction({
@@ -32,10 +42,24 @@ function RoomsPage(props) {
         },
       })
     );
-
     window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
-  }, [page._page, checkedList.rating, checkedList.price]);
+  }, [dispatch, page, checkedList.rating, checkedList.price]);
+  console.log(page);
 
+
+
+  const isVariable = (typeRoom) => {
+    const listTypeRoomVariable = Object.keys(listVariable.data);
+    if (listTypeRoomVariable.length === 0) {
+      return true;
+    }
+    const check =
+      listTypeRoomVariable.findIndex(
+        (typeRoomVariable) => parseInt(typeRoomVariable) === typeRoom.id
+      ) !== -1;
+
+    return check;
+  };
   return (
     <div className="rooms-page">
       <div className="rooms-page__banner">
@@ -52,7 +76,7 @@ function RoomsPage(props) {
       </div>
       <div className="rooms-page__body" ref={myRef}>
         <div className="rooms-page__reservation">
-          <MakeReservation />
+          <MakeReservation isFocus={isFocus} />
         </div>
         <div className="container">
           <div className="rooms-page__filter">
@@ -66,15 +90,23 @@ function RoomsPage(props) {
                 <Spin size="large" />
               </Space>
             ) : (
-              listTypeRoom.data.map((room) => <CardRoom room={room} />)
+              listTypeRoom.data.map((typeRoom, index) => (
+                <CardRoom
+                typeRoom={typeRoom}
+                  isVariable={isVariable(typeRoom)}
+                  key={`card-room__room-${index}`}
+                  setIsFocus={setIsFocus}
+                  listVariable={listVariable}
+                />
+              ))
             )}
           </div>
         </div>
         <div className="rooms-page__pagination">
           <Pagination
-            defaultCurrent={page._page}
-            total={page._totalRows * page._limit}
-            size={page._limit}
+            current={page._page}
+            total={page._totalRows}
+            pageSize={page._limit}
             onChange={(value) => setPage({ ...page, _page: value })}
           />
         </div>

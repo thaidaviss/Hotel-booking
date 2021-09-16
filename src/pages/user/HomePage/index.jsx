@@ -17,7 +17,7 @@ import CardBlog from "./components/CardBlog";
 import CardFeedBack from "./components/CardFeedBack";
 import CardService from "./components/CardService";
 import FeatureRoom from "./components/FeatureRoom";
-import MakeReservation from "./components/MakeReservation";
+import MakeReservation from "../../../components/user/MakeReservation";
 import SliderRooms from "./components/SliderRooms";
 import "./HomePage.scss";
 
@@ -90,7 +90,6 @@ function HomePage(props) {
           </button>
           <button
             className="btn btn-readmore"
-            className="btn btn-order"
             data-aos="fade-left"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="2000"

@@ -15,7 +15,7 @@ function ModifyLocationModal({
     if (isShowLocationModal) {
       modifyLocationForm.resetFields();
     }
-  }, [isShowLocationModal]);
+  }, [isShowLocationModal,modifyLocationForm]);
 
   return (
     <Modal
