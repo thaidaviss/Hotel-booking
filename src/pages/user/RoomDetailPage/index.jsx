@@ -9,7 +9,7 @@ import { MdSmokingRooms } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getCommentListAction, getTypeDetailAction } from "redux/actions";
-import MakeReservation from "../HomePage/components/MakeReservation";
+import MakeReservation from "../../../components/user/MakeReservation";
 import CollapseInfo from "./components/CollapseInfo";
 import SliderRoomDetail from "./components/SliderRoomDetail";
 import "./RoomDetailPage.scss";

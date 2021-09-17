@@ -5,3 +5,4 @@ export const getDiscountListAction = createAction(REQUEST(DISCOUNT_ACTION.GET_DI
 export const createDiscountAction = createAction(REQUEST(DISCOUNT_ACTION.CREATE_DISCOUNT));
 export const editDiscountAction = createAction(REQUEST(DISCOUNT_ACTION.EDIT_DISCOUNT));
 export const deleteDiscountAction = createAction(REQUEST(DISCOUNT_ACTION.DELETE_DISCOUNT));
+export const getDiscountDetailAction=createAction(REQUEST(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL));

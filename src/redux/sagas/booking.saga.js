@@ -1,6 +1,9 @@
 import { put, takeEvery } from "@redux-saga/core/effects";
+import { notification } from "antd";
 import { BookingAPI } from "Api/index";
+import { ROUTER_URL } from "constants/index";
 import { BOOKING_ACTION, FAILURE, REQUEST, SUCCESS } from "redux/constants";
+import history from "utils/history";
 
 
 function* getBookingListSaga(action) {
@@ -20,6 +23,9 @@ function* createBookingSaga(action) {
   const {data} = action.payload;
   try {
     const result = yield BookingAPI.addBooking(data);
+    history.push(ROUTER_URL.HOME);
+    
+    notification.success({description:"You have successfully booked your room !"})
     yield put({
       type: SUCCESS(BOOKING_ACTION.CREATE_BOOKING),
       payload: {

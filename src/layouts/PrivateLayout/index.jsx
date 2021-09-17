@@ -17,7 +17,7 @@ PrivateLayout.defaultProps = {
 
 function PrivateLayout(props) {
   const { exact, path, component: Component } = props;
-  const isAuth = JSON.parse(localStorage.getItem("userData"))?.user?.role==="admin";
+  const isAuth = JSON.parse(localStorage.getItem("userData"))?.accessToken!==undefined;
   if (isAuth ===true)
   return (
     <Route exact={exact} path={path}>

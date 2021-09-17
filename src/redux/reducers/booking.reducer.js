@@ -39,6 +39,7 @@ const bookingReducer = createReducer(initialState, {
   },
   [SUCCESS(BOOKING_ACTION.GET_BOOKING_LIST)]: (state, action) => {
     const { data } = action.payload;
+
     return {
       ...state,
       bookingList: {

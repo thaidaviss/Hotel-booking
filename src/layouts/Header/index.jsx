@@ -103,7 +103,7 @@ function Header(props) {
                 </div>
               </div>
               <div className="navbar__list-user">
-                {userInfo.data.user ? (
+                {userInfo?.data?.user ? (
                   <div className="link-profile">
                     <Dropdown overlay={menu}>
                       <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>

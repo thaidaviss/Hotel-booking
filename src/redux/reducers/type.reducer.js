@@ -14,8 +14,10 @@ const initialState = {
     data: [],
     pagination: {
       _page: 1,
-      _limit: 3,
-      _totalRows: 5,
+
+      _limit: 4,
+      _totalRows: 5
+
     },
     load: false,
     error: null,
@@ -32,8 +34,11 @@ const initialState = {
     load: false,
     error: null,
   },
-  roomVariableList:{
+  roomVariableList: {
     data: {},
+    checkIn: null,
+    checkOut: null,
+    guest: null,
     load: false,
     error: null,
   }
@@ -147,9 +152,10 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
-  
   [SUCCESS(TYPE_ACTION.CREATE_TYPE)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     return {
       ...state,
       typeList: {
@@ -162,7 +168,6 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
-  
   [SUCCESS(TYPE_ACTION.EDIT_TYPE)]: (state, action) => {
     const {
       data
@@ -263,19 +268,40 @@ const typeReducer = createReducer(initialState, {
       },
     }
   },
- [TYPE_ACTION.GET_ROOM_VARIABLE_LIST]: (state, action) => {
-  const {
-    data
-} = action.payload;
-  return {
-    ...state,
-    roomVariableList: {
+  [TYPE_ACTION.GET_ROOM_VARIABLE_LIST]: (state, action) => {
+    console.log(action.payload)
+    const {
       data,
-      load: false,
-      error: null,
-    },
-  }
-},
+      checkIn,
+      checkOut,
+      guest
+    } = action.payload;
+    return {
+      ...state,
+      roomVariableList: {
+        data,
+        checkOut,
+        checkIn,
+        guest,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [TYPE_ACTION.CLEAR_TYPE_ROOM_VARIABLE]: (state, action) => {
+    
+    return {
+      ...state,
+      roomVariableList: {
+        data:{},
+        checkOut:null,
+        checkIn:null,
+        guest:null,
+        load: false,
+        error: null,
+      },
+    }
+  },
 });
 
 export default typeReducer;

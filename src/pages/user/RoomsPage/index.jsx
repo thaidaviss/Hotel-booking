@@ -4,12 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getFilterTypeListAction } from "redux/actions/index";
-import MakeReservation from "../HomePage/components/MakeReservation";
+import MakeReservation from "../../../components/user/MakeReservation";
 import CardRoom from "./components/CardRoom";
 import FilterRooms from "./components/FilterRooms";
 import "./RoomsPage.scss";
-
-
 
 function RoomsPage(props) {
   let myRef = useRef();
@@ -17,15 +15,22 @@ function RoomsPage(props) {
   const dispatch = useDispatch();
 
   const listTypeRoom = useSelector((state) => state.typeReducer.typeList);
-  const listVariable = useSelector((state) => state.typeReducer.roomVariableList.data);
+  const listVariable = useSelector((state) => state.typeReducer.roomVariableList);
 
+  const [isFocus, setIsFocus] = useState(false);
   const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
 
-  const [page, setPage] = useState({ ...listTypeRoom.pagination});
+  const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 4 });
   useEffect(() => {
     setPage({ ...page, _page: 1 });
   }, [checkedList.rating, checkedList.price]);
 
+  // useEffect(() => {
+  //   setPage({...listTypeRoom.pagination});
+  // }, [listTypeRoom.pagination]);
+  useEffect(() => {
+    localStorage.removeItem("bookingInfo");
+  }, []);
   useEffect(() => {
     dispatch(
       getFilterTypeListAction({
@@ -38,10 +43,13 @@ function RoomsPage(props) {
       })
     );
     window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
-  }, [dispatch,page, checkedList.rating, checkedList.price]);
+  }, [dispatch, page, checkedList.rating, checkedList.price]);
+  console.log(page);
+
+
 
   const isVariable = (typeRoom) => {
-    const listTypeRoomVariable = Object.keys(listVariable);
+    const listTypeRoomVariable = Object.keys(listVariable.data);
     if (listTypeRoomVariable.length === 0) {
       return true;
     }
@@ -68,7 +76,7 @@ function RoomsPage(props) {
       </div>
       <div className="rooms-page__body" ref={myRef}>
         <div className="rooms-page__reservation">
-          <MakeReservation />
+          <MakeReservation isFocus={isFocus} />
         </div>
         <div className="container">
           <div className="rooms-page__filter">
@@ -83,16 +91,22 @@ function RoomsPage(props) {
               </Space>
             ) : (
               listTypeRoom.data.map((typeRoom, index) => (
-                <CardRoom room={typeRoom} isVariable={isVariable(typeRoom)} key={`card-room__room-${index}`} />
+                <CardRoom
+                typeRoom={typeRoom}
+                  isVariable={isVariable(typeRoom)}
+                  key={`card-room__room-${index}`}
+                  setIsFocus={setIsFocus}
+                  listVariable={listVariable}
+                />
               ))
             )}
           </div>
         </div>
         <div className="rooms-page__pagination">
           <Pagination
-            defaultCurrent={page._page}
-            total={page._totalRows }
-            size={page._limit}
+            current={page._page}
+            total={page._totalRows}
+            pageSize={page._limit}
             onChange={(value) => setPage({ ...page, _page: value })}
           />
         </div>

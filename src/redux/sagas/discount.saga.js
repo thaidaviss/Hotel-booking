@@ -50,15 +50,28 @@ function* editDiscountSaga(action) {
 function* deleteDiscountSaga(action) {
   try {
     const { id } = action.payload;
-    yield DiscountAPI.deleteDiscountInList(id);
+    yield DiscountAPI.checkDiscount(id);
     yield put({
       type: SUCCESS(DISCOUNT_ACTION.DELETE_DISCOUNT),
-      payload: { id }
+      payload: id
     });
   } catch (e) {
     yield put({ type: FAILURE(DISCOUNT_ACTION.DELETE_DISCOUNT), payload: e.message });
   }
 }
+function* getDiscountDetail(action) {
+  try {
+    const { name } = action.payload;
+    const result = yield DiscountAPI.checkDiscount(name);
+    yield put({
+      type: SUCCESS(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL),
+      payload: result.data
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL), payload: e.message });
+  }
+}
+
 
 
 export default function* discountSaga() {
@@ -66,4 +79,5 @@ export default function* discountSaga() {
   yield takeEvery(REQUEST(DISCOUNT_ACTION.CREATE_DISCOUNT), createDiscountSaga);
   yield takeEvery(REQUEST(DISCOUNT_ACTION.EDIT_DISCOUNT), editDiscountSaga);
   yield takeEvery(REQUEST(DISCOUNT_ACTION.DELETE_DISCOUNT), deleteDiscountSaga);
+  yield takeEvery(REQUEST(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL), getDiscountDetail);
 }

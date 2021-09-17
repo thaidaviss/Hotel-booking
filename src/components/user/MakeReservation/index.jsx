@@ -11,11 +11,16 @@ import history from "utils/history";
 import "./MakeReservation.scss";
 const { Option } = Select;
 const { RangePicker } = DatePicker;
-function MakeReservation(props) {
+const formatDate = "YYYY/MM/DD";
+function MakeReservation({ isFocus = false }) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const listRoom = useSelector((state) => state.roomReducer.roomList.data);
   const listBooking = useSelector((state) => state.bookingReducer.bookingList.data);
-  const [infoCheck, setInfoCheck] = useState({ date: [], guest: 0 });
+
+  const [infoCheck, setInfoCheck] = useState({ date: [undefined, undefined], guest: "" });
+
   useEffect(() => {
     dispatch(getListBookingAction());
   }, [dispatch]);
@@ -24,20 +29,34 @@ function MakeReservation(props) {
     dispatch(getRoomListAction());
   }, [dispatch]);
 
+  useEffect(() => {
+    setInfoCheck(
+      JSON.parse(sessionStorage.getItem("checkVariable")) || { date: [null, null], guest: "" }
+    );
+  }, []);
+
   const handleCheckVariable = () => {
     if (infoCheck.date.length === 2 && infoCheck.guest !== 0) {
       const checkIn = new Date(infoCheck.date[0]).getTime();
       const checkOut = new Date(infoCheck.date[1]).getTime();
       const listVariable = checkVariable(checkIn, checkOut, listBooking, listRoom);
-      dispatch(getRoomVariable({ data: listVariable }));
+      dispatch(
+        getRoomVariable({
+          data: listVariable,
+          checkIn: infoCheck.date[0],
+          checkOut: infoCheck.date[1],
+          guest: infoCheck.guest,
+        })
+      );
+      sessionStorage.setItem("checkVariable", JSON.stringify(infoCheck));
       history.push(ROUTER_URL.ROOMS);
     }
   };
-  const { t } = useTranslation();
-  function disabledDate(current) {
+
+  const disabledDate = (current) => {
     // Can not select days before today and today
     return current && current < moment().endOf("day");
-  }
+  };
   return (
     <div className="reservation">
       <div className="container">
@@ -47,6 +66,12 @@ function MakeReservation(props) {
             <div className="reservation__item-title">{t("CHECK-OUT")}</div>
           </div>
           <RangePicker
+            value={
+              infoCheck.date[0] && [
+                moment(infoCheck.date[0], formatDate),
+                moment(infoCheck.date[1], formatDate),
+              ]
+            }
             disabledDate={disabledDate}
             onChange={(date, dateString) =>
               // console.log(dateString)
@@ -55,12 +80,14 @@ function MakeReservation(props) {
                 date: dateString,
               })
             }
-            format="YYYY/MM/DD"
+            format={formatDate}
+            autoFocus={isFocus}
           />
         </div>
         <div className="reservation__item">
           <div className="reservation__item-title">{t("GUESTS")}</div>
           <Select
+            value={infoCheck.guest !== "" ? `${infoCheck.guest} people` : "0 people"}
             className="reservation__select"
             placeholder="Number people"
             showSearch

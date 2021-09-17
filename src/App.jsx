@@ -9,7 +9,7 @@ import BookingPage from "pages/user/BookingPage";
 import HomePage from "pages/user/HomePage";
 import LoginPage from "pages/user/LoginPage";
 import NotFound from "pages/user/NotFound";
-import PaymentPage from "pages/user/PaymentPage";
+import PaymentPage from "pages/user/BookingPage/components/PaymentPage";
 import RoomDetailPage from "pages/user/RoomDetailPage";
 import RoomsPage from "pages/user/RoomsPage";
 import UserProfile from "pages/user/UserProfile";
@@ -37,7 +37,7 @@ function App() {
           <PrivateLayout path={ROUTER_URL.PROFILE} component={UserProfile} />
           <PrivateLayout path={ROUTER_URL.ADMIN} component={AdminLayout} />
           <PrivateLayout path={ROUTER_URL.BOOKING} component={BookingPage} />
-          <PrivateLayout path={ROUTER_URL.PAYMENT} component={PaymentPage} />
+          <PrivateLayout path={ROUTER_URL.PAYMENT} component={BookingPage} />
 
           <FullLayout exact path={ROUTER_URL.LOGIN} component={LoginPage} />
           <FullLayout exact path={ROUTER_URL.REGISTER} component={LoginPage} />

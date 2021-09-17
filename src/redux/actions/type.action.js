@@ -13,3 +13,4 @@ export const deleteTypeAction = createAction(REQUEST(TYPE_ACTION.DELETE_TYPE));
 export const addCommentAction = createAction(REQUEST(TYPE_ACTION.ADD_COMMENT));
 
 export const getRoomVariable = createAction(TYPE_ACTION.GET_ROOM_VARIABLE_LIST);
+export const clearRoomVariableAction = createAction(TYPE_ACTION.CLEAR_TYPE_ROOM_VARIABLE);
