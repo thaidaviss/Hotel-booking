@@ -7,7 +7,7 @@ import DiscountListPage from "pages/admin/DiscountList";
 import LocationListPage from "pages/admin/LocationList";
 import RoomListPage from "pages/admin/RoomList";
 import RoomTypesPage from "pages/admin/RoomTypes";
-import UserListPage from "pages/admin/UserList";
+import AccountListPage from "pages/admin/AccountList";
 import AddEditTypePage from "pages/admin/AddEditType";
 import NotFoundPage from "pages/user/NotFound";
 import { useState } from "react";
@@ -16,6 +16,8 @@ import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
 import "./AdminLayout.scss";
 import AddEditUserPage from "pages/admin/AddEditUser";
+import BookingListPage from "pages/admin/BookingList";
+import CustomerListPage from "pages/admin/CustomerList";
 
 
 
@@ -41,7 +43,8 @@ function AdminLayout(props) {
             <Switch>
               <PrivateLayout exact path={`${match.path}`} component={DashBoardPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOMS}`} component={RoomListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.USERS}`} component={UserListPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.USERS}`} component={AccountListPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CUSTOMERS}`} component={CustomerListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.DISCOUNTS}`} component={DiscountListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.BLOGS}`} component={BlogListPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.LOCATION}`} component={LocationListPage} />
@@ -50,6 +53,7 @@ function AdminLayout(props) {
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_USER}`} component={AddEditUserPage} />
               <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_USER}`} component={AddEditUserPage} />
+              <PrivateLayout exact path={`${match.path}${ROUTER_URL.BOOKINGS}`} component={BookingListPage} />
 
               <NotFoundPage />
 

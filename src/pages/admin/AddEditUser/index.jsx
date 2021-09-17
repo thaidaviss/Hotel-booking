@@ -1,6 +1,7 @@
 import { Button, DatePicker, Form, Input, InputNumber, Row, Select, Space } from "antd";
 import { ROUTER_URL } from "constants/index";
-import React, { useEffect } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { createUserAction, editUserAction, getUserDetailAction } from "redux/actions";
@@ -19,7 +20,9 @@ const AddEditUserPage = (props) => {
   const params = useParams();
   const userId = params.id;
 
-  const initialValues = userId ? userDetail.data : {};
+  const initialValues = userId 
+    ? {...userDetail.data, birthday: moment(userDetail.data.birthday)}
+    : {};
 
   useEffect(() => {
     if (userId) {
@@ -35,18 +38,19 @@ const AddEditUserPage = (props) => {
   }, [userDetail.data,modifyUserForm]);
 
   function handleSubmitForm(values) {
-    // values.birthday = moment(values.birthday).format("DD/MM/YYYY");
+    const newValues = {...values};
+    newValues.birthday = moment(newValues.birthday).valueOf();
     if (userId) {
       dispatch(
         editUserAction({
           id: userId,
-          data: values,
+          data: newValues,
         })
       );
     } else {
       dispatch(
         createUserAction({
-          data: values,
+          data: newValues,
         })
       );
     }

@@ -1,7 +1,7 @@
-export const BOOKING_ACTION = {
-  CREATE_BOOKING: "BOOKING_ROOM",
-  GET_LIST_BOOKING: "GET_LIST_BOOKING",
-}
+// export const BOOKING_ACTION = {
+//   CREATE_BOOKING: "BOOKING_ROOM",
+//   GET_LIST_BOOKING: "GET_LIST_BOOKING",
+// }
 
 export const checkVariable = (checkIn, checkOut, listBooking, listRoom) => {
   var listVariable = {};
@@ -31,3 +31,15 @@ export const checkVariable = (checkIn, checkOut, listBooking, listRoom) => {
 
   return listVariable;
 }
+
+export const BOOKING_ACTION = {
+  BOOKING: "BOOKING_ROOM",
+  
+  GET_BOOKING_LIST: 'GET_BOOKING_LIST',
+  GET_FILTER_BOOKING_LIST:"GET_FILTER_BOOKING_LIST",
+  GET_BOOKING_DETAIL: 'GET_BOOKING_DETAIL',
+  CREATE_BOOKING: 'CREATE_BOOKING',
+  CHECK_IN_BOOKING: 'CHECK_IN_BOOKING',
+  CHECK_OUT_BOOKING: 'CHECK_OUT_BOOKING',
+  CANCEL_BOOKING: 'CANCEL_BOOKING',
+};

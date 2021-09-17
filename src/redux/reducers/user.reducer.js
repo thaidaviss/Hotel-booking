@@ -10,6 +10,11 @@ const initialState = {
   },
   userList:{
     data: [],
+    // pagination: {
+    //   _page: 1,
+    //   _limit: 10,
+    //   _totalRows: 5,
+    // },
     load: false,
     error: null,
   },
@@ -150,6 +155,40 @@ const userReducer = createReducer(initialState, {
       },
     }
   },
+  // get filter user
+  [REQUEST(USER_ACTION.GET_FILTER_USER_LIST)]: (state, action) => {
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(USER_ACTION.GET_FILTER_USER_LIST)]: (state, action) => {
+    const {data} = action.payload;
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        data,
+        load: false,
+        error: null,
+      },
+    }
+  },
+  [FAILURE(USER_ACTION.GET_FILTER_USER_LIST)]: (state, action) => {
+    const { error } = action.payload;
+    return {
+      ...state,
+      userList: {
+        ...state.userList,
+        load: false,
+        error,
+      },
+    }
+  },
+
   // get detail
   [REQUEST(USER_ACTION.GET_USER_DETAIL)]: (state, action) => {
     return {

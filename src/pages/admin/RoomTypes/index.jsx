@@ -1,22 +1,30 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import { ROUTER_URL } from "constants/index";
 import moment from "moment";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTypeAction, getTypeListAction } from "redux/actions";
+import { deleteTypeAction, getFilterTypeListAction } from "redux/actions";
 import history from "utils/history";
 import ImageSliderItem from "./components/ImageSliderItem";
 import UtilityItem from "./components/UtilityItem";
 import "./RoomTypes.scss";
 
+
 const RoomTypesPage = (props) => {
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
+  // set pagination of table
+  const [page, setPage] = useState({...typeList.pagination});
+
 
   useEffect(() => {
-    dispatch(getTypeListAction());
-  }, [dispatch]);
+    dispatch(getFilterTypeListAction({ params: page }));
+  }, [page._page]);
+
+  const handleTableChange = (pagination, filters, sorter) => {
+    setPage({ ...page, _page: pagination.current });
+  };
 
   const roomTypesColumns = [
     { title: "No.", dataIndex: "id", key: "id", width: 30, fixed: "left" },
@@ -25,17 +33,23 @@ const RoomTypesPage = (props) => {
       dataIndex: "name",
       key: "name",
       fixed: "left",
-      width: 150,
+      width: 170,
       render: (value, record) => {
         return <ImageSliderItem images={record.images} value={value} key={`image-${record.id}`} />;
       },
     },
-    { title: "Description", dataIndex: "description", key: "description", width: 250 },
+    { 
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+      width: 160,
+      ellipsis: true,
+    },
     {
       title: "Type of View",
       dataIndex: "view",
       key: "view",
-      width: 100,
+      width: 60,
       render: (_, record) => {
         return (
           <div>
@@ -51,7 +65,7 @@ const RoomTypesPage = (props) => {
       title: "Utilities",
       dataIndex: "utilities",
       key: "utilities",
-      width: 200,
+      width: 150,
       render: (value, record) => {
         return <UtilityItem value={value} key={`utility-${record.id}`} />;
       },
@@ -60,28 +74,27 @@ const RoomTypesPage = (props) => {
       title: "Price",
       dataIndex: "price",
       key: "price",
-      width: 80,
-      render: (value) => value?.toLocaleString(),
+      width: 50,
+      render: (value) => `$ ${value}`,
     },
     {
       title: "Create At",
       dataIndex: "createdAt",
       key: "createdAt",
-      width: 80,
+      width: 60,
       render: (value) => value && moment(value).format("DD/MM/YYYY HH:mm"),
     },
     {
       title: "Update At",
       dataIndex: "updatedAt",
       key: "updatedAt",
-      width: 80,
+      width: 60,
       render: (value) => value && moment(value).format("DD/MM/YYYY HH:mm"),
     },
     {
       title: "Action",
       dataIndex: "action",
-      width: 100,
-      fixed: "right",
+      width: 120,
       key: "action",
       render: (_, record) => {
         return (
@@ -94,8 +107,6 @@ const RoomTypesPage = (props) => {
                 history.push(
                   `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`
                 );
-                // setIsShowTypeModal('edit');
-                // setModifyTypeData(record);
               }}
             >
               Edit
@@ -114,7 +125,6 @@ const RoomTypesPage = (props) => {
       },
     },
   ];
-
   const roomTypesData = typeList.data.map((roomTypeItem, roomTypeIndex) => {
     return {
       key: roomTypeIndex,
@@ -125,26 +135,37 @@ const RoomTypesPage = (props) => {
   return (
     <div>
       <div className="roomType-title">
-        <Button
-          className="add-roomType-btn"
-          type="primary"
-          size="large"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            // setIsShowTypeModal("create");
-            // setModifyTypeData({ name: "" });
-            history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
-          }}
-        >
-          New Room Type
-        </Button>
+        <p className="roomType-list-title">RoomType Manager</p>
+        <Space>
+          <Input
+            className="roomType-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          <Button
+            className="add-roomType-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
+            }}
+          >
+            New Type
+          </Button>
+        </Space>
       </div>
       <div className="roomType-list">
         <Table
+          size="small"
           dataSource={roomTypesData}
           columns={roomTypesColumns}
           loading={typeList.load}
-          scroll={{ x: 2450 }}
+          scroll={{ x: 1600, y: "62vh" }}
+          pagination={{
+            current:page._page,pageSize:page._limit,
+            total:((Math.ceil(page._totalRows/page._limit))*10)
+          }}
+          onChange={handleTableChange}
         />
       </div>
     </div>

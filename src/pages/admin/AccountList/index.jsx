@@ -1,5 +1,5 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table, Tag } from "antd";
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Input, Popconfirm, Space, Table, Tag } from "antd";
 import { ROUTER_URL } from 'constants/index';
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -7,14 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserListAction, editUserAction } from 'redux/actions/index';
 import history from 'utils/history';
 import AvatarItem from './components/AvatarItem';
-import UserModal from "./components/UserModal";
-import './UserList.scss';
+import AccountModal from "./components/AccountModal";
+import './AccountList.scss';
 
 
-function UserListPage() {
-  const [isShowUserModal, setIsShowUserModal] = useState(false);
-  // const [status, setStatus] = useState("active");
-  const [modifyUserData, setModifyUserData] = useState({});
+function AccountListPage() {
+  const [isShowAccountModal, setIsShowAccountModal] = useState(false);
+  const [modifyAccountData, setModifyAccountData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -22,22 +21,22 @@ function UserListPage() {
     dispatch(getUserListAction());
   }, [dispatch]);
 
+
   const userData = userList.data.map((userItem, userIndex) => {
     return {
       key: userIndex,
       ...userItem,
     };
   });
-
-
   const userColumns = [
-    { title: 'No.', dataIndex: 'id', key: 'id', width: 80, fixed: "left", },
+    { title: 'No.', dataIndex: 'id', key: 'id', width: 50, fixed: "left", },
     {
       title: 'Full Name',
       dataIndex: 'name',
       width: 250,
       fixed: "left",
       key: 'name',
+      sorter: true,
       render: (value, record) => {
         return <AvatarItem avatar={record.avatar} value={value} key={`avatar-${record.id}`} />;
       }
@@ -45,13 +44,13 @@ function UserListPage() {
     {
       title: 'Email',
       dataIndex: 'email',
-      width: 230,
+      width: 220,
       key: 'email',
     },
     {
       title: 'Phone number',
       dataIndex: 'phone',
-      width: 150,
+      width: 120,
       key: 'phone',
     },
     { 
@@ -59,6 +58,20 @@ function UserListPage() {
       dataIndex: 'role',
       key: 'role',
       width: 80,
+      render: (value) => {
+        if (value === "user") return <Tag color="green">{value}</Tag>;
+        return <Tag color="gold">{value}</Tag>
+      },
+      filters: [
+        {
+          text: 'Admin',
+          value: 'admin',
+        },
+        {
+          text: 'User',
+          value: 'user',
+        },
+      ],
     },
     { 
       title: 'Status',
@@ -88,7 +101,6 @@ function UserListPage() {
       title: 'Action',
       dataIndex: 'action',
       width: 240,
-      fixed: "right",
       key: 'action',
       render: (_, record) => {
         return (
@@ -98,8 +110,11 @@ function UserListPage() {
               style={{ color:"#4BB543", borderColor:"#4BB543" }}
               ghost
               onClick={() => {
-                setIsShowUserModal(true);
-                setModifyUserData(record);
+                setIsShowAccountModal(true);
+                setModifyAccountData({
+                  ...record,
+                  birthday: moment(record.birthday)
+                });
               }}
             >
               View
@@ -158,40 +173,45 @@ function UserListPage() {
   ];
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div>
       <div className="user-title">
-        <Button 
-          className="add-user-btn"
-          type="primary"
-          size="large"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            history.push(
-              `${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_USER}`
-            );
-          }}
-        >
-          Add User
-        </Button>
+        <p className="user-list-title">Account Manager</p>
+        <Space>
+          <Input
+            className="user-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          <Button
+            className="add-user-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_USER}`);
+            }}
+          >
+            Add User
+          </Button>
+        </Space>
       </div>
+
       <div className="user-list">
-        <Table 
+        <Table
+          size="small"
           dataSource={userData}
           columns={userColumns}
           loading={userList.load}
-          scroll={{x: 1400}}
+          scroll={{ x: 1300 }}
         />
       </div>
 
-      <UserModal
-        isShowUserModal={isShowUserModal}
-        setIsShowUserModal={setIsShowUserModal}
-        modifyUserData={modifyUserData}
-        userList={userList}
-        handleSubmitForm={null}
+      <AccountModal
+        isShowAccountModal={isShowAccountModal}
+        setIsShowAccountModal={setIsShowAccountModal}
+        modifyAccountData={modifyAccountData}
       />
     </div>
   );
 };
 
-export default UserListPage;
+export default AccountListPage;

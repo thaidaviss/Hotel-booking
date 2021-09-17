@@ -21,13 +21,13 @@ function Chart(props) {
           <Line type="monotone" dataKey="New user" strokeWidth="3px"></Line>
           <Line
             type="monotone"
-            dataKey="sales number"
+            dataKey="Booking number"
             strokeWidth="3px"
             stroke="chartreuse"
           ></Line>
           <Line
             type="monotone"
-            dataKey="Visitors number"
+            dataKey="Revenue per month"
             strokeWidth="3px"
             stroke="cyan"
           ></Line>

@@ -138,20 +138,45 @@ function* getUserListSaga(action) {
   }
 }
 
+function* getFilterUserListSaga(action) {
+  try {
+    const { params } = action.payload;
+    const result = yield UserAPI.getFilterUserList({
+      _sort: "id",
+      _order: "asc",
+      ...params,
+    });
+    yield put({
+      type: SUCCESS(USER_ACTION.GET_FILTER_USER_LIST),
+      payload: {
+        data: result.data,
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(USER_ACTION.GET_FILTER_USER_LIST),
+      payload: e.message,
+    });
+  }
+}
+
 function* getUserDetailSaga(action) {
-   try {
-     const { id } = action.payload;
-     const result = yield UserAPI.getUserDetail(id,{ _embed:"bookings" });
-     yield put({
-       type: SUCCESS(USER_ACTION.GET_USER_DETAIL),
-       payload: {
-         data: result.data
-       },
-     });
-   } catch (e) {
-     yield put({ type: FAILURE(USER_ACTION.GET_USER_DETAIL), payload: e.message });
-   }
- }
+  try {
+    const { id } = action.payload;
+    const result = yield UserAPI.getUserDetail(id, { _embed: "bookings" });
+    yield put({
+      type: SUCCESS(USER_ACTION.GET_USER_DETAIL),
+      payload: {
+        data: result.data,
+      },
+    });
+  } catch (e) {
+    yield put({
+      type: FAILURE(USER_ACTION.GET_USER_DETAIL),
+      payload: e.message,
+    });
+  }
+}
 
 function* createUserSaga(action) {
   try {
@@ -193,6 +218,7 @@ function* userSaga() {
    // yield takeEvery(REQUEST(USER.CHECK_LOGIN), checkLogin);
 
    yield takeEvery(REQUEST(USER_ACTION.GET_USER_LIST), getUserListSaga);
+   yield takeEvery(REQUEST(USER_ACTION.GET_FILTER_USER_LIST), getFilterUserListSaga);
    yield takeEvery(REQUEST(USER_ACTION.GET_USER_DETAIL), getUserDetailSaga);
    yield takeEvery(REQUEST(USER_ACTION.CREATE_USER), createUserSaga);
    yield takeEvery(REQUEST(USER_ACTION.EDIT_USER), editUserSaga);

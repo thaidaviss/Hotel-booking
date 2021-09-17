@@ -1,11 +1,12 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
-import React, { useEffect, useState } from 'react';
+import { default as React, default as React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDiscountAction, editDiscountAction, getDiscountListAction } from 'redux/actions';
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
+
 
 
 const DiscountListPage = () => {
@@ -21,16 +22,17 @@ const DiscountListPage = () => {
 
 
   function handleSubmitForm(values) {
-    // values.start = moment(values.start).format('DD/MM/YYYY');
-    // values.end = moment(values.end).format('DD/MM/YYYY');
+    const newValues = {...values};
+    newValues.start = moment(newValues.start).valueOf();
+    newValues.end = moment(newValues.end).valueOf();
     if (isShowDiscountModal === 'create') {
       dispatch(createDiscountAction({
-        data: values,
+        data: newValues,
       }));
     } else {
       dispatch(editDiscountAction({
         id: modifyDiscountData.id,
-        data: values,
+        data: newValues,
       }));
     }
     setIsShowDiscountModal("");
@@ -64,7 +66,7 @@ const DiscountListPage = () => {
       key: 'end',
       render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
-    { title: 'Value', dataIndex: 'value', key: 'value' },
+    { title: 'Value', dataIndex: 'value', key: 'value', render: (value) => `${value}%` },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
@@ -81,7 +83,6 @@ const DiscountListPage = () => {
       title: 'Action',
       dataIndex: 'action',
       width: 200,
-      fixed: "right",
       key: 'action',
       render: (_, record) => {
         return (
@@ -92,7 +93,11 @@ const DiscountListPage = () => {
               ghost
               onClick={() => {
                 setIsShowDiscountModal("edit");
-                setModifyDiscountData(record);
+                setModifyDiscountData({
+                  ...record, 
+                  start: moment(record.start), 
+                  end: moment(record.end)
+                });
               }}
             >
               Edit
@@ -115,26 +120,34 @@ const DiscountListPage = () => {
   return (
     <div>
       <div className="discount-title">
-        <Button 
-          className="add-discount-btn"
-          type="primary"
-          size="large"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            setIsShowDiscountModal("create");
-            setModifyDiscountData({ 
-              name: '', 
-              start: 1631092999151,
-              end: 1631093012330,
-              value: 0 
-            });
-          }}
-        >
-          Add Discount
-        </Button>
+        <p className="discount-list-title">Discount Manager</p>
+        <Space>
+          <Input
+            className="discount-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          <Button
+            className="add-discount-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              setIsShowDiscountModal("create");
+              setModifyDiscountData({ 
+                name: '', 
+                start: moment(1631092999151),
+                end: moment(1631093012330),
+                value: 0 
+              });
+            }}
+          >
+            Add Discount
+          </Button>
+        </Space>
       </div>
       <div className="discount-list">
-        <Table 
+        <Table
+          size="small"
           dataSource={discountData}
           columns={discountColumns}
           loading={discountList.load}
