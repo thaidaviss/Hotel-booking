@@ -1,11 +1,12 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table } from "antd";
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
-import React, { useEffect, useState } from 'react';
+import { default as React, default as React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDiscountAction, editDiscountAction, getDiscountListAction } from 'redux/actions';
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
+
 
 
 const DiscountListPage = () => {
@@ -82,7 +83,6 @@ const DiscountListPage = () => {
       title: 'Action',
       dataIndex: 'action',
       width: 200,
-      fixed: "right",
       key: 'action',
       render: (_, record) => {
         return (
@@ -120,22 +120,30 @@ const DiscountListPage = () => {
   return (
     <div>
       <div className="discount-title">
-        <Button 
-          className="add-discount-btn"
-          type="primary"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            setIsShowDiscountModal("create");
-            setModifyDiscountData({ 
-              name: '', 
-              start: moment(1631092999151),
-              end: moment(1631093012330),
-              value: 0 
-            });
-          }}
-        >
-          Add Discount
-        </Button>
+        <p className="discount-list-title">Discount Manager</p>
+        <Space>
+          <Input
+            className="discount-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          <Button
+            className="add-discount-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              setIsShowDiscountModal("create");
+              setModifyDiscountData({ 
+                name: '', 
+                start: moment(1631092999151),
+                end: moment(1631093012330),
+                value: 0 
+              });
+            }}
+          >
+            Add Discount
+          </Button>
+        </Space>
       </div>
       <div className="discount-list">
         <Table

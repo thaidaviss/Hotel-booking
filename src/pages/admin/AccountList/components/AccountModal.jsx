@@ -1,6 +1,6 @@
 import { Button, DatePicker, Form, Input, InputNumber, Modal, Select } from 'antd';
 import React, { useEffect } from 'react';
-import './UserModal.scss';
+import './AccountModal.scss';
 // import moment from 'moment';
 
 

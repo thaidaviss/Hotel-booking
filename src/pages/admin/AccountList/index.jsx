@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserListAction, editUserAction } from 'redux/actions/index';
 import history from 'utils/history';
 import AvatarItem from './components/AvatarItem';
-import UserModal from "./components/UserModal";
-import './UserList.scss';
+import AccountModal from "./components/AccountModal";
+import './AccountList.scss';
 
 
-function UserListPage() {
-  const [isShowUserModal, setIsShowUserModal] = useState(false);
-  const [modifyUserData, setModifyUserData] = useState({});
+function AccountListPage() {
+  const [isShowAccountModal, setIsShowAccountModal] = useState(false);
+  const [modifyAccountData, setModifyAccountData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -101,7 +101,6 @@ function UserListPage() {
       title: 'Action',
       dataIndex: 'action',
       width: 240,
-      fixed: "right",
       key: 'action',
       render: (_, record) => {
         return (
@@ -111,8 +110,8 @@ function UserListPage() {
               style={{ color:"#4BB543", borderColor:"#4BB543" }}
               ghost
               onClick={() => {
-                setIsShowUserModal(true);
-                setModifyUserData({
+                setIsShowAccountModal(true);
+                setModifyAccountData({
                   ...record,
                   birthday: moment(record.birthday)
                 });
@@ -176,7 +175,7 @@ function UserListPage() {
   return (
     <div>
       <div className="user-title">
-        <p className="user-list-title">UserList Manager</p>
+        <p className="user-list-title">Account Manager</p>
         <Space>
           <Input
             className="user-search"
@@ -206,15 +205,13 @@ function UserListPage() {
         />
       </div>
 
-      <UserModal
-        isShowUserModal={isShowUserModal}
-        setIsShowUserModal={setIsShowUserModal}
-        modifyUserData={modifyUserData}
-        userList={userList}
-        handleSubmitForm={null}
+      <AccountModal
+        isShowAccountModal={isShowAccountModal}
+        setIsShowAccountModal={setIsShowAccountModal}
+        modifyAccountData={modifyAccountData}
       />
     </div>
   );
 };
 
-export default UserListPage;
+export default AccountListPage;

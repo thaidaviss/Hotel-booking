@@ -18,20 +18,20 @@ const BookingModal = ({
     }
   }, [isShowBookingModal]);
 
-  function renderTypeOptions() {
-    return typeList.data.map((typeItem, typeIndex) => (
-      <Select.Option value={typeItem.id} key={`type-${typeItem.id}`}>
-        {typeItem.name}
-      </Select.Option>
-    ));
-  }
+  // function renderTypeOptions() {
+  //   return typeList.data.map((typeItem, typeIndex) => (
+  //     <Select.Option value={typeItem.id} key={`type-${typeItem.id}`}>
+  //       {typeItem.name}
+  //     </Select.Option>
+  //   ));
+  // }
   function renderRoomCode() {
 
   }
 
   return (
     <Modal
-      title={isShowBookingModal === true && "Edit Booking"}
+      title={isShowBookingModal === true && "Change Room"}
       visible={isShowBookingModal}
       onOk={() => modifyBookingForm.submit()}
       onCancel={() => setIsShowBookingModal("")}
@@ -44,16 +44,6 @@ const BookingModal = ({
         initialValues={modifyBookingData}
         onFinish={(values) => console.log(values)}
       >
-        <Form.Item
-          label="Type Room"
-          name="typeRoomId"
-          rules={[{ required: true, message: "Please input type of room!" }]}
-        >
-          <Select placeholder="Please select a type room!">
-            {renderTypeOptions()}
-          </Select>
-        </Form.Item>
-
         <Form.Item
           label="Name"
           name="name"

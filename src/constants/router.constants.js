@@ -17,6 +17,7 @@ export const ROUTER_URL = {
   BLOGS: "/blogs",
   LOCATION: "/locations",
   DISCOUNTS: "/discounts",
+  CUSTOMERS: "/customers",
   REVENUE: "/revenue",
   CREATE_ROOM: "/rooms/create",
   EDIT_ROOM: "/rooms/:id/edit",

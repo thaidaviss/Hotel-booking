@@ -590,7 +590,8 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-      "status": "pending"
+      "status": "pending",
+      "updatedAt": 1631877087465
     },
     {
       "id": 2,
@@ -603,7 +604,8 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-      "status": "pending"
+      "status": "pending",
+      "updatedAt": 1631877093260
     },
     {
       "id": 3,
@@ -672,7 +674,8 @@
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
-      "status": "pending"
+      "status": "pending",
+      "updatedAt": 1631877098075
     }
   ]
 }
