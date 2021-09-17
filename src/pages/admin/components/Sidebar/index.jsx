@@ -1,54 +1,55 @@
 import { URL_API } from 'Api';
+import { ROUTER_URL } from 'constants/index';
 import { IMAGES } from 'constants/images.constants';
 import React from 'react';
-import { MdAccountBalance, MdAttachMoney, MdDashboard, MdEventAvailable, MdFiberNew, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocalHotel, MdPermIdentity, MdRoom, MdStyle } from "react-icons/md";
+import { MdAccountBalance, MdAssignmentTurnedIn, MdAttachMoney, MdDashboard, MdEventAvailable, MdFiberNew, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocalHotel, MdPermIdentity, MdRoom, MdStyle } from "react-icons/md";
 import { Link, useLocation } from 'react-router-dom';
 import "./Sidebar.scss";
 
 const SIDEBAR_MENU = [
   {
     title: "Dashboard",
-    path: "/admin",
+    path: `${ROUTER_URL.ADMIN}`,
     icon: <MdDashboard />,
   },
   {
-    title: 'Room List',
-    path: '/admin/rooms',
+    title: 'Room Manager',
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}`,
     icon: <MdLocalHotel />,
   },
   {
-    title: 'Room Type',
-    path: '/admin/room-types',
+    title: 'Type Manager',
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}`,
     icon: <MdAccountBalance />,
   },
   {
-    title: 'Booking List',
-    path: '/admin/bookings',
+    title: 'Booking Manager',
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.BOOKINGS}`,
     icon: <MdEventAvailable />,
   },
   {
-    title: "User List",
-    path: "/admin/users",
+    title: "Account Manager",
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}`,
     icon: <MdPermIdentity />,
   },
   {
-    title: "Discount List",
-    path: "/admin/discounts",
+    title: "Discount Manager",
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.DISCOUNTS}`,
     icon: <MdStyle />,
   },
   {
-    title: 'Location List',
-    path: '/admin/locations',
-    icon: <MdRoom />,
+    title: "Customer Manager",
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.CUSTOMERS}`,
+    icon: <MdAssignmentTurnedIn />
   },
   {
-    title: 'Blogs List',
-    path: '/admin/blogs',
+    title: 'Blogs Manager',
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.BLOGS}`,
     icon: <MdFiberNew />,
   },
   {
     title: "Revenue",
-    path: "/admin/revenue",
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.REVENUE}`,
     icon: <MdAttachMoney />,
   },
 ];
@@ -75,7 +76,6 @@ function Sidebar(props) {
           </div>
 
           <div className={isMiniMenu ? "sidebar__menu--hide" : "sidebar__menu"}>
-            {/* <h3 className="sidebar__title">Admin Manager</h3> */}
             <ul className="sidebar__list">
               {SIDEBAR_MENU.map((sidebarItem, sidebarIndex) => (
                 <li

@@ -12,7 +12,6 @@ function DashBoardPage() {
             <FeatureInfor title="Sale" money="$5,100" rate="-7.4%" sub="Compared to last month" /> */}
         </div>
         <Chart DATA = {DATA}/>
-        {/* <Widget listUser={listUser} listOrder={listOrder} /> */}
     </div>
   );
 };

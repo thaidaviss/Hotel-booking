@@ -6,7 +6,7 @@ import history from "utils/history";
 
 function* getRoomListSaga(action) {
   try {
-    const result = yield RoomAPI.getFilterRoomList({ _sort: 'id', _order: 'desc'});
+    const result = yield RoomAPI.getFilterRoomList({ _sort: 'id', _order: 'asc'});
     
     yield put({
       type: SUCCESS(ROOM_ACTION.GET_ROOM_LIST),
@@ -97,7 +97,7 @@ function* deleteRoomSaga(action) {
 export default function* roomSaga() {
   yield takeEvery(REQUEST(ROOM_ACTION.GET_ROOM_LIST), getRoomListSaga);
   yield takeEvery(REQUEST(ROOM_ACTION.GET_FILTER_ROOM_LIST), getFilterRoomListSaga);
-  // yield takeEvery(REQUEST(ROOM_ACTION.GET_ROOM_DETAIL), getRoomDetailSaga);
+  yield takeEvery(REQUEST(ROOM_ACTION.GET_ROOM_DETAIL), getRoomDetailSaga);
   yield takeEvery(REQUEST(ROOM_ACTION.CREATE_ROOM), createRoomSaga);
   yield takeEvery(REQUEST(ROOM_ACTION.EDIT_ROOM), editRoomSaga);
   yield takeEvery(REQUEST(ROOM_ACTION.DELETE_ROOM), deleteRoomSaga);
