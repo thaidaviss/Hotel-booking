@@ -1,9 +1,9 @@
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Popconfirm, Space, Table } from "antd";
+import { Button, Checkbox, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction } from "redux/actions";
+import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction, getRoomListAction, getTypeListAction } from "redux/actions";
 import RoomModal from "./components/RoomModal";
 import './RoomList.scss';
 
@@ -20,14 +20,14 @@ function RoomListPage (props) {
   const [page, setPage] = useState({...roomList.pagination});
 
   useEffect(() => {
-    dispatch(getFilterTypeListAction({ params: page }));
-    dispatch(getFilterRoomListAction({ params: page }));
-  }, [page._page]);
+    dispatch(getTypeListAction());
+    dispatch(getRoomListAction());
+  }, []);
 
 
-  const handleTableChange = (pagination, filters, sorter) => {
-    setPage({ ...page, _page: pagination.current });
-  };
+  // const handleTableChange = (pagination, filters, sorter) => {
+  //   setPage({ ...page, _page: pagination.current });
+  // };
 
   function handleSubmitForm(values) {
     if (isShowRoomModal === 'create') {
@@ -42,6 +42,7 @@ function RoomListPage (props) {
     }
     setIsShowRoomModal('');
   }
+
 
   const roomData = roomList.data.map((roomItem, roomIndex) => {
     return {
@@ -123,7 +124,7 @@ function RoomListPage (props) {
   return (
     <div>
       <div className="room-title">
-        <p className="room-list-title">RoomList Manager</p>
+        <p className="room-list-title">Room Manager</p>
         <Space>
           <Input
             className="room-search"
@@ -152,12 +153,12 @@ function RoomListPage (props) {
           columns={roomColumns} 
           loading={roomList.load}
           scroll={{x: 1000, y: "62vh"}}
-          pagination={{
-            current:page._page,
-            pageSize:page._limit,
-            total:((Math.ceil(page._totalRows/page._limit))*10)
-          }}
-          onChange={handleTableChange}
+          // pagination={{
+          //   current:page._page,
+          //   pageSize:page._limit,
+          //   total:((Math.ceil(page._totalRows/page._limit))*10)
+          // }}
+          // onChange={handleTableChange}
         />
       </div>
       <RoomModal 

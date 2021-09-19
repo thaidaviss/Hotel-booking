@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { DownOutlined } from '@ant-design/icons';
-import { Button, Popconfirm, Space, Table, Tag, Menu, Dropdown } from "antd";
+import { Table, Tag } from "antd";
 import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTypeListAction, createBookingAction, cancelBookingAction, checkInBookingAction, getBookingListAction, getUserListAction, getDiscountListAction, checkOutBookingAction } from "redux/actions";
-import BookingModal from "./components/BookingModal";
+import { getBookingListAction, getDiscountListAction, getTypeListAction, getUserListAction } from "redux/actions";
 import './BookingList.scss';
+import BookingModal from "./components/BookingModal";
+import ChangeStatus from "./components/ChangeStatus";
 
 
 const BookingListPage = (props) => {
@@ -159,52 +159,14 @@ const BookingListPage = (props) => {
       width: 370,
       key: "action",
       render: (_, record) => {
-        const BOOKING_STATUS_MENU = (
-          <Menu>
-            <Menu.Item key="1" onClick={() => dispatch(createBookingAction({ id: record.id }))}>
-              Booked
-            </Menu.Item>
-            <Menu.Item key="2" onClick={() => dispatch(checkInBookingAction({ id: record.id }))}>
-              Checked-In
-            </Menu.Item>
-            <Menu.Item key="3" onClick={() => dispatch(checkOutBookingAction({ id: record.id }))}>
-              Checked-Out
-            </Menu.Item>
-          </Menu>
-        );
         return (
-          <Space>
-            <Button
-              className="edit-booking-btn"
-              style={{ color: "#0275d8", borderColor: "#0275d8" }}
-              ghost
-              onClick={() => {
-                setIsShowBookingModal(true);
-                setModifyBookingData(record);
-              }}
-            >
-              Change Room
-            </Button>
-            
-            <Dropdown overlay={BOOKING_STATUS_MENU}>
-              <Button type="primary" ghost>
-                Change Status <DownOutlined />
-              </Button>
-            </Dropdown>
-
-            <Popconfirm
-              title="Are you sure to cancel this booking?"
-              onConfirm={() => dispatch(cancelBookingAction({ id: record.id }))}
-              onCancel={() => null}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button className="booking-btn" danger>
-                Cancel
-              </Button>
-            </Popconfirm>
-          </Space>
-        );
+          <ChangeStatus
+            key={`status-${record.id}`}
+            record={record}
+            setIsShowBookingModal={setIsShowBookingModal}
+            setModifyBookingData={setModifyBookingData}
+          />
+        )
       },
     },
   ];
@@ -212,7 +174,7 @@ const BookingListPage = (props) => {
   return (
     <div>
       <div className="booking-title">
-        <p className="booking-list-title">BookingList Manager</p>
+        <p className="booking-list-title">Booking Manager</p>
         {/* <Button
           className="add-booking-btn"
           type="primary"

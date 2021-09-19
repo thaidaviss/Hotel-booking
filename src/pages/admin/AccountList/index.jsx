@@ -9,6 +9,7 @@ import history from 'utils/history';
 import AvatarItem from './components/AvatarItem';
 import AccountModal from "./components/AccountModal";
 import './AccountList.scss';
+// import AccountAction from './components/AccountAction';
 
 
 function AccountListPage() {
@@ -168,6 +169,14 @@ function AccountListPage() {
             </Popconfirm>
           </Space>
         )
+        // return (
+        //   <AccountAction
+        //     key={`account-${record.id}`}
+        //     record={record}
+        //     setIsShowAccountModal={setIsShowAccountModal}
+        //     setModifyAccountData={setModifyAccountData}
+        //   />
+        // )
       }
     },
   ];

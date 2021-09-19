@@ -53,7 +53,7 @@ const RoomTypesPage = (props) => {
       render: (_, record) => {
         return (
           <div>
-            {record.utilities.forEach((item) => {
+            {record.utilities.map((item) => {
               if (item.view) return item.view;
             })}
           </div>
@@ -135,7 +135,7 @@ const RoomTypesPage = (props) => {
   return (
     <div>
       <div className="roomType-title">
-        <p className="roomType-list-title">RoomType Manager</p>
+        <p className="roomType-list-title">Type Manager</p>
         <Space>
           <Input
             className="roomType-search"

@@ -45,12 +45,13 @@
     }
 
     &__logo {
-      padding-left: 0;
-      padding-right: .6rem;
-      text-align: left;
+      width: 110px;
+      margin: 0 auto;
+      // text-align: left;
       & > img {
         display: block;
-        width: 80px;
+        // width: 80px;
+        // margin: 0 auto;
         padding-top: .2rem;
       }
       transition: all 0.45s ease-in-out;

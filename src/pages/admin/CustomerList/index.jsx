@@ -12,13 +12,12 @@ function CustomerListPage() {
   const [isShowCustomerModal, setIsShowCustomerModal] = useState(false);
   const [modifyCustomerData, setModifyCustomerData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
-  const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserListAction());
+    // dispatch(getUserListAction());
     dispatch(getTypeListAction())
-    // dispatch(getFilterUserListAction({ params: { _embed: "bookings" } }));
+    dispatch(getFilterUserListAction({ params: { _embed: "bookings" } }));
   }, []);
 
 
@@ -115,9 +114,13 @@ function CustomerListPage() {
           columns={userColumns}
           loading={userList.load}
           expandable={{
-            expandedRowRender: (value, record) => 
-              <BookingItem typeList={typeList} value={value} key={`booking-${record.id}`} />,
-            rowExpandable: (record) => record.name !== 'Not Expandable',
+            expandedRowRender: (value, record) =>
+              <BookingItem
+                key={`booking-${record.id}`}
+                id={record.id}
+                value={value}
+              />,
+            rowExpandable: (record) => record !== 'bookings',
           }}
           scroll={{ x: 900 }}
         />
