@@ -62,7 +62,7 @@ function* getFilterBookingListSaga(action) {
 
 function* getBookingDetailSaga(action) {
   try {
-    const result = yield BookingAPI.getBookingDetail({ _expanded: "users" });
+    const result = yield BookingAPI.getBookingDetail({ _expand: "users" });
     yield put({
       type: SUCCESS(BOOKING_ACTION.GET_BOOKING_DETAIL),
       payload: {
@@ -71,21 +71,6 @@ function* getBookingDetailSaga(action) {
     });
   } catch (e) {
     yield put({ type: FAILURE(BOOKING_ACTION.GET_BOOKING_DETAIL), payload: e.message });
-  }
-}
-
-function* createBookingSaga(action) {
-  try {
-    const { id, data } = action.payload;
-    const result = yield BookingAPI.addBooking(id, data);
-    yield put({
-      type: SUCCESS(BOOKING_ACTION.CREATE_BOOKING),
-      payload: {
-        data: result.data
-      },
-    });
-  } catch (e) {
-    yield put({ type: FAILURE(BOOKING_ACTION.CREATE_BOOKING), payload: e.message });
   }
 }
 
@@ -135,12 +120,27 @@ function* cancelBookingSaga(action) {
 }
 
 
+function* pendingBookingSaga(action) {
+  try {
+    const { id, data } = action.payload;
+    const result = yield BookingAPI.pendingBooking(id, data);
+    yield put({
+      type: SUCCESS(BOOKING_ACTION.PENDING_BOOKING),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(BOOKING_ACTION.PENDING_BOOKING), payload: e.message });
+  }
+}
 
 export default function* bookingSaga() {
   yield takeEvery(REQUEST(BOOKING_ACTION.GET_BOOKING_LIST), getBookingListSaga);
   yield takeEvery(REQUEST(BOOKING_ACTION.GET_FILTER_BOOKING_LIST), getFilterBookingListSaga);
   yield takeEvery(REQUEST(BOOKING_ACTION.GET_BOOKING_DETAIL), getBookingDetailSaga);
   yield takeEvery(REQUEST(BOOKING_ACTION.CREATE_BOOKING), createBookingSaga);
+  yield takeEvery(REQUEST(BOOKING_ACTION.PENDING_BOOKING), pendingBookingSaga);
   yield takeEvery(REQUEST(BOOKING_ACTION.CHECK_IN_BOOKING), checkInBookingSaga);
   yield takeEvery(REQUEST(BOOKING_ACTION.CHECK_OUT_BOOKING), checkOutBookingSaga);
   yield takeEvery(REQUEST(BOOKING_ACTION.CANCEL_BOOKING), cancelBookingSaga);

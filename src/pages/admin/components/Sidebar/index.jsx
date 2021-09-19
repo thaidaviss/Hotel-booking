@@ -1,4 +1,3 @@
-import { URL_API } from 'Api';
 import { ROUTER_URL } from 'constants/index';
 import { IMAGES } from 'constants/images.constants';
 import React from 'react';
@@ -66,12 +65,12 @@ function Sidebar(props) {
           <div className="sidebar__header">
             <div className="brand">
               <div className="sidebar__header__logo">
-                <Link to={URL_API.HOME}>
+                <Link to={ROUTER_URL.HOME}>
                   <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo for admin header" />
                 </Link>
               </div>
 
-              <span className="title">Luxury Hotel</span>
+              {/* <span className="title">Luxury Hotel</span> */}
             </div>
           </div>
 

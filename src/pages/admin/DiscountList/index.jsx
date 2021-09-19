@@ -1,12 +1,11 @@
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
-import { default as React, default as React, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDiscountAction, editDiscountAction, getDiscountListAction } from 'redux/actions';
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
-
 
 
 const DiscountListPage = () => {

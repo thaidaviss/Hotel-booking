@@ -97,7 +97,7 @@ const typeReducer = createReducer(initialState, {
       ...state,
       typeList: {
         ...state.typeList,
-        data: data.data,
+        data: data.data || [],
         pagination: data.pagination,
         load: false,
         error: null,

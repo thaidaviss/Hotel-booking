@@ -34,11 +34,7 @@ const AdminHeader = (props) => {
     <div className={isMiniMenu ? "admin__header--show" : "admin__header"}>
       <div className="admin__header--wrapper">
         <div className="admin__header--left">
-          <Input 
-            className="admin__header__search"
-            placeholder="Search ..."
-            prefix={<SearchOutlined />}
-          />
+          <h2>Luxury Hotel</h2>
         </div>
 
         <div className="admin__header--right">

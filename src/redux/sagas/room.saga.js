@@ -34,20 +34,20 @@ function* getFilterRoomListSaga(action) {
   }
 }
 
-// function* getRoomDetailSaga(action) {
-//   try {
-//     const { id } = action.payload;
-//     const result = yield RoomAPI.getRoomDetail(id,{ _expand:"discounts" });
-//     yield put({
-//       type: SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL),
-//       payload: {
-//         data: result.data
-//       },
-//     });
-//   } catch (e) {
-//     yield put({ type: FAILURE(ROOM_ACTION.GET_ROOM_DETAIL), payload: e.message });
-//   }
-// }
+function* getRoomDetailSaga(action) {
+  try {
+    const { id } = action.payload;
+    const result = yield RoomAPI.getRoomDetail(id,{ _expand:"discounts" });
+    yield put({
+      type: SUCCESS(ROOM_ACTION.GET_ROOM_DETAIL),
+      payload: {
+        data: result.data
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(ROOM_ACTION.GET_ROOM_DETAIL), payload: e.message });
+  }
+}
 
 function* createRoomSaga(action) {
   try {

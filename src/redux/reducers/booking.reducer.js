@@ -1,12 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
-  createReducer
-} from "@reduxjs/toolkit";
-import {
   BOOKING_ACTION,
   FAILURE,
   REQUEST,
-  SUCCESS,
+  SUCCESS
 } from "redux/constants/index";
 
 const initialState = {
@@ -71,17 +68,6 @@ const bookingReducer = createReducer(initialState, {
       }
     }
   },
-  
-  // get filter list
-  [REQUEST(BOOKING_ACTION.GET_FILTER_BOOKING_LIST)]: (state, action) => {
-    return {
-      ...state,
-      bookingList: {
-        ...state.bookingList,
-        load: true,
-      },
-    };
-  },
   [SUCCESS(BOOKING_ACTION.CREATE_BOOKING)]: (state, action) => {
     const {
       data
@@ -107,6 +93,17 @@ const bookingReducer = createReducer(initialState, {
         ...action.payload.data,
         load: false,
         error: null,
+      },
+    };
+  },
+
+  // get filter list
+  [REQUEST(BOOKING_ACTION.GET_FILTER_BOOKING_LIST)]: (state, action) => {
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        load: true,
       },
     };
   },
@@ -230,6 +227,22 @@ const bookingReducer = createReducer(initialState, {
   //     },
   //   };
   // },
+
+  [SUCCESS(BOOKING_ACTION.PENDING_BOOKING)]: (state, action) => {
+    const { data } = action.payload;
+    const newBookingList = [...state.bookingList.data];
+    const bookingIndex = newBookingList.findIndex(
+      (booking) => booking.id === data.id
+    );
+    newBookingList.splice(bookingIndex, 1, data);
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        data: newBookingList,
+      },
+    };
+  },
 });
 
 export default bookingReducer;

@@ -5,13 +5,15 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getRoomListAction, getRoomVariable } from "redux/actions";
-import { getListBookingAction } from "redux/actions/booking.action";
+import { getBookingListAction } from "redux/actions/booking.action";
 import { checkVariable } from "redux/constants";
 import history from "utils/history";
 import "./MakeReservation.scss";
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 const formatDate = "YYYY/MM/DD";
+
+
 function MakeReservation({ isFocus = false }) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -22,7 +24,7 @@ function MakeReservation({ isFocus = false }) {
   const [infoCheck, setInfoCheck] = useState({ date: [undefined, undefined], guest: "" });
 
   useEffect(() => {
-    dispatch(getListBookingAction());
+    dispatch(getBookingListAction());
   }, [dispatch]);
 
   useEffect(() => {
