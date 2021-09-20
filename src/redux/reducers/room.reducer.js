@@ -69,7 +69,7 @@ const roomReducer = createReducer(initialState, {
       ...state,
       roomList: {
         ...state.roomList,
-        data: data.data || [],
+        data,
         // pagination:data.pagination,
         load: false,
         error: null,

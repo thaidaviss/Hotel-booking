@@ -1,9 +1,9 @@
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Input, Popconfirm, Space, Table } from "antd";
+import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getFilterTypeListAction, getRoomListAction, getTypeListAction } from "redux/actions";
+import { createRoomAction, deleteRoomAction, editRoomAction, getRoomListAction, getTypeListAction } from "redux/actions";
 import RoomModal from "./components/RoomModal";
 import './RoomList.scss';
 
@@ -11,23 +11,27 @@ import './RoomList.scss';
 function RoomListPage (props) {
   // "" "edit" "create"
   const [isShowRoomModal, setIsShowRoomModal] = useState('');
+  // update Modal data
   const [modifyRoomData, setModifyRoomData] = useState({});
+  // handle search
+  const [ searchKey, setSearchKey ] = useState("");
 
   const { roomList } = useSelector((state) => state.roomReducer);
   const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
-  // set pagination of table
-  const [page, setPage] = useState({...roomList.pagination});
+
+  const typeFilter = typeList.data.map((item, index) => {
+    return {
+      text: item.name,
+      value: item.id,
+    };
+  });
 
   useEffect(() => {
     dispatch(getTypeListAction());
     dispatch(getRoomListAction());
   }, []);
 
-
-  // const handleTableChange = (pagination, filters, sorter) => {
-  //   setPage({ ...page, _page: pagination.current });
-  // };
 
   function handleSubmitForm(values) {
     if (isShowRoomModal === 'create') {
@@ -63,6 +67,10 @@ function RoomListPage (props) {
       title: 'Type Room',
       dataIndex: 'typeRoomId',
       key: 'typeRoomId',
+      filters: [...typeFilter],
+      onFilter: (value, record) => {
+        return record.typeRoomId == value;
+      },
       render: (id) => {
         const typeData = typeList.data.find((item) => item.id === id);
         if (typeData) return typeData.name;
@@ -130,6 +138,7 @@ function RoomListPage (props) {
             className="room-search"
             prefix={<SearchOutlined />}
             placeholder="Search ..."
+            onChange={(e) => console.log(e.target.value)}
           />
           <Button 
             className="add-room-btn"
@@ -153,12 +162,6 @@ function RoomListPage (props) {
           columns={roomColumns} 
           loading={roomList.load}
           scroll={{x: 1000, y: "62vh"}}
-          // pagination={{
-          //   current:page._page,
-          //   pageSize:page._limit,
-          //   total:((Math.ceil(page._totalRows/page._limit))*10)
-          // }}
-          // onChange={handleTableChange}
         />
       </div>
       <RoomModal 

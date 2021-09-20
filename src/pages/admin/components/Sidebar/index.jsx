@@ -5,6 +5,7 @@ import { MdAccountBalance, MdAssignmentTurnedIn, MdAttachMoney, MdDashboard, MdE
 import { Link, useLocation } from 'react-router-dom';
 import "./Sidebar.scss";
 
+
 const SIDEBAR_MENU = [
   {
     title: "Dashboard",
@@ -27,9 +28,9 @@ const SIDEBAR_MENU = [
     icon: <MdEventAvailable />,
   },
   {
-    title: "Account Manager",
-    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}`,
-    icon: <MdPermIdentity />,
+    title: "Customer Manager",
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.CUSTOMERS}`,
+    icon: <MdAssignmentTurnedIn />
   },
   {
     title: "Discount Manager",
@@ -37,9 +38,9 @@ const SIDEBAR_MENU = [
     icon: <MdStyle />,
   },
   {
-    title: "Customer Manager",
-    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.CUSTOMERS}`,
-    icon: <MdAssignmentTurnedIn />
+    title: "Account Manager",
+    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}`,
+    icon: <MdPermIdentity />,
   },
   {
     title: 'Blogs Manager',
