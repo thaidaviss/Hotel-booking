@@ -3,6 +3,7 @@ import Avatar_default from "assets/images/default-avatar.png";
 import FlagEN from "assets/images/flag-en.png";
 import FlagVN from "assets/images/flag-vi.png";
 import LINE1 from "assets/images/line1.webp";
+import USER1 from "assets/images/user1.webp";
 import LINE2 from "assets/images/line2.webp";
 import ROOM1 from "assets/images/rooms/xroom-1_superior.jpg";
 import ROOM2 from "assets/images/rooms/xroom-2_deluxe.jpg";
@@ -43,5 +44,6 @@ export const IMAGES = {
   LINE1,
   LINE2,
   ABOUT3,
-  STARS
+  STARS,
+  USER1
 };

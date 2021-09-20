@@ -209,6 +209,20 @@ function* editUserSaga(action) {
     yield put({ type: FAILURE(USER_ACTION.EDIT_USER), payload: e.message });
   }
 }
+function* userEditInfoSaga(action) {
+  try {
+    const { id, data } = action.payload;
+    const result = yield UserAPI.editUserInList(id, data);
+    yield put({
+      type: SUCCESS(USER_ACTION.EDIT_USER),
+      payload: {
+        data: result.data,
+      },
+    });
+  } catch (e) {
+    yield put({ type: FAILURE(USER_ACTION.EDIT_USER), payload: e.message });
+  }
+}
  
 
 function* userSaga() {
@@ -222,5 +236,6 @@ function* userSaga() {
    yield takeEvery(REQUEST(USER_ACTION.GET_USER_DETAIL), getUserDetailSaga);
    yield takeEvery(REQUEST(USER_ACTION.CREATE_USER), createUserSaga);
    yield takeEvery(REQUEST(USER_ACTION.EDIT_USER), editUserSaga);
+   yield takeEvery(REQUEST(USER_ACTION.USER_EDIT_INFO), userEditInfoSaga);
 }
 export default userSaga;

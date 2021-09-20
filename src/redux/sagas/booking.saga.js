@@ -106,8 +106,8 @@ function* checkOutBookingSaga(action) {
 
 function* cancelBookingSaga(action) {
   try {
-    const { id, data } = action.payload;
-    const result = yield BookingAPI.cancelBooking(id, data);
+    const { id } = action.payload;
+    const result = yield BookingAPI.cancelBooking(id);
     yield put({
       type: SUCCESS(BOOKING_ACTION.CANCEL_BOOKING),
       payload: {

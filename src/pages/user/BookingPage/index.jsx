@@ -1,18 +1,17 @@
 import { Form, Input, notification } from "antd";
-import { IMAGES } from "constants/images.constants";
 import { ROUTER_URL, Tax } from "constants/index";
+import Banner from "layouts/Banner";
 import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { Link, Redirect, useLocation } from "react-router-dom";
+import { clearRoomVariableAction, getDiscountDetailAction } from "redux/actions";
 import { createBookingAction } from "redux/actions/booking.action";
 import history from "utils/history";
-import PaymentPage from "./components/PaymentPage";
 import "./BookingPage.scss";
-import { clearRoomVariableAction, getDiscountDetailAction } from "redux/actions";
-import { values } from "lodash";
+import PaymentPage from "./components/PaymentPage";
 
 function BookingPage(props) {
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ function BookingPage(props) {
 
   const bookingInfoLocal = JSON.parse(sessionStorage.getItem("bookingInfo"));
   const userLogin = JSON.parse(localStorage.getItem("userData"));
-
+  
   const [bookingInfo, setBookingInfo] = useState({
     name: userLogin.user.name,
     phone: userLogin.user.phone,
@@ -84,18 +83,7 @@ function BookingPage(props) {
     <>
       <Header />
       <div className="booking">
-        <div className="booking__banner">
-          <div className="booking__banner-content">
-            <div className="line-1">
-              <img src={IMAGES.LINE1} alt="" />
-            </div>
-            <div className="heading">Royal Luxury Hotel</div>
-            <div className="title">{t(" Booking")}</div>
-            <div className="line-2">
-              <img src={IMAGES.LINE2} alt="" />
-            </div>
-          </div>
-        </div>
+        <Banner heading={"Booking Room"} />
         <div className="booking__body">
           <div className="container">
             {pathName.pathname === ROUTER_URL.BOOKING ? (

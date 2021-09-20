@@ -9,9 +9,9 @@ import RoomListPage from "pages/admin/RoomList";
 import RoomTypesPage from "pages/admin/RoomTypes";
 import AccountListPage from "pages/admin/AccountList";
 import AddEditTypePage from "pages/admin/AddEditType";
-import NotFoundPage from "pages/user/NotFound";
+import NotFoundPage from "layouts/NotFound";
 import { useState } from "react";
-import { Switch, useRouteMatch } from "react-router-dom";
+import { Switch, useRouteMatch,Redirect } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
 import "./AdminLayout.scss";
@@ -25,7 +25,13 @@ import CustomerListPage from "pages/admin/CustomerList";
 function AdminLayout(props) {
   const match = useRouteMatch();
   const [isMiniMenu, setIsMiniMenu] = useState(false);
-
+  const isAuth = JSON.parse(localStorage.getItem("userData"))?.accessToken!==undefined;
+  
+  if (isAuth ===true){
+    const userInfo = JSON.parse(localStorage.getItem("userData")).user;
+    if (userInfo.role==='user'){
+      return <NotFoundPage/>
+    }
   return (
     <>
       <div className="admin__container">
@@ -63,6 +69,12 @@ function AdminLayout(props) {
       </div>
     </>
   );
+  }
+else{
+  return <Redirect to={ROUTER_URL.LOGIN} />
+}
+
+  
 };
 
 export default AdminLayout;
