@@ -91,7 +91,13 @@ function UserProfile(props) {
         <Space size="middle">
           <a
             onClick={() => CancelBooking(record.id)}
-            className={(record.status === "canceled" ||record.status === "check-in"||record.status === "check-out")? "cancel cancel-disable" : "cancel"}
+            className={
+              record.status === "canceled" ||
+              record.status === "check-in" ||
+              record.status === "check-out"
+                ? "cancel cancel-disable"
+                : "cancel"
+            }
           >
             Cancel
           </a>
@@ -106,7 +112,6 @@ function UserProfile(props) {
   const userInfo = useSelector((state) => state.userReducer.userDetail);
   const listBookingUser = useSelector((state) => state.bookingReducer.bookingList);
 
-
   useEffect(() => {
     modifyRoomForm.setFieldsValue({ ...userInfo.data, birthday: moment(userInfo.data.birthday) });
   }, [userInfo.data, modifyRoomForm]);
@@ -119,7 +124,6 @@ function UserProfile(props) {
     dispatch(getFilterBookingListAction({ params: { userId: userId, _expand: "typeRoom" } }));
   }, [dispatch]);
 
-
   const UpdateInfo = (values) => {
     dispatch(
       userEditInfoAction({
@@ -129,7 +133,6 @@ function UserProfile(props) {
     );
     setIsEdit(false);
   };
-
 
   return (
     <>

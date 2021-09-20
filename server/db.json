@@ -4,7 +4,7 @@
       "email": "phuongtran.jdan@gmail.com",
       "password": "$2a$10$TX9GNEN9C41EfZ0za205Ce7x3BYu/PhHn2FWNx4IaJbgL1ReKwfjS",
       "username": "phuongtran191",
-      "role": "user",
+      "role": "admin",
       "id": 1,
       "name": "Trần Nguyễn Công Phương",
       "avatar": [
@@ -24,7 +24,7 @@
       "email": "thaidaviss1999@gmail.com",
       "password": "$2a$10$Ucsp.nxu/HOLerPhl6sz6O6UOSqCH2i.cQXfL//jNgT/3QGoFdXtW",
       "username": "wiliam1307",
-      "role": "admin",
+      "role": "user",
       "id": 2,
       "avatar": [
         "https://live.staticflickr.com/65535/51470203231_89fc8f707a_m.jpg"
@@ -43,7 +43,7 @@
       "email": "thaidavis1999@gmail.com",
       "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
       "username": "cristiano7",
-      "role": "user",
+      "role": "admin",
       "id": 3,
       "avatar": [
         "https://live.staticflickr.com/65535/51470911828_c4b03d93b0_m.jpg"
@@ -70,8 +70,15 @@
       "age": 36,
       "gender": "male",
       "address": "Portugal",
-      "updatedAt": 1632067471375,
+      "updatedAt": 1632144838332,
       "birthday": 936810000000
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$H1YzaTsFQ0ymgp0bKO2yq.uXtGfEFzeUI70ZOgwO/hE9c1kHrOpv6",
+      "username": "admin",
+      "role": "admin",
+      "id": 5
     }
   ],
   "locations": [
@@ -690,7 +697,7 @@
       "total": 2130,
       "status": "canceled",
       "createdAt": 1631866183418,
-      "updatedAt": 1632069557683,
+      "updatedAt": 1632144333349,
       "id": 7
     },
     {
@@ -706,7 +713,7 @@
       "total": 2130,
       "status": "canceled",
       "createdAt": 1631866526013,
-      "updatedAt": 1632069559419,
+      "updatedAt": 1632144333776,
       "id": 8
     },
     {
@@ -736,9 +743,9 @@
       "numberNight": 14,
       "price": 300,
       "total": 4230,
-      "status": "check-in",
+      "status": "canceled",
       "createdAt": 1631866583482,
-      "updatedAt": 1632069445687,
+      "updatedAt": 1632144334576,
       "id": 10
     },
     {
@@ -850,7 +857,7 @@
       "total": 14100,
       "status": "canceled",
       "createdAt": 1631872096611,
-      "updatedAt": 1632069101103,
+      "updatedAt": 1632144340437,
       "id": 17
     },
     {

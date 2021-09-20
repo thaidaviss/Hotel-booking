@@ -21,7 +21,7 @@ function BookingPage(props) {
 
   const bookingInfoLocal = JSON.parse(sessionStorage.getItem("bookingInfo"));
   const userLogin = JSON.parse(localStorage.getItem("userData"));
-
+  
   const [bookingInfo, setBookingInfo] = useState({
     name: userLogin.user.name,
     phone: userLogin.user.phone,
@@ -83,8 +83,8 @@ function BookingPage(props) {
     <>
       <Header />
       <div className="booking">
-       <Banner heading={"Booking Room"}/>
-       <div className="booking__body">
+        <Banner heading={"Booking Room"} />
+        <div className="booking__body">
           <div className="container">
             {pathName.pathname === ROUTER_URL.BOOKING ? (
               <div className="booking__left">
@@ -246,7 +246,7 @@ function BookingPage(props) {
                         bookingInfo.price * Tax +
                         bookingInfo.price * bookingInfo.numberNight
                       ).toLocaleString()}$`}
-``                    </div>
+                    </div>
                   </div>
                 </div>
               </div>

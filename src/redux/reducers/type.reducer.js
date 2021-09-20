@@ -90,20 +90,24 @@ const typeReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST)]: (state, action) => {
-    const {data} = action.payload;
+    const {
+      data
+    } = action.payload;
     return {
       ...state,
       typeList: {
         ...state.typeList,
-        data,
-        // pagination: data.pagination,
+        data: data.data,
+        pagination: data.pagination,
         load: false,
         error: null,
       },
     }
   },
   [FAILURE(TYPE_ACTION.GET_FILTER_TYPE_LIST)]: (state, action) => {
-    const { error } = action.payload;
+    const {
+      error
+    } = action.payload;
     return {
       ...state,
       typeList: {
@@ -287,14 +291,14 @@ const typeReducer = createReducer(initialState, {
     }
   },
   [TYPE_ACTION.CLEAR_TYPE_ROOM_VARIABLE]: (state, action) => {
-    
+
     return {
       ...state,
       roomVariableList: {
-        data:{},
-        checkOut:null,
-        checkIn:null,
-        guest:null,
+        data: {},
+        checkOut: null,
+        checkIn: null,
+        guest: null,
         load: false,
         error: null,
       },
