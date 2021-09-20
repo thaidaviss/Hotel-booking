@@ -4,7 +4,7 @@ import { ROUTER_URL } from "constants/index";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTypeAction, getFilterTypeListAction } from "redux/actions";
+import { deleteTypeAction, getFilterTypeListAction, getTypeListAction } from "redux/actions";
 import history from "utils/history";
 import ImageSliderItem from "./components/ImageSliderItem";
 import UtilityItem from "./components/UtilityItem";
@@ -13,18 +13,17 @@ import "./RoomTypes.scss";
 
 const RoomTypesPage = (props) => {
   const { typeList } = useSelector((state) => state.typeReducer);
+  const [ searchKey, setSearchKey ] = useState("");
+
   const dispatch = useDispatch();
-  // set pagination of table
-  const [page, setPage] = useState({...typeList.pagination});
-
-
   useEffect(() => {
-    dispatch(getFilterTypeListAction({ params: page }));
-  }, [page._page]);
+    dispatch(getTypeListAction());
+  }, []);
 
-  const handleTableChange = (pagination, filters, sorter) => {
-    setPage({ ...page, _page: pagination.current });
-  };
+  function handleSearchType(value) {
+    setSearchKey(value);
+    dispatch(getFilterTypeListAction({ params: {...(searchKey && { q: searchKey })} }));
+  }
 
   const roomTypesColumns = [
     { title: "No.", dataIndex: "id", key: "id", width: 30, fixed: "left" },
@@ -49,7 +48,7 @@ const RoomTypesPage = (props) => {
       title: "Type of View",
       dataIndex: "view",
       key: "view",
-      width: 60,
+      width: 80,
       render: (_, record) => {
         return (
           <div>
@@ -60,7 +59,7 @@ const RoomTypesPage = (props) => {
         );
       },
     },
-    { title: "Max Guest", dataIndex: "maxGuest", key: "maxGuest", width: 80 },
+    { title: "Max Guest", dataIndex: "maxGuest", key: "maxGuest", width: 60 },
     {
       title: "Utilities",
       dataIndex: "utilities",
@@ -141,6 +140,7 @@ const RoomTypesPage = (props) => {
             className="roomType-search"
             prefix={<SearchOutlined />}
             placeholder="Search ..."
+            onChange={(e) => handleSearchType(e.target.value)}
           />
           <Button
             className="add-roomType-btn"
@@ -161,11 +161,6 @@ const RoomTypesPage = (props) => {
           columns={roomTypesColumns}
           loading={typeList.load}
           scroll={{ x: 1600, y: "62vh" }}
-          pagination={{
-            current:page._page,pageSize:page._limit,
-            total:((Math.ceil(page._totalRows/page._limit))*10)
-          }}
-          onChange={handleTableChange}
         />
       </div>
     </div>

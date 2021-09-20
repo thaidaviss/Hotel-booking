@@ -1,8 +1,8 @@
 import { SearchOutlined } from '@ant-design/icons';
-import { Input, Space, Table, Tag } from "antd";
+import { Input, Space, Table } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserListAction, getFilterUserListAction, getTypeListAction } from 'redux/actions';
+import { getFilterUserListAction, getTypeListAction } from 'redux/actions';
 import BookingItem from './components/BookingItem';
 import CustomerModal from "./components/CustomerModal";
 import './CustomerList.scss';
@@ -12,10 +12,9 @@ function CustomerListPage() {
   const [isShowCustomerModal, setIsShowCustomerModal] = useState(false);
   const [modifyCustomerData, setModifyCustomerData] = useState({});
   const { userList } = useSelector((state) => state.userReducer);
+ 
   const dispatch = useDispatch();
-
   useEffect(() => {
-    // dispatch(getUserListAction());
     dispatch(getTypeListAction())
     dispatch(getFilterUserListAction({ params: { _embed: "bookings" } }));
   }, []);
@@ -35,13 +34,30 @@ function CustomerListPage() {
       width: 120,
       fixed: "left",
       key: 'name',
-      sorter: true,
+      sorter: (a, b) => a.name.length - b.name.length,
     },
     {
       title: 'Email',
       dataIndex: 'email',
       width: 150,
       key: 'email',
+    },
+    {
+      title: 'Gender',
+      dataIndex: 'gender',
+      width: 80,
+      key: 'gender',
+      filters: [
+        { text: "Male", value: "male" },
+        { text: "Female", value: "female" },
+      ],
+      onFilter: (value, record) => {
+        return record.gender == value;
+      },
+      render: (value, record) => {
+        if (record.gender === "male") return "Male";
+        return "Female";
+      }
     },
     {
       title: 'Phone number',
@@ -55,43 +71,6 @@ function CustomerListPage() {
       width: 150,
       key: 'address',
     },
-    // { 
-    //   title: 'Status',
-    //   dataIndex: 'bookings',
-    //   key: 'bookings',
-    //   width: 50,
-    //   render: (value) => {
-    //     if (value.status === "pending") return <Tag color="processing">Booked</Tag>;
-    //     if (value.status === "check-in") return <Tag color="green">Checked-In</Tag>;
-    //     if (value.status === "check-out") return <Tag color="yellow">Checked-Out</Tag>;
-    //     if (value.status === "canceled") return <Tag color="red">Canceled</Tag>;
-    //   }
-    // },
-
-    // {
-    //   title: 'Action',
-    //   dataIndex: 'action',
-    //   width: 240,
-    //   key: 'action',
-    //   render: (_, record) => {
-    //     return (
-    //       <Space>
-    //         <Button
-    //           className="user-btn"
-    //           style={{ color:"#0275d8", borderColor:"#0275d8" }}
-    //           ghost
-    //           onClick={() => {
-    //             setIsShowCustomerModal(true);
-    //             setModifyCustomerData(record);
-    //           }}
-    //         >
-    //           Change Status
-    //         </Button>
-            
-    //       </Space>
-    //     )
-    //   }
-    // },
   ];
 
   return (

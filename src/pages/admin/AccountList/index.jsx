@@ -22,6 +22,12 @@ function AccountListPage() {
     dispatch(getUserListAction());
   }, [dispatch]);
 
+  const roleFilter = userList.data.map((item, index) => {
+    return {
+      text: item.name,
+      value: item.id,
+    };
+  });
 
   const userData = userList.data.map((userItem, userIndex) => {
     return {
@@ -37,7 +43,7 @@ function AccountListPage() {
       width: 250,
       fixed: "left",
       key: 'name',
-      sorter: true,
+      sorter: (a, b) => a.name.length - b.name.length,
       render: (value, record) => {
         return <AvatarItem avatar={record.avatar} value={value} key={`avatar-${record.id}`} />;
       }
@@ -59,6 +65,10 @@ function AccountListPage() {
       dataIndex: 'role',
       key: 'role',
       width: 80,
+      filters: [...roleFilter],
+      onFilter: (value, record) => {
+        return record.role == value;
+      },
       render: (value) => {
         if (value === "user") return <Tag color="green">{value}</Tag>;
         return <Tag color="gold">{value}</Tag>

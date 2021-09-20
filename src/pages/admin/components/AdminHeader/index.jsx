@@ -34,7 +34,7 @@ const AdminHeader = (props) => {
     <div className={isMiniMenu ? "admin__header--show" : "admin__header"}>
       <div className="admin__header--wrapper">
         <div className="admin__header--left">
-          <h2>Luxury Hotel</h2>
+          <h2>Royal Luxury Hotel</h2>
         </div>
 
         <div className="admin__header--right">

@@ -1,4 +1,5 @@
-import { Table, Tag } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { Input, Space, Table, Tag } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +18,19 @@ const BookingListPage = (props) => {
   const { typeList } = useSelector((state) => state.typeReducer);
   const { bookingList } = useSelector((state) => state.bookingReducer);
   const dispatch = useDispatch();
- 
+
+  const typeFilter = typeList.data.map((item, index) => {
+    return {
+      text: item.name,
+      value: item.id,
+    };
+  });
+  // const checkInFilter = bookingList.data.map((item, index) => {
+  //   return {
+  //     text: moment(item.checkIn).format('DD/MM/YYYY'),
+  //     value: item.id,
+  //   };
+  // });
 
   useEffect(() => {
     dispatch(getBookingListAction());
@@ -47,6 +60,11 @@ const BookingListPage = (props) => {
       width: 200,
       fixed: "left",
       key: "userId",
+      sorter: (a, b) => {
+        const user1 = userList.data.find((item) => item.id === a.userId);
+        const user2 = userList.data.find((item) => item.id === b.userId);
+        return user1.name.length - user2.name.length;
+      },
       render: (id) => {
         const userData = userList.data.find((item) => item.id === id);
         if (userData) return userData.name;
@@ -76,18 +94,35 @@ const BookingListPage = (props) => {
       title: "Type Room",
       dataIndex: "typeRoomId",
       key: "typeRoomId",
-      filters: [
-        { text: 'Admin', value: 'admin', },
-        { text: 'Admin', value: 'admin', },
-        { text: 'Admin', value: 'admin', },
-        { text: 'Admin', value: 'admin', },
-        { text: 'Admin', value: 'admin', },
-      ],
+      filters: [...typeFilter],
+      onFilter: (value, record) => {
+        return record.typeRoomId == value;
+      },
       width: 180,
       render: (id) => {
         const typeData = typeList.data.find((item) => item.id === id);
         if (typeData) return typeData.name;
       },
+    },
+    { 
+      title: 'Check-In Date',
+      dataIndex: 'checkIn',
+      key: 'checkIn',
+      width: 120,
+      sorter: (a, b) => a.checkIn - b.checkIn,
+      // filters: [...checkInFilter],
+      // onFilter: (value, record) => {
+      //   return record.checkIn == value;
+      // },
+      render: (value) => value && moment(value).format('DD/MM/YYYY'),
+    },
+    { 
+      title: 'Check-Out Date',
+      dataIndex: 'checkOut',
+      key: 'checkOut',
+      width: 140,
+      sorter: (a, b) => a.checkOut - b.checkOut,
+      render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
     {
       title: "Price",
@@ -98,38 +133,13 @@ const BookingListPage = (props) => {
         if (typeData) return `$ ${typeData.price}`;
       },
     },
-    { 
-      title: 'Check-In Date',
-      dataIndex: 'checkIn',
-      key: 'checkIn',
-      width: 120,
-      render: (value) => value && moment(value).format('DD/MM/YYYY'),
-    },
-    { 
-      title: 'Check-Out Date',
-      dataIndex: 'checkOut',
-      key: 'checkOut',
-      width: 120,
-      render: (value) => value && moment(value).format('DD/MM/YYYY'),
-    },
     {
       title: "Discount",
-      dataIndex: "discountId",
-      key: "discountId",
-      render: (id) => {
-        const discountData = discountList.data.find((item) => item.id === id);
-        if (discountData) return discountData.value;
-      },
-    },
-    { 
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
-      render: (value) => {
-        if (value === "pending") return <Tag color="processing">Booked</Tag>;
-        if (value === "check-in") return <Tag color="green">Checked-In</Tag>;
-        if (value === "check-out") return <Tag color="yellow">Checked-Out</Tag>;
-        if (value === "canceled") return <Tag color="red">Canceled</Tag>;
+      dataIndex: "discountCode",
+      key: "discountCode",
+      render: (code) => {
+        const discountData = discountList.data.find((item) => item.name === code);
+        if (discountData) return (discountData.value ? `${discountData.value}%` : "0%");
       },
     },
     { 
@@ -137,7 +147,19 @@ const BookingListPage = (props) => {
       dataIndex: 'total',
       key: 'total',
       width: 80,
-      render: (value) => `$ ${value}`,
+      render: (value) => (value ? `$ ${value}` : `$ 0`),
+    },
+    { 
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      width: 100,
+      render: (value) => {
+        if (value === "pending") return <Tag color="processing">Booked</Tag>;
+        if (value === "check-in") return <Tag color="green">Checked-In</Tag>;
+        if (value === "check-out") return <Tag color="yellow">Checked-Out</Tag>;
+        if (value === "canceled") return <Tag color="red">Canceled</Tag>;
+      },
     },
     {
       title: "Create At",
@@ -175,16 +197,23 @@ const BookingListPage = (props) => {
     <div>
       <div className="booking-title">
         <p className="booking-list-title">Booking Manager</p>
-        {/* <Button
-          className="add-booking-btn"
-          type="primary"
-          icon={<PlusOutlined />}
-          onClick={() => {
-            dispatch(createBookingAction())
-          }}
-        >
-          New Booking
-        </Button> */}
+        <Space>
+          <Input
+            className="roomType-search"
+            prefix={<SearchOutlined />}
+            placeholder="Search ..."
+          />
+          {/* <Button
+            className="add-booking-btn"
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              dispatch(createBookingAction())
+            }}
+          >
+            New Booking
+          </Button> */}
+        </Space>
       </div>
 
       <div className="booking-list">
@@ -193,7 +222,7 @@ const BookingListPage = (props) => {
           dataSource={bookingData}
           columns={bookingColumns}
           loading={bookingList.load}
-          scroll={{ x: 2200 }}
+          scroll={{ x: 2050 }}
         />
       </div>
 

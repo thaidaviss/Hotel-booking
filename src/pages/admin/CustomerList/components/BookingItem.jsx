@@ -1,13 +1,18 @@
 import { Tag, Table } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTypeListAction } from 'redux/actions';
+import { getDiscountListAction, getTypeListAction } from 'redux/actions';
 
 
 const BookingItem = (props) => {
   const { value } =props;
   const { typeList } = useSelector((state) => state.typeReducer);
+  const { discountList } = useSelector((state) => state.discountReducer);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDiscountListAction());
+  }, []);
 
   const bookingData = value.bookings.map((bookingItem, bookingIndex) => {
     return {
@@ -20,7 +25,6 @@ const BookingItem = (props) => {
       title: 'Type of Room',
       dataIndex: 'typeRoomId',
       width: 180,
-      fixed: "left",
       key: 'typeRoomId',
       render: (id) => {
         const typeData = typeList.data.find((item) => item.id === id);
@@ -33,6 +37,17 @@ const BookingItem = (props) => {
       width: 100,
       key: 'price',
       render: (value) => `$ ${value}`,
+    },
+    {
+      title: 'Discount',
+      dataIndex: 'discountCode',
+      width: 100,
+      key: 'discountCode',
+      render: (code) => {
+        const discountData = discountList.data.find((item) => item.name === code);
+        if (discountData) return (discountData.value ? discountData.value : 0);
+        return 0;
+      }
     },
     { 
       title: 'Status',
@@ -81,8 +96,11 @@ const BookingItem = (props) => {
         }, 0);
 
         return (
-          <Table.Summary.Row>
+          <Table.Summary.Row style={{ fontWeight: "bold" }}>
               <Table.Summary.Cell>Total</Table.Summary.Cell>
+              <Table.Summary.Cell>
+              </Table.Summary.Cell>
+
               <Table.Summary.Cell>
               </Table.Summary.Cell>
 

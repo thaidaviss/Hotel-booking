@@ -62,7 +62,7 @@ function* getFilterTypeListSaga(action) {
     const {
       params
     } = action.payload;
-    const result = yield typeRoomAPI.getFilterTypeRoomList({ _sort: 'id',_order:'asc',...params});
+    const result = yield typeRoomAPI.getFilterTypeRoomList({ ...params });
     yield put({
       type: SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST),
       payload: {

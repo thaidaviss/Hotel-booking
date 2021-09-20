@@ -14,10 +14,8 @@ const initialState = {
     data: [],
     pagination: {
       _page: 1,
-
       _limit: 4,
       _totalRows: 5
-
     },
     load: false,
     error: null,
@@ -97,8 +95,8 @@ const typeReducer = createReducer(initialState, {
       ...state,
       typeList: {
         ...state.typeList,
-        data: data.data || [],
-        pagination: data.pagination,
+        data,
+        // pagination: data.pagination,
         load: false,
         error: null,
       },
