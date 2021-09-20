@@ -1,5 +1,6 @@
 import { Pagination, Space, Spin } from "antd";
 import { IMAGES } from "constants/images.constants";
+import Banner from "layouts/Banner";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,18 +63,7 @@ function RoomsPage(props) {
   };
   return (
     <div className="rooms-page">
-      <div className="rooms-page__banner">
-        <div className="rooms-page__banner-content">
-          <div className="line-1">
-            <img src={IMAGES.LINE1} alt="" />
-          </div>
-          <div className="heading">Royal Luxury Hotel</div>
-          <div className="title">{t(" Our Featured Room List")}</div>
-          <div className="line-2">
-            <img src={IMAGES.LINE2} alt="" />
-          </div>
-        </div>
-      </div>
+      <Banner heading = {"Feature Rooms"}/>
       <div className="rooms-page__body" ref={myRef}>
         <div className="rooms-page__reservation">
           <MakeReservation isFocus={isFocus} />

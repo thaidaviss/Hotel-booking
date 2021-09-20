@@ -11,7 +11,6 @@ const DiscountModal = ({
   modifyDiscountData,
   handleSubmitForm,
 }) => {
-  console.log("🚀 ~ file: DiscountModal.jsx ~ line 15 ~  modifyDiscountData",  modifyDiscountData)
   const [modifyDiscountForm] = Form.useForm();
 
 

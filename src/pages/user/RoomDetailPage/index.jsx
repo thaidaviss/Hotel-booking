@@ -1,5 +1,6 @@
 import { Progress } from "antd";
 import { IMAGES } from "constants/images.constants";
+import Banner from "layouts/Banner";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FaShower } from "react-icons/fa";
@@ -92,26 +93,14 @@ function RoomDetailPage(props) {
   useEffect(() => {
     dispatch(getTypeDetailAction({ id: roomId }));
     dispatch(getCommentListAction({ id: roomId, params: {} }));
-  }, [dispatch,roomId]);
+  }, [dispatch, roomId]);
   const RoomDetail = useSelector((state) => state.typeReducer.typeDetail);
 
   const { t } = useTranslation();
 
-
   return (
     <div className="room-detail">
-      <div className="room-detail__banner">
-        <div className="rooms-page__banner-content">
-          <div className="line-1">
-            <img src={IMAGES.LINE1} alt="" />
-          </div>
-          <div className="heading">{t(`${RoomDetail.data.name}`)}</div>
-          <div className="line-1">
-            <img src={IMAGES.LINE2} alt="" />
-          </div>
-        </div>
-      </div>
-
+      <Banner heading={RoomDetail.name} />
       <div className="room-detail__body">
         <div className="room-detail__reservation">
           <MakeReservation />

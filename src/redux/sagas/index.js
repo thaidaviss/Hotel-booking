@@ -1,6 +1,5 @@
 import { fork } from "redux-saga/effects";
 import bookingSaga from "./booking.saga";
-import imageSaga from "./image.saga";
 import discountSaga from "./discount.saga";
 import locationSaga from "./location.saga";
 import roomSaga from "./room.saga";
@@ -12,7 +11,6 @@ function* rootSaga() {
   yield fork(locationSaga);
   yield fork(typeSaga);
   yield fork(userSaga);
-  yield fork(imageSaga);
   yield fork(bookingSaga);
   yield fork(discountSaga);
 };

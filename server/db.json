@@ -40,7 +40,7 @@
       "birthday": 1628339995854
     },
     {
-      "email": "deathanger191@gmail.com",
+      "email": "thaidavis1999@gmail.com",
       "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
       "username": "cristiano7",
       "role": "user",
@@ -57,7 +57,21 @@
       "age": 36,
       "gender": "male",
       "address": "Portugal",
-      "birthday": 1628339995854
+      "birthday": null
+    },
+    {
+      "email": "user1@gmail.com",
+      "password": "$2a$10$rqpFzFkp3r83Re5W6VZbIeYefHHkmUMe2xm8qNigh.ftClJi.EQw6",
+      "username": "wiliam1307",
+      "role": "user",
+      "id": 4,
+      "name": "Nguyễn Văn Ý",
+      "phone": "0964321807",
+      "age": 36,
+      "gender": "male",
+      "address": "Portugal",
+      "updatedAt": 1632067471375,
+      "birthday": 936810000000
     }
   ],
   "locations": [
@@ -591,7 +605,7 @@
       "price": 123,
       "total": 120,
       "status": "pending",
-      "updatedAt": 1632022330156
+      "updatedAt": 1632098800879
     },
     {
       "id": 2,
@@ -605,7 +619,7 @@
       "price": 123,
       "total": 120,
       "status": "pending",
-      "updatedAt": 1631954054050
+      "updatedAt": 1631877093260
     },
     {
       "id": 3,
@@ -664,18 +678,253 @@
       "updatedAt": 1631764968358
     },
     {
-      "id": 8,
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 10,
+      "checkOut": 1634317200000,
+      "checkIn": 1633712400000,
+      "numberNight": 7,
+      "price": 300,
+      "total": 2130,
+      "status": "canceled",
+      "createdAt": 1631866183418,
+      "updatedAt": 1632069557683,
+      "id": 7
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 9,
+      "checkOut": 1634317200000,
+      "checkIn": 1633712400000,
+      "numberNight": 7,
+      "price": 300,
+      "total": 2130,
+      "status": "canceled",
+      "createdAt": 1631866526013,
+      "updatedAt": 1632069559419,
+      "id": 8
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 10,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 300,
+      "total": 4230,
+      "status": "canceled",
+      "createdAt": 1631866567457,
+      "updatedAt": 1632069560109,
+      "id": 9
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 9,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 300,
+      "total": 4230,
+      "status": "check-in",
+      "createdAt": 1631866583482,
+      "updatedAt": 1632069445687,
+      "id": 10
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 8,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 300,
+      "total": 4230,
+      "status": "canceled",
+      "createdAt": 1631866597074,
+      "updatedAt": 1632068958537,
+      "id": 11
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 7,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 300,
+      "total": 4230,
+      "status": "canceled",
+      "createdAt": 1631866610121,
+      "updatedAt": 1632068959757,
+      "id": 12
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 6,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 300,
+      "total": 4230,
+      "status": "canceled",
+      "createdAt": 1631866624369,
+      "updatedAt": 1632069377771,
+      "id": 13
+    },
+    {
       "typeRoomId": 1,
       "userId": 1,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
       "roomId": 5,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 300,
+      "total": 4230,
+      "status": "canceled",
+      "createdAt": 1631869281054,
+      "updatedAt": 1632068961837,
+      "id": 14
+    },
+    {
+      "typeRoomId": 3,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 15,
       "checkOut": 1631898000000,
-      "checkIn": 1631670575925,
-      "price": 123,
-      "total": 120,
-      "status": "pending",
-      "updatedAt": 1631877098075
+      "checkIn": 1631898000000,
+      "numberNight": 0,
+      "price": 1000,
+      "total": 100,
+      "status": "canceled",
+      "createdAt": 1631871249858,
+      "updatedAt": 1632069378212,
+      "id": 15
+    },
+    {
+      "typeRoomId": 3,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 14,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 1000,
+      "total": 14100,
+      "status": "canceled",
+      "createdAt": 1631871596987,
+      "updatedAt": 1632069378661,
+      "id": 16
+    },
+    {
+      "typeRoomId": 3,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 13,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 1000,
+      "total": 14100,
+      "status": "canceled",
+      "createdAt": 1631872096611,
+      "updatedAt": 1632069101103,
+      "id": 17
+    },
+    {
+      "typeRoomId": 3,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 12,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 1000,
+      "total": 14100,
+      "status": "canceled",
+      "createdAt": 1631876687240,
+      "updatedAt": 1632069190804,
+      "id": 18
+    },
+    {
+      "typeRoomId": 3,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 11,
+      "checkOut": 1633107600000,
+      "checkIn": 1631898000000,
+      "numberNight": 14,
+      "price": 1000,
+      "total": 14100,
+      "status": "canceled",
+      "createdAt": 1631877400530,
+      "updatedAt": 1632069372648,
+      "id": 19
+    },
+    {
+      "createdAt": 1631929392442,
+      "updatedAt": 1631929392442,
+      "id": 20
+    },
+    {
+      "typeRoomId": 1,
+      "userId": 4,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 1,
+      "checkOut": 1633107600000,
+      "checkIn": 1631984400000,
+      "numberNight": 13,
+      "price": 300,
+      "total": 3930,
+      "status": "canceled",
+      "createdAt": 1631929777746,
+      "updatedAt": 1632069192493,
+      "id": 21
+    },
+    {
+      "createdAt": 1632069567220,
+      "updatedAt": 1632069567220,
+      "id": 22
+    },
+    {
+      "createdAt": 1632069589061,
+      "updatedAt": 1632069589061,
+      "id": 23
+    },
+    {
+      "createdAt": 1632069615558,
+      "updatedAt": 1632069615558,
+      "id": 24
+    },
+    {
+      "createdAt": 1632069642672,
+      "updatedAt": 1632069642672,
+      "id": 25
     }
   ]
 }

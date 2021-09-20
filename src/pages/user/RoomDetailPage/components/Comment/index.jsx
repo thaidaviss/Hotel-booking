@@ -22,30 +22,10 @@ function CommentItem(props) {
           </Tooltip>
         </div>
       </div>
-      {/* <div className="comment__interact">
-        <Tooltip key="comment-basic-like" title="Like">
-          <span onClick={() => null}>
-            <div className="comment__interact-item">
-              <span>
-                <AiOutlineLike />
-              </span>
-              <p>{interact.like}</p>
-            </div>
-          </span>
-        </Tooltip>
-        <Tooltip key="comment-basic-like" title="Dislike">
-          <span onClick={() => null}>
-            <div className="comment__interact-item">
-              <span>
-                <AiOutlineDislike />
-              </span>
-              <p>{interact.dislike}</p>
-            </div>
-          </span>
-        </Tooltip>
-      </div> */}
-      <div className="comment__title">{comment.title}</div>
-      <div className="comment__description">{comment.review}</div>
+      <div className="comment__content">
+        <div className="comment__title">{comment.title}</div>
+        <div className="comment__description">{comment.review}</div>
+      </div>
       <div className="comment__review">
         <div className="comment__review-item">
           <p>Service </p>

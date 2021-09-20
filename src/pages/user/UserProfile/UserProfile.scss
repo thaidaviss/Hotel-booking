@@ -1,0 +1,122 @@
+@import "styles/main";
+
+section {
+  display: block;
+  font-family: $font-family-heading;
+  padding: 2rem 0;
+
+
+  .banner {
+    max-height: 20rem;
+  }
+
+  .container {
+    display: block;
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+
+  .profile {
+
+
+    &__content {
+      width: 100%;
+      display: flex;
+
+    }
+
+    &__info {
+      width: 60%;
+    }
+
+    &__avatar {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+
+        width: 15rem;
+      }
+    }
+
+    &__title {
+      border-bottom: 1px solid $primary;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    &__history-room {
+      margin-bottom: 6rem;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-style: italic;
+    color: $primary;
+    padding: 2rem 0.5rem 0rem;
+    margin-bottom: 1rem;
+
+  }
+
+  label {
+    font-size: 1rem !important;
+    font-style: italic;
+  }
+
+  .cancel {
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.3rem;
+    background-color: rgb(253, 87, 57);
+
+    &-disable {
+      opacity: 0.8;
+      cursor: auto;
+    }
+
+    &:hover {
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+
+  .btn-update {
+    padding: 0.6rem 1.5rem;
+    background-color: $primary;
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 0.3rem;
+  }
+
+  .btn-edit {
+    padding: 0.6rem 1.5rem;
+    background-color: $primary;
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+
+  .update-image {
+    display: none;
+  }
+
+  input {
+    font-size: 1rem !important;
+    color: $black;
+  }
+
+  .ant-input[disabled] {
+    color: $black;
+    font-size: 1rem !important;
+  }
+}

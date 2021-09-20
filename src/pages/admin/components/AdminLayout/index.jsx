@@ -9,7 +9,7 @@ import RoomListPage from "pages/admin/RoomList";
 import RoomTypesPage from "pages/admin/RoomTypes";
 import AccountListPage from "pages/admin/AccountList";
 import AddEditTypePage from "pages/admin/AddEditType";
-import NotFoundPage from "pages/user/NotFound";
+import NotFoundPage from "layouts/NotFound";
 import { useState } from "react";
 import { Switch, useRouteMatch } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
