@@ -1,11 +1,12 @@
-import { Image } from "antd";
+import { Image, Row } from "antd";
 import React, { useState } from "react";
+
 
 const ImageSliderItem = (props) => {
   const { images, value } = props;
   const [visible, setVisible] = useState(false);
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <Row style={{ display: "flex", alignItems: "center" }}>
       <Image
         className="img"
         preview={{ visible: false }}
@@ -14,7 +15,10 @@ const ImageSliderItem = (props) => {
         onClick={() => setVisible(true)}
       />
       <p style={{ paddingLeft: "1rem" }}>{value}</p>
-      <div style={{ display: "none" }}>
+      <div
+        className="image-group"
+        style={{ display: "none" }}
+      >
         <Image.PreviewGroup
           preview={{
             visible,
@@ -26,7 +30,7 @@ const ImageSliderItem = (props) => {
           ))}
         </Image.PreviewGroup>
       </div>
-    </div>
+    </Row>
   );
 };
 

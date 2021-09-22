@@ -4,7 +4,7 @@ import { API } from "./constants.api";
 
 export const BookingAPI = {
 
- addBooking:(data)=> API.post(`${URL_API}/bookings`,{...data}),
+//  addBooking:(data)=> API.post(`${URL_API}/bookings`,{...data}),
 
  getHistoryBooking: (idUser)=>API.get(`${URL_API}/bookings?idUser=${idUser}`),
 

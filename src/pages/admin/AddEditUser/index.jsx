@@ -1,7 +1,7 @@
 import { Button, DatePicker, Form, Input, InputNumber, Row, Select, Space } from "antd";
 import { ROUTER_URL } from "constants/index";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { createUserAction, editUserAction, getUserDetailAction } from "redux/actions";

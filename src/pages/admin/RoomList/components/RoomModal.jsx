@@ -11,7 +11,7 @@ const RoomModal = ({ isShowRoomModal, setIsShowRoomModal, modifyRoomData, handle
     if (isShowRoomModal) {
       modifyRoomForm.resetFields();
     }
-  }, [isShowRoomModal,modifyRoomForm]);
+  }, [isShowRoomModal, modifyRoomForm]);
 
   function renderTypeOptions() {
     return typeList.data.map((typeItem) => (
@@ -27,7 +27,6 @@ const RoomModal = ({ isShowRoomModal, setIsShowRoomModal, modifyRoomData, handle
       visible={!!isShowRoomModal}
       onOk={() => modifyRoomForm.submit()}
       onCancel={() => setIsShowRoomModal("")}
-      confirmLoading={typeList.load}
     >
       <Form
         form={modifyRoomForm}
@@ -51,10 +50,6 @@ const RoomModal = ({ isShowRoomModal, setIsShowRoomModal, modifyRoomData, handle
           rules={[{ required: true, message: "Please input type of room!" }]}
         >
           <Select placeholder="Please select your type room!">{renderTypeOptions()}</Select>
-        </Form.Item>
-
-        <Form.Item label="Rating" name="rating">
-          <Rate defaultValue={5} value={5} style={{ width: "100%" }} />
         </Form.Item>
       </Form>
     </Modal>

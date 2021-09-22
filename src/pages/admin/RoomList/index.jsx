@@ -3,7 +3,7 @@ import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createRoomAction, deleteRoomAction, editRoomAction, getRoomListAction, getTypeListAction } from "redux/actions";
+import { createRoomAction, deleteRoomAction, editRoomAction, getFilterRoomListAction, getRoomListAction, getTypeListAction } from "redux/actions";
 import RoomModal from "./components/RoomModal";
 import './RoomList.scss';
 
@@ -30,8 +30,12 @@ function RoomListPage (props) {
   useEffect(() => {
     dispatch(getTypeListAction());
     dispatch(getRoomListAction());
-  }, []);
+  }, [dispatch]);
 
+  function handleSearchRoom(value) {
+    setSearchKey(value);
+    dispatch(getFilterRoomListAction({ searchKey: value }));
+  }
 
   function handleSubmitForm(values) {
     if (isShowRoomModal === 'create') {
@@ -60,7 +64,6 @@ function RoomListPage (props) {
       title: 'Name',
       dataIndex: 'name',
       width: 150,
-      fixed: "left",
       key: 'name',
     },
     {
@@ -69,14 +72,13 @@ function RoomListPage (props) {
       key: 'typeRoomId',
       filters: [...typeFilter],
       onFilter: (value, record) => {
-        return record.typeRoomId == value;
+        return record.typeRoomId === value;
       },
       render: (id) => {
         const typeData = typeList.data.find((item) => item.id === id);
         if (typeData) return typeData.name;
       }
     },
-    { title: 'Rating', dataIndex: 'rating', key: 'rating', width: 100 },
     {
       title: 'Create At',
       dataIndex: 'createdAt',
@@ -95,7 +97,6 @@ function RoomListPage (props) {
       title: 'Action',
       dataIndex: 'action',
       width: 200,
-      fixed: "right",
       key: 'action',
       render: (_, record) => {
         return (
@@ -138,7 +139,7 @@ function RoomListPage (props) {
             className="room-search"
             prefix={<SearchOutlined />}
             placeholder="Search ..."
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => handleSearchRoom(e.target.value)}
           />
           <Button 
             className="add-room-btn"
@@ -161,7 +162,7 @@ function RoomListPage (props) {
           dataSource={roomData} 
           columns={roomColumns} 
           loading={roomList.load}
-          scroll={{x: 1000, y: "62vh"}}
+          scroll={{ x: 1000 }}
         />
       </div>
       <RoomModal 

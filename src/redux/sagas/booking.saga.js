@@ -42,10 +42,16 @@ function* createBookingSaga(action) {
 
 function* getFilterBookingListSaga(action) {
   try {
+    const searchKey = action.payload?.searchKey;
     const {
       params
     } = action.payload;
-    const result = yield BookingAPI.getFilterBookingList(params);
+    const result = yield BookingAPI.getFilterBookingList({
+      ...params,
+      _sort: 'id',
+      _order: 'asc',
+      ...(searchKey && { q: searchKey }),
+    });
     yield put({
       type: SUCCESS(BOOKING_ACTION.GET_FILTER_BOOKING_LIST),
       payload: {

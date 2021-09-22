@@ -1,10 +1,31 @@
+@import '../../../../styles/main.scss';
 
+h2, p {
+  margin: 0;
+  padding: 0;
+}
+.ant-row-header {
+  width: calc(100vw - 350px);
+  height: 64px;
+}
+
+.site-layout-sub-header-background h2 {
+  font-size: 1.5rem;
+  font-family: $font-family-heading;
+  font-weight: 700;
+  color: $primary;
+  text-shadow: 0 0 1px #cecece;
+}
 
 .user-avatar {
   display: block;
+  // margin-right: 30px;
   width: 45px;
   height: 45px;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: -10px;
+  cursor: pointer;
+}
+.site-layout-sub-header-background {
+  background: #fff;
 }

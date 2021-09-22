@@ -1,4 +1,4 @@
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
+import { PlusOutlined, SearchOutlined, StarFilled } from "@ant-design/icons";
 import { Button, Input, Popconfirm, Space, Table } from "antd";
 import { ROUTER_URL } from "constants/index";
 import moment from "moment";
@@ -13,16 +13,17 @@ import "./RoomTypes.scss";
 
 const RoomTypesPage = (props) => {
   const { typeList } = useSelector((state) => state.typeReducer);
+  // handle search
   const [ searchKey, setSearchKey ] = useState("");
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTypeListAction());
-  }, []);
+  }, [dispatch]);
 
   function handleSearchType(value) {
     setSearchKey(value);
-    dispatch(getFilterTypeListAction({ params: {...(searchKey && { q: searchKey })} }));
+    dispatch(getFilterTypeListAction({ searchKey: value }));
   }
 
   const roomTypesColumns = [
@@ -31,8 +32,8 @@ const RoomTypesPage = (props) => {
       title: "Type of Room",
       dataIndex: "name",
       key: "name",
-      fixed: "left",
       width: 170,
+      sorter: (a, b) => a.name.length - b.name.length,
       render: (value, record) => {
         return <ImageSliderItem images={record.images} value={value} key={`image-${record.id}`} />;
       },
@@ -41,7 +42,7 @@ const RoomTypesPage = (props) => {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      width: 160,
+      width: 150,
       ellipsis: true,
     },
     {
@@ -59,12 +60,14 @@ const RoomTypesPage = (props) => {
         );
       },
     },
-    { title: "Max Guest", dataIndex: "maxGuest", key: "maxGuest", width: 60 },
+    { title: "Max Guest", dataIndex: "maxGuest", key: "maxGuest", width: 60,
+      sorter: (a, b) => a.maxGuest - b.maxGuest,
+    },
     {
       title: "Utilities",
       dataIndex: "utilities",
       key: "utilities",
-      width: 150,
+      width: 130,
       render: (value, record) => {
         return <UtilityItem value={value} key={`utility-${record.id}`} />;
       },
@@ -74,7 +77,19 @@ const RoomTypesPage = (props) => {
       dataIndex: "price",
       key: "price",
       width: 50,
-      render: (value) => `$ ${value}`,
+      sorter: (a, b) => a.price - b.price,
+      render: (value) => (value ? `$ ${value}` : "$ 0"),
+    },
+    {
+      title: "Rating",
+      dataIndex: "rating",
+      key: "rating",
+      width: 50,
+      sorter: (a, b) => a.rating - b.rating,
+      render: (value) => (value 
+        ? <div>{value} <StarFilled style={{ color: "#D5A944"}} /></div>
+        : <div>Not rated yet!</div>
+      ),
     },
     {
       title: "Create At",
@@ -104,7 +119,7 @@ const RoomTypesPage = (props) => {
               ghost
               onClick={() => {
                 history.push(
-                  `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}/${record.id}${ROUTER_URL.EDIT}`
+                  `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}/${record.id}${ROUTER_URL.EDIT}`
                 );
               }}
             >
@@ -147,7 +162,7 @@ const RoomTypesPage = (props) => {
             type="primary"
             icon={<PlusOutlined />}
             onClick={() => {
-              history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_ROOM}`);
+              history.push(`${ROUTER_URL.ADMIN}${ROUTER_URL.CREATE_TYPE}`);
             }}
           >
             New Type
@@ -160,7 +175,7 @@ const RoomTypesPage = (props) => {
           dataSource={roomTypesData}
           columns={roomTypesColumns}
           loading={typeList.load}
-          scroll={{ x: 1600, y: "62vh" }}
+          scroll={{ x: 1550 }}
         />
       </div>
     </div>
