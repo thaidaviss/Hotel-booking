@@ -35,8 +35,8 @@ function Header(props) {
   const menu = (
     <Menu>
       <Menu.Item>
-        <Link rel="noopener noreferrer" className="user-item">
-          Profile
+        <Link rel="noopener noreferrer" className="user-item" to={ROUTER_URL.PROFILE}>
+          My Account
         </Link>
       </Menu.Item>
       <Menu.Item>
@@ -67,14 +67,12 @@ function Header(props) {
                 <Link to={ROUTER_URL.HOME}>{t("home")}</Link>
               </li>
               <li className="navbar__list-item">
-                <Link to={ROUTER_URL.HOME}>{t("about us")}</Link>
+                <Link to={`${ROUTER_URL.HOME}#about`}>{t("about us")}</Link>
               </li>
               <li className="navbar__list-item">
                 <Link to={ROUTER_URL.ROOMS}>{t("rooms")}</Link>
               </li>
-              <li className="navbar__list-item">
-                <Link to={ROUTER_URL.NEWS}>{t("news")}</Link>
-              </li>
+            
               <li className="navbar__list-item">
                 <Link to={ROUTER_URL.CONTACT}>{t("contact")}</Link>
               </li>

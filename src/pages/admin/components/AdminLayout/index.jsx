@@ -10,6 +10,7 @@ import RoomListPage from "pages/admin/RoomList";
 import RoomTypesPage from "pages/admin/RoomTypes";
 import AccountListPage from "pages/admin/AccountList";
 import AddEditTypePage from "pages/admin/AddEditType";
+
 import NotFoundPage from "pages/user/NotFound";
 // import { useState } from "react";
 import { Switch, useRouteMatch } from "react-router-dom";
@@ -25,6 +26,15 @@ const { Content } = Layout;
 
 const LayoutAdmin = () => {
   const match = useRouteMatch();
+
+  const [isMiniMenu, setIsMiniMenu] = useState(false);
+  const isAuth = JSON.parse(localStorage.getItem("userData"))?.accessToken!==undefined;
+  
+  if (isAuth ===true){
+    const userInfo = JSON.parse(localStorage.getItem("userData")).user;
+    if (userInfo.role==='user'){
+      return <NotFoundPage/>
+    }
 
   return (
     <>
@@ -115,6 +125,12 @@ const LayoutAdmin = () => {
       </Layout>
     </>
   );
+  }
+else{
+  return <Redirect to={ROUTER_URL.LOGIN} />
+}
+
+  
 };
 
 export default LayoutAdmin;

@@ -8,8 +8,9 @@ import AdminLayout from "pages/admin/components/AdminLayout";
 import BookingPage from "pages/user/BookingPage";
 import HomePage from "pages/user/HomePage";
 import LoginPage from "pages/user/LoginPage";
+
 import NotFound from "pages/user/NotFound";
-// import PaymentPage from "pages/user/BookingPage/components/PaymentPage";
+
 import RoomDetailPage from "pages/user/RoomDetailPage";
 import RoomsPage from "pages/user/RoomsPage";
 import UserProfile from "pages/user/UserProfile";

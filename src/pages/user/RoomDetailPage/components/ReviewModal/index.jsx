@@ -13,14 +13,13 @@ const ReviewModal = ({ isShowReviewModal, setIsShowReviewModal }) => {
   const dispatch = useDispatch();
   const roomId = useParams().id;
   const [reviewForm] = Form.useForm();
- ;
   const userInfo = useSelector((state) => state.userReducer.userInfo);
 
   useEffect(() => {
     if (isShowReviewModal) {
       reviewForm.resetFields();
     }
-  }, [isShowReviewModal,reviewForm]);
+  }, [isShowReviewModal, reviewForm]);
   const handleSubmit = (values) => {
     const review = {
       typeRoomId: roomId,
@@ -55,7 +54,6 @@ const ReviewModal = ({ isShowReviewModal, setIsShowReviewModal }) => {
         form={reviewForm}
         name="create-review"
         labelCol={{ span: 24 }}
-        
         onFinish={(values) => handleSubmit(values)}
       >
         <Form.Item

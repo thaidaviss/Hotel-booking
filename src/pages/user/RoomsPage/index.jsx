@@ -1,5 +1,6 @@
 import { Pagination, Space, Spin } from "antd";
 import { IMAGES } from "constants/images.constants";
+import Banner from "layouts/Banner";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,9 +19,9 @@ function RoomsPage(props) {
   const listVariable = useSelector((state) => state.typeReducer.roomVariableList);
 
   const [isFocus, setIsFocus] = useState(false);
-  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
+  const [checkedList, setCheckedList] = useState({ rating: [], q: [], price: [0, 100] });
 
-  const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 4 });
+  const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 5 });
   useEffect(() => {
     setPage({ ...page, _page: 1 });
   }, [checkedList.rating, checkedList.price]);
@@ -37,16 +38,15 @@ function RoomsPage(props) {
         params: {
           ...page,
           rating: checkedList.rating,
+          q: checkedList.q,
           price_gte: checkedList.price[0] * 100,
           price_lte: checkedList.price[1] * 100,
         },
       })
     );
     window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
-  }, [dispatch, page, checkedList.rating, checkedList.price]);
+  }, [dispatch, page._page, checkedList.rating, checkedList.price, checkedList.q]);
   console.log(page);
-
-
 
   const isVariable = (typeRoom) => {
     const listTypeRoomVariable = Object.keys(listVariable.data);
@@ -62,18 +62,7 @@ function RoomsPage(props) {
   };
   return (
     <div className="rooms-page">
-      <div className="rooms-page__banner">
-        <div className="rooms-page__banner-content">
-          <div className="line-1">
-            <img src={IMAGES.LINE1} alt="" />
-          </div>
-          <div className="heading">Royal Luxury Hotel</div>
-          <div className="title">{t(" Our Featured Room List")}</div>
-          <div className="line-2">
-            <img src={IMAGES.LINE2} alt="" />
-          </div>
-        </div>
-      </div>
+      <Banner heading={"Feature Rooms"} />
       <div className="rooms-page__body" ref={myRef}>
         <div className="rooms-page__reservation">
           <MakeReservation isFocus={isFocus} />
@@ -92,7 +81,7 @@ function RoomsPage(props) {
             ) : (
               listTypeRoom.data.map((typeRoom, index) => (
                 <CardRoom
-                typeRoom={typeRoom}
+                  typeRoom={typeRoom}
                   isVariable={isVariable(typeRoom)}
                   key={`card-room__room-${index}`}
                   setIsFocus={setIsFocus}

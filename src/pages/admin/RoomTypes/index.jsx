@@ -139,7 +139,7 @@ const RoomTypesPage = (props) => {
       },
     },
   ];
-  const roomTypesData = typeList.data.map((roomTypeItem, roomTypeIndex) => {
+  const roomTypesData = typeList?.data?.map((roomTypeItem, roomTypeIndex) => {
     return {
       key: roomTypeIndex,
       ...roomTypeItem,

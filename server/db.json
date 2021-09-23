@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "phuongtran.jdan@gmail.com",
-      "password": "$2a$10$TX9GNEN9C41EfZ0za205Ce7x3BYu/PhHn2FWNx4IaJbgL1ReKwfjS",
+      "password": "$2a$10$Vbxhd2pOIPs9JwQp8fWOk.JHhLblTX9FwR0e9/PSkbzGwa8N1NXea",
       "username": "phuongtran191",
       "role": "admin",
       "id": 1,
@@ -17,14 +17,14 @@
       "birthday": 1628339995854,
       "status": "active",
       "createdAt": 1628339995854,
-      "updatedAt": 1631760242160,
+      "updatedAt": 1632152292766,
       "key": 0
     },
     {
       "email": "thaidaviss1999@gmail.com",
       "password": "$2a$10$Ucsp.nxu/HOLerPhl6sz6O6UOSqCH2i.cQXfL//jNgT/3QGoFdXtW",
       "username": "wiliam1307",
-      "role": "admin",
+      "role": "user",
       "id": 2,
       "avatar": [
         "https://live.staticflickr.com/65535/51470203231_89fc8f707a_m.jpg"
@@ -41,10 +41,12 @@
       "birthday": 1628339995854
     },
     {
+
       "email": "phuonghang.dainam71@gmail.com",
       "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
       "username": "hangdainam71",
       "role": "user",
+
       "id": 3,
       "avatar": [
         "https://live.staticflickr.com/65535/51470911828_c4b03d93b0_m.jpg"
@@ -55,10 +57,13 @@
       "updatedAt": 1631760242160,
       "name": "Nguyễn Phương Hằng",
       "phone": "0129111000",
+
       "age": 50,
       "gender": "female",
       "address": "58A Lê Quang Định, phường 11, quận Bình Thạnh, Tp Hồ Chí Minh",
       "birthday": 1628339995854
+
+    
     },
     {
       "email": "lamtamnhu85@gmail.com",
@@ -146,7 +151,7 @@
           "roomSize": "Room size: 25 m²/269 ft²"
         },
         {
-          "view": "City view"
+          "view": "Sky"
         },
         {
           "smoking": "Non-smoking"
@@ -178,23 +183,27 @@
           "wifi": "Free Wi-Fi"
         },
         {
-          "bed": "1 double bed"
-        },
-        {
-          "roomSize": "Room size: 25 m²/269 ft²"
-        },
-        {
           "view": "City view"
         },
         {
-          "smoking": "Non-smoking"
+
+          "roomSize": "Room size: 25 m²/269 ft²"
+
+        },
+        {
+          "bed": "1 double bed"
         },
         {
           "shower": "Shower"
+        },
+        {
+          "view": "Mountain"
         }
       ],
+
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
+
     },
     {
       "id": 4,
@@ -222,7 +231,7 @@
           "roomSize": "Room size: 25 m²/269 ft²"
         },
         {
-          "view": "City view"
+          "view": "Sea"
         },
         {
           "smoking": "Non-smoking"
@@ -455,6 +464,14 @@
       "createdAt": 1631714526983,
       "updatedAt": 1631714526983,
       "id": 26
+    },
+    {
+      "name": "175",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1632148312843,
+      "updatedAt": 1632148312843,
+      "id": 27
     }
   ],
   "comments": [
@@ -508,6 +525,23 @@
       "createdAt": 1631760098685,
       "updatedAt": 1631760098685,
       "id": 4
+    },
+    {
+      "typeRoomId": "1",
+      "userId": 4,
+      "rating": 5,
+      "title": "very good!",
+      "review": "vv\n",
+      "stars": {
+        "service": 5,
+        "room": 5,
+        "food": 3,
+        "cleanness": 3
+      },
+      "image": [],
+      "createdAt": 1631865629488,
+      "updatedAt": 1631865629488,
+      "id": 5
     }
   ],
   "discounts": [
@@ -563,9 +597,11 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
+
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
+
     },
     {
       "id": 2,
@@ -578,9 +614,11 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
+
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
+
     },
     {
       "id": 3,
@@ -593,9 +631,11 @@
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
+
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
+
     },
     {
       "id": 4,
@@ -643,6 +683,7 @@
       "updatedAt": 1631797703035
     },
     {
+
       "id": 8,
       "typeRoomId": 4,
       "userId": 2,
@@ -656,6 +697,7 @@
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
+
     }
   ]
 }

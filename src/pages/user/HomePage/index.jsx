@@ -21,8 +21,6 @@ import MakeReservation from "../../../components/user/MakeReservation";
 import SliderRooms from "./components/SliderRooms";
 import "./HomePage.scss";
 
-
-
 function HomePage(props) {
   const { t } = useTranslation();
   const customSlider = useRef();
@@ -46,6 +44,7 @@ function HomePage(props) {
   };
   return (
     <div className="home">
+      {/* //banner----------------------------------------------------------> */}
       <div className="banner">
         <div
           className="banner__line-top"
@@ -97,11 +96,15 @@ function HomePage(props) {
             {t("Read more")}
           </button>
         </div>
+
+        {/* make reservation->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
         <div className="reservation-check">
           <MakeReservation />
         </div>
       </div>
-      <div className="about-us">
+
+      {/* about->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+      <div className="about-us" id="about">
         <div className="container">
           <div className="about-us__left">
             <div

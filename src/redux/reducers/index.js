@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import bookingReducer from './booking.reducer';
-import { imageReducer } from './image.reducer';
 import locationReducer from './location.reducer';
 import roomReducer from './room.reducer';
 import typeReducer from './type.reducer';
@@ -15,6 +14,5 @@ export const rootReducer =  combineReducers({
   discountReducer: discountReducer,
   typeReducer: typeReducer,
   userReducer: userReducer,
-  imageReducer: imageReducer,
   bookingReducer: bookingReducer
 });

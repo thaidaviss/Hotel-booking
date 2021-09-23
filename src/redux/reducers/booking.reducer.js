@@ -1,4 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
+import {
+  createReducer
+} from "@reduxjs/toolkit";
 import {
   BOOKING_ACTION,
   FAILURE,
@@ -35,7 +37,9 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(BOOKING_ACTION.GET_BOOKING_LIST)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
 
     return {
       ...state,
@@ -48,7 +52,48 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [FAILURE(BOOKING_ACTION.GET_BOOKING_LIST)]: (state, action) => {
-    const { error } = action.payload;
+    const {
+      error
+    } = action.payload;
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        load: false,
+        error,
+      },
+    }
+  },
+
+  ////////////////////////////get filter
+  [REQUEST(BOOKING_ACTION.GET_FILTER_BOOKING_LIST)]: (state, action) => {
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        load: true,
+      },
+    };
+  },
+  [SUCCESS(BOOKING_ACTION.GET_FILTER_BOOKING_LIST)]: (state, action) => {
+    const {
+      data
+    } = action.payload;
+    console.log("🚀 ~ file: booking.reducer.js ~ line 82 ~ [SUCCESS ~ data", data)
+    return {
+      ...state,
+      bookingList: {
+        ...state.bookingList,
+        data,
+        load: false,
+        error: null,
+      },
+    };
+  },
+  [FAILURE(BOOKING_ACTION.GET_FILTER_BOOKING_LIST)]: (state, action) => {
+    const {
+      error
+    } = action.payload;
     return {
       ...state,
       bookingList: {
@@ -86,7 +131,7 @@ const bookingReducer = createReducer(initialState, {
     const {
       error
     } = action.payload;
-  
+
     return {
       ...state,
       bookingList: {
@@ -108,7 +153,9 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [FAILURE(BOOKING_ACTION.GET_FILTER_BOOKING_LIST)]: (state, action) => {
-    const { error } = action.payload;
+    const {
+      error
+    } = action.payload;
     return {
       ...state,
       bookingList: {
@@ -129,7 +176,9 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(BOOKING_ACTION.GET_BOOKING_DETAIL)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     return {
       ...state,
       bookingDetail: {
@@ -141,7 +190,9 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [FAILURE(BOOKING_ACTION.GET_BOOKING_DETAIL)]: (state, action) => {
-    const { error } = action.payload;
+    const {
+      error
+    } = action.payload;
     return {
       ...state,
       bookingDetail: {
@@ -153,7 +204,9 @@ const bookingReducer = createReducer(initialState, {
   },
   // create = change status to "pending (booked)"
   [SUCCESS(BOOKING_ACTION.CREATE_BOOKING)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const newBookingList = [...state.bookingList.data];
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id
@@ -169,7 +222,9 @@ const bookingReducer = createReducer(initialState, {
   },
 
   [SUCCESS(BOOKING_ACTION.CHECK_IN_BOOKING)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const newBookingList = [...state.bookingList.data];
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id
@@ -184,7 +239,9 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(BOOKING_ACTION.CHECK_OUT_BOOKING)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const newBookingList = [...state.bookingList.data];
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id
@@ -199,17 +256,24 @@ const bookingReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(BOOKING_ACTION.CANCEL_BOOKING)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const newBookingList = [...state.bookingList.data];
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id
     );
-    newBookingList.splice(bookingIndex, 1, data);
+    if (bookingIndex !== -1) {
+      newBookingList.splice(bookingIndex, 1, data);
+    }
+
     return {
       ...state,
       bookingList: {
+
         ...state.bookingList,
         data: newBookingList,
+
       },
     };
   },
@@ -229,7 +293,9 @@ const bookingReducer = createReducer(initialState, {
   // },
 
   [SUCCESS(BOOKING_ACTION.PENDING_BOOKING)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const newBookingList = [...state.bookingList.data];
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id
