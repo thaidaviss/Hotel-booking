@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "phuongtran.jdan@gmail.com",
-      "password": "$2a$10$TX9GNEN9C41EfZ0za205Ce7x3BYu/PhHn2FWNx4IaJbgL1ReKwfjS",
+      "password": "$2a$10$Vbxhd2pOIPs9JwQp8fWOk.JHhLblTX9FwR0e9/PSkbzGwa8N1NXea",
       "username": "phuongtran191",
       "role": "admin",
       "id": 1,
@@ -17,7 +17,7 @@
       "birthday": 1628339995854,
       "status": "active",
       "createdAt": 1628339995854,
-      "updatedAt": 1631760242160,
+      "updatedAt": 1632152292766,
       "key": 0
     },
     {
@@ -174,7 +174,7 @@
           "roomSize": "Room size: 17 m²/183 ft²"
         },
         {
-          "view": "City view"
+          "view": "Sky"
         },
         {
           "smoking": "Non-smoking"
@@ -204,21 +204,23 @@
           "wifi": "Free Wi-Fi"
         },
         {
-          "bed": "1 double bed"
-        },
-        {
-          "roomSize": "Room size: 17 m²/183 ft²"
-        },
-        {
           "view": "City view"
         },
         {
           "smoking": "Non-smoking"
         },
         {
+          "bed": "1 double bed"
+        },
+        {
           "shower": "Shower"
+        },
+        {
+          "view": "Mountain"
         }
-      ]
+      ],
+      "view": "mountain",
+      "updatedAt": 1632148092630
     },
     {
       "id": 4,
@@ -246,7 +248,7 @@
           "roomSize": "Room size: 17 m²/183 ft²"
         },
         {
-          "view": "City view"
+          "view": "Sea"
         },
         {
           "smoking": "Non-smoking"
@@ -503,6 +505,14 @@
       "createdAt": 1631714526983,
       "updatedAt": 1631714526983,
       "id": 26
+    },
+    {
+      "name": "175",
+      "typeRoomId": 3,
+      "rating": 5,
+      "createdAt": 1632148312843,
+      "updatedAt": 1632148312843,
+      "id": 27
     }
   ],
   "comments": [
@@ -556,6 +566,23 @@
       "createdAt": 1631760098685,
       "updatedAt": 1631760098685,
       "id": 4
+    },
+    {
+      "typeRoomId": "1",
+      "userId": 4,
+      "rating": 5,
+      "title": "very good!",
+      "review": "vv\n",
+      "stars": {
+        "service": 5,
+        "room": 5,
+        "food": 3,
+        "cleanness": 3
+      },
+      "image": [],
+      "createdAt": 1631865629488,
+      "updatedAt": 1631865629488,
+      "id": 5
     }
   ],
   "discounts": [
@@ -611,8 +638,8 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-      "status": "pending",
-      "updatedAt": 1632098800879
+      "status": "canceled",
+      "updatedAt": 1632146549870
     },
     {
       "id": 2,
@@ -625,8 +652,8 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-      "status": "pending",
-      "updatedAt": 1631877093260
+      "status": "canceled",
+      "updatedAt": 1632146716782
     },
     {
       "id": 3,
@@ -639,8 +666,8 @@
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
-      "status": "pending",
-      "updatedAt": 1631793319041
+      "status": "canceled",
+      "updatedAt": 1632146730109
     },
     {
       "id": 4,
@@ -695,9 +722,9 @@
       "numberNight": 7,
       "price": 300,
       "total": 2130,
-      "status": "canceled",
+      "status": "pending",
       "createdAt": 1631866183418,
-      "updatedAt": 1632144333349,
+      "updatedAt": 1632146482771,
       "id": 7
     },
     {
@@ -711,9 +738,9 @@
       "numberNight": 7,
       "price": 300,
       "total": 2130,
-      "status": "canceled",
+      "status": "pending",
       "createdAt": 1631866526013,
-      "updatedAt": 1632144333776,
+      "updatedAt": 1632146485426,
       "id": 8
     },
     {
@@ -727,9 +754,9 @@
       "numberNight": 14,
       "price": 300,
       "total": 4230,
-      "status": "canceled",
+      "status": "pending",
       "createdAt": 1631866567457,
-      "updatedAt": 1632069560109,
+      "updatedAt": 1632146491385,
       "id": 9
     },
     {
@@ -743,9 +770,9 @@
       "numberNight": 14,
       "price": 300,
       "total": 4230,
-      "status": "canceled",
+      "status": "pending",
       "createdAt": 1631866583482,
-      "updatedAt": 1632144334576,
+      "updatedAt": 1632146487811,
       "id": 10
     },
     {
@@ -798,7 +825,7 @@
     },
     {
       "typeRoomId": 1,
-      "userId": 1,
+      "userId": 4,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
       "roomId": 5,
@@ -932,6 +959,22 @@
       "createdAt": 1632069642672,
       "updatedAt": 1632069642672,
       "id": 25
+    },
+    {
+      "typeRoomId": 1,
+      "userId": 5,
+      "discountCode": "FAL-070925",
+      "discountPrice": 11,
+      "roomId": 2,
+      "checkOut": 1633107600000,
+      "checkIn": 1632157200000,
+      "numberNight": 11,
+      "price": 300,
+      "total": 3330,
+      "status": "canceled",
+      "createdAt": 1632146958415,
+      "updatedAt": 1632147514914,
+      "id": 26
     }
   ]
 }

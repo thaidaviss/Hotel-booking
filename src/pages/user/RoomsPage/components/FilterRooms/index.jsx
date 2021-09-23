@@ -13,9 +13,9 @@ const options_rate = [
 const option_review = [
   { label: "City", value: "city" },
   { label: "Sea", value: "sea" },
-  { label: "Mountains", value: "mountains" },
+  { label: "Mountains", value: "mountain" },
   { label: "Sky", value: "sky" },
-  { label: "Other", value: "other" },
+  { label: "Other", value: "" },
 ];
 function FilterRooms({ checkedList, setCheckedList }) {
   const { t } = useTranslation();
@@ -24,13 +24,13 @@ function FilterRooms({ checkedList, setCheckedList }) {
     setCheckedList({ ...checkedList, rating: checkedValues });
   }
   function onChangeReview(checkedValues) {
-    setCheckedList({ ...checkedList, review: checkedValues });
+    setCheckedList({ ...checkedList, q: checkedValues });
   }
   function formatter(value) {
     return `${value * 100} USD`;
   }
   function handleClearFilter() {
-    setCheckedList({ star: [], review: [], price: [0, 100] });
+    setCheckedList({ star: [], q: [], price: [0, 100] });
   }
   return (
     <div className="filter-room">
@@ -53,11 +53,7 @@ function FilterRooms({ checkedList, setCheckedList }) {
       <div className="filter-room__review">
         <div className="filter-room__title">{t("View score")}</div>
         <div className="filter-room__review-list">
-          <Checkbox.Group
-            options={option_review}
-            value={checkedList.review}
-            onChange={onChangeReview}
-          />
+          <Checkbox.Group options={option_review} value={checkedList.q} onChange={onChangeReview} />
         </div>
       </div>
       <div className="filter-room__Price">

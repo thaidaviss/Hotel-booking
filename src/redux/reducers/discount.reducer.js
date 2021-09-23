@@ -120,6 +120,16 @@ const discountReducer = createReducer(initialState, {
       },
     }
   },
+  [DISCOUNT_ACTION.CLEAR_DISCOUNT_DETAIL]: (state, action) => {
+    return {
+      ...state,
+      discountDetail: {
+        ...state.discountDetail,
+        data:{},
+        load: false,
+      },
+    }
+  },
 
 });
 
