@@ -59,10 +59,14 @@ function* getTypeDetailSaga(action) {
 }
 function* getFilterTypeListSaga(action) {
   try {
-    const {
-      params
-    } = action.payload;
-    const result = yield typeRoomAPI.getFilterTypeRoomList({ ...params });
+    const searchKey = action.payload?.searchKey;
+    const { params } = action.payload;
+    const result = yield typeRoomAPI.getFilterTypeRoomList({
+      ...params,
+      _sort: 'id',
+      _order: 'asc',
+      ...(searchKey && { q: searchKey }),
+    });
     yield put({
       type: SUCCESS(TYPE_ACTION.GET_FILTER_TYPE_LIST),
       payload: {

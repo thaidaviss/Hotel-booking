@@ -4,7 +4,7 @@ import { ROUTER_URL } from 'constants/index';
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserListAction, editUserAction } from 'redux/actions/index';
+import { getUserListAction, editUserAction, getFilterUserListAction } from 'redux/actions/index';
 import history from 'utils/history';
 import AvatarItem from './components/AvatarItem';
 import AccountModal from "./components/AccountModal";
@@ -15,6 +15,9 @@ import './AccountList.scss';
 function AccountListPage() {
   const [isShowAccountModal, setIsShowAccountModal] = useState(false);
   const [modifyAccountData, setModifyAccountData] = useState({});
+  // handle search
+  const [ searchKey, setSearchKey ] = useState("");
+
   const { userList } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -22,12 +25,18 @@ function AccountListPage() {
     dispatch(getUserListAction());
   }, [dispatch]);
 
+  function handleSearchUser(value) {
+    setSearchKey(value);
+    dispatch(getFilterUserListAction({ searchKey: value }));
+  }
+  
   const roleFilter = userList.data.map((item, index) => {
     return {
       text: item.name,
       value: item.id,
     };
   });
+
 
   const userData = userList.data.map((userItem, userIndex) => {
     return {
@@ -67,22 +76,12 @@ function AccountListPage() {
       width: 80,
       filters: [...roleFilter],
       onFilter: (value, record) => {
-        return record.role == value;
+        return record.role === value;
       },
       render: (value) => {
         if (value === "user") return <Tag color="green">{value}</Tag>;
         return <Tag color="gold">{value}</Tag>
       },
-      filters: [
-        {
-          text: 'Admin',
-          value: 'admin',
-        },
-        {
-          text: 'User',
-          value: 'user',
-        },
-      ],
     },
     { 
       title: 'Status',
@@ -124,7 +123,7 @@ function AccountListPage() {
                 setIsShowAccountModal(true);
                 setModifyAccountData({
                   ...record,
-                  birthday: moment(record.birthday)
+                  birthday: moment(record.birthday),
                 });
               }}
             >
@@ -200,6 +199,7 @@ function AccountListPage() {
             className="user-search"
             prefix={<SearchOutlined />}
             placeholder="Search ..."
+            onChange={(e) => handleSearchUser(e.target.value)}
           />
           <Button
             className="add-user-btn"
@@ -228,6 +228,7 @@ function AccountListPage() {
         isShowAccountModal={isShowAccountModal}
         setIsShowAccountModal={setIsShowAccountModal}
         modifyAccountData={modifyAccountData}
+        setModifyAccountData={setModifyAccountData}
       />
     </div>
   );

@@ -1,4 +1,5 @@
-
+import React from "react";
+import { Layout } from 'antd';
 import { ROUTER_URL } from "constants/index";
 import PrivateLayout from "layouts/PrivateLayout";
 import BlogListPage from "pages/admin/BlogList";
@@ -9,21 +10,23 @@ import RoomListPage from "pages/admin/RoomList";
 import RoomTypesPage from "pages/admin/RoomTypes";
 import AccountListPage from "pages/admin/AccountList";
 import AddEditTypePage from "pages/admin/AddEditType";
-import NotFoundPage from "layouts/NotFound";
-import { useState } from "react";
-import { Switch, useRouteMatch,Redirect } from "react-router-dom";
+
+import NotFoundPage from "pages/user/NotFound";
+// import { useState } from "react";
+import { Switch, useRouteMatch } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
-import "./AdminLayout.scss";
 import AddEditUserPage from "pages/admin/AddEditUser";
 import BookingListPage from "pages/admin/BookingList";
 import CustomerListPage from "pages/admin/CustomerList";
+import BreadcrumbLayout from "../Breadcrumb";
+import "./LayoutAdmin.scss";
 
+const { Content } = Layout;
 
-
-
-function AdminLayout(props) {
+const LayoutAdmin = () => {
   const match = useRouteMatch();
+
   const [isMiniMenu, setIsMiniMenu] = useState(false);
   const isAuth = JSON.parse(localStorage.getItem("userData"))?.accessToken!==undefined;
   
@@ -32,41 +35,94 @@ function AdminLayout(props) {
     if (userInfo.role==='user'){
       return <NotFoundPage/>
     }
+
   return (
     <>
-      <div className="admin__container">
-        <AdminHeader 
-          isMiniMenu={isMiniMenu}
-          setIsMiniMenu={setIsMiniMenu}
-        />
+      <Layout>
+        <Sidebar />
 
-        <div className={isMiniMenu ? "admin__content--show" : "admin__content"}>
-          <Sidebar 
-            isMiniMenu={isMiniMenu}
-            setIsMiniMenu={setIsMiniMenu}
-          />
-          <div className="admin__content-main">
-            <Switch>
-              <PrivateLayout exact path={`${match.path}`} component={DashBoardPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOMS}`} component={RoomListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.USERS}`} component={AccountListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CUSTOMERS}`} component={CustomerListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.DISCOUNTS}`} component={DiscountListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.BLOGS}`} component={BlogListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.LOCATION}`} component={LocationListPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.ROOM_TYPES}`} component={RoomTypesPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_ROOM}`} component={AddEditTypePage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_ROOM}`} component={AddEditTypePage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.CREATE_USER}`} component={AddEditUserPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.EDIT_USER}`} component={AddEditUserPage} />
-              <PrivateLayout exact path={`${match.path}${ROUTER_URL.BOOKINGS}`} component={BookingListPage} />
+        <Layout
+          className="site-layout"
+          style={{ marginLeft: 260 }}
+        >
+          <AdminHeader />
 
-              <NotFoundPage />
+          <Content style={{ margin: '60px 16px 0', overflow: 'initial' }}>
+            <BreadcrumbLayout />
+            <div className="site-layout-sub-background">
+              <Switch>
+                <PrivateLayout
+                  exact
+                  path={`${match.path}`}
+                  component={DashBoardPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.ROOMS}`}
+                  component={RoomListPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.USERS}`}
+                  component={AccountListPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.CUSTOMERS}`}
+                  component={CustomerListPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.DISCOUNTS}`}
+                  component={DiscountListPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.BLOGS}`}
+                  component={BlogListPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.LOCATION}`}
+                  component={LocationListPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.ROOM_TYPES}`}
+                  component={RoomTypesPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.CREATE_TYPE}`}
+                  component={AddEditTypePage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.EDIT_TYPE}`}
+                  component={AddEditTypePage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.CREATE_USER}`}
+                  component={AddEditUserPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.EDIT_USER}`}
+                  component={AddEditUserPage}
+                />
+                <PrivateLayout
+                  exact
+                  path={`${match.path}${ROUTER_URL.BOOKINGS}`}
+                  component={BookingListPage}
+                />
 
-            </Switch>
-          </div>
-        </div>
-      </div>
+                <NotFoundPage />
+              </Switch>
+            </div>
+          </Content>
+        </Layout>
+      </Layout>
     </>
   );
   }
@@ -77,4 +133,4 @@ else{
   
 };
 
-export default AdminLayout;
+export default LayoutAdmin;

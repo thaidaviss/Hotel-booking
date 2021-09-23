@@ -11,14 +11,21 @@ import './CustomerList.scss';
 function CustomerListPage() {
   const [isShowCustomerModal, setIsShowCustomerModal] = useState(false);
   const [modifyCustomerData, setModifyCustomerData] = useState({});
+  // handle search
+  const [ searchKey, setSearchKey ] = useState("");
   const { userList } = useSelector((state) => state.userReducer);
  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTypeListAction())
     dispatch(getFilterUserListAction({ params: { _embed: "bookings" } }));
-  }, []);
+  }, [dispatch]);
 
+
+  function handleSearchUser(value) {
+    setSearchKey(value);
+    dispatch(getFilterUserListAction({ params: { _embed: "bookings" }, searchKey: value }));
+  }
 
   const userData = userList.data.map((userItem, userIndex) => {
     return {
@@ -32,7 +39,6 @@ function CustomerListPage() {
       title: 'Full Name',
       dataIndex: 'name',
       width: 120,
-      fixed: "left",
       key: 'name',
       sorter: (a, b) => a.name.length - b.name.length,
     },
@@ -52,7 +58,7 @@ function CustomerListPage() {
         { text: "Female", value: "female" },
       ],
       onFilter: (value, record) => {
-        return record.gender == value;
+        return record.gender === value;
       },
       render: (value, record) => {
         if (record.gender === "male") return "Male";
@@ -82,6 +88,7 @@ function CustomerListPage() {
             className="user-search"
             prefix={<SearchOutlined />}
             placeholder="Search ..."
+            onChange={(e) => handleSearchUser(e.target.value)}
           />
         </Space>
       </div>
@@ -109,6 +116,7 @@ function CustomerListPage() {
         isShowCustomerModal={isShowCustomerModal}
         setIsShowCustomerModal={setIsShowCustomerModal}
         modifyCustomerData={modifyCustomerData}
+        setModifyCustomerData={setModifyCustomerData}
       />
     </div>
   );

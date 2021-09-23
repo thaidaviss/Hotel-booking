@@ -13,7 +13,7 @@
       "phone": "0353862465",
       "age": 29,
       "gender": "male",
-      "address": "Phú Ninh - Quảng Nam",
+      "address": "Tam Đàn - Phú Ninh - Quảng Nam",
       "birthday": 1628339995854,
       "status": "active",
       "createdAt": 1628339995854,
@@ -32,18 +32,21 @@
       "key": 1,
       "status": "active",
       "createdAt": 1628339995854,
-      "updatedAt": 1631590099557,
-      "name": "Nguyễn Phương Hằng",
+      "updatedAt": 1631760242160,
+      "name": "Bùi Đức Thái",
       "phone": "0362152512",
-      "age": 46,
-      "gender": "female",
+      "age": 24,
+      "gender": "male",
+      "address": "Tam Đàn - Phú Ninh - Quảng Nam",
       "birthday": 1628339995854
     },
     {
-      "email": "thaidavis1999@gmail.com",
+
+      "email": "phuonghang.dainam71@gmail.com",
       "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
-      "username": "cristiano7",
-      "role": "admin",
+      "username": "hangdainam71",
+      "role": "user",
+
       "id": 3,
       "avatar": [
         "https://live.staticflickr.com/65535/51470911828_c4b03d93b0_m.jpg"
@@ -51,64 +54,36 @@
       "key": 2,
       "status": "active",
       "createdAt": 1628339995854,
-      "updatedAt": 1631591278228,
-      "name": "Cristiano Ronaldo",
+      "updatedAt": 1631760242160,
+      "name": "Nguyễn Phương Hằng",
       "phone": "0129111000",
-      "age": 36,
-      "gender": "male",
-      "address": "Portugal",
-      "birthday": null
+
+      "age": 50,
+      "gender": "female",
+      "address": "58A Lê Quang Định, phường 11, quận Bình Thạnh, Tp Hồ Chí Minh",
+      "birthday": 1628339995854
+
+    
     },
     {
-      "email": "user1@gmail.com",
-      "password": "$2a$10$rqpFzFkp3r83Re5W6VZbIeYefHHkmUMe2xm8qNigh.ftClJi.EQw6",
-      "username": "wiliam1307",
+      "email": "lamtamnhu85@gmail.com",
+      "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
+      "username": "thienlam232",
       "role": "user",
       "id": 4,
-      "name": "Nguyễn Văn Ý",
-      "phone": "0964321807",
+      "avatar": [
+        "https://live.staticflickr.com/65535/51470911828_c4b03d93b0_m.jpg"
+      ],
+      "key": 3,
+      "status": "active",
+      "createdAt": 1628339995854,
+      "updatedAt": 1631760242160,
+      "name": "Phan Thiên Lâm",
+      "phone": "0902675149",
       "age": 36,
       "gender": "male",
-      "address": "Portugal",
-      "updatedAt": 1632144838332,
-      "birthday": 936810000000
-    },
-    {
-      "email": "admin@gmail.com",
-      "password": "$2a$10$H1YzaTsFQ0ymgp0bKO2yq.uXtGfEFzeUI70ZOgwO/hE9c1kHrOpv6",
-      "username": "admin",
-      "role": "admin",
-      "id": 5
-    }
-  ],
-  "locations": [
-    {
-      "id": 1,
-      "name": "Đà Nẵng",
-      "address": "38 Đống Đa, quận Hải Châu, Tp. Đà Nẵng",
-      "createdAt": 1628339995854,
-      "updatedAt": 1628339995854
-    },
-    {
-      "id": 2,
-      "name": "TP. Hồ Chí Minh",
-      "address": "151 Nguyễn Văn Bình, quận 1, Tp. Hồ Chí Minh",
-      "createdAt": 1628339995854,
-      "updatedAt": 1628339995854
-    },
-    {
-      "id": 3,
-      "name": "Hà Nội",
-      "address": "90 Lý Thường Kiệt, quận Hoàn Kiếm, Tp. Hà Nội",
-      "createdAt": 1628339995854,
-      "updatedAt": 1628339995854
-    },
-    {
-      "name": "Quảng Nam",
-      "address": "15 Phan Chu Trinh, Tam Kỳ, Quảng Nam",
-      "createdAt": 1631092999151,
-      "updatedAt": 1631093012330,
-      "id": 4
+      "address": "89 Cộng Hòa, phường 12, quận Tân Bình, Tp Hồ Chí Minh",
+      "birthday": 1628339995854
     }
   ],
   "typeRooms": [
@@ -116,9 +91,9 @@
       "id": 1,
       "name": "Superior Room Single",
       "rating": 4,
-      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
-      "maxGuest": 4,
-      "price": 300,
+      "description": "As our smallest rooms, the Superior Room Single are suited for single occupancy or short-stay double occupancy as they have limited space and storage.",
+      "maxGuest": 2,
+      "price": 299,
       "images": [
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/1.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/2.jpg",
@@ -135,7 +110,7 @@
           "bed": "1 double bed"
         },
         {
-          "roomSize": "Room size: 17 m²/183 ft²"
+          "roomSize": "Room size: 25 m²/269 ft²"
         },
         {
           "view": "City view"
@@ -146,15 +121,17 @@
         {
           "shower": "Shower"
         }
-      ]
+      ],
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
     },
     {
       "id": 2,
       "name": "Superior Room Twin",
       "rating": 4,
-      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
-      "maxGuest": 4,
-      "price": 300,
+      "description": "Our Superior Room Twin also provides front views over landscaped gardens. It has a seating area and luxurious duck down bedding. This room is suited for single occupancy or short-stay double occupancy as they have limited space and storage.",
+      "maxGuest": 3,
+      "price": 349,
       "images": [
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/s1.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/s2.jpg",
@@ -171,7 +148,7 @@
           "bed": "1 double bed"
         },
         {
-          "roomSize": "Room size: 17 m²/183 ft²"
+          "roomSize": "Room size: 25 m²/269 ft²"
         },
         {
           "view": "Sky"
@@ -182,15 +159,17 @@
         {
           "shower": "Shower"
         }
-      ]
+      ],
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
     },
     {
       "id": 3,
       "name": "Deluxe Room Single",
       "rating": 4,
-      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
-      "maxGuest": 4,
-      "price": 1000,
+      "description": "Our Deluxe Room Single also provides views over landscaped gardens. It has a seating area, digital safe, minibar and luxurious duck down bedding. This room can be configured with either 2 single beds or zip and linked to provide a large double bed.",
+      "maxGuest": 3,
+      "price": 489,
       "images": [
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/d1.jpg",
         "https://danangpetrohotel.com.vn/dataUpload/Room/room/d2.jpg",
@@ -207,7 +186,9 @@
           "view": "City view"
         },
         {
-          "smoking": "Non-smoking"
+
+          "roomSize": "Room size: 25 m²/269 ft²"
+
         },
         {
           "bed": "1 double bed"
@@ -219,16 +200,18 @@
           "view": "Mountain"
         }
       ],
-      "view": "mountain",
-      "updatedAt": 1632148092630
+
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
+
     },
     {
       "id": 4,
       "name": "Suite Room",
       "rating": 2,
-      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
-      "maxGuest": 4,
-      "price": 5000,
+      "description": "Our Suite Room has a seating area, ample storage, digital safe, minibar and luxurious duck down bedding. This room can also be configured with an extra roll-away bed for families of 3.",
+      "maxGuest": 5,
+      "price": 519,
       "images": [
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-3-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
         "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/hanoi/accommodation/suite/deluxesuite/180921-1-2000-roo-LTHA.jpg.thumb.1920.1920.jpg",
@@ -245,7 +228,7 @@
           "bed": "1 double bed"
         },
         {
-          "roomSize": "Room size: 17 m²/183 ft²"
+          "roomSize": "Room size: 25 m²/269 ft²"
         },
         {
           "view": "Sea"
@@ -256,24 +239,24 @@
         {
           "shower": "Shower"
         }
-      ]
+      ],
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
     },
     {
       "id": 5,
       "name": "Luxury Suite Room",
       "rating": 3,
-      "description": "lorConsectetur voluptate voluptate consequat consequat culpa et. Aliqua esse et nostrud et cupidatat voluptate laboris. In occaecat velit sint culpa sint elit laboris commodo cillum laborum ad officia nisi consequat. Ex esse consequat nisi aliqua deserunt exercitation cillum et eu ullamco consequat culpa. Ut magna dolor ut dolore qui adipisicing eu ipsum. Sunt non do magna laboris laboris commodo aliquip non sint minim.",
-      "maxGuest": 4,
-      "price": 500,
+      "description": "Our Luxury Suite Room also provides views over landscaped gardens and views of the top level. It has ample storage, a seating area, digital safe, minibar and luxurious duck down bedding.",
+      "maxGuest": 5,
+      "price": 599,
       "images": [
         "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00118?$LargeViewport100pct$",
         "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00112?$MedViewport100pct$",
         "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00118?$MedViewport100pct$",
         "https://s7d2.scene7.com/is/image/ritzcarlton/RCPHILA_00189?$MedViewport100pct$",
         "https://s7d2.scene7.com/is/image/ritzcarlton/50524191-Luxury%20Suite%20Top%20LUXR?$MedViewport100pct$",
-        "https://s7d2.scene7.com/is/image/ritzcarlton/50524190-Luxury%20Suite%202%20LUXR?$MedViewport100pct$",
-        "https://s7d2.scene7.com/is/image/ritzcarlton/50524189-Luxury%20Suite%201%20LUXR?$MedViewport100pct$",
-        "https://s7d2.scene7.com/is/image/ritzcarlton/ritz-carlton-primary-black?$MedLgViewport33pct$"
+        "https://s7d2.scene7.com/is/image/ritzcarlton/50524190-Luxury%20Suite%202%20LUXR?$MedViewport100pct$"
       ],
       "utilities": [
         {
@@ -283,7 +266,7 @@
           "bed": "1 double bed"
         },
         {
-          "roomSize": "Room size: 17 m²/183 ft²"
+          "roomSize": "Room size: 25 m²/269 ft²"
         },
         {
           "view": "City view"
@@ -294,7 +277,9 @@
         {
           "shower": "Shower"
         }
-      ]
+      ],
+      "createdAt": 1631092999151,
+      "updatedAt": 1631093012330
     }
   ],
   "rooms": [
@@ -302,7 +287,6 @@
       "id": 1,
       "name": "101",
       "typeRoomId": 1,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -310,7 +294,6 @@
       "id": 2,
       "name": "102",
       "typeRoomId": 1,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -318,7 +301,6 @@
       "id": 3,
       "name": "103",
       "typeRoomId": 1,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -326,7 +308,6 @@
       "id": 4,
       "name": "104",
       "typeRoomId": 1,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -334,7 +315,6 @@
       "id": 5,
       "name": "105",
       "typeRoomId": 1,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -342,7 +322,6 @@
       "id": 6,
       "name": "201",
       "typeRoomId": 2,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -350,7 +329,6 @@
       "id": 7,
       "name": "202",
       "typeRoomId": 2,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -358,7 +336,6 @@
       "id": 8,
       "name": "203",
       "typeRoomId": 2,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -366,7 +343,6 @@
       "id": 9,
       "name": "204",
       "typeRoomId": 2,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -374,7 +350,6 @@
       "id": 10,
       "name": "106",
       "typeRoomId": 2,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -382,7 +357,6 @@
       "id": 11,
       "name": "301",
       "typeRoomId": 3,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -390,7 +364,6 @@
       "id": 12,
       "name": "302",
       "typeRoomId": 3,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -398,7 +371,6 @@
       "id": 13,
       "name": "303",
       "typeRoomId": 3,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -406,7 +378,6 @@
       "id": 14,
       "name": "304",
       "typeRoomId": 3,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -414,7 +385,6 @@
       "id": 15,
       "name": "306",
       "typeRoomId": 3,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -422,7 +392,6 @@
       "id": 16,
       "name": "401",
       "typeRoomId": 4,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -430,7 +399,6 @@
       "id": 17,
       "name": "402",
       "typeRoomId": 4,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -438,7 +406,6 @@
       "id": 18,
       "name": "403",
       "typeRoomId": 4,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -446,7 +413,6 @@
       "id": 19,
       "name": "404",
       "typeRoomId": 4,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -454,7 +420,6 @@
       "id": 20,
       "name": "406",
       "typeRoomId": 4,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -462,7 +427,6 @@
       "id": 21,
       "name": "501",
       "typeRoomId": 5,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -470,7 +434,6 @@
       "id": 22,
       "name": "502",
       "typeRoomId": 5,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -478,7 +441,6 @@
       "id": 23,
       "name": "503",
       "typeRoomId": 5,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -486,7 +448,6 @@
       "id": 24,
       "name": "504",
       "typeRoomId": 5,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -494,14 +455,12 @@
       "id": 25,
       "name": "506",
       "typeRoomId": 5,
-      "rating": 5,
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
     {
       "name": "507",
       "typeRoomId": 5,
-      "rating": 4,
       "createdAt": 1631714526983,
       "updatedAt": 1631714526983,
       "id": 26
@@ -633,13 +592,16 @@
       "userId": 1,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
-      "roomId": 1,
+      "roomId": 6,
       "checkOut": 1631093012330,
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-      "status": "canceled",
-      "updatedAt": 1632146549870
+
+      "status": "pending",
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
+
     },
     {
       "id": 2,
@@ -647,18 +609,21 @@
       "userId": 2,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
-      "roomId": 2,
+      "roomId": 9,
       "checkOut": 1631093012330,
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-      "status": "canceled",
-      "updatedAt": 1632146716782
+
+      "status": "pending",
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
+
     },
     {
       "id": 3,
       "typeRoomId": 1,
-      "userId": 1,
+      "userId": 3,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
       "roomId": 1,
@@ -666,8 +631,11 @@
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
-      "status": "canceled",
-      "updatedAt": 1632146730109
+
+      "status": "pending",
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
+
     },
     {
       "id": 4,
@@ -681,300 +649,55 @@
       "price": 123,
       "total": 120,
       "status": "pending",
-      "updatedAt": 1631765121650
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
     },
     {
       "id": 5,
-      "typeRoomId": 1,
-      "userId": 1,
+      "typeRoomId": 3,
+      "userId": 2,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
-      "roomId": 3,
+      "roomId": 11,
       "checkOut": 1631898000000,
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
       "status": "pending",
-      "updatedAt": 1631764940449
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
     },
     {
       "id": 6,
-      "typeRoomId": 1,
-      "userId": 1,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 4,
-      "checkOut": 1631898000000,
-      "checkIn": 1631670575925,
-      "price": 123,
-      "total": 120,
-      "status": "pending",
-      "updatedAt": 1631764968358
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 10,
-      "checkOut": 1634317200000,
-      "checkIn": 1633712400000,
-      "numberNight": 7,
-      "price": 300,
-      "total": 2130,
-      "status": "pending",
-      "createdAt": 1631866183418,
-      "updatedAt": 1632146482771,
-      "id": 7
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 9,
-      "checkOut": 1634317200000,
-      "checkIn": 1633712400000,
-      "numberNight": 7,
-      "price": 300,
-      "total": 2130,
-      "status": "pending",
-      "createdAt": 1631866526013,
-      "updatedAt": 1632146485426,
-      "id": 8
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 10,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 300,
-      "total": 4230,
-      "status": "pending",
-      "createdAt": 1631866567457,
-      "updatedAt": 1632146491385,
-      "id": 9
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 9,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 300,
-      "total": 4230,
-      "status": "pending",
-      "createdAt": 1631866583482,
-      "updatedAt": 1632146487811,
-      "id": 10
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 8,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 300,
-      "total": 4230,
-      "status": "canceled",
-      "createdAt": 1631866597074,
-      "updatedAt": 1632068958537,
-      "id": 11
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 7,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 300,
-      "total": 4230,
-      "status": "canceled",
-      "createdAt": 1631866610121,
-      "updatedAt": 1632068959757,
-      "id": 12
-    },
-    {
-      "typeRoomId": 2,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 6,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 300,
-      "total": 4230,
-      "status": "canceled",
-      "createdAt": 1631866624369,
-      "updatedAt": 1632069377771,
-      "id": 13
-    },
-    {
-      "typeRoomId": 1,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 5,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 300,
-      "total": 4230,
-      "status": "canceled",
-      "createdAt": 1631869281054,
-      "updatedAt": 1632068961837,
-      "id": 14
-    },
-    {
       "typeRoomId": 3,
-      "userId": 4,
+      "userId": 1,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
       "roomId": 15,
       "checkOut": 1631898000000,
-      "checkIn": 1631898000000,
-      "numberNight": 0,
-      "price": 1000,
-      "total": 100,
-      "status": "canceled",
-      "createdAt": 1631871249858,
-      "updatedAt": 1632069378212,
-      "id": 15
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending",
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
     },
     {
-      "typeRoomId": 3,
-      "userId": 4,
+
+      "id": 8,
+      "typeRoomId": 4,
+      "userId": 2,
       "discountCode": "FAL-070925",
       "discountPrice": 11,
-      "roomId": 14,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 1000,
-      "total": 14100,
-      "status": "canceled",
-      "createdAt": 1631871596987,
-      "updatedAt": 1632069378661,
-      "id": 16
-    },
-    {
-      "typeRoomId": 3,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 13,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 1000,
-      "total": 14100,
-      "status": "canceled",
-      "createdAt": 1631872096611,
-      "updatedAt": 1632144340437,
-      "id": 17
-    },
-    {
-      "typeRoomId": 3,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 12,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 1000,
-      "total": 14100,
-      "status": "canceled",
-      "createdAt": 1631876687240,
-      "updatedAt": 1632069190804,
-      "id": 18
-    },
-    {
-      "typeRoomId": 3,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 11,
-      "checkOut": 1633107600000,
-      "checkIn": 1631898000000,
-      "numberNight": 14,
-      "price": 1000,
-      "total": 14100,
-      "status": "canceled",
-      "createdAt": 1631877400530,
-      "updatedAt": 1632069372648,
-      "id": 19
-    },
-    {
-      "createdAt": 1631929392442,
-      "updatedAt": 1631929392442,
-      "id": 20
-    },
-    {
-      "typeRoomId": 1,
-      "userId": 4,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 1,
-      "checkOut": 1633107600000,
-      "checkIn": 1631984400000,
-      "numberNight": 13,
-      "price": 300,
-      "total": 3930,
-      "status": "canceled",
-      "createdAt": 1631929777746,
-      "updatedAt": 1632069192493,
-      "id": 21
-    },
-    {
-      "createdAt": 1632069567220,
-      "updatedAt": 1632069567220,
-      "id": 22
-    },
-    {
-      "createdAt": 1632069589061,
-      "updatedAt": 1632069589061,
-      "id": 23
-    },
-    {
-      "createdAt": 1632069615558,
-      "updatedAt": 1632069615558,
-      "id": 24
-    },
-    {
-      "createdAt": 1632069642672,
-      "updatedAt": 1632069642672,
-      "id": 25
-    },
-    {
-      "typeRoomId": 1,
-      "userId": 5,
-      "discountCode": "FAL-070925",
-      "discountPrice": 11,
-      "roomId": 2,
-      "checkOut": 1633107600000,
-      "checkIn": 1632157200000,
-      "numberNight": 11,
-      "price": 300,
-      "total": 3330,
-      "status": "canceled",
-      "createdAt": 1632146958415,
-      "updatedAt": 1632147514914,
-      "id": 26
+      "roomId": 16,
+      "checkOut": 1631898000000,
+      "checkIn": 1631670575925,
+      "price": 123,
+      "total": 120,
+      "status": "pending",
+      "createdAt": 1631541812854,
+      "updatedAt": 1631797703035
+
     }
   ]
 }

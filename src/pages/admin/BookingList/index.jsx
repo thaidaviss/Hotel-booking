@@ -3,7 +3,7 @@ import { Input, Space, Table, Tag } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBookingListAction, getDiscountListAction, getTypeListAction, getUserListAction } from "redux/actions";
+import { getBookingListAction, getDiscountListAction, getFilterUserListAction, getTypeListAction, getUserListAction } from "redux/actions";
 import './BookingList.scss';
 import BookingModal from "./components/BookingModal";
 import ChangeStatus from "./components/ChangeStatus";
@@ -12,6 +12,8 @@ import ChangeStatus from "./components/ChangeStatus";
 const BookingListPage = (props) => {
   const [isShowBookingModal, setIsShowBookingModal] = useState(false);
   const [modifyBookingData, setModifyBookingData] = useState({});
+  // handle search
+  const [ searchKey, setSearchKey ] = useState("");
 
   const { userList } = useSelector((state) => state.userReducer);
   const { discountList } = useSelector((state) => state.discountReducer);
@@ -37,8 +39,12 @@ const BookingListPage = (props) => {
     dispatch(getTypeListAction());
     dispatch(getUserListAction());
     dispatch(getDiscountListAction());
-  }, []);
+  }, [dispatch]);
 
+  function handleSearchUser(value) {
+    setSearchKey(value);
+    dispatch(getFilterUserListAction({ searchKey: value }));
+  }
 
   const bookingData = bookingList.data.map((bookingItem, bookingIndex) => {
     return {
@@ -58,7 +64,6 @@ const BookingListPage = (props) => {
       title: "Name",
       dataIndex: "userId",
       width: 200,
-      fixed: "left",
       key: "userId",
       sorter: (a, b) => {
         const user1 = userList.data.find((item) => item.id === a.userId);
@@ -96,7 +101,7 @@ const BookingListPage = (props) => {
       key: "typeRoomId",
       filters: [...typeFilter],
       onFilter: (value, record) => {
-        return record.typeRoomId == value;
+        return record.typeRoomId === value;
       },
       width: 180,
       render: (id) => {
@@ -112,7 +117,7 @@ const BookingListPage = (props) => {
       sorter: (a, b) => a.checkIn - b.checkIn,
       // filters: [...checkInFilter],
       // onFilter: (value, record) => {
-      //   return record.checkIn == value;
+      //   return record.checkIn === value;
       // },
       render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
@@ -130,7 +135,7 @@ const BookingListPage = (props) => {
       key: "typeRoomId",
       render: (id) => {
         const typeData = typeList.data.find((item) => item.id === id);
-        if (typeData) return `$ ${typeData.price}`;
+        if (typeData) return (typeData.price ? `$ ${typeData.price}` : "$ 0");
       },
     },
     {
@@ -202,6 +207,7 @@ const BookingListPage = (props) => {
             className="roomType-search"
             prefix={<SearchOutlined />}
             placeholder="Search ..."
+            onChange={(e) => handleSearchUser(e.target.value)}
           />
           {/* <Button
             className="add-booking-btn"

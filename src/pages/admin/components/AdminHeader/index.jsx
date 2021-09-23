@@ -1,66 +1,66 @@
-import { SearchOutlined } from '@ant-design/icons';
-import { Dropdown, Input, Menu } from 'antd';
+import { Dropdown, Image, Layout, Menu, Row, Space } from 'antd';
 import React from 'react';
-import { MdNotifications } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import './AdminHeader.scss';
+import './HeaderAdmin.scss';
 
 
+const { Header } = Layout;
 
-const accountMenu = (
-  <Menu>
-    <Menu.Item>
-      <Link to="/">
-        Back to Home
-      </Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/settings">
-        Edit your Profile
-      </Link>
-    </Menu.Item>
-    <Menu.Item>
-      <Link to="/">
-        Log out
-      </Link>
-    </Menu.Item>
-  </Menu>
-);
+const HeaderAdmin = () => {
+  const accountMenu = (
+    <Menu>
+      <Menu.Item>
+        <Link to="/">
+          Back to Home
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/admin/profiles">
+          Edit your Profile
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/">
+          Log out
+        </Link>
+      </Menu.Item>
+    </Menu>
+  );
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const currentUserId = userData.user.id;
 
-const AdminHeader = (props) => {
-  const { isMiniMenu } = props;
-  
+
   return (
-    <div className={isMiniMenu ? "admin__header--show" : "admin__header"}>
-      <div className="admin__header--wrapper">
-        <div className="admin__header--left">
-          <h2>Royal Luxury Hotel</h2>
-        </div>
-
-        <div className="admin__header--right">
-          <div className="notification">
+    <Header
+      className="site-layout-sub-header-background"
+      style={{ position: "fixed", zIndex: 999, width: "100%" }}
+    >
+      <Row justify="space-between"
+        className="ant-row-header"
+      >
+        <h2>Royal Luxury Hotel</h2>
+        <Space>
+          {/* <div className="notification">
             <MdNotifications />
             <p>1</p>
-          </div>
-
-          {/* <Dropdown className="dropdown" overlay={settingMenu} placement="bottomCenter" arrow>
-            <div className="setting">
-              <MdSettings />
-            </div>
-          </Dropdown> */}
-
-          <Dropdown className="dropdown" overlay={accountMenu} placement="bottomCenter" arrow>
+          </div> */}
+          <Dropdown
+            className="dropdown"
+            overlay={accountMenu}
+            placement="bottomRight"
+            arrow
+          >
             <div className="user-avatar">
-              <img
-                src="https://i.pinimg.com/564x/bb/41/aa/bb41aab18515a84f3456bc074c7c939e.jpg"
+              <Image
+                src="https://live.staticflickr.com/65535/51491000497_fbf6f88611_m.jpg"
                 alt="user avatar"
               />
             </div>
           </Dropdown>
-        </div>
-      </div>
-    </div>
+        </Space>
+      </Row>
+    </Header>
   );
 }
 
-export default AdminHeader;
+export default HeaderAdmin;

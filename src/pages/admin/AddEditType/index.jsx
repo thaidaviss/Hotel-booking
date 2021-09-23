@@ -1,4 +1,4 @@
-import { Button, Checkbox, Col, Form, Input, InputNumber, Row, Space } from "antd";
+import { Button, Checkbox, Col, Form, Input, InputNumber, Rate, Row, Space } from "antd";
 import { ROUTER_URL } from "constants/index";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,32 +18,34 @@ const AddEditTypePage = (props) => {
   const typeRoomId = params.id;
 
   const initialValues = typeRoomId ? typeDetail.data : {};
+  // initialValues.push({ "view": initialValues.utilities.view });
 
   useEffect(() => {
     if (typeRoomId) {
       dispatch(getTypeDetailAction({ id: typeRoomId }));
     }
-  }, [typeRoomId,dispatch]);
+  }, [dispatch, typeRoomId]);
 
   useEffect(() => {
     if (typeDetail.data.id) {
       modifyRoomForm.resetFields();
       // setUploadImages([...typeDetail.data.images]);
     }
-  }, [typeDetail.data,modifyRoomForm]);
+  }, [typeDetail.data, modifyRoomForm]);
 
   function handleSubmitForm(values) {
-    values.utilities.push({'view':values.view});
-    const listImage = values.images.trim().split(",");
-    values.images = listImage;
+    const newValues = {...values};
+    // newValues.utilities.push({ 'view': newValues.view });
+    const listImage = newValues.images.trim().split(",");
+    newValues.images = listImage;
     if (typeRoomId) {
       dispatch(editTypeAction({
         id: typeRoomId,
-        data: values,
+        data: newValues,
       }));
     } else {
       dispatch(createTypeAction({
-        data: values,
+        data: newValues,
       }));
     }
   };
@@ -174,31 +176,6 @@ const AddEditTypePage = (props) => {
           </Form.Item>
 
           <Form.Item
-            label="Type of View"
-            name="view"
-          
-            rules={[
-              { required: true, message: "Please input type of view!" },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          {/* <Form.Item
-            label="Type of View"
-            name="view"
-            rules={[{ required: true, message: "Please input type of view!" }]}
-          >
-            <Select placeholder="Please select type of view">
-              <Select.Option value="lake">Lake View</Select.Option>
-              <Select.Option value="mountain">Mountain View</Select.Option>
-              <Select.Option value="garden">Garden View</Select.Option>
-              <Select.Option value="front">Front View</Select.Option>
-              <Select.Option value="top">Top View</Select.Option>
-            </Select>
-          </Form.Item> */}
-
-          <Form.Item
             label="Max Guest"
             name="maxGuest"
             rules={[
@@ -264,6 +241,16 @@ const AddEditTypePage = (props) => {
               }
               style={{ width: "100%" }}
             />
+          </Form.Item>
+
+          <Form.Item
+            label="Rating"
+            name="rating"
+            rules={[
+              { required: true, message: "Please input the rating of room!" },
+            ]}
+          >
+            <Rate allowHalf defaultValue={5} />
           </Form.Item>
         </Form>
       </div>

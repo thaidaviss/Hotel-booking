@@ -140,11 +140,13 @@ function* getUserListSaga(action) {
 
 function* getFilterUserListSaga(action) {
   try {
+    const searchKey = action.payload?.searchKey;
     const { params } = action.payload;
     const result = yield UserAPI.getFilterUserList({
+      ...params,
       _sort: "id",
       _order: "asc",
-      ...params,
+      ...(searchKey && { q: searchKey }),
     });
     yield put({
       type: SUCCESS(USER_ACTION.GET_FILTER_USER_LIST),

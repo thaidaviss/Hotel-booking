@@ -3,7 +3,7 @@ import { Button, Input, Popconfirm, Space, Table } from "antd";
 import moment from "moment";
 import React, {  useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createDiscountAction, editDiscountAction, getDiscountListAction } from 'redux/actions';
+import { createDiscountAction, editDiscountAction, getDiscountListAction, getTypeListAction } from 'redux/actions';
 import DiscountModal from "./components/DiscountModal";
 import './DiscountList.scss';
 
@@ -13,9 +13,18 @@ const DiscountListPage = () => {
   const [isShowDiscountModal, setIsShowDiscountModal] = useState("");
   const [modifyDiscountData, setModifyDiscountData] = useState({});
   const { discountList } = useSelector((state) => state.discountReducer);
+  const { typeList } = useSelector((state) => state.typeReducer);
   const dispatch = useDispatch();
 
+  const typeFilter = typeList.data.map((item, index) => {
+    return {
+      text: item.name,
+      value: item.id,
+    };
+  });
+
   useEffect(() => {
+    dispatch(getTypeListAction());
     dispatch(getDiscountListAction());
   }, [dispatch]);
 
@@ -49,8 +58,7 @@ const DiscountListPage = () => {
     {
       title: 'Name',
       dataIndex: 'name',
-      width: 200,
-      fixed: "left",
+      width: 130,
       key: 'name',
     },
     { 
@@ -67,7 +75,27 @@ const DiscountListPage = () => {
       sorter: (a, b) => a.end - b.end,
       render: (value) => value && moment(value).format('DD/MM/YYYY'),
     },
-    { title: 'Value', dataIndex: 'value', key: 'value', render: (value) => `${value}%` },
+    { 
+      title: 'Value',
+      dataIndex: 'value',
+      key: 'value',
+      width: 80,
+      render: (value) => `${value}%`
+    },
+    {
+      title: "Type Room",
+      dataIndex: "typeRoomId",
+      key: "typeRoomId",
+      filters: [...typeFilter],
+      onFilter: (value, record) => {
+        return record.typeRoomId === value;
+      },
+      width: 180,
+      render: (id) => {
+        const typeData = typeList.data.find((item) => item.id === id);
+        if (typeData) return typeData.name;
+      },
+    },
     {
       title: 'Create At',
       dataIndex: 'createdAt',

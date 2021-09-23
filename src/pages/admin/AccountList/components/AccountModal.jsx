@@ -6,43 +6,42 @@ import './AccountModal.scss';
 
 const dateFormat = 'DD/MM/YYYY';
 
-
 const UserModal = ({
-  isShowUserModal,
-  setIsShowUserModal,
-  modifyUserData,
+  isShowAccountModal,
+  setIsShowAccountModal,
+  modifyAccountData,
 }) => {
-  const [modifyUserForm] = Form.useForm();
+  const [modifyAccForm] = Form.useForm();
 
   useEffect(() => {
-    if (isShowUserModal) {
-      modifyUserForm.resetFields();
+    if (isShowAccountModal) {
+      modifyAccForm.resetFields();
     }
-  }, [isShowUserModal,modifyUserForm]);
+  }, [isShowAccountModal, modifyAccForm]);
 
   return (
     <Modal
-      title={isShowUserModal === true && "Profile User"}
-      visible={isShowUserModal}
+      title={isShowAccountModal === true && "Profile User"}
+      visible={isShowAccountModal}
       width={700}
       footer={[
         <Button
           type="primary"
           ghost
-          onClick={() => setIsShowUserModal(false)}
+          onClick={() => setIsShowAccountModal(false)}
         >
           OK
         </Button>
       ]}
-      // onOk={() => modifyUserForm.submit()}
-      // onCancel={() => setIsShowUserModal(false)}
+      // onOk={() => modifyAccForm.submit()}
+      // onCancel={() => setIsShowAccountModal(false)}
     >
       <Form
-        form={modifyUserForm}
+        form={modifyAccForm}
         name="modify-user"
         labelCol={{ span: 6 }}
         wrapperCol={{ span: 18 }}
-        initialValues={modifyUserData}
+        initialValues={modifyAccountData}
         onFinish={(values) => console.log(values)}
       >
         <Form.Item
@@ -116,7 +115,7 @@ const UserModal = ({
         <Form.Item
           label="Status"
           name="status"
-          rules={[{ required: true, message: "Please input user status!" }]}
+          // rules={[{ required: true, message: "Please input user status!" }]}
         >
           <Select disabled placeholder="Please select user status!">
             <Select.Option value="active">Active</Select.Option>
@@ -127,7 +126,7 @@ const UserModal = ({
         <Form.Item
           label="Role"
           name="role"
-          rules={[{ required: true, message: "Please input user role!" }]}
+          // rules={[{ required: true, message: "Please input user role!" }]}
         >
           <Select disabled placeholder="Please select user role!">
             <Select.Option value="admin">Admin</Select.Option>

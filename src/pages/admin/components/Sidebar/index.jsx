@@ -1,9 +1,11 @@
-import { ROUTER_URL } from 'constants/index';
-import { IMAGES } from 'constants/images.constants';
-import React from 'react';
-import { MdAccountBalance, MdAssignmentTurnedIn, MdAttachMoney, MdDashboard, MdEventAvailable, MdFiberNew, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdLocalHotel, MdPermIdentity, MdRoom, MdStyle } from "react-icons/md";
-import { Link, useLocation } from 'react-router-dom';
-import "./Sidebar.scss";
+import { Layout, Menu } from "antd";
+import { IMAGES } from "constants/images.constants";
+import { ROUTER_URL } from "constants/index";
+import React, { useEffect, useState } from "react";
+import { MdAccountBalance, MdAssignmentTurnedIn, MdDashboard, MdEventAvailable, MdFiberNew, MdLocalHotel, MdPermIdentity, MdStyle } from "react-icons/md";
+import { Link, useLocation } from "react-router-dom";
+import history from "utils/history";
+import './Sidebar.scss';
 
 
 const SIDEBAR_MENU = [
@@ -11,111 +13,136 @@ const SIDEBAR_MENU = [
     title: "Dashboard",
     path: `${ROUTER_URL.ADMIN}`,
     icon: <MdDashboard />,
+    subMenu: [],
   },
   {
     title: 'Room Manager',
     path: `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOMS}`,
     icon: <MdLocalHotel />,
+    subMenu: [],
   },
   {
     title: 'Type Manager',
     path: `${ROUTER_URL.ADMIN}${ROUTER_URL.ROOM_TYPES}`,
     icon: <MdAccountBalance />,
+    subMenu: [],
   },
   {
     title: 'Booking Manager',
     path: `${ROUTER_URL.ADMIN}${ROUTER_URL.BOOKINGS}`,
     icon: <MdEventAvailable />,
+    subMenu: [],
   },
   {
     title: "Customer Manager",
     path: `${ROUTER_URL.ADMIN}${ROUTER_URL.CUSTOMERS}`,
-    icon: <MdAssignmentTurnedIn />
+    icon: <MdAssignmentTurnedIn />,
+    subMenu: [],
   },
   {
     title: "Discount Manager",
     path: `${ROUTER_URL.ADMIN}${ROUTER_URL.DISCOUNTS}`,
     icon: <MdStyle />,
+    subMenu: [],
   },
   {
     title: "Account Manager",
     path: `${ROUTER_URL.ADMIN}${ROUTER_URL.USERS}`,
     icon: <MdPermIdentity />,
+    subMenu: [],
   },
-  {
-    title: 'Blogs Manager',
-    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.BLOGS}`,
-    icon: <MdFiberNew />,
-  },
-  {
-    title: "Revenue",
-    path: `${ROUTER_URL.ADMIN}${ROUTER_URL.REVENUE}`,
-    icon: <MdAttachMoney />,
-  },
+  // {
+  //   title: 'Blogs Manager',
+  //   path: `${ROUTER_URL.ADMIN}${ROUTER_URL.BLOGS}`,
+  //   icon: <MdFiberNew />,
+  //   subMenu: [],
+  // },
+  // {
+  //   title: "Revenue",
+  //   path: `${ROUTER_URL.ADMIN}${ROUTER_URL.REVENUE}`,
+  //   icon: <MdAttachMoney />,
+  //   subMenu: [],
+  // },
 ];
+const { Sider } = Layout;
 
-function Sidebar(props) {
-  const { isMiniMenu, setIsMiniMenu } = props;
+const SidebarAdmin = () => {
+  const { SubMenu } = Menu;
   const location = useLocation();
-  let pathName = location.pathname || "";
+  const [selectMenuItem, setSelectMenuItem] = useState(0);
+
+  useEffect(() => {
+    const sidebarIndex = SIDEBAR_MENU.findIndex((item, index) => {
+      return item.path === location.pathname;
+    });
+    setSelectMenuItem(sidebarIndex);
+  }, [location]);
+
+  function renderSidebarMenu() {
+    return SIDEBAR_MENU.map((sidebarItem, sidebarIndex) => {
+      return (
+        <>
+          {sidebarItem.subMenu.length === 0 ? (
+            <Menu.Item
+              icon={sidebarItem.icon}
+              key={`${sidebarIndex}`}
+              onClick={() => history.push(sidebarItem.path)}
+            >
+              {sidebarItem.title}
+            </Menu.Item>
+          ) : (
+            <SubMenu
+              title={sidebarItem.title}
+              icon={<img src={sidebarItem.icon} />}
+              key={`sidebar-${sidebarIndex}`}
+            >
+              {renderSubMenu(sidebarItem.subMenu)}
+            </SubMenu>
+          )}
+        </>
+      );
+    });
+  }
+  function renderSubMenu(subMenu) {
+    return subMenu.map((subMenuItem, subMenuIndex) => {
+      return (
+        <Menu.Item
+          key={`subMenu-${subMenuIndex}`}
+          onClick={() => history.push(subMenuItem.path)}
+        >
+          {subMenuItem.title}
+        </Menu.Item>
+      );
+    });
+  }
 
   return (
-    <>
-      <div className={isMiniMenu ? "sidebar--hide" : "sidebar"}>
-        <div className="sidebar__wrapper">
-          <div className="sidebar__header">
-            <div className="brand">
-              <div className="sidebar__header__logo">
-                <Link to={ROUTER_URL.HOME}>
-                  <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo for admin header" />
-                </Link>
-              </div>
-
-              {/* <span className="title">Luxury Hotel</span> */}
-            </div>
-          </div>
-
-          <div className={isMiniMenu ? "sidebar__menu--hide" : "sidebar__menu"}>
-            <ul className="sidebar__list">
-              {SIDEBAR_MENU.map((sidebarItem, sidebarIndex) => (
-                <li
-                  className={
-                    pathName === sidebarItem.path
-                      ? "sidebar__item sidebar__item--active"
-                      : "sidebar__item"
-                  }
-                  key={`sidebar-${sidebarIndex}`}
-                >
-                  <Link
-                    to={sidebarItem.path}
-                    className={isMiniMenu ? "link--hide" : "link"}
-                  >
-                    <span className="item-icon">{sidebarItem.icon}</span>
-                    <span className="item-title">{sidebarItem.title}</span>
-                  </Link>
-                  
-                  <ul className="sub-menu">
-                    <li><a className="link__name" href={sidebarItem.path}></a></li>
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="sidebar__footer" onClick={() => setIsMiniMenu(!isMiniMenu)}>
-          {isMiniMenu ? (
-            <span>
-              <MdKeyboardArrowRight />
-            </span>
-          ) : (
-            <span>
-              <MdKeyboardArrowLeft />
-            </span>
-          )}
-        </div>
+    <Sider
+      width={260}
+      breakpoint="lg"
+      collapsedWidth="0"
+      style={{
+        // overflow: 'auto',
+        height: "100vh",
+        position: "fixed",
+        left: 0,
+      }}
+    >
+      <div className="logo">
+        <Link to={ROUTER_URL.HOME}>
+          <img src={IMAGES.LOGO_HEADER_ADMIN} alt="Logo for admin header" />
+        </Link>
       </div>
-    </>
+      <Menu
+        className="site-menu"
+        theme="dark"
+        mode="inline"
+        selectedKeys={`${selectMenuItem}`}
+      >
+        {renderSidebarMenu()}
+      </Menu>
+    </Sider>
   );
-}
+};
 
-export default Sidebar;
+export default SidebarAdmin;

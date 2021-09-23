@@ -1,7 +1,12 @@
-
+@import '../../../styles/main.scss';
 
 .user-form-title {
   margin-bottom: 1rem;
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $primary;
+  }
 }
 .user-form-content {
   padding: 1.2rem;

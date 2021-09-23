@@ -1,6 +1,6 @@
 import { Modal, Form, Input, Select, InputNumber, DatePicker, Button } from 'antd';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import './CustomerModal.scss';
 // import moment from 'moment';
 
@@ -14,7 +14,7 @@ const CustomerModal = ({
   modifyUserData,
 }) => {
   const [modifyUserForm] = Form.useForm();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
 
   useEffect(() => {

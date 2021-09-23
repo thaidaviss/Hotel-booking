@@ -1,5 +1,6 @@
-import { DatePicker, Form, Input, InputNumber, Modal } from 'antd';
+import { Select, DatePicker, Form, Input, InputNumber, Modal } from 'antd';
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './DiscountModal.scss';
 
 
@@ -12,6 +13,7 @@ const DiscountModal = ({
   handleSubmitForm,
 }) => {
   const [modifyDiscountForm] = Form.useForm();
+  const { typeList } = useSelector((state) => state.typeReducer);
 
 
   useEffect(() => {
@@ -19,6 +21,14 @@ const DiscountModal = ({
       modifyDiscountForm.resetFields();
     }
   }, [isShowDiscountModal,modifyDiscountForm]);
+
+  function renderTypeOptions() {
+    return typeList.data.map((typeItem, typeIndex) => (
+      <Select.Option value={typeItem.id} key={`type-${typeItem.id}`}>
+        {typeItem.name}
+      </Select.Option>
+    ));
+  }
 
   return (
     <Modal
@@ -30,8 +40,8 @@ const DiscountModal = ({
       <Form
         form={modifyDiscountForm}
         name="modify-discount"
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 20 }}
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 18 }}
         initialValues={modifyDiscountData}
         onFinish={(values) => handleSubmitForm(values)}
       >
@@ -71,6 +81,16 @@ const DiscountModal = ({
             formatter={value => `% ${value}`}
             min={0} max={90} 
           />
+        </Form.Item>
+
+        <Form.Item
+          label="Type of Room"
+          name="typeRoomId"
+          rules={[{ required: true, message: "Please input type of room!" }]}
+        >
+          <Select placeholder="Please select a type of room!">
+            {renderTypeOptions()}
+          </Select>
         </Form.Item>
       </Form>
     </Modal>

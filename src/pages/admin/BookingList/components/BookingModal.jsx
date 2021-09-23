@@ -1,7 +1,9 @@
-import { Modal, Form, Input, Select, InputNumber, Rate } from "antd";
+import { Form, Modal, Select } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./BookingModal.scss";
+import { checkVariable } from "redux/constants";
+import { getBookingListAction, getRoomListAction } from "redux/actions";
 
 const BookingModal = ({
   isShowBookingModal,
@@ -9,8 +11,25 @@ const BookingModal = ({
   modifyBookingData,
 }) => {
   const [modifyBookingForm] = Form.useForm();
-  const { typeList } = useSelector((state) => state.typeReducer);
+  
+  // const { typeList } = useSelector((state) => state.typeReducer);
+  const { bookingList } = useSelector((state) => state.bookingReducer);
+  const { roomList } = useSelector((state) => state.roomReducer);
   const dispatch = useDispatch();
+
+  const checkIn = modifyBookingData.checkIn;
+  const checkOut = modifyBookingData.checkOut;
+  const typeRoomId = modifyBookingData.typeRoomId;
+
+  const listVariable = checkVariable(checkIn, checkOut, bookingList, roomList) || {};
+  // console.log("🚀 ~ file: BookingModal.jsx ~ line 29 ~ roomList", roomList)
+  // console.log("🚀 ~ file: BookingModal.jsx ~ line 25 ~ listVariable", listVariable)
+  
+
+  useEffect(() => {
+    dispatch(getRoomListAction());
+    dispatch(getBookingListAction());
+  }, [dispatch]);
 
   useEffect(() => {
     if (isShowBookingModal) {
@@ -26,7 +45,14 @@ const BookingModal = ({
   //   ));
   // }
   function renderRoomCode() {
-
+    if (listVariable) {
+      const list = listVariable[Object.keys(`${typeRoomId}`)] || [];
+      return list.map((roomItem, roomIndex) => (
+        <Select.Option value={roomItem.name} key={`choose-${roomItem.id}`}>
+          {roomItem.name}
+        </Select.Option>
+      ));
+    }
   }
 
   return (
