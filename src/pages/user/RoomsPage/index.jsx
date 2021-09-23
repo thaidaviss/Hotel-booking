@@ -19,9 +19,9 @@ function RoomsPage(props) {
   const listVariable = useSelector((state) => state.typeReducer.roomVariableList);
 
   const [isFocus, setIsFocus] = useState(false);
-  const [checkedList, setCheckedList] = useState({ rating: [], review: [], price: [0, 100] });
+  const [checkedList, setCheckedList] = useState({ rating: [], q: [], price: [0, 100] });
 
-  const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 4 });
+  const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 5 });
   useEffect(() => {
     setPage({ ...page, _page: 1 });
   }, [checkedList.rating, checkedList.price]);
@@ -38,16 +38,15 @@ function RoomsPage(props) {
         params: {
           ...page,
           rating: checkedList.rating,
+          q: checkedList.q,
           price_gte: checkedList.price[0] * 100,
           price_lte: checkedList.price[1] * 100,
         },
       })
     );
     window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
-  }, [dispatch, page, checkedList.rating, checkedList.price]);
+  }, [dispatch, page._page, checkedList.rating, checkedList.price, checkedList.q]);
   console.log(page);
-
-
 
   const isVariable = (typeRoom) => {
     const listTypeRoomVariable = Object.keys(listVariable.data);
@@ -63,7 +62,7 @@ function RoomsPage(props) {
   };
   return (
     <div className="rooms-page">
-      <Banner heading = {"Feature Rooms"}/>
+      <Banner heading={"Feature Rooms"} />
       <div className="rooms-page__body" ref={myRef}>
         <div className="rooms-page__reservation">
           <MakeReservation isFocus={isFocus} />
@@ -82,7 +81,7 @@ function RoomsPage(props) {
             ) : (
               listTypeRoom.data.map((typeRoom, index) => (
                 <CardRoom
-                typeRoom={typeRoom}
+                  typeRoom={typeRoom}
                   isVariable={isVariable(typeRoom)}
                   key={`card-room__room-${index}`}
                   setIsFocus={setIsFocus}

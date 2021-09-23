@@ -5,9 +5,10 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link, Redirect, useLocation } from "react-router-dom";
-import { clearRoomVariableAction, getDiscountDetailAction } from "redux/actions";
+import { clearDiscountDetailAction, clearRoomVariableAction, getDiscountDetailAction } from "redux/actions";
 import { createBookingAction } from "redux/actions/booking.action";
 import history from "utils/history";
 import "./BookingPage.scss";
@@ -21,7 +22,7 @@ function BookingPage(props) {
 
   const bookingInfoLocal = JSON.parse(sessionStorage.getItem("bookingInfo"));
   const userLogin = JSON.parse(localStorage.getItem("userData"));
-  
+  const Discount = useSelector(state=>state.discountReducer.discountDetail.data);
   const [bookingInfo, setBookingInfo] = useState({
     name: userLogin.user.name,
     phone: userLogin.user.phone,
@@ -31,6 +32,11 @@ function BookingPage(props) {
     ...bookingInfoLocal,
   });
 
+  useEffect(()=>{
+    return ()=>{
+      dispatch(clearDiscountDetailAction());
+    }
+  },[])
   useEffect(() => {
     return () => {
       sessionStorage.removeItem("bookingInfo");
@@ -167,10 +173,11 @@ function BookingPage(props) {
                     <Form.Item label="Promotion" name="discount">
                       <div className="form__inline">
                         <div className="form__inline-item">
-                          <Input placeholder="e.g: SUMMER21X" ref={discount} />
+                          <Input placeholder="e.g: SUMMER21X" ref={discount} disabled={Object.keys(Discount).length!==0} />
                         </div>
                         <div className="form__inline-item">
                           <button
+                           disabled={Object.keys(Discount).length!==0}
                             className="btn-discount"
                             type="button"
                             onClick={(values) => handleApplyDiscount(values)}

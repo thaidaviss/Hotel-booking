@@ -1,4 +1,6 @@
-import { createReducer } from "@reduxjs/toolkit";
+import {
+  createReducer
+} from "@reduxjs/toolkit";
 import {
   BOOKING_ACTION,
   FAILURE,
@@ -77,7 +79,7 @@ const bookingReducer = createReducer(initialState, {
     const {
       data
     } = action.payload;
-      console.log("🚀 ~ file: booking.reducer.js ~ line 82 ~ [SUCCESS ~ data", data)
+    console.log("🚀 ~ file: booking.reducer.js ~ line 82 ~ [SUCCESS ~ data", data)
     return {
       ...state,
       bookingList: {
@@ -261,12 +263,17 @@ const bookingReducer = createReducer(initialState, {
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id
     );
-    newBookingList.splice(bookingIndex, 1, data);
+    if (bookingIndex !== -1) {
+      newBookingList.splice(bookingIndex, 1, data);
+    }
+
     return {
       ...state,
       bookingList: {
+
         ...state.bookingList,
-      
+        data: newBookingList,
+
       },
     };
   },
@@ -286,7 +293,9 @@ const bookingReducer = createReducer(initialState, {
   // },
 
   [SUCCESS(BOOKING_ACTION.PENDING_BOOKING)]: (state, action) => {
-    const { data } = action.payload;
+    const {
+      data
+    } = action.payload;
     const newBookingList = [...state.bookingList.data];
     const bookingIndex = newBookingList.findIndex(
       (booking) => booking.id === data.id

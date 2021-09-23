@@ -1,4 +1,4 @@
-import { DatePicker, Form, Image, Input, Space, Table, Tag } from "antd";
+import { DatePicker, Form, Image, Input, Popconfirm, Space, Table, Tag } from "antd";
 import { IMAGES } from "constants/images.constants";
 import Banner from "layouts/Banner";
 import Footer from "layouts/Footer";
@@ -89,18 +89,30 @@ function UserProfile(props) {
       key: "action",
       render: (text, record) => (
         <Space size="middle">
-          <a
-            onClick={() => CancelBooking(record.id)}
-            className={
+          <Popconfirm
+            title="Are you sure to delete this type?"
+            onConfirm={() => CancelBooking(record.id)}
+            onCancel={() => null}
+            okText="Yes"
+            cancelText="No"
+            disabled={
               record.status === "canceled" ||
               record.status === "check-in" ||
               record.status === "check-out"
-                ? "cancel cancel-disable"
-                : "cancel"
             }
           >
-            Cancel
-          </a>
+            <a
+              className={
+                record.status === "canceled" ||
+                record.status === "check-in" ||
+                record.status === "check-out"
+                  ? "cancel cancel-disable"
+                  : "cancel"
+              }
+            >
+              Cancel
+            </a>
+          </Popconfirm>
         </Space>
       ),
     },
