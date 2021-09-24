@@ -41,12 +41,10 @@
       "birthday": 1628339995854
     },
     {
-
       "email": "phuonghang.dainam71@gmail.com",
       "password": "$2a$10$ncEmVPU01qFVbVg53BzBE.WMBkndey28urQb9tJXlYU4vOtwTsMme",
       "username": "hangdainam71",
       "role": "user",
-
       "id": 3,
       "avatar": [
         "https://live.staticflickr.com/65535/51470911828_c4b03d93b0_m.jpg"
@@ -57,13 +55,10 @@
       "updatedAt": 1631760242160,
       "name": "Nguyễn Phương Hằng",
       "phone": "0129111000",
-
       "age": 50,
       "gender": "female",
       "address": "58A Lê Quang Định, phường 11, quận Bình Thạnh, Tp Hồ Chí Minh",
       "birthday": 1628339995854
-
-    
     },
     {
       "email": "lamtamnhu85@gmail.com",
@@ -84,6 +79,28 @@
       "gender": "male",
       "address": "89 Cộng Hòa, phường 12, quận Tân Bình, Tp Hồ Chí Minh",
       "birthday": 1628339995854
+    },
+    {
+      "email": "thaidavis1999@gmail.com",
+      "password": "$2a$10$hM2.fhOCHTSxXTRhLSajou/dChSG5OPTUP26C.b5P77kvsACa8w4K",
+      "username": "thaidaviss",
+      "role": "user",
+      "id": 5,
+      "name": "Bùi đức thái",
+      "phone": "0964321807",
+      "address": "VietNam",
+      "birthday": 939747600000,
+      "updatedAt": 1632406794858
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$yJgQrsQ0i8UyO13p8PREyOo6S5S33zz.HYesE/4chgTSR0WzRUxuC",
+      "username": "admin",
+      "role": "admin",
+      "id": 6,
+      "name": "Amin Royal",
+      "phone": "0964321807",
+      "address": "VietNam"
     }
   ],
   "typeRooms": [
@@ -122,6 +139,7 @@
           "shower": "Shower"
         }
       ],
+      "view": "City view",
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -160,6 +178,7 @@
           "shower": "Shower"
         }
       ],
+      "view": "Sky",
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -186,9 +205,7 @@
           "view": "City view"
         },
         {
-
           "roomSize": "Room size: 25 m²/269 ft²"
-
         },
         {
           "bed": "1 double bed"
@@ -200,10 +217,9 @@
           "view": "Mountain"
         }
       ],
-
+      "view": "City view",
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
-
     },
     {
       "id": 4,
@@ -240,6 +256,7 @@
           "shower": "Shower"
         }
       ],
+      "view": "Sea",
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     },
@@ -278,6 +295,7 @@
           "shower": "Shower"
         }
       ],
+      "view": "Mountains view",
       "createdAt": 1631092999151,
       "updatedAt": 1631093012330
     }
@@ -542,6 +560,23 @@
       "createdAt": 1631865629488,
       "updatedAt": 1631865629488,
       "id": 5
+    },
+    {
+      "typeRoomId": "1",
+      "userId": 5,
+      "rating": 5,
+      "title": "very good!",
+      "review": "very good !",
+      "stars": {
+        "service": 5,
+        "room": 5,
+        "food": 2,
+        "cleanness": 4
+      },
+      "image": [],
+      "createdAt": 1632406940349,
+      "updatedAt": 1632406940349,
+      "id": 6
     }
   ],
   "discounts": [
@@ -597,11 +632,9 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
-
     },
     {
       "id": 2,
@@ -614,11 +647,9 @@
       "checkIn": 1631092999151,
       "price": 123,
       "total": 120,
-
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
-
     },
     {
       "id": 3,
@@ -631,11 +662,9 @@
       "checkIn": 1631670575925,
       "price": 123,
       "total": 120,
-
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
-
     },
     {
       "id": 4,
@@ -683,7 +712,6 @@
       "updatedAt": 1631797703035
     },
     {
-
       "id": 8,
       "typeRoomId": 4,
       "userId": 2,
@@ -697,7 +725,79 @@
       "status": "pending",
       "createdAt": 1631541812854,
       "updatedAt": 1631797703035
-
+    },
+    {
+      "typeRoomId": 3,
+      "userId": 5,
+      "discountCode": "SPR-010315",
+      "discountPrice": 8,
+      "roomId": 11,
+      "checkOut": 1633107600000,
+      "checkIn": 1632502800000,
+      "numberNight": 7,
+      "price": 489,
+      "total": 3471.9,
+      "status": "canceled",
+      "id": 12,
+      "updatedAt": 1632497812708
+    },
+    {
+      "typeRoomId": 1,
+      "userId": 5,
+      "discountCode": "SUM-040620",
+      "discountPrice": 12,
+      "roomId": 1,
+      "checkOut": 1633107600000,
+      "checkIn": 1632502800000,
+      "numberNight": 7,
+      "price": 299,
+      "total": 1868.152,
+      "status": "pending",
+      "id": 13
+    },
+    {
+      "typeRoomId": 2,
+      "userId": 5,
+      "discountCode": "SPR-010315",
+      "discountPrice": 8,
+      "roomId": 6,
+      "checkOut": 1633107600000,
+      "checkIn": 1632934800000,
+      "numberNight": 2,
+      "price": 349,
+      "total": 674.268,
+      "status": "canceled",
+      "id": 14,
+      "updatedAt": 1632500045625
+    },
+    {
+      "typeRoomId": 4,
+      "userId": 5,
+      "discountCode": "FAL-070925",
+      "discountPrice": 10,
+      "roomId": 16,
+      "checkOut": 1633107600000,
+      "checkIn": 1632589200000,
+      "numberNight": 6,
+      "price": 519,
+      "total": 2849.31,
+      "status": "canceled",
+      "id": 15,
+      "updatedAt": 1632500101510
+    },
+    {
+      "typeRoomId": 1,
+      "userId": 5,
+      "discountCode": "SUM-040620",
+      "discountPrice": 12,
+      "roomId": 2,
+      "checkOut": 1633107600000,
+      "checkIn": 1632502800000,
+      "numberNight": 7,
+      "price": 299,
+      "total": 1868.152,
+      "status": "pending",
+      "id": 16
     }
   ]
 }

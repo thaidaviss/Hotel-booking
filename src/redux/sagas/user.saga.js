@@ -42,7 +42,7 @@ function* login(action) {
          payload: e.message
       });
       yield  notification.error({
-         description:e.message
+         description:"Incorrect account password!"
       });
 
    }

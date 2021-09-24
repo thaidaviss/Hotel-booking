@@ -100,7 +100,7 @@ function RoomDetailPage(props) {
 
   return (
     <div className="room-detail">
-      <Banner heading={RoomDetail.name} />
+      <Banner heading={RoomDetail.data.name} />
       <div className="room-detail__body">
         <div className="room-detail__reservation">
           <MakeReservation />
@@ -143,7 +143,7 @@ function RoomDetailPage(props) {
                 <CollapseInfo RoomDetail={RoomDetail.data} />
               </div>
             </div>
-            <div className="room-detail__right">
+            {/* <div className="room-detail__right">
               <h3>OUR GUESTS RATE THIS ROOM AS BELOW</h3>
               <div className="total__rating">
                 <h2>Service</h2>
@@ -157,7 +157,7 @@ function RoomDetailPage(props) {
                 <h2>Total</h2>
                 <Progress percent={100} status="active" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

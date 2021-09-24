@@ -1,8 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Banner.scss"
 import { IMAGES } from "constants/images.constants";
+import React from "react";
 import { useTranslation } from "react-i18next";
+import "./Banner.scss";
 
 function Banner(props) {
   const {heading,title} = props;

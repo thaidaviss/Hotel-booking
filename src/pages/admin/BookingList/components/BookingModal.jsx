@@ -22,9 +22,7 @@ const BookingModal = ({
   const typeRoomId = modifyBookingData.typeRoomId;
 
   const listVariable = checkVariable(checkIn, checkOut, bookingList, roomList) || {};
-  // console.log("🚀 ~ file: BookingModal.jsx ~ line 29 ~ roomList", roomList)
-  // console.log("🚀 ~ file: BookingModal.jsx ~ line 25 ~ listVariable", listVariable)
-  
+
 
   useEffect(() => {
     dispatch(getRoomListAction());

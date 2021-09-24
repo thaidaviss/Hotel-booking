@@ -99,11 +99,12 @@ const discountReducer = createReducer(initialState, {
     };
   },
   [SUCCESS(DISCOUNT_ACTION.GET_DISCOUNT_DETAIL)]: (state, action) => {
-    const { data } = action.payload;
+    const data  = action.payload;
+  
     return {
       ...state,
       discountDetail: {
-        data,
+        data:{...data},
         load: false,
         error: null,
       },

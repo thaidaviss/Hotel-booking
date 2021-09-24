@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from 'antd';
 import { ROUTER_URL } from "constants/index";
 import PrivateLayout from "layouts/PrivateLayout";
@@ -11,9 +11,9 @@ import RoomTypesPage from "pages/admin/RoomTypes";
 import AccountListPage from "pages/admin/AccountList";
 import AddEditTypePage from "pages/admin/AddEditType";
 
-import NotFoundPage from "pages/user/NotFound";
-// import { useState } from "react";
-import { Switch, useRouteMatch } from "react-router-dom";
+import NotFoundPage from "layouts/NotFound";
+
+import { Switch, useRouteMatch,Redirect } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
 import Sidebar from "../Sidebar";
 import AddEditUserPage from "pages/admin/AddEditUser";
