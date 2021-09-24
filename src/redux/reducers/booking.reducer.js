@@ -264,7 +264,11 @@ const bookingReducer = createReducer(initialState, {
       (booking) => booking.id === data.id
     );
     if (bookingIndex !== -1) {
-      newBookingList.splice(bookingIndex, 1, data);
+
+      newBookingList.splice(bookingIndex, 1, {
+        ...newBookingList[bookingIndex],
+        status: "canceled"
+      });
     }
 
     return {

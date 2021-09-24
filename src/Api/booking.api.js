@@ -13,7 +13,7 @@ export const BookingAPI = {
  getHistoryBookingList: (idUser)=>API.get(`${URL_API}/bookings?idUser=${idUser}`),
  addBooking:(data)=> API.post(`${URL_API}/bookings`,{...data,status:"pending"}),
  pendingBooking:(id,data)=> API.patch(`${URL_API}/bookings`,id,{...data,status:"pending"}),
- cancelBooking: (id,data)=> API.patch(`${URL_API}/bookings`,id,{...data,status:"canceled"}),
+ cancelBooking: (id,data,params)=> API.patch(`${URL_API}/bookings`,id,queryString.stringify(params),{...data,status:"canceled"}),
  checkOutBooking: (id,data)=> API.patch(`${URL_API}/bookings`,id,{...data,status:"check-out"}),
  checkInBooking: (id,data)=> API.patch(`${URL_API}/bookings`,id,{...data,status:"check-in"}),
 }

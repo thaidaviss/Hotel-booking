@@ -9,19 +9,41 @@ function SliderRooms(props) {
     ref: (slider) => (customSlider.current = slider),
     dots: null,
     infinite: true,
-    centerMode:true,
+    centerMode: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          adaptiveHeight: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
     beforeChange: (current, next) => setImageIndex(next),
   };
-console.log(ImageIndex)
+  console.log(ImageIndex);
   return (
     <div className="slider-rooms">
       <Slider {...settings}>
-        {LIST_ROOM.map((room,index) => (
-        <div className={ImageIndex===index?"slider-rooms__item slider-room__active":"slider-rooms__item"} key={`slider-rooms-${room.id}`}>
-              <img src={room.img} alt="" />
+        {LIST_ROOM.map((room, index) => (
+          <div
+            className={
+              ImageIndex === index ? "slider-rooms__item slider-room__active" : "slider-rooms__item"
+            }
+            key={`slider-rooms-${room.id}`}
+          >
+            <img src={room.img} alt="" />
           </div>
         ))}
       </Slider>

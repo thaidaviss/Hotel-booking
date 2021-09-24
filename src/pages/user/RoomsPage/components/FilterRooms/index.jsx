@@ -24,13 +24,13 @@ function FilterRooms({ checkedList, setCheckedList }) {
     setCheckedList({ ...checkedList, rating: checkedValues });
   }
   function onChangeReview(checkedValues) {
-    setCheckedList({ ...checkedList, q: checkedValues });
+    setCheckedList({ ...checkedList, view: checkedValues });
   }
   function formatter(value) {
     return `${value * 100} USD`;
   }
   function handleClearFilter() {
-    setCheckedList({ star: [], q: [], price: [0, 100] });
+    setCheckedList({ star: [], view: [], price: [0, 100] });
   }
   return (
     <div className="filter-room">
@@ -53,7 +53,11 @@ function FilterRooms({ checkedList, setCheckedList }) {
       <div className="filter-room__review">
         <div className="filter-room__title">{t("View score")}</div>
         <div className="filter-room__review-list">
-          <Checkbox.Group options={option_review} value={checkedList.q} onChange={onChangeReview} />
+          <Checkbox.Group
+            options={option_review}
+            value={checkedList.view}
+            onChange={onChangeReview}
+          />
         </div>
       </div>
       <div className="filter-room__Price">

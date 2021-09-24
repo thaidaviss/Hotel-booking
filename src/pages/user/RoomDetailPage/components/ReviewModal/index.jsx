@@ -125,7 +125,7 @@ const ReviewModal = ({ isShowReviewModal, setIsShowReviewModal }) => {
           </Col>
         </Row>
 
-        <Form.Item label="Do You have photos to share? (Optional)" name="photoReview">
+        {/* <Form.Item label="Do You have photos to share? (Optional)" name="photoReview">
           <Dragger maxCount={4}>
             <p className="ant-upload-drag-icon">
               <InboxOutlined />
@@ -135,7 +135,7 @@ const ReviewModal = ({ isShowReviewModal, setIsShowReviewModal }) => {
               Support for a single or bulk upload. Maximum 4 photos.
             </p>
           </Dragger>
-        </Form.Item>
+        </Form.Item> */}
       </Form>
     </Modal>
   );

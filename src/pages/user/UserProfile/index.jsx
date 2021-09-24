@@ -5,12 +5,11 @@ import Footer from "layouts/Footer";
 import Header from "layouts/Header";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+
 import { FaPencilAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cancelBookingAction,
-  editUserAction,
   getFilterBookingListAction,
   getUserDetailAction,
   userEditInfoAction,
@@ -24,7 +23,7 @@ function UserProfile(props) {
   const dispatch = useDispatch();
   const [modifyRoomForm] = Form.useForm();
   const CancelBooking = (id) => {
-    dispatch(cancelBookingAction({ id: id }));
+    dispatch(cancelBookingAction({ id: id, params: { _expand: "user", _expand: "typeRoom" } }));
   };
   const columns = [
     {
@@ -90,7 +89,7 @@ function UserProfile(props) {
       render: (text, record) => (
         <Space size="middle">
           <Popconfirm
-            title="Are you sure to delete this type?"
+            title="Are you sure to cancel this booking?"
             onConfirm={() => CancelBooking(record.id)}
             onCancel={() => null}
             okText="Yes"
