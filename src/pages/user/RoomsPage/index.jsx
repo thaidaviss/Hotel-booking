@@ -19,7 +19,7 @@ function RoomsPage(props) {
   const listVariable = useSelector((state) => state.typeReducer.roomVariableList);
 
   const [isFocus, setIsFocus] = useState(false);
-  const [checkedList, setCheckedList] = useState({ rating: [], q: [], price: [0, 100] });
+  const [checkedList, setCheckedList] = useState({ rating: [], view: [], price: [0, 100] });
 
   const [page, setPage] = useState({ _page: 1, _limit: 4, _totalRows: 5 });
   useEffect(() => {
@@ -38,14 +38,14 @@ function RoomsPage(props) {
         params: {
           ...page,
           rating: checkedList.rating,
-          q: checkedList.q,
+          view_like: checkedList.view,
           price_gte: checkedList.price[0] * 100,
           price_lte: checkedList.price[1] * 100,
         },
       })
     );
     window.scrollTo({ behavior: "smooth", top: myRef.current.offsetTop });
-  }, [dispatch, page._page, checkedList.rating, checkedList.price, checkedList.q]);
+  }, [dispatch, page._page, checkedList.rating, checkedList.price, checkedList.view]);
   console.log(page);
 
   const isVariable = (typeRoom) => {

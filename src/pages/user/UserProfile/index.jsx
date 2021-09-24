@@ -90,7 +90,7 @@ function UserProfile(props) {
       render: (text, record) => (
         <Space size="middle">
           <Popconfirm
-            title="Are you sure to delete this type?"
+            title="Are you sure to cancel this booking?"
             onConfirm={() => CancelBooking(record.id)}
             onCancel={() => null}
             okText="Yes"

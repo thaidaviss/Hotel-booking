@@ -267,17 +267,23 @@
     padding-left: 0.5rem !important;
   }
 
-  .btn-discount{
-    @include button-custom-v($white,$primary);
+  .btn-discount {
+    @include button-custom-v($white, $primary);
     padding: 0.7rem 0.9rem;
     border-radius: 0.2rem;
     margin-left: 0.7rem;
-    &__disable{
-      &:hover{
+
+    &__disable {
+      cursor: default;
+
+      &:hover {
         opacity: 0.6;
         color: $white;
-        background-color:$primary;
+        background-color: $primary;
+
       }
     }
   }
 }
+
+@include Responsive(md) {}

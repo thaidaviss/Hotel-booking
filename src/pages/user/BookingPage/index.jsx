@@ -8,35 +8,71 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link, Redirect, useLocation } from "react-router-dom";
-import { clearDiscountDetailAction, clearRoomVariableAction, getDiscountDetailAction } from "redux/actions";
+import {
+  clearDiscountDetailAction,
+  clearRoomVariableAction,
+  getDiscountDetailAction,
+  getUserDetailAction,
+} from "redux/actions";
 import { createBookingAction } from "redux/actions/booking.action";
 import history from "utils/history";
 import "./BookingPage.scss";
 import PaymentPage from "./components/PaymentPage";
+const totalPrice = (bookingInfo) => {
+  let total = bookingInfo.price * Tax + bookingInfo.price * bookingInfo.numberNight;
+  total = total - (total / 100) * bookingInfo.discountPrice;
 
+  return total;
+};
 function BookingPage(props) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const pathName = useLocation();
   const discount = useRef("");
+  const [modifyRoomForm] = Form.useForm();
 
   const bookingInfoLocal = JSON.parse(sessionStorage.getItem("bookingInfo"));
-  const userLogin = JSON.parse(localStorage.getItem("userData"));
-  const Discount = useSelector(state=>state.discountReducer.discountDetail.data);
-  const [bookingInfo, setBookingInfo] = useState({
-    name: userLogin.user.name,
-    phone: userLogin.user.phone,
-    email: userLogin.user.email,
-    address: userLogin.user.address,
-    discount: null,
-    ...bookingInfoLocal,
-  });
+  const userId = JSON.parse(localStorage.getItem("userData")).user.id;
+  const userLogin = useSelector((state) => state.userReducer.userDetail).data;
+  const Discount = useSelector((state) => state.discountReducer.discountDetail);
 
-  useEffect(()=>{
-    return ()=>{
-      dispatch(clearDiscountDetailAction());
+  const [bookingInfo, setBookingInfo] = useState(bookingInfoLocal);
+  console.log("🚀 ~ file: index.jsx ~ line 41 ~ BookingPage ~ bookingInfo", bookingInfo);
+
+  useEffect(() => {
+    modifyRoomForm.setFieldsValue(bookingInfo);
+  }, [bookingInfo, modifyRoomForm]);
+
+  useEffect(() => {
+    setBookingInfo({
+      ...bookingInfo,
+      name: userLogin.name,
+      phone: userLogin.phone,
+      email: userLogin.email,
+      address: userLogin.address,
+      discountCode: Discount.data[0]?.name || null,
+      discountPrice: Discount.data[0]?.value || 0,
+      total: totalPrice(bookingInfo),
+    });
+  }, [userLogin, Discount.data]);
+
+  useEffect(() => {
+    if (bookingInfo.discountCode) {
+      setBookingInfo({ ...bookingInfo, total: totalPrice(bookingInfo) });
     }
-  },[])
+  }, [bookingInfo.discountCode]);
+
+  useEffect(() => {
+    dispatch(clearDiscountDetailAction());
+    return () => {
+      dispatch(clearDiscountDetailAction());
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getUserDetailAction({ id: userId }));
+  }, [dispatch, userId]);
+
   useEffect(() => {
     return () => {
       sessionStorage.removeItem("bookingInfo");
@@ -45,8 +81,7 @@ function BookingPage(props) {
   }, []);
 
   const onFinish = (values) => {
-    const total = bookingInfo.price * Tax + bookingInfo.price * bookingInfo.numberNight;
-    setBookingInfo({ ...bookingInfo, ...values, total: total });
+    setBookingInfo({ ...bookingInfo, ...values });
     history.push(ROUTER_URL.PAYMENT);
   };
 
@@ -54,7 +89,6 @@ function BookingPage(props) {
     console.log("Failed:", errorInfo);
   };
   const handleApplyDiscount = (values) => {
-    console.log(discount.current.state.value);
     dispatch(getDiscountDetailAction({ name: discount.current.state.value }));
   };
 
@@ -62,9 +96,9 @@ function BookingPage(props) {
     if (bookingInfo) {
       const DataPayment = {
         typeRoomId: bookingInfo.typeRoomId,
-        userId: userLogin.user.id,
-        discountCode: "FAL-070925",
-        discountPrice: 11,
+        userId: userId,
+        discountCode: bookingInfo.discountCode,
+        discountPrice: bookingInfo.discountPrice,
         roomId: bookingInfo.roomId,
         checkOut: new Date(bookingInfo.date[1]).getTime(),
         checkIn: new Date(bookingInfo.date[0]).getTime(),
@@ -128,6 +162,7 @@ function BookingPage(props) {
                 <div className="booking__your-info">
                   <div className="booking__title">{t("Your information")}</div>
                   <Form
+                    form={modifyRoomForm}
                     name="your information"
                     layout={"vertical"}
                     initialValues={bookingInfo}
@@ -173,12 +208,24 @@ function BookingPage(props) {
                     <Form.Item label="Promotion" name="discount">
                       <div className="form__inline">
                         <div className="form__inline-item">
-                          <Input placeholder="e.g: SUMMER21X" ref={discount} disabled={Object.keys(Discount).length!==0} />
+                          <Input
+                            placeholder="e.g: SUMMER21X"
+                            ref={discount}
+                            disabled={
+                              (discount.current !== "") & (Object.keys(Discount.data).length !== 0)
+                            }
+                          />
                         </div>
                         <div className="form__inline-item">
                           <button
-                           disabled={Object.keys(Discount).length!==0}
-                            className="btn-discount"
+                            disabled={
+                              (discount.current !== "") & (Object.keys(Discount.data).length !== 0)
+                            }
+                            className={
+                              (discount.current !== "") & (Object.keys(Discount.data).length !== 0)
+                                ? " btn-discount btn-discount__disable"
+                                : "btn-discount"
+                            }
                             type="button"
                             onClick={(values) => handleApplyDiscount(values)}
                           >
@@ -242,18 +289,23 @@ function BookingPage(props) {
                   </div>
                   <div className="booking__total-item">
                     <div className="booking__total-title">{t("Other service fee")}</div>
-                    <div className="booking__total-number">{`${bookingInfo.price * Tax}$`}</div>
+                    <div className="booking__total-number">{`${(
+                      bookingInfo.price * Tax
+                    ).toLocaleString()}$`}</div>
+                  </div>
+                  <div className="booking__total-item">
+                    <div className="booking__total-title">{t("Discount")}</div>
+                    <div className="booking__total-number">{`${
+                      (discount !== "") & (Object.keys(Discount.data).length !== 0)
+                        ? Discount.data[0].value
+                        : 0
+                    }%`}</div>
                   </div>
                 </div>
                 <div className="booking__bill-item">
                   <div className="booking__total-item total">
                     <div className="booking__total-title ">{t("Total")}</div>
-                    <div className="booking__total-number">
-                      {`${(
-                        bookingInfo.price * Tax +
-                        bookingInfo.price * bookingInfo.numberNight
-                      ).toLocaleString()}$`}
-                    </div>
+                    <div className="booking__total-number">{`${bookingInfo.total}$`}</div>
                   </div>
                 </div>
               </div>

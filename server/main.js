@@ -17,7 +17,7 @@ server.use("/api", auth);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
-  if (req.method === "POST") {
+  if (req.method === "post") {
     req.body.createdAt = Date.now();
     req.body.updatedAt = Date.now();
   }
