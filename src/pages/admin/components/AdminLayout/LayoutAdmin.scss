@@ -49,6 +49,7 @@
 // Other =======
 // header 64px + breadcumb 22px
 .site-layout-sub-background {
-  min-height: calc(100vh - 86px);
-  padding: 16px 24px;
+  padding: 24px;
+  border-radius: 4px;
+  background-color: white;
 }

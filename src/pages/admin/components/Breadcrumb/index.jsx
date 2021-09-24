@@ -99,9 +99,7 @@ function BreadcrumbLayout(props) {
   }
   return (
     <Breadcrumb style={{ margin: '20px 0' }}>
-      <Breadcrumb.Item
-        style={{ paddingLeft: "24px" }}
-      >
+      <Breadcrumb.Item>
         <MdDashboard /> Admin
       </Breadcrumb.Item>
       {renderBreadcrumb(path)}

@@ -47,7 +47,7 @@ const LayoutAdmin = () => {
         >
           <AdminHeader />
 
-          <Content style={{ margin: '60px 16px 0', overflow: 'initial' }}>
+          <Content style={{ margin: '66px 24px 0', height: 'calc(100vh - 66px)' }}>
             <BreadcrumbLayout />
             <div className="site-layout-sub-background">
               <Switch>

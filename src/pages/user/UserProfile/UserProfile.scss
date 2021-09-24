@@ -1,9 +1,8 @@
 @import "styles/main";
 
-section {
+.profile-page {
   display: block;
-  font-family: $font-family-heading;
-  padding: 2rem 0;
+  padding: 32px 24px;
 
 
   .banner {
@@ -12,7 +11,7 @@ section {
 
   .container {
     display: block;
-    max-width: 90vw;
+    max-width: 90rem;
     margin: 0 auto;
   }
 

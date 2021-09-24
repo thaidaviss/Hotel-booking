@@ -2,24 +2,33 @@
 
 .filter-room {
   display: block;
-  //border: 1px solid $primary;
   border-radius: 3px;
-  padding: 1rem;
-  margin: 0 1rem;
   background-color: $white;
 
   &__heading {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid $primary;
+    align-items: center;
     font-size: 1.2rem;
-
-    padding-bottom: 0.2rem;
+    font-weight: 500;
+    height: 42px;
+    padding: 0 16px;
+    background-color: #383838;
+    color: white;
 
     .clear__filter {
       font-size: 1.2rem;
+      font-weight: 400;
       color: $primary;
       cursor: pointer;
+    }
+  }
+
+  &__main {
+    padding: 16px;
+
+    & > * {
+      margin-bottom: 16px;
     }
   }
 
@@ -28,13 +37,23 @@
   }
 
   &__title {
+    position: relative;
     font-size: 1.2rem;
     font-weight: 400;
    
     font-family: $font-family-base;
     // border-bottom: 1px solid $primary;
-    margin: 1rem 0;
-    padding-left: -1rem;
+    margin-bottom: 1rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: $primary;
+    }
   }
 
   .ant-checkbox-group-item {

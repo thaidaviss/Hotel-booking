@@ -11,9 +11,8 @@
 
     width: 100%;
     position: sticky;
-    z-index: 1051;
+    z-index: 10;
     top: 0;
-    margin-bottom: 1.5rem;
   }
 
   .banner {
@@ -30,17 +29,17 @@
 
     .container {
       display: flex;
-      padding: 3rem 2rem 2rem 2rem;
+      padding: 32px 24px;
     }
   }
 
   &__filter {
-    width: 26%;
+    width: 250px;
   }
 
   &__list {
-    width: 75%;
-    margin: 0 2rem;
+    width: calc(100% - 250px);
+    padding-left: 24px;
   }
 
   &__pagination {

@@ -2,11 +2,10 @@
   display: block;
   
   &__feature{
-      margin-top: 10px;
       display: flex;
       justify-content: space-evenly;
+      margin: 0 -20px;
   }
-  background-color: #FBFAFB;
   
 }
 *,*::after,*::before{

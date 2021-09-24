@@ -1,8 +1,7 @@
 @import "styles/main";
 
 .comment-item {
-  margin: 2rem 0;
-  padding-bottom: 1rem;
+  padding: 16px 0;
   border-bottom: 1px solid #F0F0F0;
   font-family: $font-family-base;
   display: flex;
@@ -11,8 +10,10 @@
 }
 
 .comment__user {
-  @include LayoutFlex();
-  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
 }
 
 .user__name {
@@ -37,8 +38,14 @@
   clear: both;
   font-size: 1.1rem;
   font-weight: 400;
-  padding: 1rem 0 0.5rem 0;
   color: #464545;
+}
+
+.comment__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 500px;
 }
 
 .comment__description {
@@ -48,14 +55,13 @@
 
 .comment__review {
   display: flex;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
   flex-direction: column;
   &-item {
     display: flex;
     margin-right: 1rem;
 
     p {
+      width: 80px;
       font-weight: 700;
       padding-right: 0.5rem;
       color: #737171;

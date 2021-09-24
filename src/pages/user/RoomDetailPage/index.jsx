@@ -119,23 +119,33 @@ function RoomDetailPage(props) {
             </div>
             <h1>Our guests rate this room as below</h1>
             <div className="total__rating">
-              <h2>Service</h2>
-              <Progress percent={89} status="active" />
-              <h2>Room</h2>
-              <Progress percent={95} status="active" />
-              <h2>Cleanness</h2>
-              <Progress percent={90} status="active" />
-              <h2>Food</h2>
-              <Progress percent={88} status="active" />
-              <h2>Total</h2>
-              <Progress percent={99} status="active" />
+              <div className="rating-wrapper">         
+                <h2>Service</h2>
+                <Progress percent={89} status="active" />
+              </div>
+              <div className="rating-wrapper">
+                <h2>Room</h2>
+                <Progress percent={95} status="active" />
+              </div>
+              <div className="rating-wrapper">
+                <h2>Cleanness</h2>
+                <Progress percent={90} status="active" />
+              </div>
+              <div className="rating-wrapper">
+                <h2>Food</h2>
+                <Progress percent={88} status="active" />
+              </div>
+              <div className="rating-wrapper">
+                <h2>Total</h2>
+                <Progress percent={99} status="active" />
+              </div>
             </div>
           </div>
           <div className="room-detail__same"></div>
         </div>
         <div className="room-detail__bottom">
           <div className="container">
-            <div className="room-detail__left">
+            <div className="room-detail__left" style={{ width: '70%' }}>
               <div className="room-detail__info">
                 <div className="room-detail__title">
                   <div className="room-detail__name">{t(RoomDetail.data.name)}</div>

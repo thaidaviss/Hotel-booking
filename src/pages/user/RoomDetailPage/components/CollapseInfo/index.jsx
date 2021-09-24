@@ -15,8 +15,7 @@ function CollapseInfo(props) {
     <div className="collapse-info">
       <Collapse
         bordered={false}
-        defaultActiveKey={["1"]}
-        accordion
+        defaultActiveKey={["1", "2", "3"]}
         expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
       >
         <Panel header="Description" key="1" className="site-collapse-custom-panel">

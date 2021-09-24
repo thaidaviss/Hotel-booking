@@ -150,7 +150,7 @@ function UserProfile(props) {
     <>
       <Header />
       <Banner heading={"Your information"} />
-      <section>
+      <section className="profile-page">
         <div className="container">
           <div className="profile__title">
             <h1>Your Profile</h1>

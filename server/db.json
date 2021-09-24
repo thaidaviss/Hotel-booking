@@ -100,7 +100,9 @@
       "id": 6,
       "name": "Amin Royal",
       "phone": "0964321807",
-      "address": "VietNam"
+      "address": "VietNam",
+      "birthday": 1632509355097,
+      "updatedAt": 1632518880394
     }
   ],
   "typeRooms": [

@@ -64,6 +64,7 @@ function LoginPage(props) {
               >
                 <Form.Item
                   name="email"
+                  label="12313"
                   hasFeedback
                   rules={[
                     { type: "email", message: `${t("Email is not valid!")}` },

@@ -1,11 +1,9 @@
 @import "styles/main";
 
 .slider-show {
-  margin-bottom: 4rem;
-
   &__icon {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     z-index: 10;
     display: flex;
@@ -17,22 +15,28 @@
     transition: all 0.3s;
     cursor: pointer;
     span {
-      font-size: 3rem;
+      display: none;
+      font-size: 1.3rem;
+      color: white;
     }
   }
 
   &__slick {
     display: block;
     overflow: hidden;
-    max-width: 95%;
-    max-height: 27rem;
+    width: 100%;
+    max-height: 320px;
 
     border-radius: 0.2rem;
     position: relative;
 
     &:hover .slider-show__icon {
-      top: 0;
-      background-color: rgba($primary, $alpha: 0.5);
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    
+    &:hover .slider-show__icon > span {
+      display: block;
     }
   }
 
@@ -40,12 +44,12 @@
 
   &__thumb {
     display: flex;
-    max-width: 95%;
+    width: 100%;
     margin-top: 0.5rem;
     overflow: hidden;
     
     &-item {
-      max-width: calc(100% / 5);
+      width: calc(100% / 6);
       border-radius: 0.2rem;
       display: block;
       overflow: hidden;
@@ -80,10 +84,6 @@
       z-index: 10;
       background-color: rgba($primary, $alpha: 0.6);
      }
-  }
-
-  .slick-slider {
-    max-width: 50rem;
   }
 }
 

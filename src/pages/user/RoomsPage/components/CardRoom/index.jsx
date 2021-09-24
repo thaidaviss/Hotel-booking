@@ -126,7 +126,7 @@ function CardRoom(props) {
     <div className="card-room" data-aos="fade-up">
       {off && (
         <div className="wrap wrap-green">
-          <span className="ribbon">off {off}%</span>
+          <span className="ribbon">Off {off}%</span>
         </div>
       )}
       <div className="card-room__img">
@@ -134,7 +134,7 @@ function CardRoom(props) {
           className="img-large"
           preview={{ visible: false }}
           width={"100%"}
-          height={"12rem"}
+          height={200}
           src={typeRoom.images[0]}
           onClick={() => setVisible(true)}
         />
@@ -144,7 +144,7 @@ function CardRoom(props) {
               className="img-small"
               preview={{ visible: false }}
               width={"100%"}
-              height={"6rem"}
+              height={95}
               src={typeRoom.images[1]}
               onClick={() => setVisible(true)}
             />
@@ -154,7 +154,7 @@ function CardRoom(props) {
               className="img-small"
               preview={{ visible: false }}
               width={"100%"}
-              height={"6rem"}
+              height={95}
               src={typeRoom.images[2]}
               onClick={() => setVisible(true)}
             />
@@ -174,7 +174,7 @@ function CardRoom(props) {
           <div className="card-room__name">{t(typeRoom.name)}</div>
         </Link>
         <div className="card-room__rate">
-          <Rate disabled allowHalf defaultValue={typeRoom.rating} className="rate" />
+          <Rate disabled allowHalf defaultValue={typeRoom.rating}  className="rate" />
           {/* <div className="map">
             <span>
               <FaMapMarkerAlt />
@@ -189,8 +189,8 @@ function CardRoom(props) {
 
         <div className="card-room__choice">
           <div className="card-room__price">
-            <small>{t(`$${(typeRoom.price / off) * 100} / Night `)}</small>{" "}
-            <span>{t(`$${typeRoom.price} / Night`)}</span>{" "}
+            <small>{t(`$${((typeRoom.price / off) * 100).toLocaleString()} / Night `)}</small>{" "}
+            <span>{t(`$${typeRoom.price.toLocaleString()} / Night`)}</span>{" "}
           </div>
           <div className="card-room__btn">
             <button
