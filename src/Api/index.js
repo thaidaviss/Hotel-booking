@@ -1,4 +1,4 @@
-export const URL_API = "http://localhost:3001/api"
+export const URL_API = `${process.env.REACT_APP_API_URL}/api`;
 export * from "./auth.api";
 export * from "./booking.api";
 export * from "./constants.api";

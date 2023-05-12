@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import history from "utils/history";
 import "./App.css";
-
+import "./styles/main.scss"
 function App() {
   useEffect(() => {
     AOS.init();

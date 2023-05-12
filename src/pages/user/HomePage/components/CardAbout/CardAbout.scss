@@ -1,4 +1,4 @@
-@import 'styles/main';
+@import '../../../../../styles/main';
 .card-about{
   transition: all 0.5s;
   @include LayoutFlex(column,center,center,wrap);

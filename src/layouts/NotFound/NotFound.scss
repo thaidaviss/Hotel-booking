@@ -1,4 +1,4 @@
-@import 'styles/main.scss';
+
 
 // Customize ant --------
 .ant-result-title {
@@ -13,13 +13,13 @@
   color: black;
 }
 
-@include Responsive(xs) {
-  .ant-result-title {
-    font-size: 1.6rem;
-  }
-  .ant-result-subtitle {
-    padding-bottom: .6rem;
+// @include Responsive(xs) {
+//   .ant-result-title {
+//     font-size: 1.6rem;
+//   }
+//   .ant-result-subtitle {
+//     padding-bottom: .6rem;
   
-    font-size: .85rem;
-  }
-}
+//     font-size: .85rem;
+//   }
+// }

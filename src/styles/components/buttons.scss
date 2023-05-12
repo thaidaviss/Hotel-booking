@@ -1,4 +1,3 @@
-@use "abstracts/variables"as *;
 
 @mixin button-custom($color:$white, $bg-color:$primary) {
   display: block;
